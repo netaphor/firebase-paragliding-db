@@ -13,11 +13,11 @@
                 <% days.forEach(function(day) { %>
                     <div class="col">
                         <div class="card">
-                            <img src="https://app.stratus.org.uk/blip/graph/blip_main.php?day=<%= day %>&tp=<%= tp %>" 
+                            <div class="card-header"><%= tp.label %> <%= day %></div>
+                            <div class="card-body">
+                                <img src="https://app.stratus.org.uk/blip/graph/blip_main.php?day=<%= day %>&tp=<%= tp.code %>" 
                                  class="card-img-top img-fluid" 
-                                 alt="Blip graph for <%= tp %> on day <%= day %>">
-                            <div class="card-footer text-center">
-                                <small class="text-muted">Turnpoint: <%= tp %> | Day: <%= day %></small>
+                                 alt="Blip graph for <%= tp.code %> on day <%= day %>">
                             </div>
                         </div>
                     </div>

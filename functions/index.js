@@ -29,7 +29,7 @@ app.get('/', (req, res) => {
         days.push(today.add(i, 'day').format('dddd'));
     }
     
-    const turnpoints = ['AFB', 'DDK', 'GDE'];
+    const turnpoints = [{code:'AFB', label:'Bo Peep'}, {code:'DDK', label:'Devils Dyke'}, {code:'GDE', label:'Caburn'}];
     
     data.days = days;
     data.turnpoints = turnpoints;
