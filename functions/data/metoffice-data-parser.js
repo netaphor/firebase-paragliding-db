@@ -1,9 +1,8 @@
-const metofficeHourly = require('./metofficeHourly.json').features[0].properties;
 const axios = require('axios');
 const metofficeApi = "https://data.hub.api.metoffice.gov.uk/sitespecific/v0";
 const metofficeApiKey = process.env.METOFFICE_API_URL || require('../../apiKeys.js').apiKeys.metOffice;
-const locationName = metofficeHourly.location.name;
-const timeSeries = metofficeHourly.timeSeries;
+let updatedForecastData = null;
+//const locationName = metofficeHourly.location.name;
 
 
 // Fetch forecast data from the MET Office
@@ -140,27 +139,45 @@ function convertMsToMph(speedMs) {
 function updateTimeSeries(timeSeries) {
     return timeSeries.map(entry => {
         entry.windDirectionCompass = getCompassDirection(entry.windDirectionFrom10m);
-        entry.cloudBaseInFt = calculateCloudBaseInFt(entry);
-        entry.cloudBaseTemp = calculateTemperatureAtCloudBase(entry.screenTemperature, entry.cloudBaseInFt);
+        entry.screenTemperature ? entry.cloudBaseInFt = calculateCloudBaseInFt(entry) : entry.cloudBaseInFt = null;
+        entry.screenTemperature ? entry.cloudBaseTemp = calculateTemperatureAtCloudBase(entry.screenTemperature, entry.cloudBaseInFt) : entry.cloudBaseTemp = null;
         entry.windSpeedMph = convertMsToMph(entry.windSpeed10m);
         entry.windGustMph = convertMsToMph(entry.windGustSpeed10m);
         entry.sites = getLocationsByDirection(entry.windDirectionCompass);
-        console.log(entry.windDirectionCompass + " fly at " + entry.sites + " at " + entry.time);
+        entry.day = getDayOfWeek(entry.time);
+        console.log(entry.windDirectionCompass + " fly at " + entry.sites + " at " + entry.day);
         return entry;
     });
 }
 
+// Function to get day of week from timestamp
+function getDayOfWeek(timestamp) {
+    const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    const date = new Date(timestamp);
+    return days[date.getDay()];
+}
+
 // Fetch the forecast data for a specific location, returns a promise of Data from the MET office
-var forecastData = fetchMetofficeData(50.861577, -0.050928801, metofficeApi);
+var forecastData = fetchMetofficeData(sitesMap.southern.caburn.lat,sitesMap.southern.caburn.long, metofficeApi);
 forecastData.then(data => {
         console.log("Data fetched successfully");
-        console.log(data);
         const timeSeries = data.features[0].properties.timeSeries;
-        const updatedTimeSeries = updateTimeSeries(timeSeries);
-        //console.log(updatedTimeSeries);
+        updatedForecastData = updateTimeSeries(timeSeries);
+        console.log("updated time series");
     }
     ).catch(error => {
         console.error("Error fetching data:", error);
     }
 );
 
+
+
+exports.getForecastData = function () {
+    if (updatedForecastData === null) {
+        console.error("Forecast data is not yet available.");
+        return null;
+    }
+
+    console.log("Forecast data is available.");
+    return updatedForecastData;
+};

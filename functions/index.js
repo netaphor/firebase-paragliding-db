@@ -3,6 +3,10 @@ const {onDocumentWritten} = require("firebase-functions/v2/firestore");
 const {onRequest} = require("firebase-functions/v2/https");
 const logger = require("firebase-functions/logger");
 
+//WARNING this pattern of caching in a module does not work with well with firebase functions!!
+const weather = require("./data/metoffice-data-parser");
+
+console.log(weather.getForecastData());
 // Create and deploy your first functions
 // https://firebase.google.com/docs/functions/get-started
 
@@ -38,6 +42,14 @@ app.get('/', (req, res) => {
         title: 'Paragliding Dashboard',
         days: days,
         turnpoints: turnpoints
+    });
+});
+
+app.get('/forecast', (req, res) => {
+    console.log(weather.getForecastData());
+    res.render('forecast', { 
+        title: 'Weather Forecast',
+        forecastData: weather.getForecastData()
     });
 });
 
