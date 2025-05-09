@@ -5,6 +5,8 @@ const metofficeApiKey = process.env.METOFFICE_API_URL || require('../../apiKeys.
 const locationName = metofficeHourly.location.name;
 const timeSeries = metofficeHourly.timeSeries;
 
+
+// Fetch forecast data from the MET Office
 async function fetchMetofficeData(lat, long, apiUrl) {
     let url = apiUrl + '/point/three-hourly?includeLocationName=true&latitude=' + lat + '&longitude=' + long;
     console.log(apiUrl);
@@ -22,6 +24,8 @@ async function fetchMetofficeData(lat, long, apiUrl) {
     }
 }
 
+
+// Static data for the UK flying sites, currently only southern sites
 const sitesMap = {
     southern: {
         caburn:{
@@ -75,6 +79,7 @@ const sitesMap = {
     }
 }
 
+// Function to get which sites are flyable based on wind direction
 function getLocationsByDirection(direction) {
     const matchingLocations = [];
 
@@ -89,6 +94,7 @@ function getLocationsByDirection(direction) {
     return matchingLocations;
 }
 
+// Function to convert wind direction in degrees to compass direction
 function getCompassDirection(degrees) {
     const directions = [
         'N', 'NNE', 'NE', 'ENE', 
@@ -100,12 +106,19 @@ function getCompassDirection(degrees) {
     return directions[index];
 }
 
+// Function to calculate temperature at cloud base
+// using the approximate lapse rate of 3°C per 1000 ft
+// This is a rough estimate and can vary based on local conditions
 function calculateTemperatureAtCloudBase(groundTemperature, cloudBaseHeightFt) {
     const lapseRate = 3; // Approximate lapse rate in °C per 1000 ft
     const temperatureAtCloudBase = groundTemperature - (lapseRate * (cloudBaseHeightFt / 1000));
     return Math.round(temperatureAtCloudBase);
 }
 
+// Function to calculate cloud base in feet
+// using the approximate formula: (T - Td) / 3 * 1000
+// where T is the temperature in °C and Td is the dew point temperature in °C
+// Currently tracks higher than the forecasts do
 function calculateCloudBaseInFt(entry) {
     const temperature = entry.screenTemperature;
     const dewPoint = entry.screenDewPointTemperature;
@@ -115,11 +128,15 @@ function calculateCloudBaseInFt(entry) {
     return cloudBase;
 }
 
+// Function to convert wind speed from m/s to mph
 function convertMsToMph(speedMs) {
     const mph = speedMs * 2.23694; // Conversion factor from m/s to mph
     return Math.round(mph * 10) / 10; // Round to 1 decimal place
 }
 
+// Function to update the Met office data with additional properties
+// such as wind direction, cloud base, and wind speed in mph
+// This function will be called after fetching the data
 function updateTimeSeries(timeSeries) {
     return timeSeries.map(entry => {
         entry.windDirectionCompass = getCompassDirection(entry.windDirectionFrom10m);
@@ -133,8 +150,8 @@ function updateTimeSeries(timeSeries) {
     });
 }
 
+// Fetch the forecast data for a specific location, returns a promise of Data from the MET office
 var forecastData = fetchMetofficeData(50.861577, -0.050928801, metofficeApi);
-
 forecastData.then(data => {
         console.log("Data fetched successfully");
         console.log(data);
