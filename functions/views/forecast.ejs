@@ -2,29 +2,26 @@
 <html lang="en">
 <head>
     <style>
+        .arrow-container {
+            display: inline-block;
+        }
+
         .notFlyable {
-            background-color: #ffcccc;
+            background-color: #ffcccc87;
         }
         .flyable {
-            background-color: #ccffcc;
+            background-color: #ccffcc85;
         }
         .marginal {
-            background-color: #ffffcc;
+            background-color: #ffffcc83;
         }
-        .arrow-container {
-            display: flex;
-            flex-wrap: wrap;
-            width: 200px;
-            margin: 0 auto;
-        }
-        .arrow {
-            width: 4px;
-            height: 10px;
-            background: black;
-            position: relative;
-            margin: 20px;
-            display: inline-block;
-            transform-origin: bottom center;
+
+        .flying-card {
+            border-radius: 5px;
+            padding: 10px;
+            color: #555;
+            box-shadow: 0 .125rem .25rem rgba(0, 0, 0, 0.21)!important;
+            margin: 3px;
         }
 
             /* Arrowhead using a triangle */
@@ -57,8 +54,26 @@
         .dir-nw { transform: rotate(315deg); }
         .dir-nnw { transform: rotate(337.5deg); }
 
-        td {
+        .forecast td {
             padding:0;
+        }
+        
+        .windStrength {
+            font-size: 0.8em;
+            padding-top: 5px;
+        }
+        .sitesHeader {
+            display: inline;
+            font-weight: bold;
+        }
+
+        .graphLoaders {
+            font-size: 0.8em;
+        }
+
+        .timeHeader {
+            padding: 5px;
+            font-weight: bold;
         }
     </style>
     <meta charset="UTF-8">
@@ -68,37 +83,49 @@
 </head>
 <body>
 <div class="container mt-5"></div>
-      
-    <div class="table-responsive">
-        <table class="table table-striped">
+    <div class="table-responsive, forecast">
+        <table>
             <thead>
                 <tr>
-                    <th>Time</th>
+                    <th class="timeHeader">Time</th>
                     <% let days = [...new Set(forecastData.map(f => new Date(f.time).toLocaleDateString('en-US', {weekday: 'short'})))]; %>
                     <% days.forEach(function(day) { %>
-                        <th><%= day %></th>
+                        <th class="timeHeader"><strong><%= day %></strong></th>
                     <% }); %>
                 </tr>
             </thead>
             <tbody>
                 <% for(let hour = 0; hour < 24; hour += 3) { %>
                     <tr>
-                        <td><%= String(hour).padStart(2, '0') %>:00</td>
+                        <td><div class="timeHeader"><%= String(hour).padStart(2, '0') %>:00</div></td>
                         <% days.forEach(function(day) { %>
-                            <td>
-                                <% let forecast = forecastData.find(f => 
+                            <% let forecast = forecastData.find(f => 
                                     new Date(f.time).toLocaleDateString('en-US', {weekday: 'short'}) === day && 
                                     new Date(f.time).getHours() === hour
                                 ); %>
-                                <div class="<%= forecast.flyingConditions %>">
+                            <td class="">
                                     <% if (forecast && forecast.windDirectionCompass) { %>
-                                        <p><%= forecast.windSpeedMph %>mph gusting <%= forecast.windGustMph %>mph</p>
-                                        <div class="arrow dir-<%= forecast.windDirectionCompass.toLowerCase() %>"></div>
+                                        <div class="flying-card rounded <%= forecast.flyingConditions %>">
+                                            <div>
+                                                <div class="dir-<%= forecast.windDirectionCompass.toLowerCase() %> arrow-container">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-down-circle-fill" viewBox="0 0 16 16">
+                                                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293z"/>
+                                                    </svg>
+                                                </div>
+                                                <div class="sitesHeader">
+                                                    <% if (forecast && forecast.sites) { %>
+                                                        <%= forecast.sites.join(', ') %>
+                                                    <% } %>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="windStrength"><strong><%= forecast.windSpeedMph %>mph</strong> gusting <strong><%= forecast.windGustMph %>mph</strong></div>
+                                            <div class="graphLoaders">
+                                                <a href="">RASP Blipspot</a>
+                                                <a href="">RASP Sounding</a>
+                                            </div>
+                                        </div>
                                     <% } %>
-                                    <% if (forecast && forecast.sites) { %>
-                                        <%= forecast.sites.join(', ') %>
-                                    <% } %>
-                                </div>
                             </td>
                         <% }); %>
                     </tr>
