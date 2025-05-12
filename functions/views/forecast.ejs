@@ -2,6 +2,15 @@
 <html lang="en">
 <head>
     <style>
+        .notFlyable {
+            background-color: #ffcccc;
+        }
+        .flyable {
+            background-color: #ccffcc;
+        }
+        .marginal {
+            background-color: #ffffcc;
+        }
         .arrow-container {
             display: flex;
             flex-wrap: wrap;
@@ -47,6 +56,10 @@
         .dir-wnw { transform: rotate(292.5deg); }
         .dir-nw { transform: rotate(315deg); }
         .dir-nnw { transform: rotate(337.5deg); }
+
+        td {
+            padding:0;
+        }
     </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -77,13 +90,15 @@
                                     new Date(f.time).toLocaleDateString('en-US', {weekday: 'short'}) === day && 
                                     new Date(f.time).getHours() === hour
                                 ); %>
-                                <% if (forecast && forecast.windDirectionCompass) { %>
-                                    <!-- <p><%= forecast.windDirectionCompass %></p> -->
-                                    <div class="arrow dir-<%= forecast.windDirectionCompass.toLowerCase() %>"></div>
-                                <% } %>
-                                <% if (forecast && forecast.sites) { %>
-                                    <%= forecast.sites.join(', ') %>
-                                <% } %>
+                                <div class="<%= forecast.flyingConditions %>">
+                                    <% if (forecast && forecast.windDirectionCompass) { %>
+                                        <p><%= forecast.windSpeedMph %>mph gusting <%= forecast.windGustMph %>mph</p>
+                                        <div class="arrow dir-<%= forecast.windDirectionCompass.toLowerCase() %>"></div>
+                                    <% } %>
+                                    <% if (forecast && forecast.sites) { %>
+                                        <%= forecast.sites.join(', ') %>
+                                    <% } %>
+                                </div>
                             </td>
                         <% }); %>
                     </tr>
