@@ -88,17 +88,25 @@ const sitesMap = {
 
 // Function to get which sites are flyable based on wind direction
 function getLocationsByDirection(direction) {
-    const matchingLocations = [];
-
+    let siteData = {
+        sites: [],
+        turnPoints: [],
+        correlatedSiteTurnPoints: []
+    };
+    
     for (const region in sitesMap) {
         for (const location in sitesMap[region]) {
             if (sitesMap[region][location].directions.includes(direction)) {
-                matchingLocations.push(sitesMap[region][location].label);
+                let correlatedSiteTurnPoints = sitesMap[region][location];
+                siteData.correlatedSiteTurnPoints.push(correlatedSiteTurnPoints);
+                siteData.sites.push(sitesMap[region][location].label);
+                siteData.turnPoints.push(sitesMap[region][location].turnPoint);
+                console.log(correlatedSiteTurnPoints);
             }
         }
     }
 
-    return matchingLocations;
+    return siteData;
 }
 
 // Function to convert wind direction in degrees to compass direction
@@ -160,10 +168,12 @@ function updateTimeSeries(timeSeries) {
         entry.screenTemperature ? entry.cloudBaseTemp = calculateTemperatureAtCloudBase(entry.screenTemperature, entry.cloudBaseInFt) : entry.cloudBaseTemp = null;
         entry.windSpeedMph = convertMsToMph(entry.windSpeed10m);
         entry.windGustMph = convertMsToMph(entry.windGustSpeed10m);
-        entry.sites = getLocationsByDirection(entry.windDirectionCompass);
+        entry.sites = getLocationsByDirection(entry.windDirectionCompass).sites;
+        entry.correlatedSiteTurnPoint = getLocationsByDirection(entry.windDirectionCompass).correlatedSiteTurnPoints;
+        entry.turnPoints = getLocationsByDirection(entry.windDirectionCompass).turnPoints;
         entry.day = getDayOfWeek(entry.time);
         entry.flyingConditions = getFlyingConditions(entry.windSpeedMph, entry.windGustMph);
-        console.log(entry.windDirectionCompass + " fly at " + entry.sites + " at " + entry.day);
+        console.log(entry.windDirectionCompass + " fly at " + entry.turnPoints + " on " + entry.day);
         return entry;
     });
 }
