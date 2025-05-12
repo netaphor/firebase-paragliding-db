@@ -133,6 +133,15 @@ function convertMsToMph(speedMs) {
     return Math.round(mph * 10) / 10; // Round to 1 decimal place
 }
 
+function getFlyingConditions(windSpeed, gustSpeed) {
+    if (windSpeed < 12 && gustSpeed < 16) {
+        return "flyable";
+    } else if (windSpeed > 16 || gustSpeed > 20) {
+        return "notFlyable";
+    }
+    return "marginal";
+}
+
 // Function to update the Met office data with additional properties
 // such as wind direction, cloud base, and wind speed in mph
 // This function will be called after fetching the data
@@ -145,6 +154,7 @@ function updateTimeSeries(timeSeries) {
         entry.windGustMph = convertMsToMph(entry.windGustSpeed10m);
         entry.sites = getLocationsByDirection(entry.windDirectionCompass);
         entry.day = getDayOfWeek(entry.time);
+        entry.flyingConditions = getFlyingConditions(entry.windSpeedMph, entry.windGustMph);
         console.log(entry.windDirectionCompass + " fly at " + entry.sites + " at " + entry.day);
         return entry;
     });
@@ -157,20 +167,35 @@ function getDayOfWeek(timestamp) {
     return days[date.getDay()];
 }
 
-// Fetch the forecast data for a specific location, returns a promise of Data from the MET office
-var forecastData = fetchMetofficeData(sitesMap.southern.caburn.lat,sitesMap.southern.caburn.long, metofficeApi);
-forecastData.then(data => {
+// Function to update forecast data periodically
+function startPeriodicForecastUpdate() {
+    // Initial fetch
+    forecastData = fetchMetofficeData(sitesMap.southern.caburn.lat, sitesMap.southern.caburn.long, metofficeApi);
+    forecastData.then(data => {
         console.log("Data fetched successfully");
         const timeSeries = data.features[0].properties.timeSeries;
         updatedForecastData = updateTimeSeries(timeSeries);
         console.log("updated time series");
-    }
-    ).catch(error => {
+    }).catch(error => {
         console.error("Error fetching data:", error);
-    }
-);
+    });
 
+    // Set up interval for subsequent fetches
+    setInterval(() => {
+        forecastData = fetchMetofficeData(sitesMap.southern.caburn.lat, sitesMap.southern.caburn.long, metofficeApi);
+        forecastData.then(data => {
+            console.log("Data fetched successfully");
+            const timeSeries = data.features[0].properties.timeSeries;
+            updatedForecastData = updateTimeSeries(timeSeries);
+            console.log("updated time series");
+        }).catch(error => {
+            console.error("Error fetching data:", error);
+        });
+    }, 60000); // 60000 milliseconds = 60 seconds
+}
 
+// Start the periodic updates
+startPeriodicForecastUpdate();
 
 exports.getForecastData = function () {
     if (updatedForecastData === null) {
