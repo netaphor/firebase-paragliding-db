@@ -1,5 +1,5 @@
 const axios = require('axios');
-const metofficeApi = "https://data.hub.api.metoffice.gov.uk/sitespecific/v0";
+const metofficeApiUrl = "https://data.hub.api.metoffice.gov.uk/sitespecific/v0";
 const metofficeApiKey = process.env.METOFFICE_API_URL || require('../../apiKeys.js').apiKeys.metOffice;
 let updatedForecastData = null;
 //const locationName = metofficeHourly.location.name;
@@ -31,49 +31,57 @@ const sitesMap = {
             label: "Mount Caburn",
             lat: "50.861577",
             long: "0.050928801",
-            directions:["WSW", "SW", "SWS", "S"]
+            directions:["WSW", "SW", "SWS", "S"],
+            turnPoint: "GDE"
         },
         boPeep: {
             label: "Bo Peep",
             lat: "50.820581",
             long: "0.12876213",
-            directions:["NNE","NE","ENE"]
+            directions:["NNE","NE","ENE"],
+            turnPoint: "AFB"
         },
         devilsDyke: {
             label: "Devils Dyke",
             lat: "50.885079",
             long: "-0.21307468",
-            directions:["WNW","NW","NNW","N"]
+            directions:["WNW","NW","NNW","N"],
+            turnPoint: "DDK"
         },
         ditchling: {
             label: "Ditchling",
             lat: "50.86157750.903079",
             long: "-0.11699785",
-            directions:["N","NNE","NNW"]
+            directions:["N","NNE","NNW"],
+            turnPoint: "DIT"
         },
         firle: {
             label: "Firle",
             lat: "50.834125",
             long: "0.086120367",
-            directions:["N","NNE","NNW", "NW"]
+            directions:["N","NNE","NNW", "NW"],
+            turnPoint: "FIB"
         },
         highAndOver: {
             label: "High and Over",
             lat: "50.788195",
             long: "0.14061213",
-            directions:["E","ENE","ESE"]
+            directions:["E","ENE","ESE"],
+            turnPoint: "AFB"
         },
         newhaven: {
             label: "Newhaven",
             lat: "50.782348",
             long: "0.049073696",
-            directions:["SSW","S","SSE"]
+            directions:["SSW","S","SSE"],
+            turnPoint: "SEA"
         },
         beachyHead: {
             label: "Beachy Head",
             lat: "50.50.740020",
             long: "0.25347054",
-            directions:["SE"]
+            directions:["SE"],
+            turnPoint: "SEA"
         }
     }
 }
@@ -170,7 +178,7 @@ function getDayOfWeek(timestamp) {
 // Function to update forecast data periodically
 function startPeriodicForecastUpdate() {
     // Initial fetch
-    forecastData = fetchMetofficeData(sitesMap.southern.caburn.lat, sitesMap.southern.caburn.long, metofficeApi);
+    forecastData = fetchMetofficeData(sitesMap.southern.caburn.lat, sitesMap.southern.caburn.long, metofficeApiUrl);
     forecastData.then(data => {
         console.log("Data fetched successfully");
         const timeSeries = data.features[0].properties.timeSeries;
@@ -182,7 +190,7 @@ function startPeriodicForecastUpdate() {
 
     // Set up interval for subsequent fetches
     setInterval(() => {
-        forecastData = fetchMetofficeData(sitesMap.southern.caburn.lat, sitesMap.southern.caburn.long, metofficeApi);
+        forecastData = fetchMetofficeData(sitesMap.southern.caburn.lat, sitesMap.southern.caburn.long, metofficeApiUrl);
         forecastData.then(data => {
             console.log("Data fetched successfully");
             const timeSeries = data.features[0].properties.timeSeries;
