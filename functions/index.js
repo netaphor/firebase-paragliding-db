@@ -29,4 +29,4 @@ app.get('/', (req, res) => {
 });
 
 // Export as a Firebase function
-exports.app = functions.https.onRequest(app);
+exports.app = functions.region('europe-west1').https.onRequest(app);
