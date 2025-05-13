@@ -24,28 +24,7 @@ app.set('views', path.join(__dirname, 'views'));
 // Serve static files (optional)
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Example route
 app.get('/', (req, res) => {
-    const today = dayjs();
-    const days = [];
-    const data = {};
-    for (let i = 0; i < 3; i++) {
-        days.push(today.add(i, 'day').format('dddd'));
-    }
-    
-    const turnpoints = [{code:'AFB', label:'Bo Peep'}, {code:'DDK', label:'Devils Dyke'}, {code:'GDE', label:'Caburn'}];
-    
-    data.days = days;
-    data.turnpoints = turnpoints;
-    // Render the EJS template
-    res.render('index', { 
-        title: 'Paragliding Dashboard',
-        days: days,
-        turnpoints: turnpoints
-    });
-});
-
-app.get('/forecast', (req, res) => {
     console.log(weather.getForecastData());
     res.render('forecast', { 
         title: 'Weather Forecast',
