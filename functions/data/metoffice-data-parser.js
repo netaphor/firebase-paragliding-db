@@ -149,6 +149,7 @@ function convertMsToMph(speedMs) {
     return Math.round(mph * 10) / 10; // Round to 1 decimal place
 }
 
+// Function to determine flying conditions based on wind speed and gust speed
 function getFlyingConditions(windSpeed, gustSpeed) {
     if (windSpeed < 12 && gustSpeed < 16) {
         return "flyable";
@@ -158,10 +159,22 @@ function getFlyingConditions(windSpeed, gustSpeed) {
     return "marginal";
 }
 
+
+// Function to filter out entries with time at midnight, 3am, or 9pm
+function filterOutSpecificTimes(timeSeries) {
+    return timeSeries.filter(entry => {
+        const date = new Date(entry.time);
+        const hours = date.getUTCHours();
+        return hours !== 0 && hours !== 3 && hours !== 21;
+    });
+}
+
 // Function to update the Met office data with additional properties
 // such as wind direction, cloud base, and wind speed in mph
 // This function will be called after fetching the data
 function updateTimeSeries(timeSeries) {
+    // Filter out entries with time at midnight, 3am, or 9pm
+    timeSeries = filterOutSpecificTimes(timeSeries);
     return timeSeries.map(entry => {
         entry.windDirectionCompass = getCompassDirection(entry.windDirectionFrom10m);
         entry.screenTemperature ? entry.cloudBaseInFt = calculateCloudBaseInFt(entry) : entry.cloudBaseInFt = null;

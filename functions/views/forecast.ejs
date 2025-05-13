@@ -56,6 +56,7 @@
 
         .forecast td {
             padding:0;
+            vertical-align: top;
         }
         
         .windStrength {
@@ -116,7 +117,7 @@
                 </tr>
             </thead>
             <tbody>
-                <% for(let hour = 0; hour < 24; hour += 3) { %>
+                <% for(let hour = 6; hour < 21; hour += 3) { %>
                     <tr>
                         <td><div class="timeHeader"><%= String(hour).padStart(2, '0') %>:00</div></td>
                         <% days.forEach(function(day) { %>
