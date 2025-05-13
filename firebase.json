@@ -21,8 +21,11 @@
     ],
     "rewrites": [
       {
-        "source": "**",
-        "function": "app"
+        "source": "**",  // This pattern matches all requests
+        "function": {
+          "functionId": "app", // This is the name of your function
+          "region": "europe-west1" // Optional: specify the function's region if not us-central1
+        }
       }
     ]
   }
