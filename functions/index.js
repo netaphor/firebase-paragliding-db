@@ -12,8 +12,6 @@ const weather = require("./data/metoffice-data-parser");
 const functions = require('firebase-functions');
 const express = require('express');
 const path = require('path');
-const dayjs = require('dayjs');
-
 const app = express();
 
 // Set EJS as the view engine
@@ -24,7 +22,6 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', (req, res) => {
-    console.log(weather.getForecastData());
     res.render('forecast', { 
         title: 'Weather Forecast',
         forecastData: weather.getForecastData()
