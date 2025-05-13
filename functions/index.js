@@ -6,7 +6,6 @@ const logger = require("firebase-functions/logger");
 //WARNING this pattern of caching in a module does not work with well with firebase functions!!
 const weather = require("./data/metoffice-data-parser");
 
-console.log(weather.getForecastData());
 // Create and deploy your first functions
 // https://firebase.google.com/docs/functions/get-started
 

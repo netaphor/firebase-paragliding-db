@@ -101,7 +101,7 @@ function getLocationsByDirection(direction) {
                 siteData.correlatedSiteTurnPoints.push(correlatedSiteTurnPoints);
                 siteData.sites.push(sitesMap[region][location].label);
                 siteData.turnPoints.push(sitesMap[region][location].turnPoint);
-                console.log(correlatedSiteTurnPoints);
+                //console.log(correlatedSiteTurnPoints);
             }
         }
     }
@@ -169,11 +169,11 @@ function updateTimeSeries(timeSeries) {
         entry.windSpeedMph = convertMsToMph(entry.windSpeed10m);
         entry.windGustMph = convertMsToMph(entry.windGustSpeed10m);
         entry.sites = getLocationsByDirection(entry.windDirectionCompass).sites;
-        entry.correlatedSiteTurnPoint = getLocationsByDirection(entry.windDirectionCompass).correlatedSiteTurnPoints;
+        entry.correlatedSiteTurnPoints = getLocationsByDirection(entry.windDirectionCompass).correlatedSiteTurnPoints;
         entry.turnPoints = getLocationsByDirection(entry.windDirectionCompass).turnPoints;
-        entry.day = getDayOfWeek(entry.time);
+        entry.fullDay = getDayOfWeek(entry.time);
         entry.flyingConditions = getFlyingConditions(entry.windSpeedMph, entry.windGustMph);
-        console.log(entry.windDirectionCompass + " fly at " + entry.turnPoints + " on " + entry.day);
+        //console.log(entry.windDirectionCompass + " fly at " + entry.turnPoints + " on " + entry.fullDay);
         return entry;
     });
 }
@@ -193,7 +193,6 @@ function startPeriodicForecastUpdate() {
         console.log("Data fetched successfully");
         const timeSeries = data.features[0].properties.timeSeries;
         updatedForecastData = updateTimeSeries(timeSeries);
-        console.log("updated time series");
     }).catch(error => {
         console.error("Error fetching data:", error);
     });
