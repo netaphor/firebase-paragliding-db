@@ -2,6 +2,22 @@ const axios = require('axios');
 const metofficeApiUrl = "https://data.hub.api.metoffice.gov.uk/sitespecific/v0";
 const metofficeApiKey = process.env.METOFFICE_API_URL || require('../../apiKeys.js').apiKeys.metOffice;
 let updatedForecastData = null;
+
+
+// The Cloud Functions for Firebase SDK to create Cloud Functions and set up triggers.
+const functions = require('firebase-functions'); // Or require('firebase-functions/v1') or v2 depending on your gen
+
+// The Firebase Admin SDK to access Firebase services
+const admin = require('firebase-admin');
+
+// Initialize the Firebase Admin SDK
+// In Cloud Functions for Firebase, the environment provides the credentials automatically
+admin.initializeApp();
+
+// Get a reference to the Firestore database
+const db = admin.firestore();
+
+
 //const locationName = metofficeHourly.location.name;
 
 
@@ -221,7 +237,7 @@ function startPeriodicForecastUpdate() {
         }).catch(error => {
             console.error("Error fetching data:", error);
         });
-    }, 60000); // 60000 milliseconds = 60 seconds
+    }, 600000); // 60000 milliseconds = 60 seconds
 }
 
 // Start the periodic updates
