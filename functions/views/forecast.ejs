@@ -105,62 +105,56 @@
 </head>
 <body>
 
-    <div class="table-responsive, forecast">
-        <table>
-            <thead>
-                <tr>
-                    <th class="timeHeader">Time</th>
-                    <% let days = [...new Set(forecastData.map(f => new Date(f.time).toLocaleDateString('en-US', {weekday: 'short'})))]; %>
-                    <% days.forEach(function(day) { %>
-                        <th class="timeHeader"><strong><%= day %></strong></th>
-                    <% }); %>
-                </tr>
-            </thead>
-            <tbody>
-                <% for(let hour = 6; hour < 21; hour += 3) { %>
-                    <tr>
-                        <td><div class="timeHeader"><%= String(hour).padStart(2, '0') %>:00</div></td>
-                        <% days.forEach(function(day) { %>
-                            <% let forecast = forecastData.find(f => 
-                                    new Date(f.time).toLocaleDateString('en-US', {weekday: 'short'}) === day && 
-                                    new Date(f.time).getHours() === hour
-                                ); %>
-                            <td class="">
-                                    <% if (forecast && forecast.windDirectionCompass) { %>
-                                        <div class="flying-card rounded <%= forecast.flyingConditions %>">
-                                            <div>
-                                                <div class="dir-<%= forecast.windDirectionCompass.toLowerCase() %> arrow-container">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-down-circle-fill" viewBox="0 0 16 16">
-                                                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293z"/>
-                                                    </svg>
-                                                </div>
-                                                <div class="sitesHeader">
-                                                    <% if (forecast && forecast.sites) { %>
-                                                        <%= forecast.sites.join(', ') %>
-                                                    <% } %>
-                                                </div>
+<div class="container-fluid mt-3">
+    <div class="row">
+        <% forecastData.forEach(function(dayData, index) { %>
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 mb-3">
+                <div class="card">
+                    <div class="card-header">
+                        <%= dayData[0].fullDay %>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group">
+                            <% dayData.forEach(function(forecast) { %>
+                                <% if (forecast && forecast.windDirectionCompass) { %>
+                                    <div class="flying-card rounded <%= forecast.flyingConditions %>">
+                                        <div class="timeHeader">
+                                            <small><%= new Date(forecast.time).getUTCHours() %>:00</small>
+                                        </div>
+                                        <div>
+                                            <div class="dir-<%= forecast.windDirectionCompass.toLowerCase() %> arrow-container">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-down-circle-fill" viewBox="0 0 16 16">
+                                                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293z"/>
+                                                </svg>
                                             </div>
-                                            
-                                            <div class="windStrength"><strong><%= forecast.windSpeedMph %>mph</strong> gusting <strong><%= forecast.windGustMph %>mph</strong></div>
-                                            <div class="graphLoaders">
-                                                <!-- <a href="" onclick="showBlipSpot(<%= JSON.stringify(forecast.correlatedSiteTurnPoints) %>, '<%= forecast.fullDay %>'); return false;">
-                                                    RASP Blipspot
-                                                </a> -->
-                                                RASP: 
-                                                <% forecast.correlatedSiteTurnPoints.forEach(function(site) { %>
-                                                    <a href="" onclick="showBlipSpot(<%= JSON.stringify(site) %>, '<%= forecast.fullDay %>'); return false;"><%= site.label %></a>&nbsp; 
-                                                <% }); %>
-                                                <!-- <a href="">RASP Sounding</a> -->
+                                            <div class="sitesHeader">
+                                                <% if (forecast && forecast.sites) { %>
+                                                    <%= forecast.sites.join(', ') %>
+                                                <% } %>
                                             </div>
                                         </div>
-                                    <% } %>
-                            </td>
-                        <% }); %>
-                    </tr>
-                <% } %>
-            </tbody>
-        </table>
+                                        
+                                        <div class="windStrength"><strong><%= forecast.windSpeedMph %>mph</strong> gusting <strong><%= forecast.windGustMph %>mph</strong></div>
+                                        <div class="graphLoaders">
+                                            <!-- <a href="" onclick="showBlipSpot(<%= JSON.stringify(forecast.correlatedSiteTurnPoints) %>, '<%= forecast.fullDay %>'); return false;">
+                                                RASP Blipspot
+                                            </a> -->
+                                            RASP: 
+                                            <% forecast.correlatedSiteTurnPoints.forEach(function(site) { %>
+                                                <a href="" onclick="showBlipSpot(<%= JSON.stringify(site) %>, '<%= forecast.fullDay %>'); return false;"><%= site.label %></a>&nbsp; 
+                                            <% }); %>
+                                            <!-- <a href="">RASP Sounding</a> -->
+                                        </div>
+                                    </div>
+                                <% } %>
+                            <% }); %>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        <% }); %>
     </div>
+</div>
 
     <!-- Modal -->
     <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">

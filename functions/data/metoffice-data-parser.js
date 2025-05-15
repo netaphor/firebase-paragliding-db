@@ -1,5 +1,6 @@
 const axios = require('axios');
-const metofficeApiUrl = "https://data.hub.api.metoffice.gov.uk/sitespecific/v0";
+const metofficeThreehourlyApiUrl = "https://data.hub.api.metoffice.gov.uk/sitespecific/v0/point/three-hourly?includeLocationName=true&latitude=";
+const metofficeHourlyApiUrl = "https://data.hub.api.metoffice.gov.uk/sitespecific/v0/point/hourly?includeLocationName=true&latitude=";
 const metofficeApiKey = process.env.METOFFICE_API_URL || require('../../apiKeys.js').apiKeys.metOffice;
 let updatedForecastData = null;
 
@@ -9,6 +10,8 @@ const functions = require('firebase-functions'); // Or require('firebase-functio
 
 // The Firebase Admin SDK to access Firebase services
 const admin = require('firebase-admin');
+const fs = require('fs');
+const { time } = require('console');
 
 // Initialize the Firebase Admin SDK
 // In Cloud Functions for Firebase, the environment provides the credentials automatically
@@ -17,13 +20,9 @@ admin.initializeApp();
 // Get a reference to the Firestore database
 const db = admin.firestore();
 
-
-//const locationName = metofficeHourly.location.name;
-
-
 // Fetch forecast data from the MET Office
 async function fetchMetofficeData(lat, long, apiUrl) {
-    let url = apiUrl + '/point/three-hourly?includeLocationName=true&latitude=' + lat + '&longitude=' + long;
+    let url = apiUrl + lat + '&longitude=' + long;
     console.log(apiUrl);
     try {
         const response = await axios.get(url, {
@@ -38,7 +37,6 @@ async function fetchMetofficeData(lat, long, apiUrl) {
         throw error;
     }
 }
-
 
 // Static data for the UK flying sites, currently only southern sites
 const sitesMap = {
@@ -165,6 +163,12 @@ function convertMsToMph(speedMs) {
     return Math.round(mph * 10) / 10; // Round to 1 decimal place
 }
 
+// Function to convert wind speed from m/s to kph
+function convertMsToKph(speedMs) {
+    const kph = speedMs * 3.6; // Conversion factor from m/s to kph
+    return Math.round(kph * 10) / 10; // Round to 1 decimal place
+}
+
 // Function to determine flying conditions based on wind speed and gust speed
 function getFlyingConditions(windSpeed, gustSpeed) {
     if (windSpeed < 12 && gustSpeed < 16) {
@@ -175,13 +179,25 @@ function getFlyingConditions(windSpeed, gustSpeed) {
     return "marginal";
 }
 
-
 // Function to filter out entries with time at midnight, 3am, or 9pm
 function filterOutSpecificTimes(timeSeries) {
     return timeSeries.filter(entry => {
         const date = new Date(entry.time);
         const hours = date.getUTCHours();
-        return hours !== 0 && hours !== 3 && hours !== 21;
+        return hours >= 6 && hours <= 21;
+    });
+}
+
+function deduplicateTimeSeriesByTime(groupedArrays) {
+    return groupedArrays.map(array => {
+        const timeMap = new Map();
+        array.forEach(entry => {
+            const time = entry.time;
+            if (!timeMap.has(time) || (entry.screenTemperature && !timeMap.get(time).screenTemperature)) {
+                timeMap.set(time, entry);
+            }
+        });
+        return Array.from(timeMap.values());
     });
 }
 
@@ -191,12 +207,14 @@ function filterOutSpecificTimes(timeSeries) {
 function updateTimeSeries(timeSeries) {
     // Filter out entries with time at midnight, 3am, or 9pm
     timeSeries = filterOutSpecificTimes(timeSeries);
-    return timeSeries.map(entry => {
+    timeSeries.map(entry => {
         entry.windDirectionCompass = getCompassDirection(entry.windDirectionFrom10m);
         entry.screenTemperature ? entry.cloudBaseInFt = calculateCloudBaseInFt(entry) : entry.cloudBaseInFt = null;
         entry.screenTemperature ? entry.cloudBaseTemp = calculateTemperatureAtCloudBase(entry.screenTemperature, entry.cloudBaseInFt) : entry.cloudBaseTemp = null;
         entry.windSpeedMph = convertMsToMph(entry.windSpeed10m);
         entry.windGustMph = convertMsToMph(entry.windGustSpeed10m);
+        entry.windSpeedKph = convertMsToKph(entry.windSpeed10m);
+        entry.windGustKph = convertMsToKph(entry.windGustSpeed10m);
         entry.sites = getLocationsByDirection(entry.windDirectionCompass).sites;
         entry.correlatedSiteTurnPoints = getLocationsByDirection(entry.windDirectionCompass).correlatedSiteTurnPoints;
         entry.turnPoints = getLocationsByDirection(entry.windDirectionCompass).turnPoints;
@@ -205,6 +223,31 @@ function updateTimeSeries(timeSeries) {
         //console.log(entry.windDirectionCompass + " fly at " + entry.turnPoints + " on " + entry.fullDay);
         return entry;
     });
+    timeSeries = groupTimeSeriesByDay(timeSeries);
+    timeSeries = deduplicateTimeSeriesByTime(timeSeries);
+    return timeSeries;
+}
+
+// Function to group timeSeries entries by day
+function groupTimeSeriesByDay(timeSeries) {
+    // Create a map to store entries for each day
+    const dayGroups = new Map();
+
+    // Group entries by day based on the date in the time field
+    timeSeries.forEach(entry => {
+        const date = new Date(entry.time).toISOString().split('T')[0]; // Extract the date part (YYYY-MM-DD)
+        if (!dayGroups.has(date)) {
+            dayGroups.set(date, []);
+        }
+        dayGroups.get(date).push(entry);
+    });
+
+    // Convert map to array of arrays and sort each group by time
+    const groupedArrays = Array.from(dayGroups.values()).map(group => 
+        group.sort((a, b) => new Date(a.time) - new Date(b.time))
+    );
+
+    return groupedArrays;
 }
 
 // Function to get day of week from timestamp
@@ -217,18 +260,43 @@ function getDayOfWeek(timestamp) {
 // Function to update forecast data periodically
 function startPeriodicForecastUpdate() {
     // Initial fetch
-    forecastData = fetchMetofficeData(sitesMap.southern.caburn.lat, sitesMap.southern.caburn.long, metofficeApiUrl);
-    forecastData.then(data => {
-        console.log("Data fetched successfully");
-        const timeSeries = data.features[0].properties.timeSeries;
-        updatedForecastData = updateTimeSeries(timeSeries);
+    forecastData = fetchMetofficeData(sitesMap.southern.caburn.lat, sitesMap.southern.caburn.long, metofficeThreehourlyApiUrl);
+    // Fetch three-hourly data
+    forecastData.then(threehourlyData => {
+        console.log("Three-hourly data fetched successfully");
+        const threehourlyTimeSeries = threehourlyData.features[0].properties.timeSeries;
+        
+        // Fetch hourly data
+        return fetchMetofficeData(sitesMap.southern.caburn.lat, sitesMap.southern.caburn.long, metofficeHourlyApiUrl)
+            .then(hourlyData => {
+                console.log("Hourly data fetched successfully");
+                const hourlyTimeSeries = hourlyData.features[0].properties.timeSeries;
+                
+                // Merge the data
+                updatedForecastData = [...threehourlyTimeSeries, ...hourlyTimeSeries];
+
+                // Process and update dataset
+                updatedForecastData = updateTimeSeries(updatedForecastData);
+
+                // Write the updated forecast data to a file
+                const filePath = '../../../forecastData.json';
+                fs.writeFile(filePath, JSON.stringify(updatedForecastData, null, 2), (err) => {
+                    if (err) {
+                        console.error("Error writing forecast data to file:", err);
+                    } else {
+                        console.log("Forecast data successfully written to file:", filePath);
+                    }
+                });
+
+                //console.log("Forecast data updated with both hourly and three-hourly information", updatedForecastData);
+            });
     }).catch(error => {
         console.error("Error fetching data:", error);
     });
 
     // Set up interval for subsequent fetches
     setInterval(() => {
-        forecastData = fetchMetofficeData(sitesMap.southern.caburn.lat, sitesMap.southern.caburn.long, metofficeApiUrl);
+        forecastData = fetchMetofficeData(sitesMap.southern.caburn.lat, sitesMap.southern.caburn.long, metofficeThreehourlyApiUrl);
         forecastData.then(data => {
             console.log("Data fetched successfully");
             const timeSeries = data.features[0].properties.timeSeries;
