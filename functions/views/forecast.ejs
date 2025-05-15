@@ -73,8 +73,8 @@
         }
 
         .timeHeader {
-            padding: 5px;
-            font-weight: ;
+            font-weight: 0.8em;
+            color: #555;
         }
     </style>
     <script>
@@ -88,11 +88,8 @@
         function showImageModal(imageSource) {
             const carouselImages = document.getElementById('carouselImages');
             carouselImages.innerHTML = ''; // Clear previous images
-
-            const carouselItem = document.createElement('div');
-            carouselItem.className = 'carousel-item active';
-            carouselItem.innerHTML = `<img src="${imageSource}" class="d-block w-100" alt="Image">`;
-            carouselImages.appendChild(carouselItem);
+            carouselImages.innerHTML = `<img src="${imageSource}" class="d-block w-100" alt="Image">`;
+            //carouselImages.appendChild(carouselItem);
 
             const imageModal = new bootstrap.Modal(document.getElementById('imageModal'));
             imageModal.show();
@@ -109,17 +106,17 @@
     <div class="row">
         <% forecastData.forEach(function(dayData, index) { %>
             <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 mb-3">
-                <div class="card">
-                    <div class="card-header">
+                <div>
+                    <div>
                         <%= dayData[0].fullDay %>
                     </div>
-                    <div class="card-body">
+                    <div>
                         <ul class="list-group">
                             <% dayData.forEach(function(forecast) { %>
                                 <% if (forecast && forecast.windDirectionCompass) { %>
                                     <div class="flying-card rounded <%= forecast.flyingConditions %>">
                                         <div class="timeHeader">
-                                            <small><%= new Date(forecast.time).getUTCHours() %>:00</small>
+                                            <small><%= ('0' + new Date(forecast.time).getUTCHours()).slice(-2) %>:00</small>
                                         </div>
                                         <div>
                                             <div class="dir-<%= forecast.windDirectionCompass.toLowerCase() %> arrow-container">
@@ -158,25 +155,15 @@
 
     <!-- Modal -->
     <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="imageModalLabel">Image Viewer</h5>
+                    <h5 class="modal-title" id="imageModalLabel">RASP by Turn Point</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <div id="imageCarousel" class="carousel slide" data-bs-ride="carousel">
-                        <div class="carousel-inner" id="carouselImages">
-                            <!-- Images will be dynamically added here -->
-                        </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#imageCarousel" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#imageCarousel" data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
+                    <div id="carouselImages">
+                        <!-- Images will be dynamically added here -->
                     </div>
                 </div>
             </div>
