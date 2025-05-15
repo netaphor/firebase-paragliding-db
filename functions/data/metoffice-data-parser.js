@@ -1,7 +1,8 @@
 const axios = require('axios');
+require('dotenv').config();
 const metofficeThreehourlyApiUrl = "https://data.hub.api.metoffice.gov.uk/sitespecific/v0/point/three-hourly?includeLocationName=true&latitude=";
 const metofficeHourlyApiUrl = "https://data.hub.api.metoffice.gov.uk/sitespecific/v0/point/hourly?includeLocationName=true&latitude=";
-const metofficeApiKey = process.env.METOFFICE_API_URL || require('../../apiKeys.js').apiKeys.metOffice;
+const metofficeApiKey = process.env.METOFFICE_API_URL;
 let updatedForecastData = null;
 
 
