@@ -280,13 +280,13 @@ function startPeriodicForecastUpdate() {
 
                 // Write the updated forecast data to a file
                 const filePath = '../../../forecastData.json';
-                fs.writeFile(filePath, JSON.stringify(updatedForecastData, null, 2), (err) => {
-                    if (err) {
-                        console.error("Error writing forecast data to file:", err);
-                    } else {
-                        console.log("Forecast data successfully written to file:", filePath);
-                    }
-                });
+                // fs.writeFile(filePath, JSON.stringify(updatedForecastData, null, 2), (err) => {
+                //     if (err) {
+                //         console.error("Error writing forecast data to file:", err);
+                //     } else {
+                //         console.log("Forecast data successfully written to file:", filePath);
+                //     }
+                // });
 
                 //console.log("Forecast data updated with both hourly and three-hourly information", updatedForecastData);
             });
