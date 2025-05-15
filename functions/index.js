@@ -18,8 +18,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', async (req, res) => {
     try {
         const forecastData = await weather.getForecastData();
-        console.log('Data passed to template ----------------------------:', forecastData.length);
-        const outputPath = path.join("../../../", 'forecastDataRederLayer.json');
         
         res.render('forecast', { 
             title: 'Weather Forecast',
