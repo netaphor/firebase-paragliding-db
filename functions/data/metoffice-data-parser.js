@@ -257,8 +257,52 @@ function getDayOfWeek(timestamp) {
     return days[date.getDay()];
 }
 
+// Function to write forecast data to Firestore
+async function writeForecastDataToFirestore(data) {
+    try {
+        const forecastCollection = db.collection('forecastData');
+        const batch = db.batch();
+
+        data.forEach((dayData, index) => {
+            const docRef = forecastCollection.doc(`day_${index + 1}`);
+            batch.set(docRef, { timeSeries: dayData });
+        });
+
+        await batch.commit();
+        console.log("Forecast data successfully written to Firestore.");
+    } catch (error) {
+        console.error("Error writing forecast data to Firestore:", error);
+    }
+}
+
+async function retrieveForecastDataFromFirestore() {
+    try {
+        const forecastCollection = db.collection('forecastData');
+        const snapshot = await forecastCollection.get();
+
+        if (snapshot.empty) {
+            console.log("No forecast data found in Firestore.");
+            return [];
+        }
+
+        let documentsArray = [];
+        snapshot.forEach(doc => {
+            const data = doc.data();
+            documentsArray.push(data.timeSeries);
+        });
+
+        console.log("Combined data length -------------------------------- " + documentsArray.length);
+        return documentsArray;
+
+    } catch (error) {
+        console.error("Error retrieving forecast data from Firestore:", error);
+        throw error;
+    }
+}
+
+
 // Function to update forecast data periodically
-function startPeriodicForecastUpdate() {
+function updateForecast() {
     // Initial fetch
     forecastData = fetchMetofficeData(sitesMap.southern.caburn.lat, sitesMap.southern.caburn.long, metofficeThreehourlyApiUrl);
     // Fetch three-hourly data
@@ -277,46 +321,66 @@ function startPeriodicForecastUpdate() {
 
                 // Process and update dataset
                 updatedForecastData = updateTimeSeries(updatedForecastData);
+                
+                // Write the updated data to Firestore
+                writeForecastDataToFirestore(updatedForecastData)
+                    .then(() => {
+                        console.log("Forecast data successfully written to Firestore.");
+                    })
+                    .catch(error => {
+                        console.error("Error writing forecast data to Firestore:", error);
+                    });
 
-                // Write the updated forecast data to a file
-                const filePath = '../../../forecastData.json';
-                // fs.writeFile(filePath, JSON.stringify(updatedForecastData, null, 2), (err) => {
-                //     if (err) {
-                //         console.error("Error writing forecast data to file:", err);
-                //     } else {
-                //         console.log("Forecast data successfully written to file:", filePath);
-                //     }
-                // });
 
                 //console.log("Forecast data updated with both hourly and three-hourly information", updatedForecastData);
             });
     }).catch(error => {
         console.error("Error fetching data:", error);
     });
+}
 
-    // Set up interval for subsequent fetches
-    setInterval(() => {
-        forecastData = fetchMetofficeData(sitesMap.southern.caburn.lat, sitesMap.southern.caburn.long, metofficeThreehourlyApiUrl);
-        forecastData.then(data => {
-            console.log("Data fetched successfully");
-            const timeSeries = data.features[0].properties.timeSeries;
-            updatedForecastData = updateTimeSeries(timeSeries);
-            console.log("updated time series");
-        }).catch(error => {
-            console.error("Error fetching data:", error);
-        });
-    }, 600000); // 60000 milliseconds = 60 seconds
+function writeForecastDataToFile(data) {
+    const filePath = '../../../forecastData.json';
+    fs.writeFile(filePath, JSON.stringify(updatedForecastData, null, 2), (err) => {
+        if (err) {
+            console.error("Error writing forecast data to file:", err);
+        } else {
+            console.log("Forecast data successfully written to file:", filePath);
+        }
+    });
 }
 
 // Start the periodic updates
+function startPeriodicForecastUpdate() {
+    updateForecast(); // Initial fetch
+    // Set the interval for periodic updates (e.g., every 15 minutes)
+    const interval = 15 * 60 * 1000; // 15 minutes in milliseconds
+
+    setInterval(() => {
+        console.log("Updating forecast data...");
+        updateForecast();
+    }, interval);
+}
+
+// Start the periodic forecast update
 startPeriodicForecastUpdate();
 
 exports.getForecastData = function () {
-    if (updatedForecastData === null) {
-        console.error("Forecast data is not yet available.");
-        return null;
-    }
-
-    console.log("Forecast data is available.");
-    return updatedForecastData;
+    return new Promise((resolve, reject) => {
+        if (updatedForecastData === null) {
+            console.error("Forecast data is not yet available.");
+            retrieveForecastDataFromFirestore()
+                .then(data => {
+                    console.log("Forecast data retrieved from Firestore");
+                    resolve(data);
+                })
+                .catch(error => {
+                    console.error("Error retrieving forecast data from Firestore:", error);
+                    reject(error);
+                });
+        } else {
+            console.log("Forecast data is available.");
+            resolve(updatedForecastData);
+        }
+    });
 };
