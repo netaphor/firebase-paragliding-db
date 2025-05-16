@@ -21,7 +21,7 @@
     box-shadow: 0 .125rem .25rem rgba(0, 0, 0, 0.21)!important;
     margin-bottom: 10px;
     background-repeat: no-repeat;
-    background-position: right 10px top 10px;
+    background-position: bottom 5px right 10px;
     background-size: 40px 40px;
     background-color: rgba(255, 255, 255, 0.5); /* semi-transparent white */
     background-blend-mode: multiply; /* blends color and image */
