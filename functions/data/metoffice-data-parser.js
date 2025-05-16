@@ -207,25 +207,25 @@ function deduplicateTimeSeriesByTime(groupedArrays) {
 // Function to classify precipitation amount
 function classifyWeather({ precipitationRate, significantWeatherCode, uvIndex }) {
     // Rain overrides all
-    if (precipitationRate > 15) return "cloud-rain-heavy-fill.svg";
-    if (precipitationRate > 7.6) return "cloud-rain-fill.svg";
-    if (precipitationRate > 0) return "light_raincloud-drizzle-fill.svg";
+    if (precipitationRate > 15) return "heavy_rain";
+    if (precipitationRate > 7.6) return "rain";
+    if (precipitationRate > 0) return "light_rain";
   
     // Fog and mist
-    if ([5, 6].includes(significantWeatherCode)) return "cloud-fog-fill.svg";
+    if ([5, 6].includes(significantWeatherCode)) return "fog";
   
     // Cloud and sun conditions
-    if ([0, 1].includes(significantWeatherCode)) return "sun-fill.svg";
-    if ([2, 3].includes(significantWeatherCode)) return "cloud-sun-fill.svg";
-    if (significantWeatherCode === 7) return "cloud-fill.svg";
-    if (significantWeatherCode === 8) return "cloud-fill.svg";
+    if ([0, 1].includes(significantWeatherCode)) return "clear";
+    if ([2, 3].includes(significantWeatherCode)) return "partly_cloudy";
+    if (significantWeatherCode === 7) return "cloudy";
+    if (significantWeatherCode === 8) return "overcast";
   
     // Fallbacks using UV index as a hint
-    if (uvIndex >= 4) return "cloud-sun-fill.svg";
-    if (uvIndex <= 1) return "cloud-fill.svg";
+    if (uvIndex >= 4) return "partly_cloudy";
+    if (uvIndex <= 1) return "overcast";
   
     // Default fallback
-    return "cloud-fill.svg";
+    return "cloudy";
   }
   
 
