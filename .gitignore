@@ -4,3 +4,4 @@ functions/.env
 apiKeys.js
 functions/data/.DS_Store
 .firebase/hosting.cHVibGlj.cache
+.DS_Store

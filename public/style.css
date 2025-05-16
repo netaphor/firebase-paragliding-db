@@ -4,6 +4,31 @@
     width: 20px;
 }
 
+.pageHeader {
+    font-size: 1.2em;
+    color: #555;
+    margin-top: 10px;
+    margin-bottom: 0px;
+    display: inline-block;
+}
+
+.pageSubHeader {
+    font-size: 0.8em;
+    color: #555;
+}
+
+.logo {
+    display: inline-block;
+}
+
+.header {
+    background-image: url("/canIFlyLogo.png");
+    background-repeat: no-repeat;
+    background-position: left 10px top 10px;
+    background-size: 50px 50px;
+    padding-left: 60px;
+}
+
 .notFlyable {
     background-color: #b90000;
 }
