@@ -189,6 +189,8 @@ function filterOutSpecificTimes(timeSeries) {
     });
 }
 
+// We merge the three-hourly and hourly data which contains the same timestamps for some of the entries
+// and we need to deduplicate them
 function deduplicateTimeSeriesByTime(groupedArrays) {
     return groupedArrays.map(array => {
         const timeMap = new Map();
@@ -201,6 +203,31 @@ function deduplicateTimeSeriesByTime(groupedArrays) {
         return Array.from(timeMap.values());
     });
 }
+
+// Function to classify precipitation amount
+function classifyWeather({ precipitationRate, significantWeatherCode, uvIndex }) {
+    // Rain overrides all
+    if (precipitationRate > 15) return "cloud-rain-heavy-fill.svg";
+    if (precipitationRate > 7.6) return "cloud-rain-fill.svg";
+    if (precipitationRate > 0) return "light_raincloud-drizzle-fill.svg";
+  
+    // Fog and mist
+    if ([5, 6].includes(significantWeatherCode)) return "cloud-fog-fill.svg";
+  
+    // Cloud and sun conditions
+    if ([0, 1].includes(significantWeatherCode)) return "sun-fill.svg";
+    if ([2, 3].includes(significantWeatherCode)) return "cloud-sun-fill.svg";
+    if (significantWeatherCode === 7) return "cloud-fill.svg";
+    if (significantWeatherCode === 8) return "cloud-fill.svg";
+  
+    // Fallbacks using UV index as a hint
+    if (uvIndex >= 4) return "cloud-sun-fill.svg";
+    if (uvIndex <= 1) return "cloud-fill.svg";
+  
+    // Default fallback
+    return "cloud-fill.svg";
+  }
+  
 
 // Function to update the Met office data with additional properties
 // such as wind direction, cloud base, and wind speed in mph
@@ -221,6 +248,11 @@ function updateTimeSeries(timeSeries) {
         entry.turnPoints = getLocationsByDirection(entry.windDirectionCompass).turnPoints;
         entry.fullDay = getDayOfWeek(entry.time);
         entry.flyingConditions = getFlyingConditions(entry.windSpeedMph, entry.windGustMph);
+        entry.weatherClassification = classifyWeather({
+            precipitationRate: entry.precipitationRate,
+            significantWeatherCode: entry.significantWeatherCode,
+            uvIndex: entry.uvIndex
+        });
         //console.log(entry.windDirectionCompass + " fly at " + entry.turnPoints + " on " + entry.fullDay);
         return entry;
     });

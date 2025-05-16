@@ -1,3 +1,6 @@
 firebase-debug.log
 firestore-debug.log
 functions/.env
+apiKeys.js
+functions/data/.DS_Store
+.firebase/hosting.cHVibGlj.cache

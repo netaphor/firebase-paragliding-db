@@ -62,6 +62,7 @@
         .windStrength {
             font-size: 0.8em;
             padding-top: 5px;
+            display: inline-block;
         }
         .sitesHeader {
             display: inline;
@@ -76,6 +77,12 @@
             font-weight: 0.8em;
             color: #555;
         }
+
+        .weather-icon {
+        font-size: 2rem;
+        color: #333;
+        }
+
     </style>
     <script>
         function showBlipSpot(siteData, day) {
@@ -121,22 +128,24 @@
                                 <% if (forecast && forecast.windDirectionCompass) { %>
                                     <div class="flying-card rounded <%= forecast.flyingConditions %>">
                                         <div class="timeHeader">
-                                            <small><%= ('0' + new Date(forecast.time).getUTCHours()).slice(-2) %>:00</small>
+                                            <%= ('0' + new Date(forecast.time).getUTCHours()).slice(-2) %>:00 - 
+                                            <% if (forecast && forecast.sites) { %>
+                                                <%= forecast.sites.join(', ') %>
+                                            <% } %>
                                         </div>
-                                        <div>
-                                            <div class="dir-<%= forecast.windDirectionCompass.toLowerCase() %> arrow-container">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-down-circle-fill" viewBox="0 0 16 16">
-                                                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293z"/>
-                                                </svg>
-                                            </div>
-                                            <div class="sitesHeader">
-                                                <% if (forecast && forecast.sites) { %>
-                                                    <%= forecast.sites.join(', ') %>
-                                                <% } %>
-                                            </div>
+                                        <div class="dir-<%= forecast.windDirectionCompass.toLowerCase() %> arrow-container">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-down-circle-fill" viewBox="0 0 16 16">
+                                                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293z"/>
+                                            </svg>
                                         </div>
                                         
-                                        <div class="windStrength"><strong><%= forecast.windSpeedMph %>mph</strong> gusting <strong><%= forecast.windGustMph %>mph</strong></div>
+                                        <div class="rainProbability arrow-container">
+                                            <img src="/<%= forecast.weatherClassification %>" alt="Weather Icon" style="width: 20px; height: 20px;" />
+                                        </div>
+                                        
+                                        <div class="windStrength"><strong><%= forecast.windSpeedMph %>mph</strong> to <strong><%= forecast.windGustMph %>mph</strong></div>
+                                        
+                                        
                                         <div class="graphLoaders">
                                             <!-- <a href="" onclick="showBlipSpot(<%= JSON.stringify(forecast.correlatedSiteTurnPoints) %>, '<%= forecast.fullDay %>'); return false;">
                                                 RASP Blipspot
@@ -144,8 +153,7 @@
                                             RASP: 
                                             <% forecast.correlatedSiteTurnPoints.forEach(function(site) { %>
                                                 <a href="" onclick="showBlipSpot(<%= JSON.stringify(site) %>, '<%= forecast.fullDay %>'); return false;"><%= site.label %></a>&nbsp; 
-                                            <% }); %>
-                                            <!-- <a href="">RASP Sounding</a> -->
+                                            <% }); %> 
                                         </div>
                                     </div>
                                 <% } %>
