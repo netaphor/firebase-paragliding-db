@@ -39,6 +39,10 @@
     background-color: #ff8800;
 }
 
+.hidden {
+    display: none;
+}
+
 .flying-card {
     border-radius: 5px;
     padding: 10px;
@@ -126,4 +130,8 @@
     width: 15px;
     height: 15px;
     border-radius: 50%;
+}
+
+.forecastContainer {
+    margin: 0 10px;
 }
