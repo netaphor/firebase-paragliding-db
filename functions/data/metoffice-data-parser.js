@@ -180,12 +180,13 @@ function getFlyingConditions(windSpeed, gustSpeed) {
     return "marginal";
 }
 
-// Function to filter out entries with time at midnight, 3am, or 9pm
+// Function to filter out entries outside the desired time range (6am to 9pm UTC)
 function filterOutSpecificTimes(timeSeries) {
+    const now = new Date();
     return timeSeries.filter(entry => {
         const date = new Date(entry.time);
         const hours = date.getUTCHours();
-        return hours >= 6 && hours <= 21;
+        return date >= now && hours >= 6 && hours <= 21;
     });
 }
 
