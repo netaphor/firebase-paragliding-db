@@ -3,6 +3,7 @@
 <head>
     <link rel="icon" type="image/png" href="/favicon.ico">
     <link type="text/css" href="/style.css" rel="stylesheet" />
+    <link rel="manifest" href="/site.webmanifest">
     <script src="/dashboard.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,6 +24,10 @@
                 <button type="button" class="btn btn-secondary btn-sm" onclick="showWindSpeed('windSpeedKph')">KPH</button>
                 <button type="button" class="btn btn-secondary btn-sm" onclick="showWindSpeed('windSpeedMs')">MS</button>
             </div>
+            <div class="btn-group ms-2" id="forecastRangeSelection" role="group" aria-label="Select forecast range">
+                <button type="button" class="btn btn-primary btn-sm" onclick="setForecastRange(false)">Weekend</button>
+                <button type="button" class="btn btn-primary btn-sm active" onclick="setForecastRange(true)">Full Week</button>
+            </div>
         </div>
     </div>
 </div>
@@ -35,7 +40,7 @@
             </div>
         <% } %>
         <% forecastData.forEach(function(dayData, index) { %>
-            <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mb-3">
+            <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mb-3 <%= dayData[0].fullDay %>">
                 <div>
                     <div>
                         <%= dayData[0].fullDay %>
