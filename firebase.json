@@ -21,18 +21,13 @@
     ],
     "rewrites": [
       {
-        "source": "**",  // This pattern matches all requests
+        "source": "**",
         "function": {
-          "functionId": "app", // This is the name of your function
-          "region": "europe-west1" // Optional: specify the function's region if not us-central1
+          "functionId": "app", 
+          "region": "europe-west1" 
         }
       }
     ]
   },
-  "firestore": {
-    // You can add paths to your rules and indexes files here later if you want to deploy them
-    // but for just enabling the emulator, this section alone is often enough
-    // "rules": "firestore.rules",
-    // "indexes": "firestore.indexes.json"
-  }
+  "firestore": {}
 }
