@@ -12,6 +12,7 @@
 </head>
 <body>
 
+    
 <div class="container-fluid">
     <div class="row align-items-center header">
         <div class="col-6 col-nowrap">
@@ -74,16 +75,17 @@
                                         <div class="hidden windSpeedMs"><strong><%= forecast.windSpeed10m %>ms</strong> to <strong><%= forecast.windGustSpeed10m %>ms</strong></div>
                                     </div>
                                     
-                                    
-                                    <div class="graphLoaders">
-                                        <!-- <a href="" onclick="showBlipSpot(<%= JSON.stringify(forecast.correlatedSiteTurnPoints) %>, '<%= forecast.fullDay %>'); return false;">
-                                            RASP Blipspot
-                                        </a> -->
-                                        RASP: 
-                                        <% forecast.correlatedSiteTurnPoints.forEach(function(site) { %>
-                                            <a href="" onclick="showBlipSpot(<%= JSON.stringify(site) %>, '<%= forecast.fullDay %>'); return false;"><%= site.label %></a>&nbsp; 
-                                        <% }); %> 
-                                    </div>
+                                    <% if (forecast.correlatedSiteTurnPoints && forecast.correlatedSiteTurnPoints.length > 0) { %>
+                                        <div class="graphLoaders">
+                                            <!-- <a href="" onclick="showBlipSpot(<%= JSON.stringify(forecast.correlatedSiteTurnPoints) %>, '<%= forecast.fullDay %>'); return false;">
+                                                RASP Blipspot
+                                            </a> -->
+                                            RASP: 
+                                                <% forecast.correlatedSiteTurnPoints.forEach(function(site) { %>
+                                                    <a href="" onclick="showBlipSpot(<%= JSON.stringify(site) %>, '<%= forecast.fullDay %>'); return false;"><%= site.label %></a>&nbsp; 
+                                                <% }); %> 
+                                        </div>
+                                    <% } %>
                                 </div>
                             <% } %>
                         <% }); %>
