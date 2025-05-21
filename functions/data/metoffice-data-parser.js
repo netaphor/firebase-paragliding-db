@@ -120,7 +120,9 @@ function getLocationsByDirection(direction) {
             }
         }
     }
-
+    if (siteData.sites.length === 0) {
+        siteData.sites.push("No flyable sites");
+    }
     return siteData;
 }
 
@@ -171,10 +173,16 @@ function convertMsToKph(speedMs) {
 }
 
 // Function to determine flying conditions based on wind speed and gust speed
-function getFlyingConditions(windSpeed, gustSpeed) {
-    if (windSpeed < 12 && gustSpeed < 16) {
+function getFlyingConditions(windSpeed, gustSpeed, weatherClassification) {
+    if (windSpeed < 12 && gustSpeed < 16 && (weatherClassification === "clear" || weatherClassification === "partly_cloudy")) {
         return "flyable";
-    } else if (windSpeed > 16 || gustSpeed > 20) {
+    } else if (windSpeed > 16 
+        || gustSpeed > 20 
+        || weatherClassification === "fog" 
+        || weatherClassification === "heavy_rain" 
+        || weatherClassification === "rain" 
+        || weatherClassification === "light_rain"
+    ) {
         return "notFlyable";
     }
     return "marginal";
@@ -244,16 +252,17 @@ function updateTimeSeries(timeSeries) {
         entry.windGustMph = convertMsToMph(entry.windGustSpeed10m);
         entry.windSpeedKph = convertMsToKph(entry.windSpeed10m);
         entry.windGustKph = convertMsToKph(entry.windGustSpeed10m);
-        entry.sites = getLocationsByDirection(entry.windDirectionCompass).sites;
-        entry.correlatedSiteTurnPoints = getLocationsByDirection(entry.windDirectionCompass).correlatedSiteTurnPoints;
-        entry.turnPoints = getLocationsByDirection(entry.windDirectionCompass).turnPoints;
+        const siteData = getLocationsByDirection(entry.windDirectionCompass);
+        entry.sites = siteData.sites;
+        entry.correlatedSiteTurnPoints = siteData.correlatedSiteTurnPoints;
+        entry.turnPoints = siteData.turnPoints;
         entry.fullDay = getDayOfWeek(entry.time);
-        entry.flyingConditions = getFlyingConditions(entry.windSpeedMph, entry.windGustMph);
         entry.weatherClassification = classifyWeather({
             precipitationRate: entry.precipitationRate,
             significantWeatherCode: entry.significantWeatherCode,
             uvIndex: entry.uvIndex
         });
+        entry.flyingConditions = getFlyingConditions(entry.windSpeedMph, entry.windGustMph, entry.weatherClassification);
         //console.log(entry.windDirectionCompass + " fly at " + entry.turnPoints + " on " + entry.fullDay);
         return entry;
     });
