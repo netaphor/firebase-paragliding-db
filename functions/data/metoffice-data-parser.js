@@ -1,4 +1,5 @@
 const axios = require('axios');
+const sitesMap = require('./sitesMap.js').sitesMap; // Import the sites map
 require('dotenv').config();
 const metofficeThreehourlyApiUrl = "https://data.hub.api.metoffice.gov.uk/sitespecific/v0/point/three-hourly?includeLocationName=true&latitude=";
 const metofficeHourlyApiUrl = "https://data.hub.api.metoffice.gov.uk/sitespecific/v0/point/hourly?includeLocationName=true&latitude=";
@@ -36,68 +37,6 @@ async function fetchMetofficeData(lat, long, apiUrl) {
     } catch (error) {
         console.error('Error fetching data from Met Office API:', error.message);
         throw error;
-    }
-}
-
-// Static data for the UK flying sites, currently only southern sites
-const sitesMap = {
-    southern: {
-        caburn:{
-            label: "Mount Caburn",
-            lat: "50.861577",
-            long: "0.050928801",
-            directions:["WSW", "SW", "SWS", "S"],
-            turnPoint: "GDE"
-        },
-        boPeep: {
-            label: "Bo Peep",
-            lat: "50.820581",
-            long: "0.12876213",
-            directions:["NNE","NE","ENE"],
-            turnPoint: "AFB"
-        },
-        devilsDyke: {
-            label: "Devils Dyke",
-            lat: "50.885079",
-            long: "-0.21307468",
-            directions:["WNW","NW","NNW","N"],
-            turnPoint: "DDK"
-        },
-        ditchling: {
-            label: "Ditchling",
-            lat: "50.86157750.903079",
-            long: "-0.11699785",
-            directions:["N","NNE","NNW"],
-            turnPoint: "DIT"
-        },
-        firle: {
-            label: "Firle",
-            lat: "50.834125",
-            long: "0.086120367",
-            directions:["N","NNE","NNW", "NW"],
-            turnPoint: "FIB"
-        },
-        highAndOver: {
-            label: "High and Over",
-            lat: "50.788195",
-            long: "0.14061213",
-            directions:["E","ENE","ESE"],
-            turnPoint: "AFB"
-        },
-        newhaven: {
-            label: "Newhaven",
-            lat: "50.782348",
-            long: "0.049073696",
-            directions:["SSW","S","SSE"],
-            turnPoint: "SEA"
-        },
-        beachyHead: {
-            label: "Beachy Head",
-            lat: "50.50.740020",
-            long: "0.25347054",
-            directions:["SE"],
-            turnPoint: "SEA"
-        }
     }
 }
 
@@ -174,7 +113,8 @@ function convertMsToKph(speedMs) {
 
 // Function to determine flying conditions based on wind speed and gust speed
 function getFlyingConditions(windSpeed, gustSpeed, weatherClassification) {
-    if (windSpeed < 12 && gustSpeed < 16 && (weatherClassification === "clear" || weatherClassification === "partly_cloudy")) {
+    if (windSpeed < 12 && gustSpeed < 16 && (weatherClassification === "clear" || weatherClassification === "partly_cloudy" || weatherClassification === "cloudy" || weatherClassification === "overcast")) {
+        
         return "flyable";
     } else if (windSpeed > 16 
         || gustSpeed > 20 
@@ -185,6 +125,7 @@ function getFlyingConditions(windSpeed, gustSpeed, weatherClassification) {
     ) {
         return "notFlyable";
     }
+    console.log(windSpeed, gustSpeed, weatherClassification);
     return "marginal";
 }
 
