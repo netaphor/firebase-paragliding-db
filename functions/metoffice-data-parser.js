@@ -25,7 +25,6 @@ const db = admin.firestore();
 // Fetch forecast data from the MET Office
 async function fetchMetofficeData(lat, long, apiUrl) {
     let url = apiUrl + lat + '&longitude=' + long;
-    console.log(apiUrl);
     try {
         const response = await axios.get(url, {
             headers: {
@@ -125,7 +124,6 @@ function getFlyingConditions(windSpeed, gustSpeed, weatherClassification) {
     ) {
         return "notFlyable";
     }
-    console.log(windSpeed, gustSpeed, weatherClassification);
     return "marginal";
 }
 
@@ -266,40 +264,30 @@ async function writeForecastDataToFirestore(data) {
     }
 }
 
-
 // Function to update forecast data periodically
-function updateForecast() {
-    // Initial fetch
-    forecastData = fetchMetofficeData(sitesMap.southern.caburn.lat, sitesMap.southern.caburn.long, metofficeThreehourlyApiUrl);
-    // Fetch three-hourly data
-    forecastData.then(threehourlyData => {
+async function updateForecast() {
+    try {
+        // Fetch three-hourly data
+        const threehourlyData = await fetchMetofficeData(sitesMap.southern.caburn.lat, sitesMap.southern.caburn.long, metofficeThreehourlyApiUrl);
         console.log("Three-hourly data fetched successfully");
         const threehourlyTimeSeries = threehourlyData.features[0].properties.timeSeries;
         
         // Fetch hourly data
-        return fetchMetofficeData(sitesMap.southern.caburn.lat, sitesMap.southern.caburn.long, metofficeHourlyApiUrl)
-            .then(hourlyData => {
-                console.log("Hourly data fetched successfully");
-                const hourlyTimeSeries = hourlyData.features[0].properties.timeSeries;
-                
-                // Merge the data
-                updatedForecastData = [...threehourlyTimeSeries, ...hourlyTimeSeries];
+        const hourlyData = await fetchMetofficeData(sitesMap.southern.caburn.lat, sitesMap.southern.caburn.long, metofficeHourlyApiUrl);
+        console.log("Hourly data fetched successfully");
+        const hourlyTimeSeries = hourlyData.features[0].properties.timeSeries;
+        
+        // Merge the data
+        updatedForecastData = [...threehourlyTimeSeries, ...hourlyTimeSeries];
 
-                // Process and update dataset
-                updatedForecastData = updateTimeSeries(updatedForecastData);
-                
-                // Write the updated data to Firestore
-                writeForecastDataToFirestore(updatedForecastData)
-                    .then(() => {
-                        console.log("Forecast data successfully written to Firestore.");
-                    })
-                    .catch(error => {
-                        console.error("Error writing forecast data to Firestore:", error);
-                    });
-            });
-    }).catch(error => {
-        console.error("Error fetching data:", error);
-    });
+        // Process and update dataset
+        updatedForecastData = updateTimeSeries(updatedForecastData);
+        
+        // Write the updated data to Firestore
+        await writeForecastDataToFirestore(updatedForecastData);        
+    } catch (error) {
+        console.error("Error fetching or processing data:", error);
+    }
 }
 
 exports.dataManager = onSchedule({schedule: 'every 15 minutes', region: 'europe-west1'}, async (event) => {
@@ -313,23 +301,3 @@ exports.dataManager = onSchedule({schedule: 'every 15 minutes', region: 'europe-
 });
 
 console.log("Scheduled function set to run every 15 minutes");
-
-// exports.getForecastData = function () {
-//     return new Promise((resolve, reject) => {
-//         if (updatedForecastData === null) {
-//             console.error("Forecast data is not yet available.");
-//             retrieveForecastDataFromFirestore()
-//                 .then(data => {
-//                     console.log("Forecast data retrieved from Firestore");
-//                     resolve(data);
-//                 })
-//                 .catch(error => {
-//                     console.error("Error retrieving forecast data from Firestore:", error);
-//                     reject(error);
-//                 });
-//         } else {
-//             console.log("Forecast data is available.");
-//             resolve(updatedForecastData);
-//         }
-//     });
-// };

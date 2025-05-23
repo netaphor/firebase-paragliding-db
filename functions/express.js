@@ -53,7 +53,5 @@ app.get('/', async (req, res) => {
     }
 });
 
-console.log('Express server is exported!');
-
 // Export as a Firebase function
 exports.express = onRequest({ region: 'europe-west1', maxInstances: 5 }, app);
