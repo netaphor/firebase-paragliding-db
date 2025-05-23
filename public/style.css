@@ -60,13 +60,12 @@
     padding: 10px;
     color: #555;
     margin-bottom: 1px;
-    background-repeat: no-repeat;
-    background-position: bottom 5px right 10px;
-    background-size: 40px 40px;
-    background-color: rgba(255, 255, 255, 0.5); /* semi-transparent white */
-    background-blend-mode: multiply; /* blends color and image */
 }
 
+.conditions {
+    background-repeat: no-repeat;
+    background-size: 30px 30px;
+}
 
 .heavy_rain {
     background-image: url("/12_rain_night.svg");
@@ -100,22 +99,6 @@
     background-image: url("/04_cloudy.svg");
 }
 
-.dir-n { transform: rotate(0deg); }
-.dir-nne { transform: rotate(22.5deg); }
-.dir-ne { transform: rotate(45deg); }
-.dir-ene { transform: rotate(67.5deg); }
-.dir-e { transform: rotate(90deg); }
-.dir-ese { transform: rotate(112.5deg); }
-.dir-se { transform: rotate(135deg); }
-.dir-sse { transform: rotate(157.5deg); }
-.dir-s { transform: rotate(180deg); }
-.dir-ssw { transform: rotate(202.5deg); }
-.dir-sw { transform: rotate(225deg); }
-.dir-wsw { transform: rotate(247.5deg); }
-.dir-w { transform: rotate(270deg); }
-.dir-wnw { transform: rotate(292.5deg); }
-.dir-nw { transform: rotate(315deg); }
-.dir-nnw { transform: rotate(337.5deg); }
 
 .windStrength {
     font-size: 0.8em;
