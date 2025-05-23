@@ -1,23 +1,23 @@
 const axios = require('axios');
-const sitesMap = require('./sitesMap.js').sitesMap; // Import the sites map
+const sitesMap = require('./data/sitesMap.js').sitesMap; // Import the sites map
 require('dotenv').config();
 const metofficeThreehourlyApiUrl = "https://data.hub.api.metoffice.gov.uk/sitespecific/v0/point/three-hourly?includeLocationName=true&latitude=";
 const metofficeHourlyApiUrl = "https://data.hub.api.metoffice.gov.uk/sitespecific/v0/point/hourly?includeLocationName=true&latitude=";
 const metofficeApiKey = process.env.METOFFICE_API_URL;
+const {onSchedule} = require('firebase-functions/v2/scheduler');
+const logger = require('firebase-functions/logger');
 let updatedForecastData = null;
-
 
 // The Cloud Functions for Firebase SDK to create Cloud Functions and set up triggers.
 const functions = require('firebase-functions'); // Or require('firebase-functions/v1') or v2 depending on your gen
 
 // The Firebase Admin SDK to access Firebase services
 const admin = require('firebase-admin');
-const fs = require('fs');
 const { time } = require('console');
 
 // Initialize the Firebase Admin SDK
 // In Cloud Functions for Firebase, the environment provides the credentials automatically
-admin.initializeApp();
+// admin.initializeApp();
 
 // Get a reference to the Firestore database
 const db = admin.firestore();
@@ -176,8 +176,14 @@ function classifyWeather({ precipitationRate, significantWeatherCode, uvIndex })
   
     // Default fallback
     return "cloudy";
-  }
+}
   
+function windSpeedToScale(windSpeed) {
+    if (windSpeed <= 0) return 1;
+    if (windSpeed >= 30) return 10;
+    return Math.ceil((windSpeed / 30) * 30);
+}
+
 
 // Function to update the Met office data with additional properties
 // such as wind direction, cloud base, and wind speed in mph
@@ -198,6 +204,7 @@ function updateTimeSeries(timeSeries) {
         entry.correlatedSiteTurnPoints = siteData.correlatedSiteTurnPoints;
         entry.turnPoints = siteData.turnPoints;
         entry.fullDay = getDayOfWeek(entry.time);
+        entry.windCategorisation = windSpeedToScale(entry.windSpeedMph);
         entry.weatherClassification = classifyWeather({
             precipitationRate: entry.precipitationRate,
             significantWeatherCode: entry.significantWeatherCode,
@@ -259,31 +266,6 @@ async function writeForecastDataToFirestore(data) {
     }
 }
 
-async function retrieveForecastDataFromFirestore() {
-    try {
-        const forecastCollection = db.collection('forecastData');
-        const snapshot = await forecastCollection.get();
-
-        if (snapshot.empty) {
-            console.log("No forecast data found in Firestore.");
-            return [];
-        }
-
-        let documentsArray = [];
-        snapshot.forEach(doc => {
-            const data = doc.data();
-            documentsArray.push(data.timeSeries);
-        });
-
-        console.log("Combined data length -------------------------------- " + documentsArray.length);
-        return documentsArray;
-
-    } catch (error) {
-        console.error("Error retrieving forecast data from Firestore:", error);
-        throw error;
-    }
-}
-
 
 // Function to update forecast data periodically
 function updateForecast() {
@@ -314,57 +296,40 @@ function updateForecast() {
                     .catch(error => {
                         console.error("Error writing forecast data to Firestore:", error);
                     });
-
-
-                //console.log("Forecast data updated with both hourly and three-hourly information", updatedForecastData);
             });
     }).catch(error => {
         console.error("Error fetching data:", error);
     });
 }
 
-function writeForecastDataToFile(data) {
-    const filePath = '../../../forecastData.json';
-    fs.writeFile(filePath, JSON.stringify(updatedForecastData, null, 2), (err) => {
-        if (err) {
-            console.error("Error writing forecast data to file:", err);
-        } else {
-            console.log("Forecast data successfully written to file:", filePath);
-        }
-    });
-}
+exports.dataManager = onSchedule({schedule: 'every 15 minutes', region: 'europe-west1'}, async (event) => {
+    console.log("Scheduled function triggered");
+    try {
+        await updateForecast();
+        console.log("Forecast data updated successfully");
+    } catch (error) {
+        console.error("Error updating forecast data:", error);
+    }
+});
 
-// Start the periodic updates
-function startPeriodicForecastUpdate() {
-    updateForecast(); // Initial fetch
-    // Set the interval for periodic updates (e.g., every 15 minutes)
-    const interval = 15 * 60 * 1000; // 15 minutes in milliseconds
+console.log("Scheduled function set to run every 15 minutes");
 
-    setInterval(() => {
-        console.log("Updating forecast data...");
-        updateForecast();
-    }, interval);
-}
-
-// Start the periodic forecast update
-startPeriodicForecastUpdate();
-
-exports.getForecastData = function () {
-    return new Promise((resolve, reject) => {
-        if (updatedForecastData === null) {
-            console.error("Forecast data is not yet available.");
-            retrieveForecastDataFromFirestore()
-                .then(data => {
-                    console.log("Forecast data retrieved from Firestore");
-                    resolve(data);
-                })
-                .catch(error => {
-                    console.error("Error retrieving forecast data from Firestore:", error);
-                    reject(error);
-                });
-        } else {
-            console.log("Forecast data is available.");
-            resolve(updatedForecastData);
-        }
-    });
-};
+// exports.getForecastData = function () {
+//     return new Promise((resolve, reject) => {
+//         if (updatedForecastData === null) {
+//             console.error("Forecast data is not yet available.");
+//             retrieveForecastDataFromFirestore()
+//                 .then(data => {
+//                     console.log("Forecast data retrieved from Firestore");
+//                     resolve(data);
+//                 })
+//                 .catch(error => {
+//                     console.error("Error retrieving forecast data from Firestore:", error);
+//                     reject(error);
+//                 });
+//         } else {
+//             console.log("Forecast data is available.");
+//             resolve(updatedForecastData);
+//         }
+//     });
+// };

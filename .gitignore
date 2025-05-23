@@ -7,3 +7,5 @@ functions/data/.DS_Store
 .DS_Store
 .firebase/hosting.cHVibGlj.cache
 .DS_Store
+pubsub-debug.log
+functions/.DS_Store

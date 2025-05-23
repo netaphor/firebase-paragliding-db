@@ -44,18 +44,29 @@
     display: none;
 }
 
+.forecastCard {
+    border-radius: 10px;
+    color: hsl(0, 0%, 51%);
+    box-shadow: 0 .125rem .25rem rgba(0, 0, 0, 0.21)!important;
+}
+
+.forecastCardHeader {
+    font-weight: bold;
+    padding: 5px 10px 0px 10px;
+    color: #7f7f7f;
+}
+
 .flying-card {
-    border-radius: 5px;
     padding: 10px;
     color: #555;
-    box-shadow: 0 .125rem .25rem rgba(0, 0, 0, 0.21)!important;
-    margin-bottom: 10px;
+    margin-bottom: 1px;
     background-repeat: no-repeat;
     background-position: bottom 5px right 10px;
     background-size: 40px 40px;
     background-color: rgba(255, 255, 255, 0.5); /* semi-transparent white */
     background-blend-mode: multiply; /* blends color and image */
 }
+
 
 .heavy_rain {
     background-image: url("/12_rain_night.svg");
@@ -122,7 +133,7 @@
 
 .timeHeader {
     font-weight: 0.8em;
-    color: #555;
+    color: #797979;
     vertical-align: middle;
 }
 
@@ -135,4 +146,53 @@
 
 .forecastContainer {
     margin: 0 10px;
+}
+
+/* 1-5: soft blues */
+.wind-strength-1  { background-color: #E3F2FD; }
+.wind-strength-2  { background-color: #D0EBF7; }
+.wind-strength-3  { background-color: #C0E5F2; }
+.wind-strength-4  { background-color: #B0DFEB; }
+.wind-strength-5  { background-color: #A0D9E4; }
+
+/* 6-14: subtle greens */
+.wind-strength-6  { background-color: #D8F6DF; }
+.wind-strength-7  { background-color: #BFEED3; }
+.wind-strength-8  { background-color: #A5E6C7; }
+.wind-strength-9  { background-color: #91DCB7; }
+.wind-strength-10 { background-color: #7ED3A8; }
+.wind-strength-11 { background-color: #6BCA98; }
+.wind-strength-12 { background-color: #58C189; }
+.wind-strength-13 { background-color: #44B87A; }
+.wind-strength-14 { background-color: #31AF6A; }
+
+/* 15-20: yellow/gold transition */
+.wind-strength-15 { background-color: #F2E9B3; }
+.wind-strength-16 { background-color: #F7E189; }
+.wind-strength-17 { background-color: #F9D966; }
+.wind-strength-18 { background-color: #FFD74A; }
+.wind-strength-19 { background-color: #FFC200; }
+.wind-strength-20 { background-color: #FFB300; }
+
+/* 21-27: orange to red */
+.wind-strength-21 { background-color: #FFA726; }
+.wind-strength-22 { background-color: #FF9800; }
+.wind-strength-23 { background-color: #FF7043; }
+.wind-strength-24 { background-color: #FF5252; }
+.wind-strength-25 { background-color: #FF1744; }
+.wind-strength-26 { background-color: #F44336; }
+.wind-strength-27 { background-color: #D32F2F; }
+
+/* 28-30: red to purple */
+.wind-strength-28 { background-color: #B71C1C; }
+.wind-strength-29 { background-color: #8E24AA; }
+.wind-strength-30 { background-color: #6C3483; }
+
+.windIndicator {
+    width:30px; 
+    flex-shrink:0; 
+    display:flex; 
+    align-items:center;
+    padding-left:5px;
+    border-radius: 5px;
 }

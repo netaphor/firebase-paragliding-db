@@ -42,50 +42,58 @@
         <% } %>
         <% forecastData.forEach(function(dayData, index) { %>
             <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mb-3 <%= dayData[0].fullDay %>">
-                <div>
-                    <div>
+                <div class="forecastCard">
+                    <div class="forecastCardHeader">
                         <%= dayData[0].fullDay %>
                     </div>
                     <div>
                         <% dayData.forEach(function(forecast) { %>
                             <% if (forecast && forecast.windDirectionCompass) { %>
-                                <div class="flying-card rounded <%= forecast.weatherClassification %>">
-                                    <div class="timeHeader">
-                                        <div class="circle <%= forecast.flyingConditions %>"></div>
-                                        <small><%= ('0' + new Date(forecast.time).getUTCHours()).slice(-2) %>:00 - </small>
-                                        <strong>
-                                            <% if (forecast && forecast.sites) { %>
-                                                <%= forecast.sites.join(', ') %>
-                                            <% } %>
-                                        </strong>
-                                    </div>
-                                    <div class="dir-<%= forecast.windDirectionCompass.toLowerCase() %> arrow-container">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-down-circle-fill" viewBox="0 0 16 16">
-                                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293z"/>
-                                        </svg>
-                                    </div>
-                                    
-                                    <!-- <div class="rainProbability arrow-container">
-                                        <img src="/<%= forecast.weatherClassification %>" alt="Weather Icon" style="width: 20px; height: 20px;" />
-                                    </div> -->
-                                    
-                                    <div class="windStrength ">
-                                        <div class="windSpeedMph"><strong><%= forecast.windSpeedMph %>mph</strong> to <strong><%= forecast.windGustMph %>mph</strong></div>
-                                        <div class="hidden windSpeedKph"><strong><%= forecast.windSpeedKph %>kph</strong> to <strong><%= forecast.windGustKph %>kph</strong></div>
-                                        <div class="hidden windSpeedMs"><strong><%= forecast.windSpeed10m %>ms</strong> to <strong><%= forecast.windGustSpeed10m %>ms</strong></div>
-                                    </div>
-                                    
-                                    <% if (forecast.correlatedSiteTurnPoints && forecast.correlatedSiteTurnPoints.length > 0) { %>
-                                        <div class="graphLoaders">
-                                            <!-- <a href="" onclick="showBlipSpot(<%= JSON.stringify(forecast.correlatedSiteTurnPoints) %>, '<%= forecast.fullDay %>'); return false;">
-                                                RASP Blipspot
-                                            </a> -->
-                                            RASP: 
-                                                <% forecast.correlatedSiteTurnPoints.forEach(function(site) { %>
-                                                    <a href="" onclick="showBlipSpot(<%= JSON.stringify(site) %>, '<%= forecast.fullDay %>'); return false;"><%= site.label %></a>&nbsp; 
-                                                <% }); %> 
+                                <div class="flying-card <%= forecast.weatherClassification %>">
+                                    <div class="d-flex">
+                                        <div class="wind-strength-<%= forecast.windCategorisation %> windIndicator">
+                                            <div class="dir-<%= forecast.windDirectionCompass.toLowerCase() %> arrow-container">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-down-circle-fill" viewBox="0 0 16 16">
+                                                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293z"/>
+                                                </svg>
+                                            </div>
                                         </div>
-                                    <% } %>
+                                        <div class="flex-grow-1 ms-2">
+                                            <div class="timeHeader">
+                                                <div class="circle <%= forecast.flyingConditions %>"></div>
+                                                <small><%= ('0' + new Date(forecast.time).getUTCHours()).slice(-2) %>:00 - </small>
+                                                <strong>
+                                                    <% if (forecast && forecast.sites) { %>
+                                                        <%= forecast.sites.join(', ') %>
+                                                    <% } %>
+                                                </strong>
+                                            </div>
+
+                                            
+                                            <!-- <div class="rainProbability arrow-container">
+                                                <img src="/<%= forecast.weatherClassification %>" alt="Weather Icon" style="width: 20px; height: 20px;" />
+                                            </div> -->
+                                            
+                                            <div class="windStrength ">
+                                                <div class="windSpeedMph"><strong><%= forecast.windSpeedMph %>mph</strong> to <strong><%= forecast.windGustMph %>mph</strong></div>
+                                                <div class="hidden windSpeedKph"><strong><%= forecast.windSpeedKph %>kph</strong> to <strong><%= forecast.windGustKph %>kph</strong></div>
+                                                <div class="hidden windSpeedMs"><strong><%= forecast.windSpeed10m %>ms</strong> to <strong><%= forecast.windGustSpeed10m %>ms</strong></div>
+                                            </div>
+                                            
+                                            <% if (forecast.correlatedSiteTurnPoints && forecast.correlatedSiteTurnPoints.length > 0) { %>
+                                                <div class="graphLoaders">
+                                                    <!-- <a href="" onclick="showBlipSpot(<%= JSON.stringify(forecast.correlatedSiteTurnPoints) %>, '<%= forecast.fullDay %>'); return false;">
+                                                        RASP Blipspot
+                                                    </a> -->
+                                                    RASP: 
+                                                        <% forecast.correlatedSiteTurnPoints.forEach(function(site) { %>
+                                                            <a href="" onclick="showBlipSpot(<%= JSON.stringify(site) %>, '<%= forecast.fullDay %>'); return false;"><%= site.label %></a>&nbsp; 
+                                                        <% }); %> 
+                                                </div>
+                                            <% } %>
+                                        </div>
+                                    </div>
+                                    
                                 </div>
                             <% } %>
                         <% }); %>

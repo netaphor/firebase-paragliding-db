@@ -1,33 +1,10 @@
+const admin = require('firebase-admin');
+// Initialize the Firebase Admin SDK
+// In Cloud Functions for Firebase, the environment provides the credentials automatically
+admin.initializeApp();
 
-const {onRequest} = require("firebase-functions/v2/https");
-const logger = require("firebase-functions/logger");
-const weather = require("./data/metoffice-data-parser");
+const {express} = require('./express.js');
+const {dataManager} = require('./metoffice-data-parser.js');
 
-const functions = require('firebase-functions');
-const express = require('express');
-const path = require('path');
-const app = express();
-
-// Set EJS as the view engine
-app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'views'));
-
-// Serve static files (optional)
-app.use(express.static(path.join(__dirname, 'public')));
-
-app.get('/', async (req, res) => {
-    try {
-        const forecastData = await weather.getForecastData();
-        
-        res.render('forecast', { 
-            title: 'Weather Forecast',
-            forecastData: forecastData
-        });
-    } catch (error) {
-        logger.error('Error fetching forecast data:', error);
-        res.status(500).send('Error fetching forecast data');
-    }
-});
-
-// Export as a Firebase function
-exports.app = onRequest({ region: 'europe-west1', maxInstances: 5 }, app);
+exports.dataManager = dataManager;
+exports.express = express;
