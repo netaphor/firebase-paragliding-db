@@ -203,6 +203,7 @@ function updateTimeSeries(timeSeries) {
         entry.turnPoints = siteData.turnPoints;
         entry.fullDay = getDayOfWeek(entry.time);
         entry.windCategorisation = windSpeedToScale(entry.windSpeedMph);
+        entry.gustCategorisation = windSpeedToScale(entry.windGustMph);
         entry.weatherClassification = classifyWeather({
             precipitationRate: entry.precipitationRate,
             significantWeatherCode: entry.significantWeatherCode,
