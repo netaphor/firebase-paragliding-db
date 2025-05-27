@@ -15,10 +15,6 @@ const functions = require('firebase-functions'); // Or require('firebase-functio
 const admin = require('firebase-admin');
 const { time } = require('console');
 
-// Initialize the Firebase Admin SDK
-// In Cloud Functions for Firebase, the environment provides the credentials automatically
-// admin.initializeApp();
-
 // Get a reference to the Firestore database
 const db = admin.firestore();
 
