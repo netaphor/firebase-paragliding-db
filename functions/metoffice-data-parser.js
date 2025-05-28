@@ -151,26 +151,27 @@ function deduplicateTimeSeriesByTime(groupedArrays) {
 // Function to classify precipitation amount
 function classifyWeather({ precipitationRate, significantWeatherCode, uvIndex }) {
     // Rain overrides all
-    if (precipitationRate > 15) return "heavy_rain";
-    if (precipitationRate > 7.6) return "rain";
-    if (precipitationRate > 0) return "light_rain";
+    if (precipitationRate > 15) return {class: "heavy_rain", img:"/12_rain_night.svg"};
+    if (precipitationRate > 7.6) return {class: "rain", img:"/12_rain.svg"};
+    if (precipitationRate > 0) return {class: "light_rain", img:"/08_light_rain.svg"};
   
     // Fog and mist
-    if ([5, 6].includes(significantWeatherCode)) return "fog";
+    if ([5, 6].includes(significantWeatherCode)) return {class: "fog", img:"/10_fog.svg"};
   
     // Cloud and sun conditions
-    if ([0, 1].includes(significantWeatherCode)) return "clear";
-    if ([2, 3].includes(significantWeatherCode)) return "partly_cloudy";
-    if (significantWeatherCode === 7) return "cloudy";
-    if (significantWeatherCode === 8) return "overcast";
+    if ([0, 1].includes(significantWeatherCode)) return {class: "clear", img:"/02_clear.svg"};
+    if ([2, 3].includes(significantWeatherCode)) return {class: "partly_cloudy", img:"/03_partly_cloudy.svg"};
+    if (significantWeatherCode === 7) return {class: "cloudy", img:"/04_cloudy.svg"};
+    if (significantWeatherCode === 8) return {class: "overcast", img:"/04_cloudy.svg"};
   
     // Fallbacks using UV index as a hint
-    if (uvIndex >= 4) return "partly_cloudy";
-    if (uvIndex <= 1) return "overcast";
+    if (uvIndex >= 4) return {class: "partly_cloudy", img:"/03_partly_cloudy.svg.svg"};
+    if (uvIndex <= 1) return {class: "overcast", img:"/04_cloudy.svg"};
   
     // Default fallback
-    return "cloudy";
+    return {class: "cloudy", img:"/04_cloudy.svg"};
 }
+
   
 function windSpeedToScale(windSpeed) {
     if (windSpeed <= 0) return 1;
@@ -205,8 +206,9 @@ function updateTimeSeries(timeSeries) {
             significantWeatherCode: entry.significantWeatherCode,
             uvIndex: entry.uvIndex
         });
+        entry.temperature = entry.maxScreenAirTemp || entry.screenTemperature; // Use max temperature if available, otherwise use screen temperature
         entry.flyingConditions = getFlyingConditions(entry.windSpeedMph, entry.windGustMph, entry.weatherClassification);
-        //console.log(entry.windDirectionCompass + " fly at " + entry.turnPoints + " on " + entry.fullDay);
+        console.log("weather", entry.weatherClassification);
         return entry;
     });
     timeSeries = groupTimeSeriesByDay(timeSeries);

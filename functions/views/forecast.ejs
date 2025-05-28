@@ -59,39 +59,22 @@
                                             <div class="timeHeader">
                                                 
                                                 <small><%= ('0' + new Date(forecast.time).getUTCHours()).slice(-2) %>:00 - </small>
-                                                <strong>
+                                                
                                                     <% if (forecast && forecast.sites) { %>
-                                                        <%= forecast.sites.join(', ') %>
+                                                        <strong><%= forecast.sites.join(', ') %></strong>
                                                     <% } %>
-                                                </strong>
+                                                
                                                 <div class="circle <%= forecast.flyingConditions %>"></div>
                                             </div>
-
                                             
-                                            <!-- <div class="rainProbability arrow-container">
-                                                <img src="/<%= forecast.weatherClassification %>" alt="Weather Icon" style="width: 20px; height: 20px;" />
-                                            </div> -->
-                                            <div class="row" style="margin: 5px 0px">
-                                                <div class="col-auto" style="width: 50px;">
-                                                     <div class=" windIndicator"> <!--wind-strength-<%= forecast.windCategorisation %> -->
-                                                        <div class="arrow-container">
-                                                            <img src="/<%= forecast.windDirectionCompass.toUpperCase() %>.svg" alt="Weather Icon" style="width: 20px; height: 20px;" />
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-auto <%= forecast.weatherClassification %> conditions" style="width: 50px;">
-                                                   
-                                                </div>
-                                                <div class="col">
-                                                    
-                                                    <div class="windStrength ">
-                                                        <div class="windSpeedMph"><strong><%= forecast.windSpeedMph %>mph</strong> to <strong><%= forecast.windGustMph %>mph</strong></div>
-                                                        <div class="hidden windSpeedKph"><strong><%= forecast.windSpeedKph %>kph</strong> to <strong><%= forecast.windGustKph %>kph</strong></div>
-                                                        <div class="hidden windSpeedMs"><strong><%= forecast.windSpeed10m %>ms</strong> to <strong><%= forecast.windGustSpeed10m %>ms</strong></div>
-                                                    </div>
-                                                </div>
+                                            <div class="windStrength ">
+                                                <strong><%= forecast.windDirectionCompass.toUpperCase() %></strong>
+                                                <span class="windSpeedMph"><%= forecast.windSpeedMph %>mph <small>(<%= forecast.windGustMph %>mph)</small></span>
+                                                <span class="hidden windSpeedKph"><%= forecast.windSpeedKph %>kph <small>(<%= forecast.windGustKph %>kph)</small></span>
+                                                <span class="hidden windSpeedMs"><%= forecast.windSpeed10m %>ms <small>(<%= forecast.windGustSpeed10m %>ms)</small></span>
+                                                &nbsp;&nbsp;&nbsp;<img src="<%= forecast.weatherClassification.img %>" alt="Weather Icon" style="width: 30px; height: 30px;" />&nbsp;&nbsp;&nbsp;
+                                                <span class="temperature"><%= forecast.temperature %>°C</span>
                                             </div>
-
                                             
                                             <% if (forecast.correlatedSiteTurnPoints && forecast.correlatedSiteTurnPoints.length > 0) { %>
                                                 <div class="graphLoaders">

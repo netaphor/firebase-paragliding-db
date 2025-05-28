@@ -2,6 +2,10 @@
     font-family: 'Inter', sans-serif;
 }
 
+body {
+    background-color: #e4eaf2 !important;
+}
+
 .arrow-container {
     display: inline-block;
     /* height: 20px;
@@ -51,7 +55,8 @@
 .forecastCard {
     border-radius: 10px;
     color: hsl(0, 0%, 51%);
-    box-shadow: 0 .125rem .25rem rgba(0, 0, 0, 0.21)!important;
+    /* box-shadow: 0 .125rem .25rem rgba(0, 0, 0, 0.31)!important; */
+    background-color:  white;
 }
 
 .forecastCardHeader {
@@ -64,6 +69,7 @@
     padding: 10px;
     color: #555;
     margin-bottom: 1px;
+    border-bottom: #e4eaf2 1px solid;
 }
 
 .conditions {
@@ -105,7 +111,7 @@
 
 
 .windStrength {
-    font-size: 0.8em;
+    font-size: 1em;
     padding-top: 5px;
     display: inline-block;
 }
@@ -120,7 +126,7 @@
 
 .timeHeader {
     font-weight: 0.8em;
-    color: #797979;
+    color: #555;
     vertical-align: middle;
 }
 
