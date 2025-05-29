@@ -1,11 +1,20 @@
-
+const {onSchedule} = require('firebase-functions/v2/scheduler');
 require('dotenv').config({ path: './.env' });
 const axios = require('axios');
 const sitesMap = require('./data/sitesMap.js').sitesMap; // Import the sites map
 const pureTrackApiKey = process.env.PURETRACK_API_KEY;
 const pureTrackBearerToken = process.env.PURETRACK_BEARER_TOKEN;
 const pureTrackApiUrl = "https://puretrack.io/api/traffic";
-const samplePureTrackData = require('./data/pureTrackData.js'); // Import sample data for testing
+const samplePureTrackData = require('./data/pureTrackData.json'); // Import sample data for testing
+const {initializeApp} = require('firebase-admin/app');
+const {getFirestore, FieldValue} = require('firebase-admin/firestore');
+
+// Initialize Firebase Admin SDK
+const db = getFirestore();
+
+// Check if running in emulator
+const isEmulator = process.env.FUNCTIONS_EMULATOR === 'true';
+console.log('Running in emulator:', isEmulator);
 
 // Some nice part of italy in the Bassano area
 const testLatLog = {
@@ -15,10 +24,8 @@ const testLatLog = {
   long2: 12.489487
 };
 
-console.log('PureTrack API Key:', pureTrackApiKey);
-console.log('PureTrack Bearer Token:', pureTrackBearerToken);
-
 async function getPureTrackData(lat1, long1, lat2, long2) {
+  console.log('Fetching PureTrack data for coordinates:', lat1, long1, lat2, long2);
   try {
     const response = await axios.get(pureTrackApiUrl, {
       params: {
@@ -34,6 +41,13 @@ async function getPureTrackData(lat1, long1, lat2, long2) {
         'Authorization': `Bearer ${pureTrackBearerToken}`
       }
     });
+    // Check if we got no data and we're running in emulator, use sample data for local development
+    if ((!response.data || response.data.data.length === 0) && isEmulator) {
+      console.log('No data received and running in emulator, using sample data for local development');
+      console.log('Sample data:', samplePureTrackData);
+      return samplePureTrackData;
+    }
+    console.log('Received PureTrack data:', response.data);
     return response.data;
   } catch (error) {
     console.error('Error fetching PureTrack data:', error);
@@ -125,17 +139,46 @@ function getFlying(parsedCoords) {
     }));
 }
 
+// db is already initialized above
+async function writeToFirestore(flyingData) {
+  try {
+    const batch = db.batch();
+    const timestamp = FieldValue.serverTimestamp();
+    flyingData.forEach((coord, index) => {
+      const docRef = db.collection('flying-tracks').doc();
+      batch.set(docRef, {
+        ...coord,
+        createdAt: timestamp,
+        updatedAt: timestamp
+      });
+    });
+    
+    await batch.commit();
+    console.log(`Successfully wrote ${flyingData.length} flying coordinates to Firestore`);
+  } catch (error) {
+    console.error('Error writing to Firestore:', error);
+    throw error;
+  }
+}
 
-getPureTrackData(
-  testLatLog.lat1,
-  testLatLog.long1,
-  testLatLog.lat2,
-  testLatLog.long2
-).then(data => {
-  //console.log('Raw PureTrack Data:', data);
-  var whosFlying = parseCoords(data.data);
-  whosFlying = getFlying(whosFlying);
-  console.log('Flying Coordinates:', whosFlying);
-}).catch(error => {
-  console.error('Badness');
+exports.fetchPureTrackData = onSchedule({schedule: 'every 15 minutes', region: 'europe-west1'}, async (event) => {
+    console.log("Scheduled function triggered");
+    try {
+        console.log('Starting PureTrack data fetch...');
+              
+        const data = await getPureTrackData(
+          testLatLog.lat1,
+          testLatLog.long1,
+          testLatLog.lat2,
+          testLatLog.long2
+        );
+        console.log('Finished PureTrack data fetch...', data);
+        const whosFlying = getFlying(parseCoords(data.data));
+        console.log(`Found ${whosFlying.length} flying coordinates`);
+        
+        await writeToFirestore(whosFlying);
+        return null;
+    } catch (error) {
+        console.error('Error in fetchPureTrackData function:', error);
+    }
 });

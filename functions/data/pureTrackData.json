@@ -1,4 +1,4 @@
-const samplePureTrackData = {
+{
   "lat_distance": 3793762,
   "long_distance": 6482496,
   "lat1": -25.75777,
@@ -88,5 +88,3 @@ const samplePureTrackData = {
   "success": true,
   "http_code": 200
 }
-
-export { samplePureTrackData };
