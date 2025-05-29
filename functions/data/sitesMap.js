@@ -20,7 +20,17 @@ exports.sitesMap = {
             lat: "50.885079",
             long: "-0.21307468",
             directions:["WNW","NW","NNW","N"],
-            turnPoint: "DDK"
+            turnPoint: "DDK",
+            pureTrack: {
+                topRight: {
+                    lat: 50.909966, 
+                    long: -0.193342
+                },
+                bottomLeft: {
+                    lat: 50.876550,
+                    long: -0.271435
+                }   
+            }
         },
         ditchling: {
             label: "Ditchling",
