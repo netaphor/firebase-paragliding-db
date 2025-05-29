@@ -165,7 +165,7 @@ function classifyWeather({ precipitationRate, significantWeatherCode, uvIndex })
     if (significantWeatherCode === 8) return {class: "overcast", img:"/04_cloudy.svg"};
   
     // Fallbacks using UV index as a hint
-    if (uvIndex >= 4) return {class: "partly_cloudy", img:"/03_partly_cloudy.svg.svg"};
+    if (uvIndex >= 4) return {class: "partly_cloudy", img:"/03_partly_cloudy.svg"};
     if (uvIndex <= 1) return {class: "overcast", img:"/04_cloudy.svg"};
   
     // Default fallback
