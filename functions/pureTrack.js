@@ -8,6 +8,7 @@ const pureTrackApiUrl = "https://puretrack.io/api/traffic";
 const samplePureTrackData = require('./data/pureTrackData.json'); // Import sample data for testing
 const {initializeApp} = require('firebase-admin/app');
 const {getFirestore, FieldValue} = require('firebase-admin/firestore');
+const useSampleData = false;
 
 // Initialize Firebase Admin SDK
 const db = getFirestore();
@@ -34,7 +35,7 @@ async function getPureTrackData(lat1, long1, lat2, long2) {
       }
     });
     // Check if we got no data and we're running in emulator, use sample data for local development
-    if ((!response.data || response.data.data.length === 0) && isEmulator) {
+    if ((!response.data || response.data.data.length === 0) && isEmulator && useSampleData) {
       console.log('No data received and running in emulator, using sample data for local development');
       console.log('Sample data:', samplePureTrackData);
       return samplePureTrackData;
