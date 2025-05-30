@@ -133,10 +133,21 @@ function parseCoords(coords) {
 }
 
 function getFlying(parsedCoords) {
-    return parsedCoords.filter(coord => coord.flying === '1').map(coord => ({
-        ...coord,
-        heightFt: coord.alt_gps ? Math.round(parseFloat(coord.alt_gps) * 3.28084) : null
-    }));
+  const flying = parsedCoords.filter(coord => coord.flying === '1').map(coord => ({
+    ...coord,
+    heightFt: coord.alt_gps ? Math.round(parseFloat(coord.alt_gps) * 3.28084) : null
+  }));
+  
+  const notFlying = parsedCoords.filter(coord => coord.flying !== '1');
+  
+  const pilotStatus = {
+    flyingCount: flying.length,
+    notFlyingCount: notFlying.length,
+    flying: flying
+  };
+
+  console.log(`Flying pilots: ${pilotStatus.flyingCount}, Not flying pilots: ${pilotStatus.notFlyingCount}`);
+  return pilotStatus;
 }
 
 // db is already initialized above
@@ -144,17 +155,40 @@ async function writeToFirestore(flyingData) {
   try {
     const batch = db.batch();
     const timestamp = FieldValue.serverTimestamp();
-    flyingData.forEach((coord, index) => {
+    
+    // Delete existing data first
+    const flyingTracksSnapshot = await db.collection('flying-tracks').get();
+    flyingTracksSnapshot.docs.forEach(doc => {
+      batch.delete(doc.ref);
+    });
+    
+    const pilotStatusSnapshot = await db.collection('pilot-status').get();
+    pilotStatusSnapshot.docs.forEach(doc => {
+      batch.delete(doc.ref);
+    });
+    
+    // Write individual flying coordinates
+    flyingData.flying.forEach((coord, index) => {
       const docRef = db.collection('flying-tracks').doc();
       batch.set(docRef, {
-        ...coord,
-        createdAt: timestamp,
-        updatedAt: timestamp
+      ...coord,
+      createdAt: timestamp,
+      updatedAt: timestamp
       });
     });
     
+    // Write pilot status summary
+    const statusDocRef = db.collection('pilot-status').doc();
+    batch.set(statusDocRef, {
+      flyingCount: flyingData.flyingCount,
+      notFlyingCount: flyingData.notFlyingCount,
+      totalPilots: flyingData.flyingCount + flyingData.notFlyingCount,
+      createdAt: timestamp,
+      updatedAt: timestamp
+    });
+    
     await batch.commit();
-    console.log(`Successfully wrote ${flyingData.length} flying coordinates to Firestore`);
+    console.log(`Successfully wrote ${flyingData.flying.length} flying coordinates and pilot status to Firestore`);
   } catch (error) {
     console.error('Error writing to Firestore:', error);
     throw error;
@@ -174,7 +208,7 @@ exports.fetchPureTrackData = onSchedule({schedule: 'every 15 minutes', region: '
         );
         console.log('Finished PureTrack data fetch...', data);
         const whosFlying = getFlying(parseCoords(data.data));
-        console.log(`Found ${whosFlying.length} flying coordinates`);
+        console.log(`Found ${whosFlying.flying.length} flying coordinates`);
         
         await writeToFirestore(whosFlying);
         return null;
