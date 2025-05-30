@@ -78,23 +78,22 @@ async function displayFlyingPilots() {
     try {
         const data = await fetchFlyingPilots();
         const pilotsDiv = document.getElementById('pilotsFlying');
-        
-        const html = `
-                    <div>
-                        <span><strong>${data.pilotStatus?.totalPilots ?? 'Unknown'}</strong> pilots, </span>
-                        <span class="flyingPilots"><strong>${data.pilotStatus?.flyingCount ?? 'Unknown'}</strong> flying</span>
-                        <span class="notFlyingPilots"><strong>${data.pilotStatus?.notFlyingCount ?? 'Unknown'}</strong> not flying</span>
-                    </div>
-                    <div>
-                        ${data.flyingTracks?.map(track => `
+        const html = data.flyingTracks && data.flyingTracks.length > 0 ? `
                             <div>
-                                <span>${track.label ?? 'Someone'} is at </span>
-                                <span>${track.heightFt ?? '?'}ft</span>
-                                
+                                <span><strong>${data.pilotStatus?.totalPilots ?? 'Unknown'}</strong> pilots, </span>
+                                <span class="flyingPilots"><strong>${data.pilotStatus?.flyingCount ?? 'Unknown'}</strong> flying</span>
+                                <span class="notFlyingPilots"><strong>${data.pilotStatus?.notFlyingCount ?? 'Unknown'}</strong> not flying</span>
                             </div>
-                        `).join('') ?? ''}
-                    </div>
-                `;
+                            <div>
+                                ${data.flyingTracks.map(track => `
+                                    <div>
+                                        <span>${track.label ?? 'Someone'} is at </span>
+                                        <span>${track.heightFt ?? '?'}ft</span>
+                                        
+                                    </div>
+                                `).join('')}
+                            </div>
+                        ` : '<p>No pilots on PureTrack :(</p>';
         
         pilotsDiv.innerHTML = html;
     } catch (error) {
