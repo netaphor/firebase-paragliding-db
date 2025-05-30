@@ -141,6 +141,10 @@ body {
     margin: 0 10px;
 }
 
+#pilotsFlying {
+    font-size: smaller;
+}
+
 /* 1-5: soft blues */
 .wind-strength-1  { background-color: #E3F2FD; }
 .wind-strength-2  { background-color: #D0EBF7; }

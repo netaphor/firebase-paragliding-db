@@ -21,17 +21,17 @@
     ],
     "rewrites": [
       {
-        "source": "**",
-        "function": {
-          "functionId": "frontEnd", 
-          "region": "europe-west1" 
-        }
-      },
-      {
         "source": "/pureTrack",
         "function": {
           "functionId": "flyingPilotsApi",
           "region": "europe-west1"
+        }
+      },
+      {
+        "source": "**",
+        "function": {
+          "functionId": "frontEnd", 
+          "region": "europe-west1" 
         }
       }
     ]

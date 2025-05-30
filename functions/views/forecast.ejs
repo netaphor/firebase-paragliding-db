@@ -49,15 +49,21 @@
                     <div class="forecastCardHeader">
                         <%= dayData[0].fullDay %>
                     </div>
+                    <% if (index === 0) { %>
+                        <div id="flyingNow" class="flying-card">
+                            <div class="flyingNowHeader"><strong>Happening Now (demo mode)</strong></div>
+                            <div id="pilotsFlying">
+                                <div class="spinner-border text-secondary" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                            </div>
+                        </div>
+                    <% } %>
                     <div>
                         <% dayData.forEach(function(forecast) { %>
                             <% if (forecast && forecast.windDirectionCompass) { %>
                                 <div class="flying-card ">
-                                    <div class="">
-
-                                        <div class="">
-                                            <div class="timeHeader">
-                                                
+                                            <div class="timeHeader"> 
                                                 <small><%= ('0' + new Date(forecast.time).getUTCHours()).slice(-2) %>:00 - </small>
                                                 
                                                     <% if (forecast && forecast.sites) { %>
@@ -87,9 +93,7 @@
                                                         <% }); %> 
                                                 </div>
                                             <% } %>
-                                        </div>
-                                    </div>
-                                    
+
                                 </div>
                             <% } %>
                         <% }); %>

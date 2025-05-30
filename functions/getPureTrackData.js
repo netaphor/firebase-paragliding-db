@@ -8,7 +8,7 @@ const db = admin.firestore();
 const app = express();
 app.use(cors({ origin: true }));
 
-app.get('/', async (req, res) => {
+app.get('/pureTrack', async (req, res) => {
     try {
         const [pilotStatusSnapshot, flyingTracksSnapshot] = await Promise.all([
             db.collection('pilot-status').get(),

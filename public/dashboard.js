@@ -58,4 +58,52 @@ function setForecastRange(show) {
         event.target.classList.add('active');
     }
 }
-    
+
+async function fetchFlyingPilots() {
+    try {
+        const response = await fetch('/pureTrack');
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Error fetching flying pilots data:', error);
+        throw error;
+    }
+}
+
+
+async function displayFlyingPilots() {
+    try {
+        const data = await fetchFlyingPilots();
+        const pilotsDiv = document.getElementById('pilotsFlying');
+        
+        const html = `
+                    <div>
+                        <span><strong>${data.pilotStatus?.totalPilots ?? 'Unknown'}</strong> pilots, </span>
+                        <span class="flyingPilots"><strong>${data.pilotStatus?.flyingCount ?? 'Unknown'}</strong> flying</span>
+                        <span class="notFlyingPilots"><strong>${data.pilotStatus?.notFlyingCount ?? 'Unknown'}</strong> not flying</span>
+                    </div>
+                    <div>
+                        ${data.flyingTracks?.map(track => `
+                            <div>
+                                <span>${track.label ?? 'Someone'} is at </span>
+                                <span>${track.heightFt ?? '?'}ft</span>
+                                
+                            </div>
+                        `).join('') ?? ''}
+                    </div>
+                `;
+        
+        pilotsDiv.innerHTML = html;
+    } catch (error) {
+        console.error('Error displaying flying pilots:', error);
+        document.getElementById('pilotsFlying').innerHTML = '<p>Error loading pilot data</p>';
+    }
+}
+
+// Call the function to display flying pilots data when the page loads
+document.addEventListener('DOMContentLoaded', () => {
+    displayFlyingPilots();
+});
