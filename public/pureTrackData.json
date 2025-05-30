@@ -1,0 +1,41 @@
+{
+  "lat_distance": 3793762,
+  "long_distance": 6482496,
+  "lat1": -25.75777,
+  "long1": 199.91649,
+  "lat2": -54.18954,
+  "long2": 145.56063,
+  "performance": {
+    "process_request": 0.44661700000000004,
+    "loaded_competitors": 0.451517,
+    "loaded_group": 0.456247,
+    "loadClickhouseLatest_loaded": 212.110044,
+    "loadClickhouseLatest_processed": 276.986045,
+    "loaded_points_data_start": 281.637733,
+    "array_flipped": 281.641963,
+    "chunks_count": 0,
+    "loaded_points_count": 13186,
+    "loaded_points_data_mget": 281.646253,
+    "addContestData": "No competitors",
+    "filterPoints_end": 317.70155900000003,
+    "filterPoints_counts": "60/13186",
+    "state_loaded": 318.061067,
+    "end": 318.800801
+  },
+  "data": [
+    "T1748545492,L39.30062,G-119.74168,A2260,C132,S14.92,V-0.3,O7,D20195B,U0,H,RNAVITER2 OGNAVI FNT,f1,o1,g1837,6,K0-20195B",
+    "T1748545507,L46.81157,G1.2557,A91,C177,S18.52,V0,O7,DFCB503,U0,H,Q,RSafeSky OGNSKY SKY,f1,o1,g96,h2,z2,6,K0-FCB503",
+    "T1748545500,L45.79263,G6.2201,A452,C237,S3.09,V0,O7,DFE1530,U0,H,RNAVITER2 OGNAVI NAV,f0,o1,g450,6,K0-FE1530",
+    "T1748545438,L45.84615,G6.2149,A570,C180,S0,V0,O7,D0bad5e,U31,RSyride Syride ,BNicolasMorardo,f0,o0,g558,6,K31-0bad5e",
+    "T1748545433,L45.92285,G6.59413,A1194,C0,S0,O7,D2617f2,U31,RFLYMASTER flymaster_tracker 538330,BFrançois ISOARD,f0,o0,g1214,6,K31-2617f2",
+    "T1748545438,L55.765,G37.685,A190,S0,O7,D2fec5b59-de4f-5473-84db-962f1f366c03,U37,X101,RDIY_V1,BApollo_Baumanka_4,f0,o0,g136,u3624165952,6,K37-2fec5b59-de4f-5473-84db-962f1f366c03",
+    "T1748545501,L53.56597,G12.64798,A88,C303,S0,V0,O7,D1110D6,U0,H,Q,I30.2,REDOW OGFLR FLR,NJens Nicklich,EJE,eNIC,f0,o0,g81,h4,z7,60,KY-JE",
+    "T1748545507,L48.06567,G8.01358,A1191,C2,S9.26,V-1.2,O7,D1147F5,U0,H,Q,I1.2,REDSK OGFLR FLR,BStaps,NStaps,f1,o1,g1139,h3,z5,6,K0-1147F5",
+    "T1748545482,L55.80365,G37.71665,A148,S0,O7,D1cd55f10-36ab-56d9-babd-9e8d1ef0437d,U37,X95,RTBEAM,BApollo_Vesta4,f0,o0,g145,u2751163372,6,K37-1cd55f10-36ab-56d9-babd-9e8d1ef0437d",
+    "T1748545455,L56.34436,G38.11701,A182,S0,O7,Db375a05e-e9cd-5beb-bf63-09a40aba4f02,U37,X101,RHELTEC_WSL_V3,BMeshtastic 9fe0,f0,o0,g252,u1128046560,6,K37-b375a05e-e9cd-5beb-bf63-09a40aba4f02",
+    "T1748545473,L48.92976,G-0.46981,A225,C299,S0,O7,DvHKzoNQZ4ubw7r1OneIWcphZ7Z53,U43,Rwingman,BAirkapture,f1,o1,g152,uvHKzoNQZ4ubw7r1OneIWcphZ7Z53,6,K43-vHKzoNQZ4ubw7r1OneIWcphZ7Z53"
+  ],
+  "time": 0.3564,
+  "success": true,
+  "http_code": 200
+}

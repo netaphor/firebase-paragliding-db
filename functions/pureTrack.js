@@ -4,17 +4,18 @@ const axios = require('axios');
 const sitesMap = require('./data/sitesMap.js').sitesMap; // Import the sites map
 const pureTrackApiKey = process.env.PURETRACK_API_KEY;
 const pureTrackBearerToken = process.env.PURETRACK_BEARER_TOKEN;
-const pureTrackApiUrl = "https://puretrack.io/api/traffic";
-const samplePureTrackData = require('./data/pureTrackData.json'); // Import sample data for testing
+let samplePureTrackData = require('./data/pureTrackData.json'); // Import sample data for testing
 const {initializeApp} = require('firebase-admin/app');
 const {getFirestore, FieldValue} = require('firebase-admin/firestore');
 const useSampleData = false;
+const isEmulator = process.env.FUNCTIONS_EMULATOR === 'true';
+const pureTrackApiUrl = useSampleData && isEmulator ? "http://127.0.0.1:5000/pureTrackData.json" : "https://puretrack.io/api/traffic";
 
 // Initialize Firebase Admin SDK
 const db = getFirestore();
 
 // Check if running in emulator
-const isEmulator = process.env.FUNCTIONS_EMULATOR === 'true';
+
 console.log('Running in emulator:', isEmulator);
 
 async function getPureTrackData(lat1, long1, lat2, long2) {
@@ -34,12 +35,6 @@ async function getPureTrackData(lat1, long1, lat2, long2) {
         'Authorization': `Bearer ${pureTrackBearerToken}`
       }
     });
-    // Check if we got no data and we're running in emulator, use sample data for local development
-    if ((!response.data || response.data.data.length === 0) && isEmulator && useSampleData) {
-      console.log('No data received and running in emulator, using sample data for local development');
-      console.log('Sample data:', samplePureTrackData);
-      return samplePureTrackData;
-    }
     console.log('Received PureTrack data:', response.data);
     return response.data;
   } catch (error) {
@@ -123,24 +118,6 @@ function parseCoords(coords) {
     });
 }
 
-function getFlying(parsedCoords) {
-  const flying = parsedCoords.filter(coord => coord.flying === '1').map(coord => ({
-    ...coord,
-    heightFt: coord.alt_gps ? Math.round(parseFloat(coord.alt_gps) * 3.28084) : null
-  }));
-  
-  const notFlying = parsedCoords.filter(coord => coord.flying !== '1');
-  
-  const pilotStatus = {
-    flyingCount: flying.length,
-    notFlyingCount: notFlying.length,
-    flying: flying
-  };
-
-  console.log(`Flying pilots: ${pilotStatus.flyingCount}, Not flying pilots: ${pilotStatus.notFlyingCount}`);
-  return pilotStatus;
-}
-
 // db is already initialized above
 async function writeToFirestore(flyingData) {
   try {
@@ -153,13 +130,8 @@ async function writeToFirestore(flyingData) {
       batch.delete(doc.ref);
     });
     
-    const pilotStatusSnapshot = await db.collection('pilot-status').get();
-    pilotStatusSnapshot.docs.forEach(doc => {
-      batch.delete(doc.ref);
-    });
-    
     // Write individual flying coordinates
-    flyingData.flying.forEach((coord, index) => {
+    flyingData.forEach((coord, index) => {
       const docRef = db.collection('flying-tracks').doc();
       batch.set(docRef, {
       ...coord,
@@ -168,18 +140,8 @@ async function writeToFirestore(flyingData) {
       });
     });
     
-    // Write pilot status summary
-    const statusDocRef = db.collection('pilot-status').doc();
-    batch.set(statusDocRef, {
-      flyingCount: flyingData.flyingCount,
-      notFlyingCount: flyingData.notFlyingCount,
-      totalPilots: flyingData.flyingCount + flyingData.notFlyingCount,
-      createdAt: timestamp,
-      updatedAt: timestamp
-    });
-    
     await batch.commit();
-    console.log(`Successfully wrote ${flyingData.flying.length} flying coordinates and pilot status to Firestore`);
+    console.log(`Successfully wrote ${flyingData.length} flying coordinates and pilot status to Firestore`);
   } catch (error) {
     console.error('Error writing to Firestore:', error);
     throw error;
@@ -188,18 +150,45 @@ async function writeToFirestore(flyingData) {
 
 exports.fetchPureTrackData = onSchedule({schedule: 'every 1 minutes', region: 'europe-west1'}, async (event) => {
   console.log("Scheduled function triggered");
-  try { 
-    const data = await getPureTrackData(
-      sitesMap.southern.caburn.pureTrack.topRight.lat,
-      sitesMap.southern.caburn.pureTrack.topRight.long,
-      sitesMap.southern.caburn.pureTrack.bottomLeft.lat,
-      sitesMap.southern.caburn.pureTrack.topRight.long
-    );
-    console.log('Finished PureTrack data fetch...', data);
-    const whosFlying = getFlying(parseCoords(data.data));
-    console.log(`Found ${whosFlying.flying.length} flying coordinates`);
+  try {
+    const sites = Object.entries(sitesMap.southern);
+    const allFlyingData = [];
     
-    await writeToFirestore(whosFlying);
+    for (const [siteKey, siteData] of sites) {
+      try {
+        console.log(`Fetching data for site: ${siteData.label || siteKey}`);
+        
+        const data = await getPureTrackData(
+          siteData.pureTrack.topRight.lat,
+          siteData.pureTrack.topRight.long,
+          siteData.pureTrack.bottomLeft.lat,
+          siteData.pureTrack.bottomLeft.long
+        );
+        
+        console.log(`Finished PureTrack data fetch for ${siteData.label || siteKey}...`, data);
+        const whosFlying = parseCoords(data.data);
+        
+        // Add site information to each flying coordinate
+        whosFlying.forEach(coord => {
+          coord.site = siteData.label || siteKey;
+          coord.siteKey = siteKey;
+          coord.heightFt = coord.alt_gps ? Math.round(parseFloat(coord.alt_gps) * 3.28084) : null;
+        });
+        
+        allFlyingData.push(...whosFlying);
+        console.log(`Found ${whosFlying.length} flying coordinates at ${siteData.label || siteKey}`);
+        
+        // Wait 500ms before next request (except for the last one)
+        if (sites.indexOf([siteKey, siteData]) < sites.length - 1) {
+          await new Promise(resolve => setTimeout(resolve, 500));
+        }
+      } catch (siteError) {
+        console.error(`Error fetching data for site ${siteData.label || siteKey}:`, siteError);
+      }
+    }
+    
+    console.log(`Total flying coordinates from all sites: ${allFlyingData.length}`);
+    await writeToFirestore(allFlyingData);
     return null;
   } catch (error) {
     console.error('Error in fetchPureTrackData function:', error);

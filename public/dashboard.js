@@ -78,22 +78,26 @@ async function displayFlyingPilots() {
     try {
         const data = await fetchFlyingPilots();
         const pilotsDiv = document.getElementById('pilotsFlying');
-        const html = data.flyingTracks && data.flyingTracks.length > 0 ? `
-                            <div>
-                                <span><strong>${data.pilotStatus?.totalPilots ?? 'Unknown'}</strong> pilots, </span>
-                                <span class="flyingPilots"><strong>${data.pilotStatus?.flyingCount ?? 'Unknown'}</strong> flying</span>
-                                <span class="notFlyingPilots"><strong>${data.pilotStatus?.notFlyingCount ?? 'Unknown'}</strong> not flying</span>
-                            </div>
-                            <div>
-                                ${data.flyingTracks.map(track => `
-                                    <div>
-                                        <span>${track.label ?? 'Someone'} is at </span>
-                                        <span>${track.heightFt ?? '?'}ft</span>
-                                        
-                                    </div>
-                                `).join('')}
-                            </div>
-                        ` : '<p>No pilots on PureTrack :(</p>';
+            const html = data.flyingTracks && Object.keys(data.flyingTracks).length > 0 ? 
+                Object.entries(data.flyingTracks).map(([key, section]) => `
+                <div>
+                    <strong>${section.label ?? 'Unknown Location'}</strong>
+                    <div>
+                    <span><strong>${section.totalPilots ?? 'Unknown'}</strong> pilots, </span>
+                    <span class="flyingPilots"><strong>${section.flyingCount ?? 'Unknown'}</strong> flying</span>
+                    <span class="notFlyingPilots"><strong>${section.notFlyingCount ?? 'Unknown'}</strong> not flying</span>
+                    </div>
+                    <div>
+                    ${section.tracks && section.tracks.length > 0 ? section.tracks.map(track => `
+                        <div>
+                        <span>${track.label ?? 'Someone'} is at </span>
+                        <span>${track.heightFt ?? '?'}ft</span>
+                        </div>
+                    `).join('') : '<p>No tracks in this section</p>'}
+                    </div>
+                </div>
+                `).join('')
+                : '<p>No pilots on PureTrack :(</p>';
         
         pilotsDiv.innerHTML = html;
     } catch (error) {
