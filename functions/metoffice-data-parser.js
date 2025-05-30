@@ -109,7 +109,7 @@ function convertMsToKph(speedMs) {
 // Function to determine flying conditions based on wind speed and gust speed
 function getFlyingConditions(windSpeed, gustSpeed, weatherClassification) {
     if (windSpeed < 12 && gustSpeed < 16 && (weatherClassification === "clear" || weatherClassification === "partly_cloudy" || weatherClassification === "cloudy" || weatherClassification === "overcast")) {
-        
+        //console.log("Conditions are flyable");
         return "flyable";
     } else if (windSpeed > 16 
         || gustSpeed > 20 
@@ -120,6 +120,7 @@ function getFlyingConditions(windSpeed, gustSpeed, weatherClassification) {
     ) {
         return "notFlyable";
     }
+    //console.log("Conditions are marginal");
     return "marginal";
 }
 
@@ -207,8 +208,8 @@ function updateTimeSeries(timeSeries) {
             uvIndex: entry.uvIndex
         });
         entry.temperature = entry.maxScreenAirTemp || entry.screenTemperature; // Use max temperature if available, otherwise use screen temperature
-        entry.flyingConditions = getFlyingConditions(entry.windSpeedMph, entry.windGustMph, entry.weatherClassification);
-        console.log("weather", entry.weatherClassification);
+        entry.flyingConditions = getFlyingConditions(entry.windSpeedMph, entry.windGustMph, entry.weatherClassification.class);
+        //console.log("weather", entry.weatherClassification);
         return entry;
     });
     timeSeries = groupTimeSeriesByDay(timeSeries);
