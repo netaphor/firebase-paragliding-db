@@ -6,7 +6,17 @@ exports.sitesMap = {
             lat: "50.861577",
             long: "0.050928801",
             directions:["WSW", "SW", "SWS", "S"],
-            turnPoint: "GDE"
+            turnPoint: "GDE", 
+            pureTrack: {
+                topRight: {
+                    lat: 50.868367, 
+                    long: 0.063661
+                },
+                bottomLeft: {
+                    lat: 50.848305,
+                    long: 0.010185
+                }   
+            }
         },
         boPeep: {
             label: "Bo Peep",

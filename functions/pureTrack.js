@@ -16,14 +16,6 @@ const db = getFirestore();
 const isEmulator = process.env.FUNCTIONS_EMULATOR === 'true';
 console.log('Running in emulator:', isEmulator);
 
-// Some nice part of italy in the Bassano area
-const testLatLog = {
-  lat1: 46.356931,
-  long1: 13.003371,
-  lat2: 46.134917,
-  long2: 12.489487
-};
-
 async function getPureTrackData(lat1, long1, lat2, long2) {
   console.log('Fetching PureTrack data for coordinates:', lat1, long1, lat2, long2);
   try {
@@ -193,24 +185,22 @@ async function writeToFirestore(flyingData) {
   }
 }
 
-exports.fetchPureTrackData = onSchedule({schedule: 'every 15 minutes', region: 'europe-west1'}, async (event) => {
-    console.log("Scheduled function triggered");
-    try {
-        console.log('Starting PureTrack data fetch...');
-              
-        const data = await getPureTrackData(
-          testLatLog.lat1,
-          testLatLog.long1,
-          testLatLog.lat2,
-          testLatLog.long2
-        );
-        console.log('Finished PureTrack data fetch...', data);
-        const whosFlying = getFlying(parseCoords(data.data));
-        console.log(`Found ${whosFlying.flying.length} flying coordinates`);
-        
-        await writeToFirestore(whosFlying);
-        return null;
-    } catch (error) {
-        console.error('Error in fetchPureTrackData function:', error);
-    }
+exports.fetchPureTrackData = onSchedule({schedule: 'every 1 minutes', region: 'europe-west1'}, async (event) => {
+  console.log("Scheduled function triggered");
+  try { 
+    const data = await getPureTrackData(
+      sitesMap.southern.caburn.pureTrack.topRight.lat,
+      sitesMap.southern.caburn.pureTrack.topRight.long,
+      sitesMap.southern.caburn.pureTrack.bottomLeft.lat,
+      sitesMap.southern.caburn.pureTrack.topRight.long
+    );
+    console.log('Finished PureTrack data fetch...', data);
+    const whosFlying = getFlying(parseCoords(data.data));
+    console.log(`Found ${whosFlying.flying.length} flying coordinates`);
+    
+    await writeToFirestore(whosFlying);
+    return null;
+  } catch (error) {
+    console.error('Error in fetchPureTrackData function:', error);
+  }
 });
