@@ -3,10 +3,12 @@ const admin = require('firebase-admin');
 // In Cloud Functions for Firebase, the environment provides the credentials automatically
 admin.initializeApp();
 
-const {express} = require('./express.js');
+const {frontEnd} = require('./express.js');
+const {flyingPilotsApi} = require('./getPureTrackData.js');
 const {dataManager} = require('./metoffice-data-parser.js');
 const {fetchPureTrackData} = require('./pureTrack.js');
 
 exports.dataManager = dataManager;
-exports.express = express;
+exports.flyingPilotsApi = flyingPilotsApi;
+exports.frontEnd = frontEnd;
 exports.pureTrackData = fetchPureTrackData;

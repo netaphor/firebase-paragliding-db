@@ -54,4 +54,4 @@ app.get('/', async (req, res) => {
 });
 
 // Export as a Firebase function
-exports.express = onRequest({ region: 'europe-west1', maxInstances: 5 }, app);
+exports.frontEnd = onRequest({ region: 'europe-west1', maxInstances: 5 }, app);

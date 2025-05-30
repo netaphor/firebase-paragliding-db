@@ -23,8 +23,15 @@
       {
         "source": "**",
         "function": {
-          "functionId": "express", 
+          "functionId": "frontEnd", 
           "region": "europe-west1" 
+        }
+      },
+      {
+        "source": "/pureTrack",
+        "function": {
+          "functionId": "flyingPilotsApi",
+          "region": "europe-west1"
         }
       }
     ]

@@ -55,8 +55,6 @@ async function getPureTrackData(lat1, long1, lat2, long2) {
   }
 }
 
-
-
 function parseCoords(coords) {
     return coords.map(coordString => {
         const parts = coordString.split(',');
