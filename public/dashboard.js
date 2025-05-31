@@ -106,6 +106,11 @@ async function displayFlyingPilots() {
     }
 }
 
+// Set up periodic refresh of flying pilots data
+setInterval(() => {
+    displayFlyingPilots();
+}, 30000);
+
 // Call the function to display flying pilots data when the page loads
 document.addEventListener('DOMContentLoaded', () => {
     displayFlyingPilots();
