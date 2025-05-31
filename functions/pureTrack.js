@@ -148,7 +148,7 @@ async function writeToFirestore(flyingData) {
   }
 }
 
-exports.fetchPureTrackData = onSchedule({schedule: 'every 1 minutes', region: 'europe-west1'}, async (event) => {
+exports.fetchPureTrackData = onSchedule({schedule: '*/2 7-21 * * *', region: 'europe-west1'}, async (event) => {
   console.log("Scheduled function triggered");
   try {
     const sites = Object.entries(sitesMap.southern);
