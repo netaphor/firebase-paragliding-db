@@ -5,7 +5,7 @@ exports.sitesMap = {
             label: "Mount Caburn",
             lat: "50.861577",
             long: "0.050928801",
-            directions:["WSW", "SW", "SWS", "S"],
+            directions:["WSW", "SW", "SSW", "S"],
             turnPoint: "GDE", 
             pureTrack: {
                 topRight: {
