@@ -70,7 +70,9 @@
                                                         <strong><%= forecast.sites.join(', ') %></strong>
                                                     <% } %>
                                                 
-                                                <div class="circle <%= forecast.flyingConditions %>"></div>
+                                                <% if (forecast.sites.join(', ') !== 'No flyable sites') { %>
+                                                    <div class="circle <%= forecast.flyingConditions %>"></div>
+                                                <% } %>
                                             </div>
                                             
                                             <div class="windStrength ">

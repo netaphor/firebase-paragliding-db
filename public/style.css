@@ -36,16 +36,19 @@ body {
     background-position: left 10px top 10px;
     background-size: 50px 50px;
     padding-left: 60px;
+    background-color: white;
+    border-radius: 10px;
+    margin: 10px 0px 10px 0px!important;
 }
 
 .notFlyable {
-    background-color: #b90000;
+    background-color: #ff0000aa;
 }
 .flyable {
-    background-color: #008a00;
+    background-color: #008a0094;
 }
 .marginal {
-    background-color: #ff8800;
+    background-color: #ff880094;
 }
 
 .hidden {
