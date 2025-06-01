@@ -14,10 +14,6 @@ const pureTrackApiUrl = useSampleData && isEmulator ? "http://127.0.0.1:5000/pur
 // Initialize Firebase Admin SDK
 const db = getFirestore();
 
-// Check if running in emulator
-
-console.log('Running in emulator:', isEmulator);
-
 async function getPureTrackData(lat1, long1, lat2, long2) {
   console.log('Fetching PureTrack data for coordinates:', lat1, long1, lat2, long2);
   try {

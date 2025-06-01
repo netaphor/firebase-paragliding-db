@@ -78,6 +78,9 @@ async function displayFlyingPilots() {
     try {
         const data = await fetchFlyingPilots();
         const pilotsDiv = document.getElementById('pilotsFlying');
+        pilotsDiv.innerHTML = `<div class="spinner-border text-secondary" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>`; // Clear previous content
             const html = data.flyingTracks && Object.keys(data.flyingTracks).length > 0 ? 
                 Object.entries(data.flyingTracks).map(([key, section]) => `
                 <div>
