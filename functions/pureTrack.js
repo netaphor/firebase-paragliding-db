@@ -7,9 +7,9 @@ const pureTrackBearerToken = process.env.PURETRACK_BEARER_TOKEN;
 let samplePureTrackData = require('./data/pureTrackData.json'); // Import sample data for testing
 const {initializeApp} = require('firebase-admin/app');
 const {getFirestore, FieldValue} = require('firebase-admin/firestore');
-const useSampleData = false;
+const useSampleData = true;
 const isEmulator = process.env.FUNCTIONS_EMULATOR === 'true';
-const pureTrackApiUrl = useSampleData && isEmulator ? "http://127.0.0.1:5000/pureTrackData.json" : "https://puretrack.io/api/traffic";
+const pureTrackApiUrl = useSampleData && isEmulator ? "http://127.0.0.1:5000/data/pureTrackData.json" : "https://puretrack.io/api/traffic";
 
 // Initialize Firebase Admin SDK
 const db = getFirestore();
@@ -118,16 +118,31 @@ function parseCoords(coords) {
 async function writeToFirestore(flyingData) {
   try {
     const batch = db.batch();
-    const timestamp = FieldValue.serverTimestamp();
-    
-    // Delete existing data first
-    const flyingTracksSnapshot = await db.collection('flying-tracks').get();
-    flyingTracksSnapshot.docs.forEach(doc => {
-      batch.delete(doc.ref);
-    });
+    const timestamp = Date.now();
+
+    // Fetch existing flying-tracks-timestamps data if it exists
+    let existingTimestamps = {};
+    let flyingTracksTimeStamps = {}
+    try {
+      const timestampsDoc = await db.collection('flying-tracks-timestamps').doc('latest').get();
+      if (timestampsDoc.exists) {
+        existingTimestamps = timestampsDoc.data() || {};
+        console.log('Found existing timestamps data');
+      } else {
+        console.log('No existing timestamps data found');
+      }
+    } catch (error) {
+      console.error('Error fetching existing timestamps:', error);
+      existingTimestamps = {};
+    }
+
+    flyingTracksTimeStamps.currentTimestamp = timestamp;
+    flyingTracksTimeStamps.previousTimestamp = existingTimestamps.currentTimestamp || null;
+    flyingTracksTimeStamps.oldTimestamp = existingTimestamps.previousTimestamp || null;
+
     
     // Write individual flying coordinates
-    flyingData.forEach((coord, index) => {
+    flyingData.forEach((coord) => {
       const docRef = db.collection('flying-tracks').doc();
       batch.set(docRef, {
       ...coord,
@@ -137,6 +152,28 @@ async function writeToFirestore(flyingData) {
     });
     
     await batch.commit();
+
+    // Write the timestamps document in a separate batch
+    const timestampsBatch = db.batch();
+    const timestampsRef = db.collection('flying-tracks-timestamps').doc('latest');
+    timestampsBatch.set(timestampsRef, flyingTracksTimeStamps);
+    await timestampsBatch.commit();
+
+    // Delete documents with old timestamp (keeping 2 versions: current and previous)
+    if (existingTimestamps.previousTimestamp) {
+      const oldDocsQuery = db.collection('flying-tracks').where('createdAt', '==', existingTimestamps.previousTimestamp);
+      const oldDocsSnapshot = await oldDocsQuery.get();
+      
+      if (!oldDocsSnapshot.empty) {
+        const deleteBatch = db.batch();
+        oldDocsSnapshot.docs.forEach((doc) => {
+          deleteBatch.delete(doc.ref);
+        });
+        await deleteBatch.commit();
+        console.log(`Deleted ${oldDocsSnapshot.size} old documents from timestamp: ${existingTimestamps.previousTimestamp}`);
+      }
+    }
+    
     console.log(`Successfully wrote ${flyingData.length} flying coordinates and pilot status to Firestore`);
   } catch (error) {
     console.error('Error writing to Firestore:', error);

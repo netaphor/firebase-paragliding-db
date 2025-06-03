@@ -36,7 +36,16 @@ function groupTracksByLabel(flyingTracks) {
 
 app.get('/pureTrack', async (req, res) => {
     try {
-        const flyingTracksSnapshot = await db.collection('flying-tracks').get();
+        const timestampDoc = await db.collection('flying-tracks-timestamps').doc('latest').get();
+        const currentTimestamp = timestampDoc.data().currentTimestamp;
+        
+        if (!currentTimestamp) {
+            return res.status(404).json({ error: 'Current timestamp not found' });
+        }
+        
+        const flyingTracksSnapshot = await db.collection('flying-tracks')
+            .where('createdAt', '==', currentTimestamp)
+            .get();
         
         let flyingTracks = [];
         flyingTracksSnapshot.forEach(doc => {
@@ -52,8 +61,5 @@ app.get('/pureTrack', async (req, res) => {
         res.status(500).json({ error: 'Failed to fetch combined data' });
     }
 });
-
-
-
 
 exports.flyingPilotsApi = onRequest({ region: 'europe-west1', maxInstances: 5 }, app);
