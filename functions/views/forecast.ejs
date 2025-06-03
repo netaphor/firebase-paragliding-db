@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
     <link rel="icon" type="image/png" href="/favicon.ico">
-    <link type="text/css" href="/style.css" rel="stylesheet" />
+    <link type="text/css" href="/css/style.css" rel="stylesheet" />
     <link rel="manifest" href="/site.webmanifest">
-    <script src="/dashboard.js"></script>
+    <script src="/script/dashboard.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Paragliding Dashboards</title>
@@ -47,11 +47,18 @@
             <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mb-3 <%= dayData[0].fullDay %>">
                 <div class="forecastCard">
                     <div class="forecastCardHeader">
-                        <%= dayData[0].fullDay %>
+                        <%= dayData[0].fullDay %> 
+                        <%= new Date(dayData[0].time).toLocaleDateString('en-GB', { day: 'numeric', month: 'long' }).replace(/(\d+)/, (match) => {
+                            const day = parseInt(match);
+                            const suffix = day % 10 === 1 && day !== 11 ? 'st' : 
+                                           day % 10 === 2 && day !== 12 ? 'nd' : 
+                                           day % 10 === 3 && day !== 13 ? 'rd' : 'th';
+                            return day + suffix;
+                        }) %>
                     </div>
                     <% if (index === 0) { %>
                         <div id="flyingNow" class="flying-card">
-                            <div class="flyingNowHeader"><strong>Happening Now</strong> <small>(<a href="#" onclick="displayFlyingPilots()">refresh</a>)</small></div>
+                            <div class="flyingNowHeader"><strong>Currently flying</strong> <small>(<a href="#" onclick="displayFlyingPilots()">refresh</a>)</small></div>
                             <div id="pilotsFlying">
                                 <div class="spinner-border text-secondary" role="status">
                                     <span class="visually-hidden">Loading...</span>
@@ -80,7 +87,7 @@
                                                 <span class="windSpeedMph"><%= forecast.windSpeedMph %>mph <small>(<%= forecast.windGustMph %>mph)</small></span>
                                                 <span class="hidden windSpeedKph"><%= forecast.windSpeedKph %>kph <small>(<%= forecast.windGustKph %>kph)</small></span>
                                                 <span class="hidden windSpeedMs"><%= forecast.windSpeed10m %>ms <small>(<%= forecast.windGustSpeed10m %>ms)</small></span>
-                                                &nbsp;&nbsp;&nbsp;<img src="<%= forecast.weatherClassification.img %>" alt="Weather Icon" style="width: 30px; height: 30px;" />&nbsp;&nbsp;&nbsp;
+                                                &nbsp;&nbsp;&nbsp;<img src="/img<%= forecast.weatherClassification.img %>" alt="Weather Icon" style="width: 30px; height: 30px;" />&nbsp;&nbsp;&nbsp;
                                                 <span class="temperature"><%= forecast.temperature %>°C</span>
                                             </div>
                                             
