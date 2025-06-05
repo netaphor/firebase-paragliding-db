@@ -51,6 +51,7 @@ app.get('/pureTrack', async (req, res) => {
             .get();
         
         if (flyingTracksSnapshot.empty) {
+            console.log('No flying tracks found for current timestamp, checking previous timestamps...');
             const previousTimestamp = timestampDoc.data().previousTimestamp;
             if (previousTimestamp) {
             flyingTracksSnapshot = await db.collection('flying-tracks')
@@ -60,6 +61,7 @@ app.get('/pureTrack', async (req, res) => {
         }
         
         if (flyingTracksSnapshot.empty) {
+            console.log('No flying tracks found for previous timestamp, checking old timestamps...');
             const oldTimestamp = timestampDoc.data().oldTimestamp;
             if (oldTimestamp) {
             flyingTracksSnapshot = await db.collection('flying-tracks')

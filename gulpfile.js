@@ -8,6 +8,7 @@ const rev = require('gulp-rev-fork');
 const fs = require('fs/promises'); // For manual file writing
 const path = require('path');
 const through = require('through2'); // For intercepting the manifest file object
+const concat = require('gulp-concat');
 require('dotenv').config();
 
 // --- Configuration ---
@@ -35,8 +36,10 @@ const paths = {
 // --- Gulp Tasks ---
 
 // CSS Task: Processes and outputs CSS files
+// CSS Task: Combine, process, and output a single CSS file
 function styles() {
     let stream = src(paths.styles.src)
+        .pipe(concat('style.css'))
         .pipe(postcss([
             autoprefixer(),
             cssnano() // Minify CSS
@@ -49,9 +52,10 @@ function styles() {
     return stream.pipe(dest(paths.styles.dest));
 }
 
-// JavaScript Task: Processes and outputs JS files
+// JavaScript Task: Combine, process, and output a single JS file
 function scripts() {
     let stream = src(paths.scripts.src)
+        .pipe(concat('dashboard.js'))
         .pipe(uglify()); // Minify JS
 
     if (!isProduction) {

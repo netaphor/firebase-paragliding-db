@@ -7,7 +7,7 @@ const pureTrackBearerToken = process.env.PURETRACK_BEARER_TOKEN;
 let samplePureTrackData = require('./data/pureTrackData.json'); // Import sample data for testing
 const {initializeApp} = require('firebase-admin/app');
 const {getFirestore, FieldValue} = require('firebase-admin/firestore');
-const useSampleData = true;
+const useSampleData = false;
 const isEmulator = process.env.FUNCTIONS_EMULATOR === 'true';
 const pureTrackApiUrl = useSampleData && isEmulator ? "http://127.0.0.1:5000/data/pureTrackData.json" : "https://puretrack.io/api/traffic";
 
