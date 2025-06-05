@@ -1,11 +1,27 @@
 const {onRequest} = require("firebase-functions/v2/https");
 const logger = require("firebase-functions/logger");
-//const functions = require('firebase-functions');
 const express = require('express');
 const path = require('path');
 const app = express();
 const admin = require('firebase-admin');
 const db = admin.firestore();
+const fs = require('fs');
+let revManifest = {
+    "css/style.css": "css/style.min.css",
+    "script/dashboard.js": "script/dashboard.min.js"
+};
+try {
+    const manifestPath = path.join(__dirname, 'rev-manifest.json');
+    if (fs.existsSync(manifestPath)) {
+        revManifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
+        console.log('rev-manifest.json loaded', revManifest);
+    } else {
+        console.warn('rev-manifest.json not found');
+    }
+} catch (err) {
+    console.error('Error loading rev-manifest.json:', err);
+}
+let updatedForecastData = null;
 
 async function retrieveForecastDataFromFirestore() {
     try {
@@ -45,7 +61,8 @@ app.get('/', async (req, res) => {
         
         res.render('forecast', { 
             title: 'Weather Forecast',
-            forecastData: forecastData
+            forecastData: forecastData,
+            revManifest: revManifest
         });
     } catch (error) {
         logger.error('Error fetching forecast data:', error);

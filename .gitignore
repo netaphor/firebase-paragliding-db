@@ -9,3 +9,4 @@ functions/data/.DS_Store
 .DS_Store
 pubsub-debug.log
 functions/.DS_Store
+node_modules/
