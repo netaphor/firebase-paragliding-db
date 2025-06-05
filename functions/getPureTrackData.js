@@ -2,10 +2,13 @@ const {onRequest} = require("firebase-functions/v2/https");
 const admin = require('firebase-admin');
 const express = require('express');
 const cors = require('cors');
+const compression = require('compression');
+
 
 const db = admin.firestore();
 
 const app = express();
+app.use(compression());
 app.use(cors({ origin: true }));
 
 function groupTracksByLabel(flyingTracks) {

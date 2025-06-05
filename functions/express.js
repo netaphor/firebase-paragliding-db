@@ -6,6 +6,18 @@ const app = express();
 const admin = require('firebase-admin');
 const db = admin.firestore();
 const fs = require('fs');
+const compression = require('compression');
+
+
+/**
+ * An object mapping original asset file paths to their revisioned (minified or hashed) counterparts.
+ * Used for cache busting and serving the correct versioned files in production.
+ *
+ * @type {Object.<string, string>}
+ * @example
+ * // Returns "css/style.min.css"
+ * const minifiedCss = revManifest["css/style.css"];
+ */
 let revManifest = {
     "css/style.css": "css/style.min.css",
     "script/dashboard.js": "script/dashboard.min.js"
@@ -48,6 +60,8 @@ async function retrieveForecastDataFromFirestore() {
     }
 }
 
+
+app.use(compression());
 // Set EJS as the view engine
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
