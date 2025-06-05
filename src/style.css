@@ -6,6 +6,11 @@ body {
     background-color: #e4eaf2 !important;
 }
 
+.footer {
+    margin: 0 10px 10px 10px;
+    border-radius: 10px;
+}
+
 .arrow-container {
     display: inline-block;
     /* height: 20px;
