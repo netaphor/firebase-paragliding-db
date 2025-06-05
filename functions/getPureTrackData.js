@@ -46,9 +46,27 @@ app.get('/pureTrack', async (req, res) => {
             return res.status(404).json({ error: 'Current timestamp not found' });
         }
         
-        const flyingTracksSnapshot = await db.collection('flying-tracks')
+        let flyingTracksSnapshot = await db.collection('flying-tracks')
             .where('createdAt', '==', currentTimestamp)
             .get();
+        
+        if (flyingTracksSnapshot.empty) {
+            const previousTimestamp = timestampDoc.data().previousTimestamp;
+            if (previousTimestamp) {
+            flyingTracksSnapshot = await db.collection('flying-tracks')
+                .where('createdAt', '==', previousTimestamp)
+                .get();
+            }
+        }
+        
+        if (flyingTracksSnapshot.empty) {
+            const oldTimestamp = timestampDoc.data().oldTimestamp;
+            if (oldTimestamp) {
+            flyingTracksSnapshot = await db.collection('flying-tracks')
+                .where('createdAt', '==', oldTimestamp)
+                .get();
+            }
+        }
         
         let flyingTracks = [];
         flyingTracksSnapshot.forEach(doc => {
