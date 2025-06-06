@@ -179,7 +179,7 @@ class SilktideCookieBanner {
     this.hideBackdrop();
     this.toggleModal(false);
     this.showCookieIcon();
-
+    console.log('Silktide Cookie Banner: User has made an initial cookie choice', this.config);
     this.config.cookieTypes.forEach((type) => {
       // Set localStorage and run accept/reject callbacks
       if (type.required == true) {
@@ -412,11 +412,7 @@ class SilktideCookieBanner {
     // Credit link
     const creditLinkText = this.config.text?.preferences?.creditLinkText || 'Get this banner for free';
     const creditLinkAccessibleLabel = this.config.text?.preferences?.creditLinkAccessibleLabel;
-    const creditLink = `<a href="https://silktide.com/consent-manager"${
-      creditLinkAccessibleLabel && creditLinkAccessibleLabel !== creditLinkText
-        ? ` aria-label="${creditLinkAccessibleLabel}"`
-        : ''
-    }>${creditLinkText}</a>`;
+    const creditLink = '';
     
     
 
