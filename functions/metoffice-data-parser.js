@@ -340,14 +340,17 @@ async function updateForecast() {
     }
 }
 
-exports.dataManager = onSchedule({schedule: 'every 15 minutes', region: 'europe-west1'}, async (event) => {
-    console.log("Scheduled function triggered");
-    try {
-        await updateForecast();
-        console.log("Forecast data updated successfully");
-    } catch (error) {
-        console.error("Error updating forecast data:", error);
+exports.dataManager = onSchedule(
+    { schedule: '*/15 6-21 * * *', region: 'europe-west1' }, // Every 15 minutes between 06:00 and 21:59
+    async (event) => {
+        console.log("Scheduled function triggered");
+        try {
+            await updateForecast();
+            console.log("Forecast data updated successfully");
+        } catch (error) {
+            console.error("Error updating forecast data:", error);
+        }
     }
-});
+);
 
 console.log("Scheduled function set to run every 15 minutes");
