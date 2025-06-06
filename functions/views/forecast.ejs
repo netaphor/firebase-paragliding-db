@@ -122,7 +122,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                                 <span class="hidden windSpeedKph"><%= forecast.windSpeedKph %>kph <small>(<%= forecast.windGustKph %>kph)</small></span>
                                                 <span class="hidden windSpeedMs"><%= forecast.windSpeed10m %>ms <small>(<%= forecast.windGustSpeed10m %>ms)</small></span>
                                                 &nbsp;&nbsp;&nbsp;<img src="/img<%= forecast.weatherClassification.img %>" alt="Weather Icon" style="width: 30px; height: 30px;" />&nbsp;&nbsp;&nbsp;
-                                                <span class="temperature"><%= forecast.temperature %>°C</span>
+                                                <span class="temperature"><%= Math.round(forecast.temperature) %>°C</span>
                                             </div>
                                             
                                             <% if (forecast.correlatedSiteTurnPoints && forecast.correlatedSiteTurnPoints.length > 0) { %>
