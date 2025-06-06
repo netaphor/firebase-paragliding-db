@@ -126,15 +126,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                             </div>
                                             
                                             <% if (forecast.correlatedSiteTurnPoints && forecast.correlatedSiteTurnPoints.length > 0) { %>
-                                                <div class="graphLoaders">
-                                                    <!-- <a href="" onclick="showBlipSpot(<%= JSON.stringify(forecast.correlatedSiteTurnPoints) %>, '<%= forecast.fullDay %>'); return false;">
-                                                        RASP Blipspot
-                                                    </a> -->
-                                                    RASP: 
-                                                        <% forecast.correlatedSiteTurnPoints.forEach(function(site) { %>
-                                                            <a href="" onclick="showBlipSpot(<%= JSON.stringify(site) %>, '<%= forecast.fullDay %>'); return false;"><%= site.label %></a>&nbsp; 
-                                                        <% }); %> 
-                                                </div>
+                                                    <% forecast.correlatedSiteTurnPoints.forEach(function(site) { %>
+                                                        <div class="graphLoaders">
+                                                            <%= site.label %>: 
+                                                            <a href="#" onclick="showBlipSpot(<%= JSON.stringify(site) %>, '<%= forecast.fullDay %>'); return false;">Blipspot</a>&nbsp;
+                                                            <% if (site.skewtUrl) { %>
+                                                                <a href="#" onclick="showImageModal(<%= JSON.stringify(site.skewtUrl) %>); return false;">SkewT</a>&nbsp;
+                                                            <% } %>
+                                                        </div>
+                                                    <% }); %>
                                             <% } %>
 
                                 </div>
@@ -168,7 +168,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="container text-center">
             <small>
                 <span class="text-muted">© <%= new Date().getFullYear() %> Can I Fly. All rights reserved. </span>
-                | <a href="/privacy-policy.html" class="text-muted">Privacy Policy</a>
+                | <a href="/privacy-policy.html" class="text-muted">Privacy Policy</a>  
+                | <a href="mailto:support@canifly.co.uk?subject=Can%20I%20Fly%20Feedback" class="text-muted">Contact</a>
             </small>
         </div>
     </footer>

@@ -180,6 +180,54 @@ function windSpeedToScale(windSpeed) {
     return Math.ceil((windSpeed / 30) * 30);
 }
 
+//https://app19.mrsap.org/skewt/pull.php?region=UK4+2&lat=50.81163333333333&lon=0.16223333333333334&grid=d2&time=1330&plot=skewt&location=AFB
+/**
+ * Adds Skew-T plot URLs to an array of site objects.
+ * @param {Object[]} sites - Array of objects with lat, long, and turnPoint properties.
+ * @param {string|Date} date - Date string or Date object for the Skew-T plot.
+ * @returns {Object[]} - The updated array with a skewtUrl property added to each object.
+ */
+function addSkewtUrlsToSites(sites, date) {
+    if (!Array.isArray(sites) || sites.length === 0) return sites;
+
+    // Helper to generate Skew-T URL for a single site
+    function generateSkewtUrl({ lat, long, turnPoint }) {
+        const now = new Date();
+        const inputDate = new Date(date);
+        const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+        const maxDaysAhead = 6;
+
+        // Calculate days difference
+        const diffDays = Math.floor((inputDate - today) / (1000 * 60 * 60 * 24));
+        if (diffDays < 0 || diffDays > maxDaysAhead) return "";
+
+        // Extract time in HHMM from date string or Date object
+        let hhmm = "1200";
+        if (typeof date === "string") {
+            const match = date.match(/T(\d{2}):(\d{2})/);
+            if (match) {
+                hhmm = match[1] + match[2];
+            }
+        } else if (inputDate instanceof Date) {
+            const h = inputDate.getUTCHours().toString().padStart(2, "0");
+            const m = inputDate.getUTCMinutes().toString().padStart(2, "0");
+            hhmm = h + m;
+        }
+
+        // Only allow between 07:00 and 18:00
+        const hour = parseInt(hhmm.slice(0, 2), 10);
+        if (hour < 7 || hour > 18) return "";
+
+        const region = diffDays === 0 ? "UK4" : `UK4+${diffDays}`;
+        return `https://app19.mrsap.org/skewt/pull.php?region=${encodeURIComponent(region)}&lat=${lat}&lon=${long}&grid=d2&time=${hhmm}&plot=skewt&location=${encodeURIComponent(turnPoint)}`;
+    }
+
+    // Map over the array and add skewtUrl to each object
+    return sites.map(site => ({
+        ...site,
+        skewtUrl: generateSkewtUrl(site)
+    }));
+}
 
 // Function to update the Met office data with additional properties
 // such as wind direction, cloud base, and wind speed in mph
@@ -198,6 +246,7 @@ function updateTimeSeries(timeSeries) {
         const siteData = getLocationsByDirection(entry.windDirectionCompass);
         entry.sites = siteData.sites;
         entry.correlatedSiteTurnPoints = siteData.correlatedSiteTurnPoints;
+        entry.correlatedSiteTurnPoints = addSkewtUrlsToSites(siteData.correlatedSiteTurnPoints, entry.time);
         entry.turnPoints = siteData.turnPoints;
         entry.fullDay = getDayOfWeek(entry.time);
         entry.windCategorisation = windSpeedToScale(entry.windSpeedMph);
@@ -209,6 +258,7 @@ function updateTimeSeries(timeSeries) {
         });
         entry.temperature = entry.maxScreenAirTemp || entry.screenTemperature; // Use max temperature if available, otherwise use screen temperature
         entry.flyingConditions = getFlyingConditions(entry.windSpeedMph, entry.windGustMph, entry.weatherClassification.class);
+        console.log(entry);
         //console.log("weather", entry.weatherClassification);
         return entry;
     });
