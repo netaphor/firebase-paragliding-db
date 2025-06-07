@@ -1,15 +1,11 @@
-
-function showBlipSpot(siteData, day) {
-    event.preventDefault();
-    const imageSource = `https://app.stratus.org.uk/blip/graph/blip_main.php?day=${day}&tp=${siteData.turnPoint}`;
-    showImageModal(imageSource);
-    console.log(siteData);
-}
-
-function showImageModal(imageSource) {
+function showImageModal(imageSource, title) {
     const carouselImages = document.getElementById('carouselImages');
     carouselImages.innerHTML = ''; // Clear previous images
     carouselImages.innerHTML = `<img src="${imageSource}" class="d-block w-100" alt="Image">`;
+    const imageModalLabel = document.getElementById('imageModalLabel');
+    if (imageModalLabel) {
+        imageModalLabel.textContent = title;
+    }
     const imageModal = new bootstrap.Modal(document.getElementById('imageModal'));
     imageModal.show();
 }

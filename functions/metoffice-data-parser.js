@@ -189,7 +189,6 @@ function windSpeedToScale(windSpeed) {
  */
 function addSkewtUrlsToSites(sites, date) {
     if (!Array.isArray(sites) || sites.length === 0) return sites;
-
     // Helper to generate Skew-T URL for a single site
     function generateSkewtUrl({ lat, long, turnPoint }) {
         const now = new Date();
@@ -218,9 +217,18 @@ function addSkewtUrlsToSites(sites, date) {
         const hour = parseInt(hhmm.slice(0, 2), 10);
         if (hour < 7 || hour > 18) return "";
 
-        const region = diffDays === 0 ? "UK4" : `UK4+${diffDays}`;
-        return `https://app19.mrsap.org/skewt/pull.php?region=${encodeURIComponent(region)}&lat=${lat}&lon=${long}&grid=d2&time=${hhmm}&plot=skewt&location=${encodeURIComponent(turnPoint)}`;
+        let region;
+        if (diffDays === 0) {
+            region = "UK4";
+        } else if (diffDays <= 2) {
+            region = `UK4+${diffDays}`;
+        } else {
+            region = `UK12+${diffDays}`;
+        }
+        const url = `https://app19.mrsap.org/skewt/pull.php?region=${encodeURIComponent(region)}&lat=${lat}&lon=${long}&grid=d2&time=${hhmm}&plot=skewt&location=${encodeURIComponent(turnPoint)}`;
+        return url;
     }
+
 
     // Map over the array and add skewtUrl to each object
     return sites.map(site => ({
@@ -229,9 +237,57 @@ function addSkewtUrlsToSites(sites, date) {
     }));
 }
 
-// Function to update the Met office data with additional properties
-// such as wind direction, cloud base, and wind speed in mph
-// This function will be called after fetching the data
+/**
+ * Adds BLIPSPOT URLs to an array of site objects.
+ * @param {Object[]} sites - Array of objects with a turnPoint property.
+ * @param {string|Date} date - Date string or Date object for the BLIPSPOT plot.
+ * @returns {Object[]} - The updated array with a blipspotUrl property added to each object.
+ */
+function addBlipspotUrlsToSites(sites, date) {
+    if (!Array.isArray(sites) || sites.length === 0) return sites;
+
+    // Get day of week as plain text (e.g., "Saturday")
+    const inputDate = new Date(date);
+    const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    const dayOfWeek = days[inputDate.getDay()];
+
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const maxDaysAhead = 7;
+    const diffDays = Math.floor((inputDate - today) / (1000 * 60 * 60 * 24));
+    if (diffDays < 0 || diffDays > maxDaysAhead) {
+        // Don't generate URLs more than 7 days ahead or in the past
+        return sites.map(site => ({ ...site, blipspotUrl: "" }));
+    }
+
+    return sites.map(site => ({
+        ...site,
+        blipspotUrl: site.turnPoint
+            ? `https://app.stratus.org.uk/blip/graph/blip_main.php?day=${encodeURIComponent(dayOfWeek)}&tp=${encodeURIComponent(site.turnPoint)}`
+            : ""
+    }));
+}
+
+/**
+ * Updates and enriches a time series array of weather data entries with additional computed fields and classifications.
+ *
+ * The function performs the following steps for each entry:
+ * - Filters out entries at midnight, 3am, or 9pm.
+ * - Adds wind direction in compass notation.
+ * - Calculates cloud base altitude (in feet) and temperature at cloud base if temperature data is available.
+ * - Converts wind speed and gusts from m/s to mph and kph.
+ * - Associates site and turn point data based on wind direction.
+ * - Adds Skew-T and Blipspot URLs to correlated site turn points.
+ * - Determines the day of the week for each entry.
+ * - Categorizes wind and gust speeds.
+ * - Classifies weather conditions based on precipitation, weather code, and UV index.
+ * - Sets the temperature field to the maximum screen air temperature if available, otherwise uses the screen temperature.
+ * - Determines flying conditions based on wind and weather classification.
+ * - Groups the time series by day and removes duplicate entries by time.
+ *
+ * @param {Array<Object>} timeSeries - Array of weather data entries to be updated and enriched.
+ * @returns {Array<Object>} The processed and enriched time series array.
+ */
 function updateTimeSeries(timeSeries) {
     // Filter out entries with time at midnight, 3am, or 9pm
     timeSeries = filterOutSpecificTimes(timeSeries);
@@ -246,7 +302,8 @@ function updateTimeSeries(timeSeries) {
         const siteData = getLocationsByDirection(entry.windDirectionCompass);
         entry.sites = siteData.sites;
         entry.correlatedSiteTurnPoints = siteData.correlatedSiteTurnPoints;
-        entry.correlatedSiteTurnPoints = addSkewtUrlsToSites(siteData.correlatedSiteTurnPoints, entry.time);
+        entry.correlatedSiteTurnPoints = addSkewtUrlsToSites(entry.correlatedSiteTurnPoints, entry.time);
+        entry.correlatedSiteTurnPoints = addBlipspotUrlsToSites(entry.correlatedSiteTurnPoints, entry.time);
         entry.turnPoints = siteData.turnPoints;
         entry.fullDay = getDayOfWeek(entry.time);
         entry.windCategorisation = windSpeedToScale(entry.windSpeedMph);
@@ -258,8 +315,7 @@ function updateTimeSeries(timeSeries) {
         });
         entry.temperature = entry.maxScreenAirTemp || entry.screenTemperature; // Use max temperature if available, otherwise use screen temperature
         entry.flyingConditions = getFlyingConditions(entry.windSpeedMph, entry.windGustMph, entry.weatherClassification.class);
-        console.log(entry);
-        //console.log("weather", entry.weatherClassification);
+        //console.log("weather", entry.correlatedSiteTurnPoints);
         return entry;
     });
     timeSeries = groupTimeSeriesByDay(timeSeries);

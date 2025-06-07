@@ -127,13 +127,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                             
                                             <% if (forecast.correlatedSiteTurnPoints && forecast.correlatedSiteTurnPoints.length > 0) { %>
                                                     <% forecast.correlatedSiteTurnPoints.forEach(function(site) { %>
+                                                        <% if (site.blipspotUrl || site.skewtUrl) { %>
                                                         <div class="graphLoaders">
                                                             <%= site.label %>: 
-                                                            <a href="#" onclick="showBlipSpot(<%= JSON.stringify(site) %>, '<%= forecast.fullDay %>'); return false;">Blipspot</a>&nbsp;
-                                                            <% if (site.skewtUrl) { %>
-                                                                <a href="#" onclick="showImageModal(<%= JSON.stringify(site.skewtUrl) %>); return false;">SkewT</a>&nbsp;
-                                                            <% } %>
-                                                        </div>
+                                                                <% if (site.blipspotUrl) { %>
+                                                                    <a href="#" onclick="showImageModal(<%= JSON.stringify(site.blipspotUrl) %>, 'Blipspot - <%= site.label %> - <%= dayData[0].fullDay %>'); return false;">Blipspot</a>&nbsp;
+                                                                <% } %>
+                                                                <% if (site.skewtUrl) { %>
+                                                                    <a href="#" onclick="showImageModal(<%= JSON.stringify(site.skewtUrl) %>, 'SkewT - <%= site.label %> - <%= dayData[0].fullDay %>'); return false;">SkewT</a>&nbsp;
+                                                                <% } %>
+                                                            </div>
+                                                        <% } %>
                                                     <% }); %>
                                             <% } %>
 
@@ -152,7 +156,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="modal-dialog modal-dialog-centered modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="imageModalLabel">RASP by Turn Point</h5>
+                    <h5 class="modal-title" id="imageModalLabel"></h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
