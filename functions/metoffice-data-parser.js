@@ -363,7 +363,6 @@ function getDayOfWeek(timestamp) {
  * Each outer array is a day, each inner array is an array of { time, entries } objects.
  */
 async function writeForecastDataToFirestore(data) {
-    console.log("Writing forecast data to Firestore...", data);
     try {
         if (!Array.isArray(data)) {
             console.error("Error: forecast data is null or not an array.");
@@ -408,7 +407,7 @@ function groupAllSitesByTime(allTimeSeriesBySite) {
 
     // Convert to array of { time, entries }
     return Array.from(timeMap.entries())
-        .map(([time, entries]) => ({ time, entries }))
+        .map(([time, forecastCollection]) => ({ time, forecastCollection }))
         .sort((a, b) => new Date(a.time) - new Date(b.time));
 }
 
@@ -447,6 +446,7 @@ async function updateForecast() {
         // Flatten all time series into a single array grouped by time
         let allTimeSeries = groupAllSitesByTime(allTimeSeriesBySite);
         allTimeSeries = groupTimeSeriesByDay(allTimeSeries);
+        allTimeSeries = removeEmptyCorrelatedSiteTurnPointsDuplicates(allTimeSeries);
         //console.log("Forecast data processed and updated.", allTimeSeriesBySite);
         const outputPath = path.join(__dirname, 'allTimeSeriesByDay.json');
         fs.writeFileSync(outputPath, JSON.stringify(allTimeSeries, null, 2), 'utf8');
@@ -457,6 +457,36 @@ async function updateForecast() {
     } catch (error) {
         console.error("Error fetching or processing data:", error);
     }
+}
+
+/**
+ * Removes duplicate entries in allTimeSeries where correlatedSiteTurnPoints is empty,
+ * keeping only one such entry per time group.
+ * @param {Array} allTimeSeries - Array of { time, entries } objects.
+ * @returns {Array} - Cleaned array with at most one entry with empty correlatedSiteTurnPoints per time group.
+ */
+function removeEmptyCorrelatedSiteTurnPointsDuplicates(allTimeSeries) {
+    return allTimeSeries.map(day => {
+        return day.map(timeSlot => {
+            if (!Array.isArray(timeSlot.forecastCollection)) return timeSlot;
+            const hasNonEmpty = timeSlot.forecastCollection.some(
+                entry => Array.isArray(entry.correlatedSiteTurnPoints) && entry.correlatedSiteTurnPoints.length > 0
+            );
+            let filteredEntries;
+            if (hasNonEmpty) {
+                // Only keep entries with non-empty correlatedSiteTurnPoints
+                filteredEntries = timeSlot.forecastCollection.filter(
+                    entry => Array.isArray(entry.correlatedSiteTurnPoints) && entry.correlatedSiteTurnPoints.length > 0
+                );
+            } else {
+                // Keep all (or just the first) empty entry if there are no non-empty ones
+                filteredEntries = timeSlot.forecastCollection.length > 0
+                    ? [timeSlot.forecastCollection[0]]
+                    : [];
+            }
+            return { ...timeSlot, forecastCollection: filteredEntries };
+        });
+    });
 }
 
 exports.dataManager = onSchedule(

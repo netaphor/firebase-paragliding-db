@@ -100,51 +100,52 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             </div>
                         </div>
                     <% } %>
-                    <div>
-                        <% dayData.forEach(function(forecast) { %>
+                    
+                    <% dayData.forEach(function(day) { %>
+                        <% day.forecastCollection.forEach(function(forecast) { %>
                             <% if (forecast && forecast.windDirectionCompass) { %>
                                 <div class="flying-card ">
-                                            <div class="timeHeader"> 
-                                                <small><%= ('0' + new Date(forecast.time).getUTCHours()).slice(-2) %>:00 - </small>
-                                                
-                                                    <% if (forecast && forecast.sites) { %>
-                                                        <strong><%= forecast.sites.join(', ') %></strong>
-                                                    <% } %>
-                                                
-                                                <% if (forecast.sites.join(', ') !== 'No flyable sites') { %>
-                                                    <div class="circle <%= forecast.flyingConditions %>"></div>
-                                                <% } %>
-                                            </div>
-                                            
-                                            <div class="windStrength ">
-                                                <strong><%= forecast.windDirectionCompass.toUpperCase() %></strong>
-                                                <span class="windSpeedMph"><%= forecast.windSpeedMph %>mph <small>(<%= forecast.windGustMph %>mph)</small></span>
-                                                <span class="hidden windSpeedKph"><%= forecast.windSpeedKph %>kph <small>(<%= forecast.windGustKph %>kph)</small></span>
-                                                <span class="hidden windSpeedMs"><%= forecast.windSpeed10m %>ms <small>(<%= forecast.windGustSpeed10m %>ms)</small></span>
-                                                &nbsp;&nbsp;&nbsp;<img src="/img<%= forecast.weatherClassification.img %>" alt="Weather Icon" style="width: 30px; height: 30px;" />&nbsp;&nbsp;&nbsp;
-                                                <span class="temperature"><%= Math.round(forecast.temperature) %>°C</span>
-                                            </div>
-                                            
-                                            <% if (forecast.correlatedSiteTurnPoints && forecast.correlatedSiteTurnPoints.length > 0) { %>
-                                                    <% forecast.correlatedSiteTurnPoints.forEach(function(site) { %>
-                                                        <% if (site.blipspotUrl || site.skewtUrl) { %>
-                                                        <div class="graphLoaders">
-                                                            <%= site.label %>: 
-                                                                <% if (site.blipspotUrl) { %>
-                                                                    <a href="#" onclick="showImageModal(<%= JSON.stringify(site.blipspotUrl) %>, 'Blipspot - <%= site.label %> - <%= dayData[0].fullDay %>'); return false;">Blipspot</a>&nbsp;
-                                                                <% } %>
-                                                                <% if (site.skewtUrl) { %>
-                                                                    <a href="#" onclick="showImageModal(<%= JSON.stringify(site.skewtUrl) %>, 'SkewT - <%= site.label %> - <%= dayData[0].fullDay %>'); return false;">SkewT</a>&nbsp;
-                                                                <% } %>
-                                                            </div>
+                                    <div class="timeHeader"> 
+                                        <small><%= ('0' + new Date(forecast.time).getUTCHours()).slice(-2) %>:00 - </small>
+                                        
+                                        <% if (forecast && forecast.sites) { %>
+                                            <strong><%= forecast.sites.join(', ') %></strong>
+                                        <% } %>
+                                        
+                                        <% if (forecast.sites.join(', ') !== 'No flyable sites') { %>
+                                            <div class="circle <%= forecast.flyingConditions %>"></div>
+                                        <% } %>
+                                    </div>
+                                    
+                                    <div class="windStrength ">
+                                        <strong><%= forecast.windDirectionCompass.toUpperCase() %></strong>
+                                        <span class="windSpeedMph"><%= forecast.windSpeedMph %>mph <small>(<%= forecast.windGustMph %>mph)</small></span>
+                                        <span class="hidden windSpeedKph"><%= forecast.windSpeedKph %>kph <small>(<%= forecast.windGustKph %>kph)</small></span>
+                                        <span class="hidden windSpeedMs"><%= forecast.windSpeed10m %>ms <small>(<%= forecast.windGustSpeed10m %>ms)</small></span>
+                                        &nbsp;&nbsp;&nbsp;<img src="/img<%= forecast.weatherClassification.img %>" alt="Weather Icon" style="width: 30px; height: 30px;" />&nbsp;&nbsp;&nbsp;
+                                        <span class="temperature"><%= Math.round(forecast.temperature) %>°C</span>
+                                    </div>
+                                    
+                                    <% if (forecast.correlatedSiteTurnPoints && forecast.correlatedSiteTurnPoints.length > 0) { %>
+                                            <% forecast.correlatedSiteTurnPoints.forEach(function(site) { %>
+                                                <% if (site.blipspotUrl || site.skewtUrl) { %>
+                                                <div class="graphLoaders">
+                                                    <%= site.label %>: 
+                                                        <% if (site.blipspotUrl) { %>
+                                                            <a href="#" onclick="showImageModal(<%= JSON.stringify(site.blipspotUrl) %>, 'Blipspot - <%= site.label %> - <%= dayData[0].fullDay %>'); return false;">Blipspot</a>&nbsp;
                                                         <% } %>
-                                                    <% }); %>
-                                            <% } %>
-
+                                                        <% if (site.skewtUrl) { %>
+                                                            <a href="#" onclick="showImageModal(<%= JSON.stringify(site.skewtUrl) %>, 'SkewT - <%= site.label %> - <%= dayData[0].fullDay %>'); return false;">SkewT</a>&nbsp;
+                                                        <% } %>
+                                                    </div>
+                                                <% } %>
+                                            <% }); %>
+                                    <% } %>
                                 </div>
                             <% } %>
-                        <% }); %>
-                    </div>
+                        <% }); %>    
+                    <% }); %>
+                    
                 </div>
             </div>
         <% }); %>
