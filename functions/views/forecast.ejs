@@ -77,6 +77,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 Error: Forecast data is not available.
             </div>
         <% } %>
+        <!-- For each day of the week in the data -->
         <% forecastData.forEach(function(dayData, index) { %>
             <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mb-3 <%= dayData[0].fullDay %>">
                 <div class="forecastCard">
@@ -100,14 +101,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             </div>
                         </div>
                     <% } %>
-                    
-                    <% dayData.forEach(function(day) { %>
-                        <% day.forecastCollection.forEach(function(forecast) { %>
-                            <% if (forecast && forecast.windDirectionCompass) { %>
-                                <div class="flying-card ">
-                                    <div class="timeHeader"> 
-                                        <small><%= ('0' + new Date(forecast.time).getUTCHours()).slice(-2) %>:00 - </small>
-                                        
+                    <!-- For each timeSlot in a day -->
+                    <% dayData.forEach(function(timeSlot) { %>
+                        <div class="flying-card ">
+                            <% if (timeSlot.forecastCollection && timeSlot.forecastCollection.length > 1) { %>
+                                <small><%= ('0' + new Date(timeSlot.time).getUTCHours()).slice(-2) %>:00</small>
+                            <% } %>
+                            <!-- For each forecast within a timeslot -->
+                            <% timeSlot.forecastCollection.forEach(function(forecast, index) { %>
+                                <% if (forecast && forecast.windDirectionCompass) { %>
+                                    <div class="timeHeader<%= index > 0 ? ' subsequentTimeSlot' : '' %>">
+                                        <% if (timeSlot.forecastCollection.length == 1) { %>
+                                            <small><%= ('0' + new Date(forecast.time).getUTCHours()).slice(-2) %>:00</small>
+                                        <% } %> 
                                         <% if (forecast && forecast.sites) { %>
                                             <strong><%= forecast.sites.join(', ') %></strong>
                                         <% } %>
@@ -117,7 +123,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                         <% } %>
                                     </div>
                                     
-                                    <div class="windStrength ">
+                                    <div class="windStrength <%= forecast.sites.join(', ') === 'No flyable sites' ? 'hidden' : '' %>">
                                         <strong><%= forecast.windDirectionCompass.toUpperCase() %></strong>
                                         <span class="windSpeedMph"><%= forecast.windSpeedMph %>mph <small>(<%= forecast.windGustMph %>mph)</small></span>
                                         <span class="hidden windSpeedKph"><%= forecast.windSpeedKph %>kph <small>(<%= forecast.windGustKph %>kph)</small></span>
@@ -127,23 +133,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                     </div>
                                     
                                     <% if (forecast.correlatedSiteTurnPoints && forecast.correlatedSiteTurnPoints.length > 0) { %>
-                                            <% forecast.correlatedSiteTurnPoints.forEach(function(site) { %>
-                                                <% if (site.blipspotUrl || site.skewtUrl) { %>
-                                                <div class="graphLoaders">
-                                                    <%= site.label %>: 
-                                                        <% if (site.blipspotUrl) { %>
-                                                            <a href="#" onclick="showImageModal(<%= JSON.stringify(site.blipspotUrl) %>, 'Blipspot - <%= site.label %> - <%= dayData[0].fullDay %>'); return false;">Blipspot</a>&nbsp;
-                                                        <% } %>
-                                                        <% if (site.skewtUrl) { %>
-                                                            <a href="#" onclick="showImageModal(<%= JSON.stringify(site.skewtUrl) %>, 'SkewT - <%= site.label %> - <%= dayData[0].fullDay %>'); return false;">SkewT</a>&nbsp;
-                                                        <% } %>
-                                                    </div>
-                                                <% } %>
-                                            <% }); %>
+                                        <% forecast.correlatedSiteTurnPoints.forEach(function(site) { %>
+                                            <% if (site.blipspotUrl || site.skewtUrl) { %>
+                                            <div class="graphLoaders <%= forecast.flyingConditions === 'notFlyable' ? 'hidden' : '' %>">
+                                                <%= site.label %>: 
+                                                    <% if (site.blipspotUrl) { %>
+                                                        <a href="#" onclick="showImageModal(<%= JSON.stringify(site.blipspotUrl) %>, 'Blipspot - <%= site.label %> - <%= dayData[0].fullDay %>'); return false;">Blipspot</a>&nbsp;
+                                                    <% } %>
+                                                    <% if (site.skewtUrl) { %>
+                                                        <a href="#" onclick="showImageModal(<%= JSON.stringify(site.skewtUrl) %>, 'SkewT - <%= site.label %> - <%= dayData[0].fullDay %>'); return false;">SkewT</a>&nbsp;
+                                                    <% } %>
+                                                </div>
+                                            <% } %>
+                                        <% }); %>
                                     <% } %>
-                                </div>
-                            <% } %>
-                        <% }); %>    
+                                <% } %>
+                            <% }); %>  
+                        </div>
                     <% }); %>
                     
                 </div>

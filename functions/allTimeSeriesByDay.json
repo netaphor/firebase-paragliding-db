@@ -1,282 +1,36 @@
 [
   [
     {
-      "time": "2025-06-08T09:00Z",
+      "time": "2025-06-08T13:00Z",
       "forecastCollection": [
         {
-          "time": "2025-06-08T09:00Z",
-          "screenTemperature": 11.05,
-          "maxScreenAirTemp": 11.06,
-          "minScreenAirTemp": 10.95,
-          "screenDewPointTemperature": 6.62,
-          "feelsLikeTemperature": 8.17,
-          "windSpeed10m": 6.68,
-          "windDirectionFrom10m": 292,
-          "windGustSpeed10m": 9.28,
-          "max10mWindGust": 10.87,
-          "visibility": 36849,
-          "screenRelativeHumidity": 73.14,
-          "mslp": 101782,
-          "uvIndex": 5,
-          "significantWeatherCode": 1,
-          "precipitationRate": 0,
-          "totalPrecipAmount": 0,
-          "totalSnowAmount": 0,
-          "probOfPrecipitation": 0,
-          "siteLabel": "DDKDitchling",
-          "windDirectionCompass": "WNW",
-          "cloudBaseInFt": 1477,
-          "cloudBaseTemp": 7,
-          "windSpeedMph": 14.9,
-          "windGustMph": 20.8,
-          "windSpeedKph": 24,
-          "windGustKph": 33.4,
-          "sites": [
-            "Devils Dyke"
-          ],
-          "correlatedSiteTurnPoints": [
-            {
-              "label": "Devils Dyke",
-              "lat": "50.885079",
-              "long": "-0.21307468",
-              "directions": [
-                "WNW",
-                "NW",
-                "NNW",
-                "N"
-              ],
-              "turnPoint": "DDK",
-              "pureTrack": {
-                "topRight": {
-                  "lat": 50.909966,
-                  "long": -0.193342
-                },
-                "bottomLeft": {
-                  "lat": 50.87655,
-                  "long": -0.271435
-                }
-              },
-              "skewtUrl": "https://app19.mrsap.org/skewt/pull.php?region=UK4&lat=50.885079&lon=-0.21307468&grid=d2&time=0900&plot=skewt&location=DDK",
-              "blipspotUrl": "https://app.stratus.org.uk/blip/graph/blip_main.php?day=Sunday&tp=DDK"
-            }
-          ],
-          "turnPoints": [
-            "DDK"
-          ],
-          "fullDay": "Sunday",
-          "windCategorisation": 15,
-          "gustCategorisation": 21,
-          "weatherClassification": {
-            "class": "clear",
-            "img": "/02_clear.svg"
-          },
-          "temperature": 11.06,
-          "flyingConditions": "notFlyable"
-        }
-      ]
-    },
-    {
-      "time": "2025-06-08T10:00Z",
-      "forecastCollection": [
-        {
-          "time": "2025-06-08T10:00Z",
-          "screenTemperature": 12.02,
-          "maxScreenAirTemp": 12.03,
-          "minScreenAirTemp": 11.05,
-          "screenDewPointTemperature": 5.42,
-          "feelsLikeTemperature": 8.67,
-          "windSpeed10m": 8.08,
-          "windDirectionFrom10m": 289,
-          "windGustSpeed10m": 10.74,
-          "max10mWindGust": 11.36,
-          "visibility": 41131,
-          "screenRelativeHumidity": 63.57,
-          "mslp": 101840,
-          "uvIndex": 5,
-          "significantWeatherCode": 1,
-          "precipitationRate": 0,
-          "totalPrecipAmount": 0,
-          "totalSnowAmount": 0,
-          "probOfPrecipitation": 1,
-          "siteLabel": "DDKDitchling",
-          "windDirectionCompass": "WNW",
-          "cloudBaseInFt": 2200,
-          "cloudBaseTemp": 5,
-          "windSpeedMph": 18.1,
-          "windGustMph": 24,
-          "windSpeedKph": 29.1,
-          "windGustKph": 38.7,
-          "sites": [
-            "Devils Dyke"
-          ],
-          "correlatedSiteTurnPoints": [
-            {
-              "label": "Devils Dyke",
-              "lat": "50.885079",
-              "long": "-0.21307468",
-              "directions": [
-                "WNW",
-                "NW",
-                "NNW",
-                "N"
-              ],
-              "turnPoint": "DDK",
-              "pureTrack": {
-                "topRight": {
-                  "lat": 50.909966,
-                  "long": -0.193342
-                },
-                "bottomLeft": {
-                  "lat": 50.87655,
-                  "long": -0.271435
-                }
-              },
-              "skewtUrl": "https://app19.mrsap.org/skewt/pull.php?region=UK4&lat=50.885079&lon=-0.21307468&grid=d2&time=1000&plot=skewt&location=DDK",
-              "blipspotUrl": "https://app.stratus.org.uk/blip/graph/blip_main.php?day=Sunday&tp=DDK"
-            }
-          ],
-          "turnPoints": [
-            "DDK"
-          ],
-          "fullDay": "Sunday",
-          "windCategorisation": 19,
-          "gustCategorisation": 24,
-          "weatherClassification": {
-            "class": "clear",
-            "img": "/02_clear.svg"
-          },
-          "temperature": 12.03,
-          "flyingConditions": "notFlyable"
-        }
-      ]
-    },
-    {
-      "time": "2025-06-08T11:00Z",
-      "forecastCollection": [
-        {
-          "time": "2025-06-08T11:00Z",
-          "screenTemperature": 13.05,
-          "maxScreenAirTemp": 13.05,
-          "minScreenAirTemp": 12.02,
-          "screenDewPointTemperature": 5.01,
-          "feelsLikeTemperature": 9.72,
-          "windSpeed10m": 7.78,
-          "windDirectionFrom10m": 278,
-          "windGustSpeed10m": 10.05,
-          "max10mWindGust": 10.17,
-          "visibility": 40571,
-          "screenRelativeHumidity": 58.05,
-          "mslp": 101900,
+          "time": "2025-06-08T13:00Z",
+          "screenTemperature": 17.01,
+          "maxScreenAirTemp": 17.06,
+          "minScreenAirTemp": 16.43,
+          "screenDewPointTemperature": 6.94,
+          "feelsLikeTemperature": 14.19,
+          "windSpeed10m": 5.6,
+          "windDirectionFrom10m": 236,
+          "windGustSpeed10m": 9.26,
+          "max10mWindGust": 11.3,
+          "visibility": 33463,
+          "screenRelativeHumidity": 51.24,
+          "mslp": 101985,
           "uvIndex": 5,
           "significantWeatherCode": 3,
           "precipitationRate": 0,
           "totalPrecipAmount": 0,
           "totalSnowAmount": 0,
           "probOfPrecipitation": 1,
-          "siteLabel": "DDKDitchling",
-          "windDirectionCompass": "W",
-          "cloudBaseInFt": 2680,
-          "cloudBaseTemp": 5,
-          "windSpeedMph": 17.4,
-          "windGustMph": 22.5,
-          "windSpeedKph": 28,
-          "windGustKph": 36.2,
-          "sites": [
-            "No flyable sites"
-          ],
-          "correlatedSiteTurnPoints": [],
-          "turnPoints": [],
-          "fullDay": "Sunday",
-          "windCategorisation": 18,
-          "gustCategorisation": 23,
-          "weatherClassification": {
-            "class": "partly_cloudy",
-            "img": "/03_partly_cloudy.svg"
-          },
-          "temperature": 13.05,
-          "flyingConditions": "notFlyable"
-        }
-      ]
-    },
-    {
-      "time": "2025-06-08T12:00Z",
-      "forecastCollection": [
-        {
-          "time": "2025-06-08T12:00Z",
-          "screenTemperature": 13.93,
-          "maxScreenAirTemp": 13.95,
-          "minScreenAirTemp": 13.05,
-          "screenDewPointTemperature": 4.42,
-          "feelsLikeTemperature": 10.59,
-          "windSpeed10m": 7.44,
-          "windDirectionFrom10m": 277,
-          "windGustSpeed10m": 10.04,
-          "max10mWindGust": 10.04,
-          "visibility": 42267,
-          "screenRelativeHumidity": 52.83,
-          "mslp": 101930,
-          "uvIndex": 5,
-          "significantWeatherCode": 7,
-          "precipitationRate": 0,
-          "totalPrecipAmount": 0,
-          "totalSnowAmount": 0,
-          "probOfPrecipitation": 5,
-          "siteLabel": "DDKDitchling",
-          "windDirectionCompass": "W",
-          "cloudBaseInFt": 3170,
-          "cloudBaseTemp": 4,
-          "windSpeedMph": 16.6,
-          "windGustMph": 22.5,
-          "windSpeedKph": 26.8,
-          "windGustKph": 36.1,
-          "sites": [
-            "No flyable sites"
-          ],
-          "correlatedSiteTurnPoints": [],
-          "turnPoints": [],
-          "fullDay": "Sunday",
-          "windCategorisation": 17,
-          "gustCategorisation": 23,
-          "weatherClassification": {
-            "class": "cloudy",
-            "img": "/04_cloudy.svg"
-          },
-          "temperature": 13.95,
-          "flyingConditions": "notFlyable"
-        }
-      ]
-    },
-    {
-      "time": "2025-06-08T13:00Z",
-      "forecastCollection": [
-        {
-          "time": "2025-06-08T13:00Z",
-          "screenTemperature": 15.75,
-          "maxScreenAirTemp": 17.15,
-          "minScreenAirTemp": 15.48,
-          "screenDewPointTemperature": 6.37,
-          "feelsLikeTemperature": 12.3,
-          "windSpeed10m": 7.38,
-          "windDirectionFrom10m": 247,
-          "windGustSpeed10m": 11.66,
-          "max10mWindGust": 11.91,
-          "visibility": 35771,
-          "screenRelativeHumidity": 53.92,
-          "mslp": 101940,
-          "uvIndex": 5,
-          "significantWeatherCode": 7,
-          "precipitationRate": 0,
-          "totalPrecipAmount": 0,
-          "totalSnowAmount": 0,
-          "probOfPrecipitation": 5,
           "siteLabel": "CaburnBoPeepFirleHighandOver",
-          "windDirectionCompass": "WSW",
-          "cloudBaseInFt": 3127,
-          "cloudBaseTemp": 6,
-          "windSpeedMph": 16.5,
-          "windGustMph": 26.1,
-          "windSpeedKph": 26.6,
-          "windGustKph": 42,
+          "windDirectionCompass": "SW",
+          "cloudBaseInFt": 3357,
+          "cloudBaseTemp": 7,
+          "windSpeedMph": 12.5,
+          "windGustMph": 20.7,
+          "windSpeedKph": 20.2,
+          "windGustKph": 33.3,
           "sites": [
             "Mount Caburn"
           ],
@@ -310,13 +64,13 @@
             "GDE"
           ],
           "fullDay": "Sunday",
-          "windCategorisation": 17,
-          "gustCategorisation": 27,
+          "windCategorisation": 13,
+          "gustCategorisation": 21,
           "weatherClassification": {
-            "class": "cloudy",
-            "img": "/04_cloudy.svg"
+            "class": "partly_cloudy",
+            "img": "/03_partly_cloudy.svg"
           },
-          "temperature": 17.15,
+          "temperature": 17.06,
           "flyingConditions": "notFlyable"
         }
       ]
@@ -326,32 +80,32 @@
       "forecastCollection": [
         {
           "time": "2025-06-08T14:00Z",
-          "screenTemperature": 15.75,
-          "maxScreenAirTemp": 16.27,
-          "minScreenAirTemp": 15.3,
-          "screenDewPointTemperature": 7.99,
-          "feelsLikeTemperature": 12.06,
-          "windSpeed10m": 8.11,
-          "windDirectionFrom10m": 243,
-          "windGustSpeed10m": 12.74,
-          "max10mWindGust": 13.43,
-          "visibility": 36967,
-          "screenRelativeHumidity": 60.03,
-          "mslp": 101970,
+          "screenTemperature": 15.8,
+          "maxScreenAirTemp": 17.01,
+          "minScreenAirTemp": 15.38,
+          "screenDewPointTemperature": 7.93,
+          "feelsLikeTemperature": 12.23,
+          "windSpeed10m": 7.8,
+          "windDirectionFrom10m": 239,
+          "windGustSpeed10m": 12.52,
+          "max10mWindGust": 12.84,
+          "visibility": 34186,
+          "screenRelativeHumidity": 59.27,
+          "mslp": 101998,
           "uvIndex": 4,
           "significantWeatherCode": 7,
           "precipitationRate": 0,
           "totalPrecipAmount": 0,
           "totalSnowAmount": 0,
-          "probOfPrecipitation": 6,
+          "probOfPrecipitation": 4,
           "siteLabel": "CaburnBoPeepFirleHighandOver",
           "windDirectionCompass": "WSW",
-          "cloudBaseInFt": 2587,
+          "cloudBaseInFt": 2623,
           "cloudBaseTemp": 8,
-          "windSpeedMph": 18.1,
-          "windGustMph": 28.5,
-          "windSpeedKph": 29.2,
-          "windGustKph": 45.9,
+          "windSpeedMph": 17.4,
+          "windGustMph": 28,
+          "windSpeedKph": 28.1,
+          "windGustKph": 45.1,
           "sites": [
             "Mount Caburn"
           ],
@@ -385,13 +139,13 @@
             "GDE"
           ],
           "fullDay": "Sunday",
-          "windCategorisation": 19,
-          "gustCategorisation": 29,
+          "windCategorisation": 18,
+          "gustCategorisation": 28,
           "weatherClassification": {
             "class": "cloudy",
             "img": "/04_cloudy.svg"
           },
-          "temperature": 16.27,
+          "temperature": 17.01,
           "flyingConditions": "notFlyable"
         }
       ]
@@ -401,32 +155,32 @@
       "forecastCollection": [
         {
           "time": "2025-06-08T15:00Z",
-          "screenTemperature": 16.03,
-          "maxScreenAirTemp": 16.5,
-          "minScreenAirTemp": 15.75,
-          "screenDewPointTemperature": 8.46,
-          "feelsLikeTemperature": 12.23,
-          "windSpeed10m": 8.32,
-          "windDirectionFrom10m": 245,
-          "windGustSpeed10m": 13.1,
-          "max10mWindGust": 13.93,
-          "visibility": 36148,
-          "screenRelativeHumidity": 60.75,
-          "mslp": 101984,
+          "screenTemperature": 16.45,
+          "maxScreenAirTemp": 16.54,
+          "minScreenAirTemp": 15.8,
+          "screenDewPointTemperature": 8.89,
+          "feelsLikeTemperature": 12.21,
+          "windSpeed10m": 9.08,
+          "windDirectionFrom10m": 243,
+          "windGustSpeed10m": 13.85,
+          "max10mWindGust": 14.02,
+          "visibility": 33240,
+          "screenRelativeHumidity": 60.71,
+          "mslp": 101972,
           "uvIndex": 3,
-          "significantWeatherCode": 7,
+          "significantWeatherCode": 3,
           "precipitationRate": 0,
           "totalPrecipAmount": 0,
           "totalSnowAmount": 0,
-          "probOfPrecipitation": 5,
+          "probOfPrecipitation": 1,
           "siteLabel": "CaburnBoPeepFirleHighandOver",
           "windDirectionCompass": "WSW",
-          "cloudBaseInFt": 2523,
-          "cloudBaseTemp": 8,
-          "windSpeedMph": 18.6,
-          "windGustMph": 29.3,
-          "windSpeedKph": 30,
-          "windGustKph": 47.2,
+          "cloudBaseInFt": 2520,
+          "cloudBaseTemp": 9,
+          "windSpeedMph": 20.3,
+          "windGustMph": 31,
+          "windSpeedKph": 32.7,
+          "windGustKph": 49.9,
           "sites": [
             "Mount Caburn"
           ],
@@ -460,13 +214,13 @@
             "GDE"
           ],
           "fullDay": "Sunday",
-          "windCategorisation": 19,
-          "gustCategorisation": 30,
+          "windCategorisation": 21,
+          "gustCategorisation": 10,
           "weatherClassification": {
-            "class": "cloudy",
-            "img": "/04_cloudy.svg"
+            "class": "partly_cloudy",
+            "img": "/03_partly_cloudy.svg"
           },
-          "temperature": 16.5,
+          "temperature": 16.54,
           "flyingConditions": "notFlyable"
         }
       ]
@@ -476,32 +230,32 @@
       "forecastCollection": [
         {
           "time": "2025-06-08T16:00Z",
-          "screenTemperature": 16.69,
-          "maxScreenAirTemp": 16.85,
-          "minScreenAirTemp": 16.03,
-          "screenDewPointTemperature": 8.83,
-          "feelsLikeTemperature": 13.27,
-          "windSpeed10m": 7.3,
-          "windDirectionFrom10m": 247,
-          "windGustSpeed10m": 11.65,
-          "max10mWindGust": 13.66,
-          "visibility": 36246,
-          "screenRelativeHumidity": 59.72,
-          "mslp": 101999,
+          "screenTemperature": 16.23,
+          "maxScreenAirTemp": 16.45,
+          "minScreenAirTemp": 15.83,
+          "screenDewPointTemperature": 8.93,
+          "feelsLikeTemperature": 12.55,
+          "windSpeed10m": 8.02,
+          "windDirectionFrom10m": 241,
+          "windGustSpeed10m": 12.29,
+          "max10mWindGust": 13.53,
+          "visibility": 34158,
+          "screenRelativeHumidity": 61.79,
+          "mslp": 101980,
           "uvIndex": 3,
-          "significantWeatherCode": 1,
+          "significantWeatherCode": 3,
           "precipitationRate": 0,
           "totalPrecipAmount": 0,
           "totalSnowAmount": 0,
           "probOfPrecipitation": 1,
           "siteLabel": "CaburnBoPeepFirleHighandOver",
           "windDirectionCompass": "WSW",
-          "cloudBaseInFt": 2620,
+          "cloudBaseInFt": 2433,
           "cloudBaseTemp": 9,
-          "windSpeedMph": 16.3,
-          "windGustMph": 26.1,
-          "windSpeedKph": 26.3,
-          "windGustKph": 41.9,
+          "windSpeedMph": 17.9,
+          "windGustMph": 27.5,
+          "windSpeedKph": 28.9,
+          "windGustKph": 44.2,
           "sites": [
             "Mount Caburn"
           ],
@@ -535,13 +289,13 @@
             "GDE"
           ],
           "fullDay": "Sunday",
-          "windCategorisation": 17,
-          "gustCategorisation": 27,
+          "windCategorisation": 18,
+          "gustCategorisation": 28,
           "weatherClassification": {
-            "class": "clear",
-            "img": "/02_clear.svg"
+            "class": "partly_cloudy",
+            "img": "/03_partly_cloudy.svg"
           },
-          "temperature": 16.85,
+          "temperature": 16.45,
           "flyingConditions": "notFlyable"
         }
       ]
@@ -551,32 +305,32 @@
       "forecastCollection": [
         {
           "time": "2025-06-08T17:00Z",
-          "screenTemperature": 16.1,
-          "maxScreenAirTemp": 16.69,
-          "minScreenAirTemp": 15.88,
-          "screenDewPointTemperature": 8.87,
-          "feelsLikeTemperature": 12.73,
-          "windSpeed10m": 7.42,
-          "windDirectionFrom10m": 248,
-          "windGustSpeed10m": 11.7,
-          "max10mWindGust": 13.07,
-          "visibility": 37600,
-          "screenRelativeHumidity": 62.21,
-          "mslp": 102019,
+          "screenTemperature": 16.21,
+          "maxScreenAirTemp": 16.4,
+          "minScreenAirTemp": 16.12,
+          "screenDewPointTemperature": 9.15,
+          "feelsLikeTemperature": 12.69,
+          "windSpeed10m": 7.77,
+          "windDirectionFrom10m": 243,
+          "windGustSpeed10m": 11.75,
+          "max10mWindGust": 12.73,
+          "visibility": 35122,
+          "screenRelativeHumidity": 62.74,
+          "mslp": 102010,
           "uvIndex": 2,
           "significantWeatherCode": 1,
           "precipitationRate": 0,
           "totalPrecipAmount": 0,
           "totalSnowAmount": 0,
-          "probOfPrecipitation": 1,
+          "probOfPrecipitation": 0,
           "siteLabel": "CaburnBoPeepFirleHighandOver",
           "windDirectionCompass": "WSW",
-          "cloudBaseInFt": 2410,
+          "cloudBaseInFt": 2353,
           "cloudBaseTemp": 9,
-          "windSpeedMph": 16.6,
-          "windGustMph": 26.2,
-          "windSpeedKph": 26.7,
-          "windGustKph": 42.1,
+          "windSpeedMph": 17.4,
+          "windGustMph": 26.3,
+          "windSpeedKph": 28,
+          "windGustKph": 42.3,
           "sites": [
             "Mount Caburn"
           ],
@@ -610,13 +364,13 @@
             "GDE"
           ],
           "fullDay": "Sunday",
-          "windCategorisation": 17,
+          "windCategorisation": 18,
           "gustCategorisation": 27,
           "weatherClassification": {
             "class": "clear",
             "img": "/02_clear.svg"
           },
-          "temperature": 16.69,
+          "temperature": 16.4,
           "flyingConditions": "notFlyable"
         }
       ]
@@ -626,32 +380,32 @@
       "forecastCollection": [
         {
           "time": "2025-06-08T18:00Z",
-          "screenTemperature": 15.42,
-          "maxScreenAirTemp": 16.1,
-          "minScreenAirTemp": 15.37,
-          "screenDewPointTemperature": 9.47,
-          "feelsLikeTemperature": 12.75,
-          "windSpeed10m": 6.24,
-          "windDirectionFrom10m": 247,
-          "windGustSpeed10m": 10.63,
-          "max10mWindGust": 11.84,
-          "visibility": 36689,
-          "screenRelativeHumidity": 67.68,
-          "mslp": 102060,
+          "screenTemperature": 15.36,
+          "maxScreenAirTemp": 16.21,
+          "minScreenAirTemp": 15.32,
+          "screenDewPointTemperature": 9.84,
+          "feelsLikeTemperature": 12.33,
+          "windSpeed10m": 7.12,
+          "windDirectionFrom10m": 243,
+          "windGustSpeed10m": 11.42,
+          "max10mWindGust": 11.8,
+          "visibility": 35501,
+          "screenRelativeHumidity": 69.44,
+          "mslp": 102050,
           "uvIndex": 1,
-          "significantWeatherCode": 7,
+          "significantWeatherCode": 1,
           "precipitationRate": 0,
           "totalPrecipAmount": 0,
           "totalSnowAmount": 0,
-          "probOfPrecipitation": 4,
+          "probOfPrecipitation": 0,
           "siteLabel": "CaburnBoPeepFirleHighandOver",
           "windDirectionCompass": "WSW",
-          "cloudBaseInFt": 1983,
-          "cloudBaseTemp": 9,
-          "windSpeedMph": 14,
-          "windGustMph": 23.8,
-          "windSpeedKph": 22.5,
-          "windGustKph": 38.3,
+          "cloudBaseInFt": 1840,
+          "cloudBaseTemp": 10,
+          "windSpeedMph": 15.9,
+          "windGustMph": 25.5,
+          "windSpeedKph": 25.6,
+          "windGustKph": 41.1,
           "sites": [
             "Mount Caburn"
           ],
@@ -685,13 +439,13 @@
             "GDE"
           ],
           "fullDay": "Sunday",
-          "windCategorisation": 14,
-          "gustCategorisation": 24,
+          "windCategorisation": 16,
+          "gustCategorisation": 26,
           "weatherClassification": {
-            "class": "cloudy",
-            "img": "/04_cloudy.svg"
+            "class": "clear",
+            "img": "/02_clear.svg"
           },
-          "temperature": 16.1,
+          "temperature": 16.21,
           "flyingConditions": "notFlyable"
         }
       ]
@@ -701,18 +455,18 @@
       "forecastCollection": [
         {
           "time": "2025-06-08T19:00Z",
-          "screenTemperature": 14.61,
-          "maxScreenAirTemp": 15.42,
-          "minScreenAirTemp": 14.58,
-          "screenDewPointTemperature": 9.97,
+          "screenTemperature": 14.7,
+          "maxScreenAirTemp": 15.36,
+          "minScreenAirTemp": 14.68,
+          "screenDewPointTemperature": 10.33,
           "feelsLikeTemperature": 12.25,
-          "windSpeed10m": 5.75,
-          "windDirectionFrom10m": 244,
-          "windGustSpeed10m": 10.85,
-          "max10mWindGust": 11.86,
-          "visibility": 36206,
-          "screenRelativeHumidity": 73.79,
-          "mslp": 102093,
+          "windSpeed10m": 6.04,
+          "windDirectionFrom10m": 241,
+          "windGustSpeed10m": 11.33,
+          "max10mWindGust": 11.63,
+          "visibility": 35014,
+          "screenRelativeHumidity": 74.89,
+          "mslp": 102080,
           "uvIndex": 1,
           "significantWeatherCode": 3,
           "precipitationRate": 0,
@@ -721,12 +475,12 @@
           "probOfPrecipitation": 0,
           "siteLabel": "CaburnBoPeepFirleHighandOver",
           "windDirectionCompass": "WSW",
-          "cloudBaseInFt": 1547,
+          "cloudBaseInFt": 1457,
           "cloudBaseTemp": 10,
-          "windSpeedMph": 12.9,
-          "windGustMph": 24.3,
-          "windSpeedKph": 20.7,
-          "windGustKph": 39.1,
+          "windSpeedMph": 13.5,
+          "windGustMph": 25.3,
+          "windSpeedKph": 21.7,
+          "windGustKph": 40.8,
           "sites": [
             "Mount Caburn"
           ],
@@ -760,13 +514,13 @@
             "GDE"
           ],
           "fullDay": "Sunday",
-          "windCategorisation": 13,
-          "gustCategorisation": 25,
+          "windCategorisation": 14,
+          "gustCategorisation": 26,
           "weatherClassification": {
             "class": "partly_cloudy",
             "img": "/03_partly_cloudy.svg"
           },
-          "temperature": 15.42,
+          "temperature": 15.36,
           "flyingConditions": "notFlyable"
         }
       ]
@@ -776,18 +530,18 @@
       "forecastCollection": [
         {
           "time": "2025-06-08T20:00Z",
-          "screenTemperature": 13.59,
-          "maxScreenAirTemp": 14.61,
+          "screenTemperature": 13.58,
+          "maxScreenAirTemp": 14.7,
           "minScreenAirTemp": 13.58,
-          "screenDewPointTemperature": 10.19,
-          "feelsLikeTemperature": 11.52,
-          "windSpeed10m": 5.07,
-          "windDirectionFrom10m": 245,
-          "windGustSpeed10m": 10.66,
-          "max10mWindGust": 11.79,
-          "visibility": 33287,
-          "screenRelativeHumidity": 80.05,
-          "mslp": 102133,
+          "screenDewPointTemperature": 10.64,
+          "feelsLikeTemperature": 11.43,
+          "windSpeed10m": 5.37,
+          "windDirectionFrom10m": 243,
+          "windGustSpeed10m": 11.37,
+          "max10mWindGust": 11.75,
+          "visibility": 32230,
+          "screenRelativeHumidity": 82.37,
+          "mslp": 102120,
           "uvIndex": 1,
           "significantWeatherCode": 1,
           "precipitationRate": 0,
@@ -796,12 +550,12 @@
           "probOfPrecipitation": 0,
           "siteLabel": "CaburnBoPeepFirleHighandOver",
           "windDirectionCompass": "WSW",
-          "cloudBaseInFt": 1133,
-          "cloudBaseTemp": 10,
-          "windSpeedMph": 11.3,
-          "windGustMph": 23.8,
-          "windSpeedKph": 18.3,
-          "windGustKph": 38.4,
+          "cloudBaseInFt": 980,
+          "cloudBaseTemp": 11,
+          "windSpeedMph": 12,
+          "windGustMph": 25.4,
+          "windSpeedKph": 19.3,
+          "windGustKph": 40.9,
           "sites": [
             "Mount Caburn"
           ],
@@ -836,12 +590,12 @@
           ],
           "fullDay": "Sunday",
           "windCategorisation": 12,
-          "gustCategorisation": 24,
+          "gustCategorisation": 26,
           "weatherClassification": {
             "class": "clear",
             "img": "/02_clear.svg"
           },
-          "temperature": 14.61,
+          "temperature": 14.7,
           "flyingConditions": "notFlyable"
         }
       ]
@@ -851,32 +605,32 @@
       "forecastCollection": [
         {
           "time": "2025-06-08T21:00Z",
-          "screenTemperature": 13.03,
-          "maxScreenAirTemp": 13.59,
-          "minScreenAirTemp": 12.98,
-          "screenDewPointTemperature": 9.96,
-          "feelsLikeTemperature": 11.38,
-          "windSpeed10m": 4.08,
-          "windDirectionFrom10m": 247,
-          "windGustSpeed10m": 9.37,
-          "max10mWindGust": 11.37,
-          "visibility": 32380,
-          "screenRelativeHumidity": 81.67,
-          "mslp": 102183,
+          "screenTemperature": 13.14,
+          "maxScreenAirTemp": 13.58,
+          "minScreenAirTemp": 13.1,
+          "screenDewPointTemperature": 10.47,
+          "feelsLikeTemperature": 11.44,
+          "windSpeed10m": 4.26,
+          "windDirectionFrom10m": 244,
+          "windGustSpeed10m": 9.96,
+          "max10mWindGust": 11.51,
+          "visibility": 30772,
+          "screenRelativeHumidity": 83.78,
+          "mslp": 102172,
           "uvIndex": 0,
-          "significantWeatherCode": 2,
+          "significantWeatherCode": 0,
           "precipitationRate": 0,
           "totalPrecipAmount": 0,
           "totalSnowAmount": 0,
           "probOfPrecipitation": 0,
           "siteLabel": "CaburnBoPeepFirleHighandOver",
           "windDirectionCompass": "WSW",
-          "cloudBaseInFt": 1023,
+          "cloudBaseInFt": 890,
           "cloudBaseTemp": 10,
-          "windSpeedMph": 9.1,
-          "windGustMph": 21,
-          "windSpeedKph": 14.7,
-          "windGustKph": 33.7,
+          "windSpeedMph": 9.5,
+          "windGustMph": 22.3,
+          "windSpeedKph": 15.3,
+          "windGustKph": 35.9,
           "sites": [
             "Mount Caburn"
           ],
@@ -911,12 +665,12 @@
           ],
           "fullDay": "Sunday",
           "windCategorisation": 10,
-          "gustCategorisation": 21,
+          "gustCategorisation": 23,
           "weatherClassification": {
-            "class": "partly_cloudy",
-            "img": "/03_partly_cloudy.svg"
+            "class": "clear",
+            "img": "/02_clear.svg"
           },
-          "temperature": 13.59,
+          "temperature": 13.58,
           "flyingConditions": "notFlyable"
         }
       ]
@@ -928,72 +682,45 @@
       "forecastCollection": [
         {
           "time": "2025-06-09T06:00Z",
-          "screenTemperature": 12.6,
-          "maxScreenAirTemp": 12.61,
-          "minScreenAirTemp": 10.98,
-          "screenDewPointTemperature": 9.67,
-          "feelsLikeTemperature": 11.99,
-          "windSpeed10m": 2.04,
-          "windDirectionFrom10m": 251,
-          "windGustSpeed10m": 4.07,
-          "max10mWindGust": 4.83,
-          "visibility": 26214,
-          "screenRelativeHumidity": 82.54,
-          "mslp": 102313,
+          "screenTemperature": 10.93,
+          "maxScreenAirTemp": 10.94,
+          "minScreenAirTemp": 10.63,
+          "screenDewPointTemperature": 9,
+          "feelsLikeTemperature": 8.87,
+          "windSpeed10m": 4.57,
+          "windDirectionFrom10m": 265,
+          "windGustSpeed10m": 6.96,
+          "max10mWindGust": 7.54,
+          "visibility": 27003,
+          "screenRelativeHumidity": 87.82,
+          "mslp": 102307,
           "uvIndex": 1,
           "significantWeatherCode": 3,
           "precipitationRate": 0,
           "totalPrecipAmount": 0,
           "totalSnowAmount": 0,
-          "probOfPrecipitation": 1,
-          "siteLabel": "CaburnBoPeepFirleHighandOver",
-          "windDirectionCompass": "WSW",
-          "cloudBaseInFt": 977,
-          "cloudBaseTemp": 10,
-          "windSpeedMph": 4.6,
-          "windGustMph": 9.1,
-          "windSpeedKph": 7.3,
-          "windGustKph": 14.7,
+          "probOfPrecipitation": 0,
+          "siteLabel": "DDKDitchling",
+          "windDirectionCompass": "W",
+          "cloudBaseInFt": 643,
+          "cloudBaseTemp": 9,
+          "windSpeedMph": 10.2,
+          "windGustMph": 15.6,
+          "windSpeedKph": 16.5,
+          "windGustKph": 25.1,
           "sites": [
-            "Mount Caburn"
+            "No flyable sites"
           ],
-          "correlatedSiteTurnPoints": [
-            {
-              "label": "Mount Caburn",
-              "lat": "50.861577",
-              "long": "0.050928801",
-              "directions": [
-                "WSW",
-                "SW",
-                "SSW",
-                "S"
-              ],
-              "turnPoint": "GDE",
-              "pureTrack": {
-                "topRight": {
-                  "lat": 50.868367,
-                  "long": 0.063661
-                },
-                "bottomLeft": {
-                  "lat": 50.848305,
-                  "long": 0.010185
-                }
-              },
-              "skewtUrl": "",
-              "blipspotUrl": "https://app.stratus.org.uk/blip/graph/blip_main.php?day=Monday&tp=GDE"
-            }
-          ],
-          "turnPoints": [
-            "GDE"
-          ],
+          "correlatedSiteTurnPoints": [],
+          "turnPoints": [],
           "fullDay": "Monday",
-          "windCategorisation": 5,
-          "gustCategorisation": 10,
+          "windCategorisation": 11,
+          "gustCategorisation": 16,
           "weatherClassification": {
             "class": "partly_cloudy",
             "img": "/03_partly_cloudy.svg"
           },
-          "temperature": 12.61,
+          "temperature": 10.94,
           "flyingConditions": "flyable"
         }
       ]
@@ -1003,17 +730,17 @@
       "forecastCollection": [
         {
           "time": "2025-06-09T07:00Z",
-          "screenTemperature": 11.86,
-          "maxScreenAirTemp": 11.87,
-          "minScreenAirTemp": 10.81,
-          "screenDewPointTemperature": 8.83,
-          "feelsLikeTemperature": 10.09,
-          "windSpeed10m": 4.09,
-          "windDirectionFrom10m": 254,
-          "windGustSpeed10m": 5.62,
-          "max10mWindGust": 5.62,
-          "visibility": 31410,
-          "screenRelativeHumidity": 81.87,
+          "screenTemperature": 11.93,
+          "maxScreenAirTemp": 11.94,
+          "minScreenAirTemp": 10.93,
+          "screenDewPointTemperature": 9,
+          "feelsLikeTemperature": 10.19,
+          "windSpeed10m": 4.03,
+          "windDirectionFrom10m": 260,
+          "windGustSpeed10m": 5.4,
+          "max10mWindGust": 5.67,
+          "visibility": 31205,
+          "screenRelativeHumidity": 82.31,
           "mslp": 102320,
           "uvIndex": 2,
           "significantWeatherCode": 1,
@@ -1022,26 +749,26 @@
           "totalSnowAmount": 0,
           "probOfPrecipitation": 0,
           "siteLabel": "DDKDitchling",
-          "windDirectionCompass": "WSW",
-          "cloudBaseInFt": 1010,
+          "windDirectionCompass": "W",
+          "cloudBaseInFt": 977,
           "cloudBaseTemp": 9,
-          "windSpeedMph": 9.1,
-          "windGustMph": 12.6,
-          "windSpeedKph": 14.7,
-          "windGustKph": 20.2,
+          "windSpeedMph": 9,
+          "windGustMph": 12.1,
+          "windSpeedKph": 14.5,
+          "windGustKph": 19.4,
           "sites": [
             "No flyable sites"
           ],
           "correlatedSiteTurnPoints": [],
           "turnPoints": [],
           "fullDay": "Monday",
-          "windCategorisation": 10,
+          "windCategorisation": 9,
           "gustCategorisation": 13,
           "weatherClassification": {
             "class": "clear",
             "img": "/02_clear.svg"
           },
-          "temperature": 11.87,
+          "temperature": 11.94,
           "flyingConditions": "flyable"
         }
       ]
@@ -1051,32 +778,32 @@
       "forecastCollection": [
         {
           "time": "2025-06-09T08:00Z",
-          "screenTemperature": 15.48,
-          "maxScreenAirTemp": 15.53,
-          "minScreenAirTemp": 14.28,
-          "screenDewPointTemperature": 9.22,
-          "feelsLikeTemperature": 13.81,
-          "windSpeed10m": 4.04,
-          "windDirectionFrom10m": 247,
-          "windGustSpeed10m": 6.4,
-          "max10mWindGust": 6.4,
-          "visibility": 36160,
-          "screenRelativeHumidity": 66.77,
-          "mslp": 102326,
+          "screenTemperature": 15.68,
+          "maxScreenAirTemp": 15.75,
+          "minScreenAirTemp": 14.51,
+          "screenDewPointTemperature": 9.36,
+          "feelsLikeTemperature": 14.17,
+          "windSpeed10m": 3.76,
+          "windDirectionFrom10m": 246,
+          "windGustSpeed10m": 5.83,
+          "max10mWindGust": 5.83,
+          "visibility": 38758,
+          "screenRelativeHumidity": 66.32,
+          "mslp": 102333,
           "uvIndex": 3,
-          "significantWeatherCode": 1,
+          "significantWeatherCode": 7,
           "precipitationRate": 0,
           "totalPrecipAmount": 0,
           "totalSnowAmount": 0,
-          "probOfPrecipitation": 1,
+          "probOfPrecipitation": 4,
           "siteLabel": "CaburnBoPeepFirleHighandOver",
           "windDirectionCompass": "WSW",
-          "cloudBaseInFt": 2087,
+          "cloudBaseInFt": 2107,
           "cloudBaseTemp": 9,
-          "windSpeedMph": 9,
-          "windGustMph": 14.3,
-          "windSpeedKph": 14.5,
-          "windGustKph": 23,
+          "windSpeedMph": 8.4,
+          "windGustMph": 13,
+          "windSpeedKph": 13.5,
+          "windGustKph": 21,
           "sites": [
             "Mount Caburn"
           ],
@@ -1111,12 +838,12 @@
           ],
           "fullDay": "Monday",
           "windCategorisation": 9,
-          "gustCategorisation": 15,
+          "gustCategorisation": 13,
           "weatherClassification": {
-            "class": "clear",
-            "img": "/02_clear.svg"
+            "class": "cloudy",
+            "img": "/04_cloudy.svg"
           },
-          "temperature": 15.53,
+          "temperature": 15.75,
           "flyingConditions": "flyable"
         }
       ]
@@ -1126,32 +853,32 @@
       "forecastCollection": [
         {
           "time": "2025-06-09T09:00Z",
-          "screenTemperature": 16.32,
-          "maxScreenAirTemp": 16.36,
-          "minScreenAirTemp": 15.48,
-          "screenDewPointTemperature": 9.27,
-          "feelsLikeTemperature": 14.33,
-          "windSpeed10m": 4.59,
-          "windDirectionFrom10m": 243,
-          "windGustSpeed10m": 7.43,
-          "max10mWindGust": 7.43,
-          "visibility": 38085,
-          "screenRelativeHumidity": 63.33,
-          "mslp": 102333,
+          "screenTemperature": 16.38,
+          "maxScreenAirTemp": 16.42,
+          "minScreenAirTemp": 15.68,
+          "screenDewPointTemperature": 9.24,
+          "feelsLikeTemperature": 14.63,
+          "windSpeed10m": 4.14,
+          "windDirectionFrom10m": 246,
+          "windGustSpeed10m": 6.63,
+          "max10mWindGust": 6.63,
+          "visibility": 39243,
+          "screenRelativeHumidity": 62.77,
+          "mslp": 102337,
           "uvIndex": 4,
           "significantWeatherCode": 3,
           "precipitationRate": 0,
           "totalPrecipAmount": 0,
           "totalSnowAmount": 0,
-          "probOfPrecipitation": 2,
+          "probOfPrecipitation": 1,
           "siteLabel": "CaburnBoPeepFirleHighandOver",
           "windDirectionCompass": "WSW",
-          "cloudBaseInFt": 2350,
+          "cloudBaseInFt": 2380,
           "cloudBaseTemp": 9,
-          "windSpeedMph": 10.3,
-          "windGustMph": 16.6,
-          "windSpeedKph": 16.5,
-          "windGustKph": 26.7,
+          "windSpeedMph": 9.3,
+          "windGustMph": 14.8,
+          "windSpeedKph": 14.9,
+          "windGustKph": 23.9,
           "sites": [
             "Mount Caburn"
           ],
@@ -1185,14 +912,14 @@
             "GDE"
           ],
           "fullDay": "Monday",
-          "windCategorisation": 11,
-          "gustCategorisation": 17,
+          "windCategorisation": 10,
+          "gustCategorisation": 15,
           "weatherClassification": {
             "class": "partly_cloudy",
             "img": "/03_partly_cloudy.svg"
           },
-          "temperature": 16.36,
-          "flyingConditions": "marginal"
+          "temperature": 16.42,
+          "flyingConditions": "flyable"
         }
       ]
     },
@@ -1201,32 +928,32 @@
       "forecastCollection": [
         {
           "time": "2025-06-09T10:00Z",
-          "screenTemperature": 16.84,
-          "maxScreenAirTemp": 16.86,
-          "minScreenAirTemp": 16.32,
-          "screenDewPointTemperature": 9.3,
-          "feelsLikeTemperature": 14.41,
-          "windSpeed10m": 5.33,
-          "windDirectionFrom10m": 235,
-          "windGustSpeed10m": 8.47,
-          "max10mWindGust": 8.47,
-          "visibility": 41114,
-          "screenRelativeHumidity": 61.47,
+          "screenTemperature": 16.99,
+          "maxScreenAirTemp": 17.09,
+          "minScreenAirTemp": 16.38,
+          "screenDewPointTemperature": 9.46,
+          "feelsLikeTemperature": 14.51,
+          "windSpeed10m": 5.43,
+          "windDirectionFrom10m": 230,
+          "windGustSpeed10m": 8.42,
+          "max10mWindGust": 8.42,
+          "visibility": 40061,
+          "screenRelativeHumidity": 61.37,
           "mslp": 102333,
           "uvIndex": 5,
           "significantWeatherCode": 3,
           "precipitationRate": 0,
           "totalPrecipAmount": 0,
           "totalSnowAmount": 0,
-          "probOfPrecipitation": 2,
+          "probOfPrecipitation": 1,
           "siteLabel": "CaburnBoPeepFirleHighandOver",
           "windDirectionCompass": "SW",
-          "cloudBaseInFt": 2513,
+          "cloudBaseInFt": 2510,
           "cloudBaseTemp": 9,
-          "windSpeedMph": 11.9,
-          "windGustMph": 18.9,
-          "windSpeedKph": 19.2,
-          "windGustKph": 30.5,
+          "windSpeedMph": 12.1,
+          "windGustMph": 18.8,
+          "windSpeedKph": 19.5,
+          "windGustKph": 30.3,
           "sites": [
             "Mount Caburn"
           ],
@@ -1260,13 +987,13 @@
             "GDE"
           ],
           "fullDay": "Monday",
-          "windCategorisation": 12,
+          "windCategorisation": 13,
           "gustCategorisation": 19,
           "weatherClassification": {
             "class": "partly_cloudy",
             "img": "/03_partly_cloudy.svg"
           },
-          "temperature": 16.86,
+          "temperature": 17.09,
           "flyingConditions": "marginal"
         }
       ]
@@ -1276,32 +1003,32 @@
       "forecastCollection": [
         {
           "time": "2025-06-09T11:00Z",
-          "screenTemperature": 16.94,
-          "maxScreenAirTemp": 17.06,
-          "minScreenAirTemp": 16.83,
-          "screenDewPointTemperature": 9.78,
-          "feelsLikeTemperature": 14.25,
-          "windSpeed10m": 5.93,
-          "windDirectionFrom10m": 226,
-          "windGustSpeed10m": 9.4,
-          "max10mWindGust": 9.4,
-          "visibility": 41528,
-          "screenRelativeHumidity": 62.88,
-          "mslp": 102326,
+          "screenTemperature": 16.98,
+          "maxScreenAirTemp": 17.18,
+          "minScreenAirTemp": 16.89,
+          "screenDewPointTemperature": 10.16,
+          "feelsLikeTemperature": 14.18,
+          "windSpeed10m": 6.22,
+          "windDirectionFrom10m": 223,
+          "windGustSpeed10m": 9.58,
+          "max10mWindGust": 9.58,
+          "visibility": 40457,
+          "screenRelativeHumidity": 64.21,
+          "mslp": 102330,
           "uvIndex": 6,
-          "significantWeatherCode": 3,
+          "significantWeatherCode": 7,
           "precipitationRate": 0,
           "totalPrecipAmount": 0,
           "totalSnowAmount": 0,
-          "probOfPrecipitation": 1,
+          "probOfPrecipitation": 4,
           "siteLabel": "CaburnBoPeepFirleHighandOver",
           "windDirectionCompass": "SW",
-          "cloudBaseInFt": 2387,
+          "cloudBaseInFt": 2273,
           "cloudBaseTemp": 10,
-          "windSpeedMph": 13.3,
-          "windGustMph": 21,
-          "windSpeedKph": 21.3,
-          "windGustKph": 33.8,
+          "windSpeedMph": 13.9,
+          "windGustMph": 21.4,
+          "windSpeedKph": 22.4,
+          "windGustKph": 34.5,
           "sites": [
             "Mount Caburn"
           ],
@@ -1336,12 +1063,12 @@
           ],
           "fullDay": "Monday",
           "windCategorisation": 14,
-          "gustCategorisation": 21,
+          "gustCategorisation": 22,
           "weatherClassification": {
-            "class": "partly_cloudy",
-            "img": "/03_partly_cloudy.svg"
+            "class": "cloudy",
+            "img": "/04_cloudy.svg"
           },
-          "temperature": 17.06,
+          "temperature": 17.18,
           "flyingConditions": "notFlyable"
         }
       ]
@@ -1351,32 +1078,32 @@
       "forecastCollection": [
         {
           "time": "2025-06-09T12:00Z",
-          "screenTemperature": 16.81,
-          "maxScreenAirTemp": 16.94,
-          "minScreenAirTemp": 16.69,
-          "screenDewPointTemperature": 9.91,
-          "feelsLikeTemperature": 13.94,
-          "windSpeed10m": 6.36,
-          "windDirectionFrom10m": 223,
-          "windGustSpeed10m": 10.33,
-          "max10mWindGust": 10.33,
-          "visibility": 39675,
-          "screenRelativeHumidity": 63.86,
-          "mslp": 102317,
+          "screenTemperature": 17.12,
+          "maxScreenAirTemp": 17.18,
+          "minScreenAirTemp": 16.89,
+          "screenDewPointTemperature": 9.87,
+          "feelsLikeTemperature": 14.19,
+          "windSpeed10m": 6.38,
+          "windDirectionFrom10m": 221,
+          "windGustSpeed10m": 9.95,
+          "max10mWindGust": 9.95,
+          "visibility": 41221,
+          "screenRelativeHumidity": 62.37,
+          "mslp": 102320,
           "uvIndex": 6,
-          "significantWeatherCode": 3,
+          "significantWeatherCode": 7,
           "precipitationRate": 0,
           "totalPrecipAmount": 0,
           "totalSnowAmount": 0,
-          "probOfPrecipitation": 1,
+          "probOfPrecipitation": 4,
           "siteLabel": "CaburnBoPeepFirleHighandOver",
           "windDirectionCompass": "SW",
-          "cloudBaseInFt": 2300,
+          "cloudBaseInFt": 2417,
           "cloudBaseTemp": 10,
-          "windSpeedMph": 14.2,
-          "windGustMph": 23.1,
-          "windSpeedKph": 22.9,
-          "windGustKph": 37.2,
+          "windSpeedMph": 14.3,
+          "windGustMph": 22.3,
+          "windSpeedKph": 23,
+          "windGustKph": 35.8,
           "sites": [
             "Mount Caburn"
           ],
@@ -1411,12 +1138,12 @@
           ],
           "fullDay": "Monday",
           "windCategorisation": 15,
-          "gustCategorisation": 24,
+          "gustCategorisation": 23,
           "weatherClassification": {
-            "class": "partly_cloudy",
-            "img": "/03_partly_cloudy.svg"
+            "class": "cloudy",
+            "img": "/04_cloudy.svg"
           },
-          "temperature": 16.94,
+          "temperature": 17.18,
           "flyingConditions": "notFlyable"
         }
       ]
@@ -1426,32 +1153,32 @@
       "forecastCollection": [
         {
           "time": "2025-06-09T13:00Z",
-          "screenTemperature": 16.77,
-          "maxScreenAirTemp": 17.06,
-          "minScreenAirTemp": 16.73,
-          "screenDewPointTemperature": 10.01,
-          "feelsLikeTemperature": 14.02,
-          "windSpeed10m": 6.17,
-          "windDirectionFrom10m": 227,
-          "windGustSpeed10m": 10.12,
-          "max10mWindGust": 10.12,
-          "visibility": 36402,
-          "screenRelativeHumidity": 64.44,
+          "screenTemperature": 16.91,
+          "maxScreenAirTemp": 17.12,
+          "minScreenAirTemp": 16.75,
+          "screenDewPointTemperature": 10.05,
+          "feelsLikeTemperature": 14.13,
+          "windSpeed10m": 6.18,
+          "windDirectionFrom10m": 226,
+          "windGustSpeed10m": 9.83,
+          "max10mWindGust": 9.87,
+          "visibility": 36317,
+          "screenRelativeHumidity": 63.96,
           "mslp": 102300,
           "uvIndex": 5,
-          "significantWeatherCode": 3,
+          "significantWeatherCode": 7,
           "precipitationRate": 0,
           "totalPrecipAmount": 0,
           "totalSnowAmount": 0,
-          "probOfPrecipitation": 1,
+          "probOfPrecipitation": 4,
           "siteLabel": "CaburnBoPeepFirleHighandOver",
           "windDirectionCompass": "SW",
-          "cloudBaseInFt": 2253,
+          "cloudBaseInFt": 2287,
           "cloudBaseTemp": 10,
           "windSpeedMph": 13.8,
-          "windGustMph": 22.6,
+          "windGustMph": 22,
           "windSpeedKph": 22.2,
-          "windGustKph": 36.4,
+          "windGustKph": 35.4,
           "sites": [
             "Mount Caburn"
           ],
@@ -1486,12 +1213,12 @@
           ],
           "fullDay": "Monday",
           "windCategorisation": 14,
-          "gustCategorisation": 23,
+          "gustCategorisation": 22,
           "weatherClassification": {
-            "class": "partly_cloudy",
-            "img": "/03_partly_cloudy.svg"
+            "class": "cloudy",
+            "img": "/04_cloudy.svg"
           },
-          "temperature": 17.06,
+          "temperature": 17.12,
           "flyingConditions": "notFlyable"
         }
       ]
@@ -1501,32 +1228,32 @@
       "forecastCollection": [
         {
           "time": "2025-06-09T14:00Z",
-          "screenTemperature": 16.57,
-          "maxScreenAirTemp": 16.77,
-          "minScreenAirTemp": 16.45,
-          "screenDewPointTemperature": 10.19,
-          "feelsLikeTemperature": 13.81,
-          "windSpeed10m": 6.29,
-          "windDirectionFrom10m": 230,
-          "windGustSpeed10m": 10.31,
-          "max10mWindGust": 10.31,
-          "visibility": 33563,
-          "screenRelativeHumidity": 66.09,
-          "mslp": 102276,
+          "screenTemperature": 16.71,
+          "maxScreenAirTemp": 16.91,
+          "minScreenAirTemp": 16.51,
+          "screenDewPointTemperature": 10.05,
+          "feelsLikeTemperature": 13.82,
+          "windSpeed10m": 6.48,
+          "windDirectionFrom10m": 231,
+          "windGustSpeed10m": 10.37,
+          "max10mWindGust": 10.37,
+          "visibility": 35823,
+          "screenRelativeHumidity": 64.84,
+          "mslp": 102277,
           "uvIndex": 4,
-          "significantWeatherCode": 3,
+          "significantWeatherCode": 7,
           "precipitationRate": 0,
           "totalPrecipAmount": 0,
           "totalSnowAmount": 0,
-          "probOfPrecipitation": 0,
+          "probOfPrecipitation": 4,
           "siteLabel": "CaburnBoPeepFirleHighandOver",
           "windDirectionCompass": "SW",
-          "cloudBaseInFt": 2127,
+          "cloudBaseInFt": 2220,
           "cloudBaseTemp": 10,
-          "windSpeedMph": 14.1,
-          "windGustMph": 23.1,
-          "windSpeedKph": 22.6,
-          "windGustKph": 37.1,
+          "windSpeedMph": 14.5,
+          "windGustMph": 23.2,
+          "windSpeedKph": 23.3,
+          "windGustKph": 37.3,
           "sites": [
             "Mount Caburn"
           ],
@@ -1563,10 +1290,10 @@
           "windCategorisation": 15,
           "gustCategorisation": 24,
           "weatherClassification": {
-            "class": "partly_cloudy",
-            "img": "/03_partly_cloudy.svg"
+            "class": "cloudy",
+            "img": "/04_cloudy.svg"
           },
-          "temperature": 16.77,
+          "temperature": 16.91,
           "flyingConditions": "notFlyable"
         }
       ]
@@ -1576,18 +1303,18 @@
       "forecastCollection": [
         {
           "time": "2025-06-09T15:00Z",
-          "screenTemperature": 16.51,
-          "maxScreenAirTemp": 16.63,
-          "minScreenAirTemp": 16.47,
-          "screenDewPointTemperature": 10.06,
-          "feelsLikeTemperature": 13.75,
-          "windSpeed10m": 6.3,
+          "screenTemperature": 16.66,
+          "maxScreenAirTemp": 16.78,
+          "minScreenAirTemp": 16.6,
+          "screenDewPointTemperature": 9.97,
+          "feelsLikeTemperature": 13.83,
+          "windSpeed10m": 6.37,
           "windDirectionFrom10m": 233,
-          "windGustSpeed10m": 10.4,
-          "max10mWindGust": 10.4,
-          "visibility": 34108,
-          "screenRelativeHumidity": 65.78,
-          "mslp": 102256,
+          "windGustSpeed10m": 10.16,
+          "max10mWindGust": 10.16,
+          "visibility": 35142,
+          "screenRelativeHumidity": 64.69,
+          "mslp": 102254,
           "uvIndex": 3,
           "significantWeatherCode": 7,
           "precipitationRate": 0,
@@ -1596,12 +1323,12 @@
           "probOfPrecipitation": 4,
           "siteLabel": "CaburnBoPeepFirleHighandOver",
           "windDirectionCompass": "SW",
-          "cloudBaseInFt": 2150,
+          "cloudBaseInFt": 2230,
           "cloudBaseTemp": 10,
-          "windSpeedMph": 14.1,
-          "windGustMph": 23.3,
-          "windSpeedKph": 22.7,
-          "windGustKph": 37.4,
+          "windSpeedMph": 14.2,
+          "windGustMph": 22.7,
+          "windSpeedKph": 22.9,
+          "windGustKph": 36.6,
           "sites": [
             "Mount Caburn"
           ],
@@ -1636,12 +1363,12 @@
           ],
           "fullDay": "Monday",
           "windCategorisation": 15,
-          "gustCategorisation": 24,
+          "gustCategorisation": 23,
           "weatherClassification": {
             "class": "cloudy",
             "img": "/04_cloudy.svg"
           },
-          "temperature": 16.63,
+          "temperature": 16.78,
           "flyingConditions": "notFlyable"
         }
       ]
@@ -1651,32 +1378,32 @@
       "forecastCollection": [
         {
           "time": "2025-06-09T16:00Z",
-          "screenTemperature": 15.96,
-          "maxScreenAirTemp": 16.51,
-          "minScreenAirTemp": 15.94,
-          "screenDewPointTemperature": 10.43,
-          "feelsLikeTemperature": 13.36,
-          "windSpeed10m": 6.14,
-          "windDirectionFrom10m": 231,
-          "windGustSpeed10m": 10.27,
-          "max10mWindGust": 10.27,
-          "visibility": 32020,
-          "screenRelativeHumidity": 69.84,
+          "screenTemperature": 16,
+          "maxScreenAirTemp": 16.66,
+          "minScreenAirTemp": 15.98,
+          "screenDewPointTemperature": 10.54,
+          "feelsLikeTemperature": 13.41,
+          "windSpeed10m": 6.12,
+          "windDirectionFrom10m": 232,
+          "windGustSpeed10m": 9.93,
+          "max10mWindGust": 9.93,
+          "visibility": 31271,
+          "screenRelativeHumidity": 70.08,
           "mslp": 102213,
           "uvIndex": 2,
-          "significantWeatherCode": 3,
+          "significantWeatherCode": 7,
           "precipitationRate": 0,
           "totalPrecipAmount": 0,
           "totalSnowAmount": 0,
-          "probOfPrecipitation": 1,
+          "probOfPrecipitation": 4,
           "siteLabel": "CaburnBoPeepFirleHighandOver",
           "windDirectionCompass": "SW",
-          "cloudBaseInFt": 1843,
-          "cloudBaseTemp": 10,
+          "cloudBaseInFt": 1820,
+          "cloudBaseTemp": 11,
           "windSpeedMph": 13.7,
-          "windGustMph": 23,
-          "windSpeedKph": 22.1,
-          "windGustKph": 37,
+          "windGustMph": 22.2,
+          "windSpeedKph": 22,
+          "windGustKph": 35.7,
           "sites": [
             "Mount Caburn"
           ],
@@ -1713,10 +1440,10 @@
           "windCategorisation": 14,
           "gustCategorisation": 23,
           "weatherClassification": {
-            "class": "partly_cloudy",
-            "img": "/03_partly_cloudy.svg"
+            "class": "cloudy",
+            "img": "/04_cloudy.svg"
           },
-          "temperature": 16.51,
+          "temperature": 16.66,
           "flyingConditions": "notFlyable"
         }
       ]
@@ -1726,32 +1453,32 @@
       "forecastCollection": [
         {
           "time": "2025-06-09T17:00Z",
-          "screenTemperature": 15.58,
-          "maxScreenAirTemp": 15.96,
-          "minScreenAirTemp": 15.46,
-          "screenDewPointTemperature": 10.65,
-          "feelsLikeTemperature": 13.11,
-          "windSpeed10m": 6,
-          "windDirectionFrom10m": 231,
-          "windGustSpeed10m": 10.06,
-          "max10mWindGust": 10.06,
-          "visibility": 30210,
-          "screenRelativeHumidity": 72.68,
-          "mslp": 102157,
+          "screenTemperature": 15.55,
+          "maxScreenAirTemp": 16,
+          "minScreenAirTemp": 15.45,
+          "screenDewPointTemperature": 10.75,
+          "feelsLikeTemperature": 13.17,
+          "windSpeed10m": 5.82,
+          "windDirectionFrom10m": 232,
+          "windGustSpeed10m": 9.6,
+          "max10mWindGust": 9.6,
+          "visibility": 29976,
+          "screenRelativeHumidity": 73.19,
+          "mslp": 102160,
           "uvIndex": 2,
-          "significantWeatherCode": 1,
+          "significantWeatherCode": 7,
           "precipitationRate": 0,
           "totalPrecipAmount": 0,
           "totalSnowAmount": 0,
-          "probOfPrecipitation": 1,
+          "probOfPrecipitation": 4,
           "siteLabel": "CaburnBoPeepFirleHighandOver",
           "windDirectionCompass": "SW",
-          "cloudBaseInFt": 1643,
+          "cloudBaseInFt": 1600,
           "cloudBaseTemp": 11,
-          "windSpeedMph": 13.4,
-          "windGustMph": 22.5,
-          "windSpeedKph": 21.6,
-          "windGustKph": 36.2,
+          "windSpeedMph": 13,
+          "windGustMph": 21.5,
+          "windSpeedKph": 21,
+          "windGustKph": 34.6,
           "sites": [
             "Mount Caburn"
           ],
@@ -1785,13 +1512,13 @@
             "GDE"
           ],
           "fullDay": "Monday",
-          "windCategorisation": 14,
-          "gustCategorisation": 23,
+          "windCategorisation": 13,
+          "gustCategorisation": 22,
           "weatherClassification": {
-            "class": "clear",
-            "img": "/02_clear.svg"
+            "class": "cloudy",
+            "img": "/04_cloudy.svg"
           },
-          "temperature": 15.96,
+          "temperature": 16,
           "flyingConditions": "notFlyable"
         }
       ]
@@ -1802,31 +1529,31 @@
         {
           "time": "2025-06-09T18:00Z",
           "screenTemperature": 15.12,
-          "maxScreenAirTemp": 15.58,
-          "minScreenAirTemp": 15.07,
-          "screenDewPointTemperature": 10.72,
-          "feelsLikeTemperature": 12.88,
-          "windSpeed10m": 5.57,
+          "maxScreenAirTemp": 15.55,
+          "minScreenAirTemp": 15.09,
+          "screenDewPointTemperature": 10.8,
+          "feelsLikeTemperature": 12.94,
+          "windSpeed10m": 5.45,
           "windDirectionFrom10m": 234,
-          "windGustSpeed10m": 9.58,
-          "max10mWindGust": 9.58,
-          "visibility": 30773,
-          "screenRelativeHumidity": 75.15,
-          "mslp": 102117,
+          "windGustSpeed10m": 9.18,
+          "max10mWindGust": 9.18,
+          "visibility": 29405,
+          "screenRelativeHumidity": 75.45,
+          "mslp": 102123,
           "uvIndex": 1,
-          "significantWeatherCode": 1,
+          "significantWeatherCode": 3,
           "precipitationRate": 0,
           "totalPrecipAmount": 0,
           "totalSnowAmount": 0,
           "probOfPrecipitation": 1,
           "siteLabel": "CaburnBoPeepFirleHighandOver",
           "windDirectionCompass": "SW",
-          "cloudBaseInFt": 1467,
+          "cloudBaseInFt": 1440,
           "cloudBaseTemp": 11,
-          "windSpeedMph": 12.5,
-          "windGustMph": 21.4,
-          "windSpeedKph": 20.1,
-          "windGustKph": 34.5,
+          "windSpeedMph": 12.2,
+          "windGustMph": 20.5,
+          "windSpeedKph": 19.6,
+          "windGustKph": 33,
           "sites": [
             "Mount Caburn"
           ],
@@ -1861,12 +1588,12 @@
           ],
           "fullDay": "Monday",
           "windCategorisation": 13,
-          "gustCategorisation": 22,
+          "gustCategorisation": 21,
           "weatherClassification": {
-            "class": "clear",
-            "img": "/02_clear.svg"
+            "class": "partly_cloudy",
+            "img": "/03_partly_cloudy.svg"
           },
-          "temperature": 15.58,
+          "temperature": 15.55,
           "flyingConditions": "notFlyable"
         }
       ]
@@ -1876,18 +1603,18 @@
       "forecastCollection": [
         {
           "time": "2025-06-09T19:00Z",
-          "screenTemperature": 14.38,
+          "screenTemperature": 14.35,
           "maxScreenAirTemp": 15.12,
-          "minScreenAirTemp": 14.37,
-          "screenDewPointTemperature": 11.07,
-          "feelsLikeTemperature": 12.59,
-          "windSpeed10m": 4.64,
+          "minScreenAirTemp": 14.35,
+          "screenDewPointTemperature": 11.16,
+          "feelsLikeTemperature": 12.68,
+          "windSpeed10m": 4.42,
           "windDirectionFrom10m": 231,
-          "windGustSpeed10m": 8.65,
-          "max10mWindGust": 8.74,
-          "visibility": 27626,
-          "screenRelativeHumidity": 80.86,
-          "mslp": 102102,
+          "windGustSpeed10m": 8.2,
+          "max10mWindGust": 8.5,
+          "visibility": 26954,
+          "screenRelativeHumidity": 81.32,
+          "mslp": 102097,
           "uvIndex": 1,
           "significantWeatherCode": 7,
           "precipitationRate": 0,
@@ -1896,12 +1623,12 @@
           "probOfPrecipitation": 4,
           "siteLabel": "CaburnBoPeepFirleHighandOver",
           "windDirectionCompass": "SW",
-          "cloudBaseInFt": 1103,
+          "cloudBaseInFt": 1063,
           "cloudBaseTemp": 11,
-          "windSpeedMph": 10.4,
-          "windGustMph": 19.3,
-          "windSpeedKph": 16.7,
-          "windGustKph": 31.1,
+          "windSpeedMph": 9.9,
+          "windGustMph": 18.3,
+          "windSpeedKph": 15.9,
+          "windGustKph": 29.5,
           "sites": [
             "Mount Caburn"
           ],
@@ -1935,8 +1662,8 @@
             "GDE"
           ],
           "fullDay": "Monday",
-          "windCategorisation": 11,
-          "gustCategorisation": 20,
+          "windCategorisation": 10,
+          "gustCategorisation": 19,
           "weatherClassification": {
             "class": "cloudy",
             "img": "/04_cloudy.svg"
@@ -1951,18 +1678,18 @@
       "forecastCollection": [
         {
           "time": "2025-06-09T20:00Z",
-          "screenTemperature": 13.56,
-          "maxScreenAirTemp": 14.38,
-          "minScreenAirTemp": 13.54,
-          "screenDewPointTemperature": 11.18,
-          "feelsLikeTemperature": 12.02,
-          "windSpeed10m": 4.04,
-          "windDirectionFrom10m": 227,
-          "windGustSpeed10m": 8.46,
-          "max10mWindGust": 8.74,
-          "visibility": 23518,
-          "screenRelativeHumidity": 85.89,
-          "mslp": 102069,
+          "screenTemperature": 13.41,
+          "maxScreenAirTemp": 14.35,
+          "minScreenAirTemp": 13.39,
+          "screenDewPointTemperature": 11.24,
+          "feelsLikeTemperature": 12.01,
+          "windSpeed10m": 3.75,
+          "windDirectionFrom10m": 224,
+          "windGustSpeed10m": 8.23,
+          "max10mWindGust": 8.48,
+          "visibility": 22749,
+          "screenRelativeHumidity": 86.95,
+          "mslp": 102067,
           "uvIndex": 1,
           "significantWeatherCode": 7,
           "precipitationRate": 0,
@@ -1971,12 +1698,12 @@
           "probOfPrecipitation": 4,
           "siteLabel": "CaburnBoPeepFirleHighandOver",
           "windDirectionCompass": "SW",
-          "cloudBaseInFt": 793,
+          "cloudBaseInFt": 723,
           "cloudBaseTemp": 11,
-          "windSpeedMph": 9,
-          "windGustMph": 18.9,
-          "windSpeedKph": 14.5,
-          "windGustKph": 30.5,
+          "windSpeedMph": 8.4,
+          "windGustMph": 18.4,
+          "windSpeedKph": 13.5,
+          "windGustKph": 29.6,
           "sites": [
             "Mount Caburn"
           ],
@@ -2016,7 +1743,7 @@
             "class": "cloudy",
             "img": "/04_cloudy.svg"
           },
-          "temperature": 14.38,
+          "temperature": 14.35,
           "flyingConditions": "marginal"
         }
       ]
@@ -2026,18 +1753,18 @@
       "forecastCollection": [
         {
           "time": "2025-06-09T21:00Z",
-          "screenTemperature": 13.17,
-          "maxScreenAirTemp": 13.56,
-          "minScreenAirTemp": 13.1,
-          "screenDewPointTemperature": 11.34,
-          "feelsLikeTemperature": 11.63,
-          "windSpeed10m": 4.02,
-          "windDirectionFrom10m": 229,
-          "windGustSpeed10m": 8.42,
-          "max10mWindGust": 9.38,
-          "visibility": 22517,
-          "screenRelativeHumidity": 89.02,
-          "mslp": 102049,
+          "screenTemperature": 13.07,
+          "maxScreenAirTemp": 13.41,
+          "minScreenAirTemp": 12.99,
+          "screenDewPointTemperature": 11.39,
+          "feelsLikeTemperature": 11.66,
+          "windSpeed10m": 3.76,
+          "windDirectionFrom10m": 228,
+          "windGustSpeed10m": 8.29,
+          "max10mWindGust": 9.08,
+          "visibility": 21086,
+          "screenRelativeHumidity": 89.75,
+          "mslp": 102057,
           "uvIndex": 0,
           "significantWeatherCode": 7,
           "precipitationRate": 0,
@@ -2046,12 +1773,12 @@
           "probOfPrecipitation": 4,
           "siteLabel": "CaburnBoPeepFirleHighandOver",
           "windDirectionCompass": "SW",
-          "cloudBaseInFt": 610,
+          "cloudBaseInFt": 560,
           "cloudBaseTemp": 11,
-          "windSpeedMph": 9,
-          "windGustMph": 18.8,
-          "windSpeedKph": 14.5,
-          "windGustKph": 30.3,
+          "windSpeedMph": 8.4,
+          "windGustMph": 18.5,
+          "windSpeedKph": 13.5,
+          "windGustKph": 29.8,
           "sites": [
             "Mount Caburn"
           ],
@@ -2091,7 +1818,7 @@
             "class": "cloudy",
             "img": "/04_cloudy.svg"
           },
-          "temperature": 13.56,
+          "temperature": 13.41,
           "flyingConditions": "marginal"
         }
       ]
@@ -2103,18 +1830,18 @@
       "forecastCollection": [
         {
           "time": "2025-06-10T06:00Z",
-          "screenTemperature": 14.48,
-          "maxScreenAirTemp": 14.48,
-          "minScreenAirTemp": 13.98,
-          "screenDewPointTemperature": 12.02,
-          "feelsLikeTemperature": 12.53,
-          "windSpeed10m": 5.19,
-          "windDirectionFrom10m": 247,
-          "windGustSpeed10m": 8.95,
-          "max10mWindGust": 10.6,
-          "visibility": 27652,
-          "screenRelativeHumidity": 85.64,
-          "mslp": 101851,
+          "screenTemperature": 14.61,
+          "maxScreenAirTemp": 14.62,
+          "minScreenAirTemp": 14.04,
+          "screenDewPointTemperature": 12.04,
+          "feelsLikeTemperature": 12.7,
+          "windSpeed10m": 5.11,
+          "windDirectionFrom10m": 248,
+          "windGustSpeed10m": 8.7,
+          "max10mWindGust": 10.22,
+          "visibility": 29717,
+          "screenRelativeHumidity": 84.87,
+          "mslp": 101848,
           "uvIndex": 1,
           "significantWeatherCode": 7,
           "precipitationRate": 0,
@@ -2123,12 +1850,12 @@
           "probOfPrecipitation": 4,
           "siteLabel": "CaburnBoPeepFirleHighandOver",
           "windDirectionCompass": "WSW",
-          "cloudBaseInFt": 820,
+          "cloudBaseInFt": 857,
           "cloudBaseTemp": 12,
-          "windSpeedMph": 11.6,
-          "windGustMph": 20,
-          "windSpeedKph": 18.7,
-          "windGustKph": 32.2,
+          "windSpeedMph": 11.4,
+          "windGustMph": 19.5,
+          "windSpeedKph": 18.4,
+          "windGustKph": 31.3,
           "sites": [
             "Mount Caburn"
           ],
@@ -2168,7 +1895,7 @@
             "class": "cloudy",
             "img": "/04_cloudy.svg"
           },
-          "temperature": 14.48,
+          "temperature": 14.62,
           "flyingConditions": "marginal"
         }
       ]
@@ -2178,18 +1905,18 @@
       "forecastCollection": [
         {
           "time": "2025-06-10T07:00Z",
-          "screenTemperature": 15.29,
-          "maxScreenAirTemp": 15.29,
-          "minScreenAirTemp": 14.48,
-          "screenDewPointTemperature": 12.36,
-          "feelsLikeTemperature": 13.36,
-          "windSpeed10m": 5.16,
+          "screenTemperature": 15.42,
+          "maxScreenAirTemp": 15.43,
+          "minScreenAirTemp": 14.61,
+          "screenDewPointTemperature": 12.38,
+          "feelsLikeTemperature": 13.48,
+          "windSpeed10m": 5.19,
           "windDirectionFrom10m": 252,
-          "windGustSpeed10m": 9.05,
-          "max10mWindGust": 10.2,
-          "visibility": 26570,
-          "screenRelativeHumidity": 83.27,
-          "mslp": 101869,
+          "windGustSpeed10m": 8.78,
+          "max10mWindGust": 9.9,
+          "visibility": 28581,
+          "screenRelativeHumidity": 82.52,
+          "mslp": 101866,
           "uvIndex": 2,
           "significantWeatherCode": 7,
           "precipitationRate": 0,
@@ -2198,12 +1925,12 @@
           "probOfPrecipitation": 5,
           "siteLabel": "CaburnBoPeepFirleHighandOver",
           "windDirectionCompass": "WSW",
-          "cloudBaseInFt": 977,
+          "cloudBaseInFt": 1013,
           "cloudBaseTemp": 12,
-          "windSpeedMph": 11.5,
-          "windGustMph": 20.2,
-          "windSpeedKph": 18.6,
-          "windGustKph": 32.6,
+          "windSpeedMph": 11.6,
+          "windGustMph": 19.6,
+          "windSpeedKph": 18.7,
+          "windGustKph": 31.6,
           "sites": [
             "Mount Caburn"
           ],
@@ -2238,13 +1965,13 @@
           ],
           "fullDay": "Tuesday",
           "windCategorisation": 12,
-          "gustCategorisation": 21,
+          "gustCategorisation": 20,
           "weatherClassification": {
             "class": "cloudy",
             "img": "/04_cloudy.svg"
           },
-          "temperature": 15.29,
-          "flyingConditions": "notFlyable"
+          "temperature": 15.43,
+          "flyingConditions": "marginal"
         }
       ]
     },
@@ -2253,32 +1980,32 @@
       "forecastCollection": [
         {
           "time": "2025-06-10T08:00Z",
-          "screenTemperature": 16.13,
-          "maxScreenAirTemp": 16.13,
-          "minScreenAirTemp": 15.29,
-          "screenDewPointTemperature": 12.74,
-          "feelsLikeTemperature": 14.11,
-          "windSpeed10m": 5.39,
+          "screenTemperature": 16.26,
+          "maxScreenAirTemp": 16.28,
+          "minScreenAirTemp": 15.42,
+          "screenDewPointTemperature": 12.67,
+          "feelsLikeTemperature": 14.23,
+          "windSpeed10m": 5.37,
           "windDirectionFrom10m": 253,
-          "windGustSpeed10m": 9.42,
-          "max10mWindGust": 9.42,
-          "visibility": 28148,
-          "screenRelativeHumidity": 80.94,
-          "mslp": 101870,
+          "windGustSpeed10m": 9.07,
+          "max10mWindGust": 9.07,
+          "visibility": 30290,
+          "screenRelativeHumidity": 79.78,
+          "mslp": 101869,
           "uvIndex": 3,
           "significantWeatherCode": 7,
           "precipitationRate": 0,
           "totalPrecipAmount": 0,
           "totalSnowAmount": 0,
-          "probOfPrecipitation": 6,
+          "probOfPrecipitation": 5,
           "siteLabel": "CaburnBoPeepFirleHighandOver",
           "windDirectionCompass": "WSW",
-          "cloudBaseInFt": 1130,
+          "cloudBaseInFt": 1197,
           "cloudBaseTemp": 13,
-          "windSpeedMph": 12.1,
-          "windGustMph": 21.1,
-          "windSpeedKph": 19.4,
-          "windGustKph": 33.9,
+          "windSpeedMph": 12,
+          "windGustMph": 20.3,
+          "windSpeedKph": 19.3,
+          "windGustKph": 32.7,
           "sites": [
             "Mount Caburn"
           ],
@@ -2312,13 +2039,13 @@
             "GDE"
           ],
           "fullDay": "Tuesday",
-          "windCategorisation": 13,
-          "gustCategorisation": 22,
+          "windCategorisation": 12,
+          "gustCategorisation": 21,
           "weatherClassification": {
             "class": "cloudy",
             "img": "/04_cloudy.svg"
           },
-          "temperature": 16.13,
+          "temperature": 16.28,
           "flyingConditions": "notFlyable"
         }
       ]
@@ -2328,35 +2055,32 @@
       "forecastCollection": [
         {
           "time": "2025-06-10T09:00Z",
-          "maxScreenAirTemp": 16.82,
-          "minScreenAirTemp": 14.48,
-          "max10mWindGust": 10.64,
+          "screenTemperature": 16.99,
+          "maxScreenAirTemp": 16.99,
+          "minScreenAirTemp": 16.26,
+          "screenDewPointTemperature": 13.05,
+          "feelsLikeTemperature": 14.92,
+          "windSpeed10m": 5.54,
+          "windDirectionFrom10m": 254,
+          "windGustSpeed10m": 9.35,
+          "max10mWindGust": 9.35,
+          "visibility": 29184,
+          "screenRelativeHumidity": 77.92,
+          "mslp": 101882,
+          "uvIndex": 4,
           "significantWeatherCode": 8,
+          "precipitationRate": 0,
           "totalPrecipAmount": 0,
           "totalSnowAmount": 0,
-          "windSpeed10m": 5.6,
-          "windDirectionFrom10m": 255,
-          "windGustSpeed10m": 9.83,
-          "visibility": 27660,
-          "mslp": 101876,
-          "screenRelativeHumidity": 79.02,
-          "feelsLikeTemp": 14.7,
-          "uvIndex": 4,
           "probOfPrecipitation": 9,
-          "probOfSnow": 0,
-          "probOfHeavySnow": 0,
-          "probOfRain": 9,
-          "probOfHeavyRain": 1,
-          "probOfHail": 0,
-          "probOfSferics": 0,
           "siteLabel": "CaburnBoPeepFirleHighandOver",
           "windDirectionCompass": "WSW",
-          "cloudBaseInFt": null,
-          "cloudBaseTemp": null,
-          "windSpeedMph": 12.5,
-          "windGustMph": 22,
-          "windSpeedKph": 20.2,
-          "windGustKph": 35.4,
+          "cloudBaseInFt": 1313,
+          "cloudBaseTemp": 13,
+          "windSpeedMph": 12.4,
+          "windGustMph": 20.9,
+          "windSpeedKph": 19.9,
+          "windGustKph": 33.7,
           "sites": [
             "Mount Caburn"
           ],
@@ -2391,12 +2115,162 @@
           ],
           "fullDay": "Tuesday",
           "windCategorisation": 13,
-          "gustCategorisation": 22,
+          "gustCategorisation": 21,
           "weatherClassification": {
             "class": "overcast",
             "img": "/04_cloudy.svg"
           },
-          "temperature": 16.82,
+          "temperature": 16.99,
+          "flyingConditions": "notFlyable"
+        }
+      ]
+    },
+    {
+      "time": "2025-06-10T10:00Z",
+      "forecastCollection": [
+        {
+          "time": "2025-06-10T10:00Z",
+          "screenTemperature": 17.53,
+          "maxScreenAirTemp": 17.58,
+          "minScreenAirTemp": 16.99,
+          "screenDewPointTemperature": 13.31,
+          "feelsLikeTemperature": 15.42,
+          "windSpeed10m": 5.6,
+          "windDirectionFrom10m": 253,
+          "windGustSpeed10m": 9.41,
+          "max10mWindGust": 9.41,
+          "visibility": 28037,
+          "screenRelativeHumidity": 76.6,
+          "mslp": 101880,
+          "uvIndex": 4,
+          "significantWeatherCode": 8,
+          "precipitationRate": 0,
+          "totalPrecipAmount": 0,
+          "totalSnowAmount": 0,
+          "probOfPrecipitation": 9,
+          "siteLabel": "CaburnBoPeepFirleHighandOver",
+          "windDirectionCompass": "WSW",
+          "cloudBaseInFt": 1407,
+          "cloudBaseTemp": 13,
+          "windSpeedMph": 12.5,
+          "windGustMph": 21,
+          "windSpeedKph": 20.2,
+          "windGustKph": 33.9,
+          "sites": [
+            "Mount Caburn"
+          ],
+          "correlatedSiteTurnPoints": [
+            {
+              "label": "Mount Caburn",
+              "lat": "50.861577",
+              "long": "0.050928801",
+              "directions": [
+                "WSW",
+                "SW",
+                "SSW",
+                "S"
+              ],
+              "turnPoint": "GDE",
+              "pureTrack": {
+                "topRight": {
+                  "lat": 50.868367,
+                  "long": 0.063661
+                },
+                "bottomLeft": {
+                  "lat": 50.848305,
+                  "long": 0.010185
+                }
+              },
+              "skewtUrl": "https://app19.mrsap.org/skewt/pull.php?region=UK4%2B2&lat=50.861577&lon=0.050928801&grid=d2&time=1000&plot=skewt&location=GDE",
+              "blipspotUrl": "https://app.stratus.org.uk/blip/graph/blip_main.php?day=Tuesday&tp=GDE"
+            }
+          ],
+          "turnPoints": [
+            "GDE"
+          ],
+          "fullDay": "Tuesday",
+          "windCategorisation": 13,
+          "gustCategorisation": 21,
+          "weatherClassification": {
+            "class": "overcast",
+            "img": "/04_cloudy.svg"
+          },
+          "temperature": 17.58,
+          "flyingConditions": "notFlyable"
+        }
+      ]
+    },
+    {
+      "time": "2025-06-10T11:00Z",
+      "forecastCollection": [
+        {
+          "time": "2025-06-10T11:00Z",
+          "screenTemperature": 18.22,
+          "maxScreenAirTemp": 18.22,
+          "minScreenAirTemp": 17.53,
+          "screenDewPointTemperature": 13.71,
+          "feelsLikeTemperature": 15.88,
+          "windSpeed10m": 5.98,
+          "windDirectionFrom10m": 248,
+          "windGustSpeed10m": 9.96,
+          "max10mWindGust": 10,
+          "visibility": 27385,
+          "screenRelativeHumidity": 75.19,
+          "mslp": 101886,
+          "uvIndex": 5,
+          "significantWeatherCode": 7,
+          "precipitationRate": 0,
+          "totalPrecipAmount": 0,
+          "totalSnowAmount": 0,
+          "probOfPrecipitation": 6,
+          "siteLabel": "CaburnBoPeepFirleHighandOver",
+          "windDirectionCompass": "WSW",
+          "cloudBaseInFt": 1503,
+          "cloudBaseTemp": 14,
+          "windSpeedMph": 13.4,
+          "windGustMph": 22.3,
+          "windSpeedKph": 21.5,
+          "windGustKph": 35.9,
+          "sites": [
+            "Mount Caburn"
+          ],
+          "correlatedSiteTurnPoints": [
+            {
+              "label": "Mount Caburn",
+              "lat": "50.861577",
+              "long": "0.050928801",
+              "directions": [
+                "WSW",
+                "SW",
+                "SSW",
+                "S"
+              ],
+              "turnPoint": "GDE",
+              "pureTrack": {
+                "topRight": {
+                  "lat": 50.868367,
+                  "long": 0.063661
+                },
+                "bottomLeft": {
+                  "lat": 50.848305,
+                  "long": 0.010185
+                }
+              },
+              "skewtUrl": "https://app19.mrsap.org/skewt/pull.php?region=UK4%2B2&lat=50.861577&lon=0.050928801&grid=d2&time=1100&plot=skewt&location=GDE",
+              "blipspotUrl": "https://app.stratus.org.uk/blip/graph/blip_main.php?day=Tuesday&tp=GDE"
+            }
+          ],
+          "turnPoints": [
+            "GDE"
+          ],
+          "fullDay": "Tuesday",
+          "windCategorisation": 14,
+          "gustCategorisation": 23,
+          "weatherClassification": {
+            "class": "cloudy",
+            "img": "/04_cloudy.svg"
+          },
+          "temperature": 18.22,
           "flyingConditions": "notFlyable"
         }
       ]
@@ -2406,35 +2280,27 @@
       "forecastCollection": [
         {
           "time": "2025-06-10T12:00Z",
-          "maxScreenAirTemp": 18.76,
-          "minScreenAirTemp": 16.78,
-          "max10mWindGust": 10.86,
-          "significantWeatherCode": 7,
-          "totalPrecipAmount": 0,
-          "totalSnowAmount": 0,
-          "windSpeed10m": 5.98,
-          "windDirectionFrom10m": 250,
-          "windGustSpeed10m": 10.61,
-          "visibility": 25968,
-          "mslp": 101892,
-          "screenRelativeHumidity": 74.6,
-          "feelsLikeTemp": 16.24,
+          "screenTemperature": 18.47,
+          "screenDewPointTemperature": 13.9,
+          "feelsLikeTemperature": 16,
+          "windSpeed10m": 6.24,
+          "windDirectionFrom10m": 247,
+          "windGustSpeed10m": 10.48,
+          "visibility": 27566,
+          "screenRelativeHumidity": 74.87,
+          "mslp": 101893,
           "uvIndex": 5,
+          "significantWeatherCode": 8,
+          "precipitationRate": 0,
           "probOfPrecipitation": 10,
-          "probOfSnow": 0,
-          "probOfHeavySnow": 0,
-          "probOfRain": 10,
-          "probOfHeavyRain": 3,
-          "probOfHail": 0,
-          "probOfSferics": 0,
           "siteLabel": "CaburnBoPeepFirleHighandOver",
           "windDirectionCompass": "WSW",
-          "cloudBaseInFt": null,
-          "cloudBaseTemp": null,
-          "windSpeedMph": 13.4,
-          "windGustMph": 23.7,
-          "windSpeedKph": 21.5,
-          "windGustKph": 38.2,
+          "cloudBaseInFt": 1523,
+          "cloudBaseTemp": 14,
+          "windSpeedMph": 14,
+          "windGustMph": 23.4,
+          "windSpeedKph": 22.5,
+          "windGustKph": 37.7,
           "sites": [
             "Mount Caburn"
           ],
@@ -2471,10 +2337,10 @@
           "windCategorisation": 14,
           "gustCategorisation": 24,
           "weatherClassification": {
-            "class": "cloudy",
+            "class": "overcast",
             "img": "/04_cloudy.svg"
           },
-          "temperature": 18.76,
+          "temperature": 18.47,
           "flyingConditions": "notFlyable"
         }
       ]
@@ -2484,35 +2350,35 @@
       "forecastCollection": [
         {
           "time": "2025-06-10T15:00Z",
-          "maxScreenAirTemp": 19.22,
-          "minScreenAirTemp": 18.54,
-          "max10mWindGust": 12.01,
+          "maxScreenAirTemp": 19.13,
+          "minScreenAirTemp": 18.29,
+          "max10mWindGust": 11.49,
           "significantWeatherCode": 8,
           "totalPrecipAmount": 0,
           "totalSnowAmount": 0,
-          "windSpeed10m": 5.58,
-          "windDirectionFrom10m": 246,
-          "windGustSpeed10m": 10.37,
-          "visibility": 24692,
-          "mslp": 101916,
-          "screenRelativeHumidity": 76.16,
-          "feelsLikeTemp": 16.9,
+          "windSpeed10m": 5.77,
+          "windDirectionFrom10m": 244,
+          "windGustSpeed10m": 10.03,
+          "visibility": 26041,
+          "mslp": 101910,
+          "screenRelativeHumidity": 75.66,
+          "feelsLikeTemp": 16.72,
           "uvIndex": 3,
-          "probOfPrecipitation": 14,
+          "probOfPrecipitation": 13,
           "probOfSnow": 0,
           "probOfHeavySnow": 0,
-          "probOfRain": 14,
-          "probOfHeavyRain": 4,
+          "probOfRain": 13,
+          "probOfHeavyRain": 3,
           "probOfHail": 0,
           "probOfSferics": 0,
           "siteLabel": "CaburnBoPeepFirleHighandOver",
           "windDirectionCompass": "WSW",
           "cloudBaseInFt": null,
           "cloudBaseTemp": null,
-          "windSpeedMph": 12.5,
-          "windGustMph": 23.2,
-          "windSpeedKph": 20.1,
-          "windGustKph": 37.3,
+          "windSpeedMph": 12.9,
+          "windGustMph": 22.4,
+          "windSpeedKph": 20.8,
+          "windGustKph": 36.1,
           "sites": [
             "Mount Caburn"
           ],
@@ -2547,12 +2413,12 @@
           ],
           "fullDay": "Tuesday",
           "windCategorisation": 13,
-          "gustCategorisation": 24,
+          "gustCategorisation": 23,
           "weatherClassification": {
             "class": "overcast",
             "img": "/04_cloudy.svg"
           },
-          "temperature": 19.22,
+          "temperature": 19.13,
           "flyingConditions": "notFlyable"
         }
       ]
@@ -2562,24 +2428,24 @@
       "forecastCollection": [
         {
           "time": "2025-06-10T18:00Z",
-          "maxScreenAirTemp": 18.94,
-          "minScreenAirTemp": 18.25,
-          "max10mWindGust": 10.44,
+          "maxScreenAirTemp": 18.9,
+          "minScreenAirTemp": 18.19,
+          "max10mWindGust": 10.39,
           "significantWeatherCode": 3,
           "totalPrecipAmount": 0,
           "totalSnowAmount": 0,
-          "windSpeed10m": 4.36,
-          "windDirectionFrom10m": 248,
-          "windGustSpeed10m": 7.67,
-          "visibility": 27289,
-          "mslp": 101920,
-          "screenRelativeHumidity": 78.54,
-          "feelsLikeTemp": 17.03,
+          "windSpeed10m": 4.31,
+          "windDirectionFrom10m": 247,
+          "windGustSpeed10m": 7.53,
+          "visibility": 27473,
+          "mslp": 101929,
+          "screenRelativeHumidity": 78.76,
+          "feelsLikeTemp": 17.02,
           "uvIndex": 1,
-          "probOfPrecipitation": 5,
+          "probOfPrecipitation": 4,
           "probOfSnow": 0,
           "probOfHeavySnow": 0,
-          "probOfRain": 5,
+          "probOfRain": 4,
           "probOfHeavyRain": 2,
           "probOfHail": 0,
           "probOfSferics": 0,
@@ -2587,10 +2453,10 @@
           "windDirectionCompass": "WSW",
           "cloudBaseInFt": null,
           "cloudBaseTemp": null,
-          "windSpeedMph": 9.8,
-          "windGustMph": 17.2,
-          "windSpeedKph": 15.7,
-          "windGustKph": 27.6,
+          "windSpeedMph": 9.6,
+          "windGustMph": 16.8,
+          "windSpeedKph": 15.5,
+          "windGustKph": 27.1,
           "sites": [
             "Mount Caburn"
           ],
@@ -2625,12 +2491,12 @@
           ],
           "fullDay": "Tuesday",
           "windCategorisation": 10,
-          "gustCategorisation": 18,
+          "gustCategorisation": 17,
           "weatherClassification": {
             "class": "partly_cloudy",
             "img": "/03_partly_cloudy.svg"
           },
-          "temperature": 18.94,
+          "temperature": 18.9,
           "flyingConditions": "marginal"
         }
       ]
@@ -2640,19 +2506,19 @@
       "forecastCollection": [
         {
           "time": "2025-06-10T21:00Z",
-          "maxScreenAirTemp": 18.31,
+          "maxScreenAirTemp": 18.26,
           "minScreenAirTemp": 14.85,
           "max10mWindGust": 8.38,
           "significantWeatherCode": 0,
           "totalPrecipAmount": 0,
           "totalSnowAmount": 0,
-          "windSpeed10m": 2.89,
-          "windDirectionFrom10m": 243,
-          "windGustSpeed10m": 5.07,
-          "visibility": 20998,
-          "mslp": 102016,
-          "screenRelativeHumidity": 92.18,
-          "feelsLikeTemp": 14.22,
+          "windSpeed10m": 2.88,
+          "windDirectionFrom10m": 242,
+          "windGustSpeed10m": 5,
+          "visibility": 21537,
+          "mslp": 102029,
+          "screenRelativeHumidity": 92.22,
+          "feelsLikeTemp": 14.23,
           "uvIndex": 0,
           "probOfPrecipitation": 1,
           "probOfSnow": 0,
@@ -2665,10 +2531,10 @@
           "windDirectionCompass": "WSW",
           "cloudBaseInFt": null,
           "cloudBaseTemp": null,
-          "windSpeedMph": 6.5,
-          "windGustMph": 11.3,
+          "windSpeedMph": 6.4,
+          "windGustMph": 11.2,
           "windSpeedKph": 10.4,
-          "windGustKph": 18.3,
+          "windGustKph": 18,
           "sites": [
             "Mount Caburn"
           ],
@@ -2708,7 +2574,7 @@
             "class": "clear",
             "img": "/02_clear.svg"
           },
-          "temperature": 18.31,
+          "temperature": 18.26,
           "flyingConditions": "flyable"
         }
       ]
@@ -2720,19 +2586,19 @@
       "forecastCollection": [
         {
           "time": "2025-06-11T06:00Z",
-          "maxScreenAirTemp": 14.26,
-          "minScreenAirTemp": 11.62,
-          "max10mWindGust": 4.47,
+          "maxScreenAirTemp": 14.3,
+          "minScreenAirTemp": 11.7,
+          "max10mWindGust": 4.41,
           "significantWeatherCode": 1,
           "totalPrecipAmount": 0,
           "totalSnowAmount": 0,
-          "windSpeed10m": 1.7,
-          "windDirectionFrom10m": 113,
-          "windGustSpeed10m": 3.87,
-          "visibility": 11857,
+          "windSpeed10m": 1.66,
+          "windDirectionFrom10m": 119,
+          "windGustSpeed10m": 3.77,
+          "visibility": 12485,
           "mslp": 102033,
-          "screenRelativeHumidity": 94.2,
-          "feelsLikeTemp": 14.2,
+          "screenRelativeHumidity": 94.17,
+          "feelsLikeTemp": 14.27,
           "uvIndex": 1,
           "probOfPrecipitation": 4,
           "probOfSnow": 0,
@@ -2745,10 +2611,10 @@
           "windDirectionCompass": "ESE",
           "cloudBaseInFt": null,
           "cloudBaseTemp": null,
-          "windSpeedMph": 3.8,
-          "windGustMph": 8.7,
-          "windSpeedKph": 6.1,
-          "windGustKph": 13.9,
+          "windSpeedMph": 3.7,
+          "windGustMph": 8.4,
+          "windSpeedKph": 6,
+          "windGustKph": 13.6,
           "sites": [
             "High and Over"
           ],
@@ -2787,7 +2653,7 @@
             "class": "clear",
             "img": "/02_clear.svg"
           },
-          "temperature": 14.26,
+          "temperature": 14.3,
           "flyingConditions": "flyable"
         }
       ]
@@ -2797,19 +2663,19 @@
       "forecastCollection": [
         {
           "time": "2025-06-11T09:00Z",
-          "maxScreenAirTemp": 17.46,
-          "minScreenAirTemp": 14.11,
+          "maxScreenAirTemp": 17.84,
+          "minScreenAirTemp": 14.08,
           "max10mWindGust": 7.47,
           "significantWeatherCode": 7,
           "totalPrecipAmount": 0,
           "totalSnowAmount": 0,
-          "windSpeed10m": 3.57,
-          "windDirectionFrom10m": 136,
-          "windGustSpeed10m": 7.06,
-          "visibility": 22989,
-          "mslp": 102043,
-          "screenRelativeHumidity": 80.48,
-          "feelsLikeTemp": 16.45,
+          "windSpeed10m": 3.4,
+          "windDirectionFrom10m": 139,
+          "windGustSpeed10m": 6.88,
+          "visibility": 24808,
+          "mslp": 102040,
+          "screenRelativeHumidity": 79.16,
+          "feelsLikeTemp": 16.95,
           "uvIndex": 5,
           "probOfPrecipitation": 5,
           "probOfSnow": 0,
@@ -2822,10 +2688,10 @@
           "windDirectionCompass": "SE",
           "cloudBaseInFt": null,
           "cloudBaseTemp": null,
-          "windSpeedMph": 8,
-          "windGustMph": 15.8,
-          "windSpeedKph": 12.9,
-          "windGustKph": 25.4,
+          "windSpeedMph": 7.6,
+          "windGustMph": 15.4,
+          "windSpeedKph": 12.2,
+          "windGustKph": 24.8,
           "sites": [
             "Beachy Head"
           ],
@@ -2862,7 +2728,7 @@
             "class": "cloudy",
             "img": "/04_cloudy.svg"
           },
-          "temperature": 17.46,
+          "temperature": 17.84,
           "flyingConditions": "flyable"
         }
       ]
@@ -2872,49 +2738,73 @@
       "forecastCollection": [
         {
           "time": "2025-06-11T12:00Z",
-          "maxScreenAirTemp": 18.13,
-          "minScreenAirTemp": 16.25,
-          "max10mWindGust": 9.24,
+          "maxScreenAirTemp": 19.53,
+          "minScreenAirTemp": 16.71,
+          "max10mWindGust": 8.44,
           "significantWeatherCode": 3,
           "totalPrecipAmount": 0,
           "totalSnowAmount": 0,
-          "windSpeed10m": 4.54,
-          "windDirectionFrom10m": 130,
-          "windGustSpeed10m": 9.1,
-          "visibility": 28718,
-          "mslp": 101973,
-          "screenRelativeHumidity": 72.63,
-          "feelsLikeTemp": 16.55,
+          "windSpeed10m": 4.14,
+          "windDirectionFrom10m": 128,
+          "windGustSpeed10m": 8.29,
+          "visibility": 29253,
+          "mslp": 101995,
+          "screenRelativeHumidity": 71.65,
+          "feelsLikeTemp": 18.3,
           "uvIndex": 7,
-          "probOfPrecipitation": 1,
+          "probOfPrecipitation": 2,
           "probOfSnow": 0,
           "probOfHeavySnow": 0,
-          "probOfRain": 1,
-          "probOfHeavyRain": 0,
+          "probOfRain": 2,
+          "probOfHeavyRain": 1,
           "probOfHail": 0,
           "probOfSferics": 0,
-          "siteLabel": "DDKDitchling",
+          "siteLabel": "NewhavenBeachyHead",
           "windDirectionCompass": "SE",
           "cloudBaseInFt": null,
           "cloudBaseTemp": null,
-          "windSpeedMph": 10.2,
-          "windGustMph": 20.4,
-          "windSpeedKph": 16.3,
-          "windGustKph": 32.8,
+          "windSpeedMph": 9.3,
+          "windGustMph": 18.5,
+          "windSpeedKph": 14.9,
+          "windGustKph": 29.8,
           "sites": [
-            "No flyable sites"
+            "Beachy Head"
           ],
-          "correlatedSiteTurnPoints": [],
-          "turnPoints": [],
+          "correlatedSiteTurnPoints": [
+            {
+              "label": "Beachy Head",
+              "lat": "50.740020",
+              "long": "0.25347054",
+              "directions": [
+                "SE"
+              ],
+              "turnPoint": "SEA",
+              "pureTrack": {
+                "topRight": {
+                  "lat": 50.773092,
+                  "long": 0.303424
+                },
+                "bottomLeft": {
+                  "lat": 50.717695,
+                  "long": 0.13674
+                }
+              },
+              "skewtUrl": "https://app19.mrsap.org/skewt/pull.php?region=UK12%2B3&lat=50.740020&lon=0.25347054&grid=d2&time=1200&plot=skewt&location=SEA",
+              "blipspotUrl": "https://app.stratus.org.uk/blip/graph/blip_main.php?day=Wednesday&tp=SEA"
+            }
+          ],
+          "turnPoints": [
+            "SEA"
+          ],
           "fullDay": "Wednesday",
-          "windCategorisation": 11,
-          "gustCategorisation": 21,
+          "windCategorisation": 10,
+          "gustCategorisation": 19,
           "weatherClassification": {
             "class": "partly_cloudy",
             "img": "/03_partly_cloudy.svg"
           },
-          "temperature": 18.13,
-          "flyingConditions": "notFlyable"
+          "temperature": 19.53,
+          "flyingConditions": "marginal"
         }
       ]
     },
@@ -2923,20 +2813,20 @@
       "forecastCollection": [
         {
           "time": "2025-06-11T15:00Z",
-          "maxScreenAirTemp": 21.08,
-          "minScreenAirTemp": 19.35,
+          "maxScreenAirTemp": 21.14,
+          "minScreenAirTemp": 19.5,
           "max10mWindGust": 10.57,
           "significantWeatherCode": 1,
           "totalPrecipAmount": 0,
           "totalSnowAmount": 0,
-          "windSpeed10m": 4.4,
-          "windDirectionFrom10m": 115,
-          "windGustSpeed10m": 9.03,
-          "visibility": 30021,
-          "mslp": 101831,
-          "screenRelativeHumidity": 65.3,
-          "feelsLikeTemp": 19.59,
-          "uvIndex": 4,
+          "windSpeed10m": 4.21,
+          "windDirectionFrom10m": 118,
+          "windGustSpeed10m": 8.58,
+          "visibility": 31983,
+          "mslp": 101837,
+          "screenRelativeHumidity": 64.95,
+          "feelsLikeTemp": 19.77,
+          "uvIndex": 5,
           "probOfPrecipitation": 1,
           "probOfSnow": 0,
           "probOfHeavySnow": 0,
@@ -2948,10 +2838,10 @@
           "windDirectionCompass": "ESE",
           "cloudBaseInFt": null,
           "cloudBaseTemp": null,
-          "windSpeedMph": 9.8,
-          "windGustMph": 20.2,
-          "windSpeedKph": 15.8,
-          "windGustKph": 32.5,
+          "windSpeedMph": 9.4,
+          "windGustMph": 19.2,
+          "windSpeedKph": 15.2,
+          "windGustKph": 30.9,
           "sites": [
             "High and Over"
           ],
@@ -2985,13 +2875,13 @@
           ],
           "fullDay": "Wednesday",
           "windCategorisation": 10,
-          "gustCategorisation": 21,
+          "gustCategorisation": 20,
           "weatherClassification": {
             "class": "clear",
             "img": "/02_clear.svg"
           },
-          "temperature": 21.08,
-          "flyingConditions": "notFlyable"
+          "temperature": 21.14,
+          "flyingConditions": "marginal"
         }
       ]
     },
@@ -3000,19 +2890,19 @@
       "forecastCollection": [
         {
           "time": "2025-06-11T18:00Z",
-          "maxScreenAirTemp": 21.03,
-          "minScreenAirTemp": 20.15,
-          "max10mWindGust": 9.85,
-          "significantWeatherCode": 3,
+          "maxScreenAirTemp": 21.09,
+          "minScreenAirTemp": 20.12,
+          "max10mWindGust": 9.4,
+          "significantWeatherCode": 1,
           "totalPrecipAmount": 0,
           "totalSnowAmount": 0,
-          "windSpeed10m": 4.7,
-          "windDirectionFrom10m": 90,
-          "windGustSpeed10m": 8.85,
-          "visibility": 28866,
-          "mslp": 101667,
-          "screenRelativeHumidity": 69.28,
-          "feelsLikeTemp": 18.86,
+          "windSpeed10m": 4.56,
+          "windDirectionFrom10m": 91,
+          "windGustSpeed10m": 8.38,
+          "visibility": 30725,
+          "mslp": 101682,
+          "screenRelativeHumidity": 69.69,
+          "feelsLikeTemp": 19.06,
           "uvIndex": 1,
           "probOfPrecipitation": 1,
           "probOfSnow": 0,
@@ -3025,10 +2915,10 @@
           "windDirectionCompass": "E",
           "cloudBaseInFt": null,
           "cloudBaseTemp": null,
-          "windSpeedMph": 10.5,
-          "windGustMph": 19.8,
-          "windSpeedKph": 16.9,
-          "windGustKph": 31.9,
+          "windSpeedMph": 10.2,
+          "windGustMph": 18.7,
+          "windSpeedKph": 16.4,
+          "windGustKph": 30.2,
           "sites": [
             "High and Over"
           ],
@@ -3062,12 +2952,12 @@
           ],
           "fullDay": "Wednesday",
           "windCategorisation": 11,
-          "gustCategorisation": 20,
+          "gustCategorisation": 19,
           "weatherClassification": {
-            "class": "partly_cloudy",
-            "img": "/03_partly_cloudy.svg"
+            "class": "clear",
+            "img": "/02_clear.svg"
           },
-          "temperature": 21.03,
+          "temperature": 21.09,
           "flyingConditions": "marginal"
         }
       ]
@@ -3077,24 +2967,24 @@
       "forecastCollection": [
         {
           "time": "2025-06-11T21:00Z",
-          "maxScreenAirTemp": 20.42,
-          "minScreenAirTemp": 17.38,
+          "maxScreenAirTemp": 20.49,
+          "minScreenAirTemp": 17.28,
           "max10mWindGust": 10.99,
           "significantWeatherCode": 0,
           "totalPrecipAmount": 0,
           "totalSnowAmount": 0,
-          "windSpeed10m": 4.41,
+          "windSpeed10m": 4.28,
           "windDirectionFrom10m": 90,
-          "windGustSpeed10m": 8.34,
-          "visibility": 26017,
-          "mslp": 101622,
-          "screenRelativeHumidity": 79.45,
+          "windGustSpeed10m": 7.84,
+          "visibility": 27311,
+          "mslp": 101639,
+          "screenRelativeHumidity": 80.53,
           "feelsLikeTemp": 16.07,
           "uvIndex": 0,
-          "probOfPrecipitation": 4,
+          "probOfPrecipitation": 3,
           "probOfSnow": 0,
           "probOfHeavySnow": 0,
-          "probOfRain": 4,
+          "probOfRain": 3,
           "probOfHeavyRain": 2,
           "probOfHail": 0,
           "probOfSferics": 2,
@@ -3102,10 +2992,10 @@
           "windDirectionCompass": "E",
           "cloudBaseInFt": null,
           "cloudBaseTemp": null,
-          "windSpeedMph": 9.9,
-          "windGustMph": 18.7,
-          "windSpeedKph": 15.9,
-          "windGustKph": 30,
+          "windSpeedMph": 9.6,
+          "windGustMph": 17.5,
+          "windSpeedKph": 15.4,
+          "windGustKph": 28.2,
           "sites": [
             "High and Over"
           ],
@@ -3139,12 +3029,12 @@
           ],
           "fullDay": "Wednesday",
           "windCategorisation": 10,
-          "gustCategorisation": 19,
+          "gustCategorisation": 18,
           "weatherClassification": {
             "class": "clear",
             "img": "/02_clear.svg"
           },
-          "temperature": 20.42,
+          "temperature": 20.49,
           "flyingConditions": "marginal"
         }
       ]
@@ -3156,35 +3046,35 @@
       "forecastCollection": [
         {
           "time": "2025-06-12T06:00Z",
-          "maxScreenAirTemp": 17.4,
-          "minScreenAirTemp": 17.02,
-          "max10mWindGust": 9.29,
-          "significantWeatherCode": 3,
+          "maxScreenAirTemp": 17.6,
+          "minScreenAirTemp": 16.95,
+          "max10mWindGust": 9.04,
+          "significantWeatherCode": 7,
           "totalPrecipAmount": 0,
           "totalSnowAmount": 0,
-          "windSpeed10m": 4.66,
-          "windDirectionFrom10m": 129,
-          "windGustSpeed10m": 8,
-          "visibility": 22459,
-          "mslp": 101341,
-          "screenRelativeHumidity": 82.76,
-          "feelsLikeTemp": 15.96,
+          "windSpeed10m": 4.52,
+          "windDirectionFrom10m": 128,
+          "windGustSpeed10m": 7.72,
+          "visibility": 24185,
+          "mslp": 101333,
+          "screenRelativeHumidity": 82.57,
+          "feelsLikeTemp": 16.2,
           "uvIndex": 1,
-          "probOfPrecipitation": 17,
+          "probOfPrecipitation": 18,
           "probOfSnow": 0,
           "probOfHeavySnow": 0,
-          "probOfRain": 17,
-          "probOfHeavyRain": 14,
+          "probOfRain": 18,
+          "probOfHeavyRain": 13,
           "probOfHail": 2,
           "probOfSferics": 2,
           "siteLabel": "NewhavenBeachyHead",
           "windDirectionCompass": "SE",
           "cloudBaseInFt": null,
           "cloudBaseTemp": null,
-          "windSpeedMph": 10.4,
-          "windGustMph": 17.9,
-          "windSpeedKph": 16.8,
-          "windGustKph": 28.8,
+          "windSpeedMph": 10.1,
+          "windGustMph": 17.3,
+          "windSpeedKph": 16.3,
+          "windGustKph": 27.8,
           "sites": [
             "Beachy Head"
           ],
@@ -3218,10 +3108,10 @@
           "windCategorisation": 11,
           "gustCategorisation": 18,
           "weatherClassification": {
-            "class": "partly_cloudy",
-            "img": "/03_partly_cloudy.svg"
+            "class": "cloudy",
+            "img": "/04_cloudy.svg"
           },
-          "temperature": 17.4,
+          "temperature": 17.6,
           "flyingConditions": "marginal"
         }
       ]
@@ -3231,35 +3121,35 @@
       "forecastCollection": [
         {
           "time": "2025-06-12T09:00Z",
-          "maxScreenAirTemp": 18.78,
-          "minScreenAirTemp": 17.35,
+          "maxScreenAirTemp": 19.14,
+          "minScreenAirTemp": 17.5,
           "max10mWindGust": 10.54,
-          "significantWeatherCode": 10,
-          "totalPrecipAmount": 1.16,
+          "significantWeatherCode": 12,
+          "totalPrecipAmount": 1.13,
           "totalSnowAmount": 0,
-          "windSpeed10m": 4.62,
-          "windDirectionFrom10m": 157,
-          "windGustSpeed10m": 8.43,
-          "visibility": 20738,
-          "mslp": 101357,
-          "screenRelativeHumidity": 80.76,
-          "feelsLikeTemp": 17.32,
+          "windSpeed10m": 4.58,
+          "windDirectionFrom10m": 154,
+          "windGustSpeed10m": 8.37,
+          "visibility": 21723,
+          "mslp": 101355,
+          "screenRelativeHumidity": 80.33,
+          "feelsLikeTemp": 17.75,
           "uvIndex": 4,
-          "probOfPrecipitation": 35,
+          "probOfPrecipitation": 45,
           "probOfSnow": 0,
           "probOfHeavySnow": 0,
-          "probOfRain": 35,
-          "probOfHeavyRain": 23,
-          "probOfHail": 3,
-          "probOfSferics": 7,
+          "probOfRain": 45,
+          "probOfHeavyRain": 27,
+          "probOfHail": 2,
+          "probOfSferics": 4,
           "siteLabel": "NewhavenBeachyHead",
           "windDirectionCompass": "SSE",
           "cloudBaseInFt": null,
           "cloudBaseTemp": null,
-          "windSpeedMph": 10.3,
-          "windGustMph": 18.9,
-          "windSpeedKph": 16.6,
-          "windGustKph": 30.3,
+          "windSpeedMph": 10.2,
+          "windGustMph": 18.7,
+          "windSpeedKph": 16.5,
+          "windGustKph": 30.1,
           "sites": [
             "Newhaven"
           ],
@@ -3298,7 +3188,7 @@
             "class": "partly_cloudy",
             "img": "/03_partly_cloudy.svg"
           },
-          "temperature": 18.78,
+          "temperature": 19.14,
           "flyingConditions": "marginal"
         }
       ]
@@ -3308,19 +3198,19 @@
       "forecastCollection": [
         {
           "time": "2025-06-12T12:00Z",
-          "maxScreenAirTemp": 20.77,
-          "minScreenAirTemp": 19.1,
-          "max10mWindGust": 10.25,
+          "maxScreenAirTemp": 21.04,
+          "minScreenAirTemp": 19.25,
+          "max10mWindGust": 10.04,
           "significantWeatherCode": 7,
           "totalPrecipAmount": 0,
           "totalSnowAmount": 0,
-          "windSpeed10m": 4.34,
-          "windDirectionFrom10m": 198,
-          "windGustSpeed10m": 8.99,
-          "visibility": 20922,
-          "mslp": 101411,
-          "screenRelativeHumidity": 77.79,
-          "feelsLikeTemp": 19.71,
+          "windSpeed10m": 4.37,
+          "windDirectionFrom10m": 189,
+          "windGustSpeed10m": 8.77,
+          "visibility": 23081,
+          "mslp": 101400,
+          "screenRelativeHumidity": 77.24,
+          "feelsLikeTemp": 20.01,
           "uvIndex": 6,
           "probOfPrecipitation": 11,
           "probOfSnow": 0,
@@ -3328,15 +3218,15 @@
           "probOfRain": 11,
           "probOfHeavyRain": 7,
           "probOfHail": 1,
-          "probOfSferics": 2,
+          "probOfSferics": 1,
           "siteLabel": "CaburnBoPeepFirleHighandOver",
-          "windDirectionCompass": "SSW",
+          "windDirectionCompass": "S",
           "cloudBaseInFt": null,
           "cloudBaseTemp": null,
-          "windSpeedMph": 9.7,
-          "windGustMph": 20.1,
-          "windSpeedKph": 15.6,
-          "windGustKph": 32.4,
+          "windSpeedMph": 9.8,
+          "windGustMph": 19.6,
+          "windSpeedKph": 15.7,
+          "windGustKph": 31.6,
           "sites": [
             "Mount Caburn"
           ],
@@ -3371,45 +3261,45 @@
           ],
           "fullDay": "Thursday",
           "windCategorisation": 10,
-          "gustCategorisation": 21,
+          "gustCategorisation": 20,
           "weatherClassification": {
             "class": "cloudy",
             "img": "/04_cloudy.svg"
           },
-          "temperature": 20.77,
-          "flyingConditions": "notFlyable"
+          "temperature": 21.04,
+          "flyingConditions": "marginal"
         },
         {
           "time": "2025-06-12T12:00Z",
-          "maxScreenAirTemp": 19.63,
-          "minScreenAirTemp": 18.63,
-          "max10mWindGust": 10.36,
-          "significantWeatherCode": 3,
-          "totalPrecipAmount": 0,
+          "maxScreenAirTemp": 20.27,
+          "minScreenAirTemp": 18.99,
+          "max10mWindGust": 10.25,
+          "significantWeatherCode": 10,
+          "totalPrecipAmount": 0.79,
           "totalSnowAmount": 0,
-          "windSpeed10m": 4.83,
-          "windDirectionFrom10m": 197,
-          "windGustSpeed10m": 9.41,
-          "visibility": 22800,
-          "mslp": 101407,
-          "screenRelativeHumidity": 79.47,
-          "feelsLikeTemp": 18.06,
+          "windSpeed10m": 4.65,
+          "windDirectionFrom10m": 190,
+          "windGustSpeed10m": 9.07,
+          "visibility": 24497,
+          "mslp": 101390,
+          "screenRelativeHumidity": 78.39,
+          "feelsLikeTemp": 18.95,
           "uvIndex": 6,
-          "probOfPrecipitation": 11,
+          "probOfPrecipitation": 32,
           "probOfSnow": 0,
           "probOfHeavySnow": 0,
-          "probOfRain": 11,
-          "probOfHeavyRain": 10,
+          "probOfRain": 32,
+          "probOfHeavyRain": 20,
           "probOfHail": 2,
-          "probOfSferics": 2,
+          "probOfSferics": 4,
           "siteLabel": "NewhavenBeachyHead",
-          "windDirectionCompass": "SSW",
+          "windDirectionCompass": "S",
           "cloudBaseInFt": null,
           "cloudBaseTemp": null,
-          "windSpeedMph": 10.8,
-          "windGustMph": 21,
-          "windSpeedKph": 17.4,
-          "windGustKph": 33.9,
+          "windSpeedMph": 10.4,
+          "windGustMph": 20.3,
+          "windSpeedKph": 16.7,
+          "windGustKph": 32.7,
           "sites": [
             "Newhaven"
           ],
@@ -3448,7 +3338,7 @@
             "class": "partly_cloudy",
             "img": "/03_partly_cloudy.svg"
           },
-          "temperature": 19.63,
+          "temperature": 20.27,
           "flyingConditions": "notFlyable"
         }
       ]
@@ -3458,19 +3348,19 @@
       "forecastCollection": [
         {
           "time": "2025-06-12T15:00Z",
-          "maxScreenAirTemp": 21.63,
-          "minScreenAirTemp": 20.61,
+          "maxScreenAirTemp": 21.96,
+          "minScreenAirTemp": 20.89,
           "max10mWindGust": 11.95,
-          "significantWeatherCode": 3,
+          "significantWeatherCode": 1,
           "totalPrecipAmount": 0,
           "totalSnowAmount": 0,
-          "windSpeed10m": 4.86,
-          "windDirectionFrom10m": 221,
-          "windGustSpeed10m": 9.95,
-          "visibility": 26444,
-          "mslp": 101485,
+          "windSpeed10m": 4.81,
+          "windDirectionFrom10m": 214,
+          "windGustSpeed10m": 9.53,
+          "visibility": 28213,
+          "mslp": 101453,
           "screenRelativeHumidity": 73.66,
-          "feelsLikeTemp": 20.15,
+          "feelsLikeTemp": 20.59,
           "uvIndex": 4,
           "probOfPrecipitation": 5,
           "probOfSnow": 0,
@@ -3483,10 +3373,10 @@
           "windDirectionCompass": "SW",
           "cloudBaseInFt": null,
           "cloudBaseTemp": null,
-          "windSpeedMph": 10.9,
-          "windGustMph": 22.3,
-          "windSpeedKph": 17.5,
-          "windGustKph": 35.8,
+          "windSpeedMph": 10.8,
+          "windGustMph": 21.3,
+          "windSpeedKph": 17.3,
+          "windGustKph": 34.3,
           "sites": [
             "Mount Caburn"
           ],
@@ -3521,12 +3411,12 @@
           ],
           "fullDay": "Thursday",
           "windCategorisation": 11,
-          "gustCategorisation": 23,
+          "gustCategorisation": 22,
           "weatherClassification": {
-            "class": "partly_cloudy",
-            "img": "/03_partly_cloudy.svg"
+            "class": "clear",
+            "img": "/02_clear.svg"
           },
-          "temperature": 21.63,
+          "temperature": 21.96,
           "flyingConditions": "notFlyable"
         }
       ]
@@ -3536,19 +3426,19 @@
       "forecastCollection": [
         {
           "time": "2025-06-12T18:00Z",
-          "maxScreenAirTemp": 21.39,
-          "minScreenAirTemp": 19.78,
-          "max10mWindGust": 10.84,
+          "maxScreenAirTemp": 21.72,
+          "minScreenAirTemp": 20.02,
+          "max10mWindGust": 10.52,
           "significantWeatherCode": 1,
           "totalPrecipAmount": 0,
           "totalSnowAmount": 0,
-          "windSpeed10m": 3.84,
-          "windDirectionFrom10m": 232,
-          "windGustSpeed10m": 7.57,
-          "visibility": 26692,
-          "mslp": 101586,
-          "screenRelativeHumidity": 75,
-          "feelsLikeTemp": 19.24,
+          "windSpeed10m": 3.81,
+          "windDirectionFrom10m": 228,
+          "windGustSpeed10m": 7.17,
+          "visibility": 28091,
+          "mslp": 101558,
+          "screenRelativeHumidity": 75.96,
+          "feelsLikeTemp": 19.62,
           "uvIndex": 1,
           "probOfPrecipitation": 4,
           "probOfSnow": 0,
@@ -3561,10 +3451,10 @@
           "windDirectionCompass": "SW",
           "cloudBaseInFt": null,
           "cloudBaseTemp": null,
-          "windSpeedMph": 8.6,
-          "windGustMph": 16.9,
-          "windSpeedKph": 13.8,
-          "windGustKph": 27.3,
+          "windSpeedMph": 8.5,
+          "windGustMph": 16,
+          "windSpeedKph": 13.7,
+          "windGustKph": 25.8,
           "sites": [
             "Mount Caburn"
           ],
@@ -3599,12 +3489,12 @@
           ],
           "fullDay": "Thursday",
           "windCategorisation": 9,
-          "gustCategorisation": 17,
+          "gustCategorisation": 16,
           "weatherClassification": {
             "class": "clear",
             "img": "/02_clear.svg"
           },
-          "temperature": 21.39,
+          "temperature": 21.72,
           "flyingConditions": "marginal"
         }
       ]
@@ -3614,35 +3504,35 @@
       "forecastCollection": [
         {
           "time": "2025-06-12T21:00Z",
-          "maxScreenAirTemp": 20.07,
-          "minScreenAirTemp": 15.96,
+          "maxScreenAirTemp": 20.32,
+          "minScreenAirTemp": 16.34,
           "max10mWindGust": 8.13,
           "significantWeatherCode": 0,
           "totalPrecipAmount": 0,
           "totalSnowAmount": 0,
-          "windSpeed10m": 2.44,
-          "windDirectionFrom10m": 211,
-          "windGustSpeed10m": 4.17,
-          "visibility": 21825,
-          "mslp": 101726,
-          "screenRelativeHumidity": 90.07,
-          "feelsLikeTemp": 15.78,
+          "windSpeed10m": 2.42,
+          "windDirectionFrom10m": 214,
+          "windGustSpeed10m": 4.05,
+          "visibility": 23323,
+          "mslp": 101706,
+          "screenRelativeHumidity": 89.98,
+          "feelsLikeTemp": 16.25,
           "uvIndex": 0,
-          "probOfPrecipitation": 0,
+          "probOfPrecipitation": 1,
           "probOfSnow": 0,
           "probOfHeavySnow": 0,
-          "probOfRain": 0,
+          "probOfRain": 1,
           "probOfHeavyRain": 0,
           "probOfHail": 0,
           "probOfSferics": 0,
           "siteLabel": "CaburnBoPeepFirleHighandOver",
-          "windDirectionCompass": "SSW",
+          "windDirectionCompass": "SW",
           "cloudBaseInFt": null,
           "cloudBaseTemp": null,
-          "windSpeedMph": 5.5,
-          "windGustMph": 9.3,
-          "windSpeedKph": 8.8,
-          "windGustKph": 15,
+          "windSpeedMph": 5.4,
+          "windGustMph": 9.1,
+          "windSpeedKph": 8.7,
+          "windGustKph": 14.6,
           "sites": [
             "Mount Caburn"
           ],
@@ -3682,24 +3572,24 @@
             "class": "clear",
             "img": "/02_clear.svg"
           },
-          "temperature": 20.07,
+          "temperature": 20.32,
           "flyingConditions": "flyable"
         },
         {
           "time": "2025-06-12T21:00Z",
-          "maxScreenAirTemp": 19.38,
-          "minScreenAirTemp": 15.92,
+          "maxScreenAirTemp": 19.75,
+          "minScreenAirTemp": 16.18,
           "max10mWindGust": 8.18,
           "significantWeatherCode": 0,
           "totalPrecipAmount": 0,
           "totalSnowAmount": 0,
-          "windSpeed10m": 2.67,
+          "windSpeed10m": 2.5,
           "windDirectionFrom10m": 198,
-          "windGustSpeed10m": 4.25,
-          "visibility": 22459,
-          "mslp": 101728,
-          "screenRelativeHumidity": 90.19,
-          "feelsLikeTemp": 15.63,
+          "windGustSpeed10m": 4,
+          "visibility": 23905,
+          "mslp": 101703,
+          "screenRelativeHumidity": 90.3,
+          "feelsLikeTemp": 16.05,
           "uvIndex": 0,
           "probOfPrecipitation": 0,
           "probOfSnow": 0,
@@ -3712,10 +3602,10 @@
           "windDirectionCompass": "SSW",
           "cloudBaseInFt": null,
           "cloudBaseTemp": null,
-          "windSpeedMph": 6,
-          "windGustMph": 9.5,
-          "windSpeedKph": 9.6,
-          "windGustKph": 15.3,
+          "windSpeedMph": 5.6,
+          "windGustMph": 8.9,
+          "windSpeedKph": 9,
+          "windGustKph": 14.4,
           "sites": [
             "Newhaven"
           ],
@@ -3749,12 +3639,12 @@
           ],
           "fullDay": "Thursday",
           "windCategorisation": 6,
-          "gustCategorisation": 10,
+          "gustCategorisation": 9,
           "weatherClassification": {
             "class": "clear",
             "img": "/02_clear.svg"
           },
-          "temperature": 19.38,
+          "temperature": 19.75,
           "flyingConditions": "flyable"
         }
       ]
@@ -3766,19 +3656,19 @@
       "forecastCollection": [
         {
           "time": "2025-06-13T06:00Z",
-          "maxScreenAirTemp": 16.51,
-          "minScreenAirTemp": 14.45,
-          "max10mWindGust": 5.08,
+          "maxScreenAirTemp": 16.87,
+          "minScreenAirTemp": 14.25,
+          "max10mWindGust": 4.87,
           "significantWeatherCode": 1,
           "totalPrecipAmount": 0,
           "totalSnowAmount": 0,
-          "windSpeed10m": 2.8,
-          "windDirectionFrom10m": 152,
-          "windGustSpeed10m": 4.87,
-          "visibility": 18203,
-          "mslp": 101880,
-          "screenRelativeHumidity": 90.52,
-          "feelsLikeTemp": 16.17,
+          "windSpeed10m": 2.28,
+          "windDirectionFrom10m": 210,
+          "windGustSpeed10m": 4.43,
+          "visibility": 20670,
+          "mslp": 101874,
+          "screenRelativeHumidity": 90.92,
+          "feelsLikeTemp": 16.9,
           "uvIndex": 1,
           "probOfPrecipitation": 2,
           "probOfSnow": 0,
@@ -3787,399 +3677,14 @@
           "probOfHeavyRain": 0,
           "probOfHail": 0,
           "probOfSferics": 0,
-          "siteLabel": "NewhavenBeachyHead",
-          "windDirectionCompass": "SSE",
-          "cloudBaseInFt": null,
-          "cloudBaseTemp": null,
-          "windSpeedMph": 6.3,
-          "windGustMph": 10.9,
-          "windSpeedKph": 10.1,
-          "windGustKph": 17.5,
-          "sites": [
-            "Newhaven"
-          ],
-          "correlatedSiteTurnPoints": [
-            {
-              "label": "Newhaven",
-              "lat": "50.782348",
-              "long": "0.049073696",
-              "directions": [
-                "SSW",
-                "S",
-                "SSE"
-              ],
-              "turnPoint": "SEA",
-              "pureTrack": {
-                "topRight": {
-                  "lat": 50.813231,
-                  "long": 0.101453
-                },
-                "bottomLeft": {
-                  "lat": 50.773951,
-                  "long": -0.127543
-                }
-              },
-              "skewtUrl": "",
-              "blipspotUrl": "https://app.stratus.org.uk/blip/graph/blip_main.php?day=Friday&tp=SEA"
-            }
-          ],
-          "turnPoints": [
-            "SEA"
-          ],
-          "fullDay": "Friday",
-          "windCategorisation": 7,
-          "gustCategorisation": 11,
-          "weatherClassification": {
-            "class": "clear",
-            "img": "/02_clear.svg"
-          },
-          "temperature": 16.51,
-          "flyingConditions": "flyable"
-        }
-      ]
-    },
-    {
-      "time": "2025-06-13T09:00Z",
-      "forecastCollection": [
-        {
-          "time": "2025-06-13T09:00Z",
-          "maxScreenAirTemp": 19.73,
-          "minScreenAirTemp": 16.51,
-          "max10mWindGust": 7.64,
-          "significantWeatherCode": 1,
-          "totalPrecipAmount": 0,
-          "totalSnowAmount": 0,
-          "windSpeed10m": 3.51,
-          "windDirectionFrom10m": 157,
-          "windGustSpeed10m": 7.28,
-          "visibility": 25667,
-          "mslp": 101918,
-          "screenRelativeHumidity": 77.39,
-          "feelsLikeTemp": 19.13,
-          "uvIndex": 5,
-          "probOfPrecipitation": 3,
-          "probOfSnow": 0,
-          "probOfHeavySnow": 0,
-          "probOfRain": 3,
-          "probOfHeavyRain": 2,
-          "probOfHail": 0,
-          "probOfSferics": 1,
-          "siteLabel": "NewhavenBeachyHead",
-          "windDirectionCompass": "SSE",
-          "cloudBaseInFt": null,
-          "cloudBaseTemp": null,
-          "windSpeedMph": 7.9,
-          "windGustMph": 16.3,
-          "windSpeedKph": 12.6,
-          "windGustKph": 26.2,
-          "sites": [
-            "Newhaven"
-          ],
-          "correlatedSiteTurnPoints": [
-            {
-              "label": "Newhaven",
-              "lat": "50.782348",
-              "long": "0.049073696",
-              "directions": [
-                "SSW",
-                "S",
-                "SSE"
-              ],
-              "turnPoint": "SEA",
-              "pureTrack": {
-                "topRight": {
-                  "lat": 50.813231,
-                  "long": 0.101453
-                },
-                "bottomLeft": {
-                  "lat": 50.773951,
-                  "long": -0.127543
-                }
-              },
-              "skewtUrl": "https://app19.mrsap.org/skewt/pull.php?region=UK12%2B5&lat=50.782348&lon=0.049073696&grid=d2&time=0900&plot=skewt&location=SEA",
-              "blipspotUrl": "https://app.stratus.org.uk/blip/graph/blip_main.php?day=Friday&tp=SEA"
-            }
-          ],
-          "turnPoints": [
-            "SEA"
-          ],
-          "fullDay": "Friday",
-          "windCategorisation": 8,
-          "gustCategorisation": 17,
-          "weatherClassification": {
-            "class": "clear",
-            "img": "/02_clear.svg"
-          },
-          "temperature": 19.73,
-          "flyingConditions": "marginal"
-        }
-      ]
-    },
-    {
-      "time": "2025-06-13T12:00Z",
-      "forecastCollection": [
-        {
-          "time": "2025-06-13T12:00Z",
-          "maxScreenAirTemp": 21.82,
-          "minScreenAirTemp": 19.72,
-          "max10mWindGust": 8.8,
-          "significantWeatherCode": 1,
-          "totalPrecipAmount": 0,
-          "totalSnowAmount": 0,
-          "windSpeed10m": 3.88,
-          "windDirectionFrom10m": 153,
-          "windGustSpeed10m": 8.34,
-          "visibility": 25829,
-          "mslp": 101878,
-          "screenRelativeHumidity": 69.74,
-          "feelsLikeTemp": 21.12,
-          "uvIndex": 7,
-          "probOfPrecipitation": 7,
-          "probOfSnow": 0,
-          "probOfHeavySnow": 0,
-          "probOfRain": 7,
-          "probOfHeavyRain": 6,
-          "probOfHail": 1,
-          "probOfSferics": 2,
-          "siteLabel": "NewhavenBeachyHead",
-          "windDirectionCompass": "SSE",
-          "cloudBaseInFt": null,
-          "cloudBaseTemp": null,
-          "windSpeedMph": 8.7,
-          "windGustMph": 18.7,
-          "windSpeedKph": 14,
-          "windGustKph": 30,
-          "sites": [
-            "Newhaven"
-          ],
-          "correlatedSiteTurnPoints": [
-            {
-              "label": "Newhaven",
-              "lat": "50.782348",
-              "long": "0.049073696",
-              "directions": [
-                "SSW",
-                "S",
-                "SSE"
-              ],
-              "turnPoint": "SEA",
-              "pureTrack": {
-                "topRight": {
-                  "lat": 50.813231,
-                  "long": 0.101453
-                },
-                "bottomLeft": {
-                  "lat": 50.773951,
-                  "long": -0.127543
-                }
-              },
-              "skewtUrl": "https://app19.mrsap.org/skewt/pull.php?region=UK12%2B5&lat=50.782348&lon=0.049073696&grid=d2&time=1200&plot=skewt&location=SEA",
-              "blipspotUrl": "https://app.stratus.org.uk/blip/graph/blip_main.php?day=Friday&tp=SEA"
-            }
-          ],
-          "turnPoints": [
-            "SEA"
-          ],
-          "fullDay": "Friday",
-          "windCategorisation": 9,
-          "gustCategorisation": 19,
-          "weatherClassification": {
-            "class": "clear",
-            "img": "/02_clear.svg"
-          },
-          "temperature": 21.82,
-          "flyingConditions": "marginal"
-        }
-      ]
-    },
-    {
-      "time": "2025-06-13T15:00Z",
-      "forecastCollection": [
-        {
-          "time": "2025-06-13T15:00Z",
-          "maxScreenAirTemp": 22.58,
-          "minScreenAirTemp": 21.81,
-          "max10mWindGust": 9.98,
-          "significantWeatherCode": 1,
-          "totalPrecipAmount": 0,
-          "totalSnowAmount": 0,
-          "windSpeed10m": 4.03,
-          "windDirectionFrom10m": 153,
-          "windGustSpeed10m": 8.26,
-          "visibility": 25745,
-          "mslp": 101789,
-          "screenRelativeHumidity": 67.73,
-          "feelsLikeTemp": 21.73,
-          "uvIndex": 4,
-          "probOfPrecipitation": 11,
-          "probOfSnow": 0,
-          "probOfHeavySnow": 0,
-          "probOfRain": 11,
-          "probOfHeavyRain": 9,
-          "probOfHail": 1,
-          "probOfSferics": 2,
-          "siteLabel": "NewhavenBeachyHead",
-          "windDirectionCompass": "SSE",
-          "cloudBaseInFt": null,
-          "cloudBaseTemp": null,
-          "windSpeedMph": 9,
-          "windGustMph": 18.5,
-          "windSpeedKph": 14.5,
-          "windGustKph": 29.7,
-          "sites": [
-            "Newhaven"
-          ],
-          "correlatedSiteTurnPoints": [
-            {
-              "label": "Newhaven",
-              "lat": "50.782348",
-              "long": "0.049073696",
-              "directions": [
-                "SSW",
-                "S",
-                "SSE"
-              ],
-              "turnPoint": "SEA",
-              "pureTrack": {
-                "topRight": {
-                  "lat": 50.813231,
-                  "long": 0.101453
-                },
-                "bottomLeft": {
-                  "lat": 50.773951,
-                  "long": -0.127543
-                }
-              },
-              "skewtUrl": "https://app19.mrsap.org/skewt/pull.php?region=UK12%2B5&lat=50.782348&lon=0.049073696&grid=d2&time=1500&plot=skewt&location=SEA",
-              "blipspotUrl": "https://app.stratus.org.uk/blip/graph/blip_main.php?day=Friday&tp=SEA"
-            }
-          ],
-          "turnPoints": [
-            "SEA"
-          ],
-          "fullDay": "Friday",
-          "windCategorisation": 9,
-          "gustCategorisation": 19,
-          "weatherClassification": {
-            "class": "clear",
-            "img": "/02_clear.svg"
-          },
-          "temperature": 22.58,
-          "flyingConditions": "marginal"
-        }
-      ]
-    },
-    {
-      "time": "2025-06-13T18:00Z",
-      "forecastCollection": [
-        {
-          "time": "2025-06-13T18:00Z",
-          "maxScreenAirTemp": 22.43,
-          "minScreenAirTemp": 20.47,
-          "max10mWindGust": 10.18,
-          "significantWeatherCode": 1,
-          "totalPrecipAmount": 0,
-          "totalSnowAmount": 0,
-          "windSpeed10m": 4.58,
-          "windDirectionFrom10m": 192,
-          "windGustSpeed10m": 8.29,
-          "visibility": 22602,
-          "mslp": 101730,
-          "screenRelativeHumidity": 75.7,
-          "feelsLikeTemp": 19.49,
-          "uvIndex": 1,
-          "probOfPrecipitation": 12,
-          "probOfSnow": 0,
-          "probOfHeavySnow": 0,
-          "probOfRain": 12,
-          "probOfHeavyRain": 10,
-          "probOfHail": 2,
-          "probOfSferics": 3,
-          "siteLabel": "NewhavenBeachyHead",
-          "windDirectionCompass": "SSW",
-          "cloudBaseInFt": null,
-          "cloudBaseTemp": null,
-          "windSpeedMph": 10.2,
-          "windGustMph": 18.5,
-          "windSpeedKph": 16.5,
-          "windGustKph": 29.8,
-          "sites": [
-            "Newhaven"
-          ],
-          "correlatedSiteTurnPoints": [
-            {
-              "label": "Newhaven",
-              "lat": "50.782348",
-              "long": "0.049073696",
-              "directions": [
-                "SSW",
-                "S",
-                "SSE"
-              ],
-              "turnPoint": "SEA",
-              "pureTrack": {
-                "topRight": {
-                  "lat": 50.813231,
-                  "long": 0.101453
-                },
-                "bottomLeft": {
-                  "lat": 50.773951,
-                  "long": -0.127543
-                }
-              },
-              "skewtUrl": "https://app19.mrsap.org/skewt/pull.php?region=UK12%2B5&lat=50.782348&lon=0.049073696&grid=d2&time=1800&plot=skewt&location=SEA",
-              "blipspotUrl": "https://app.stratus.org.uk/blip/graph/blip_main.php?day=Friday&tp=SEA"
-            }
-          ],
-          "turnPoints": [
-            "SEA"
-          ],
-          "fullDay": "Friday",
-          "windCategorisation": 11,
-          "gustCategorisation": 19,
-          "weatherClassification": {
-            "class": "clear",
-            "img": "/02_clear.svg"
-          },
-          "temperature": 22.43,
-          "flyingConditions": "marginal"
-        }
-      ]
-    },
-    {
-      "time": "2025-06-13T21:00Z",
-      "forecastCollection": [
-        {
-          "time": "2025-06-13T21:00Z",
-          "maxScreenAirTemp": 21.06,
-          "minScreenAirTemp": 17.92,
-          "max10mWindGust": 9.04,
-          "significantWeatherCode": 0,
-          "totalPrecipAmount": 0,
-          "totalSnowAmount": 0,
-          "windSpeed10m": 4.07,
-          "windDirectionFrom10m": 204,
-          "windGustSpeed10m": 7.33,
-          "visibility": 21056,
-          "mslp": 101752,
-          "screenRelativeHumidity": 86.03,
-          "feelsLikeTemp": 17.04,
-          "uvIndex": 0,
-          "probOfPrecipitation": 11,
-          "probOfSnow": 0,
-          "probOfHeavySnow": 0,
-          "probOfRain": 11,
-          "probOfHeavyRain": 8,
-          "probOfHail": 2,
-          "probOfSferics": 5,
           "siteLabel": "CaburnBoPeepFirleHighandOver",
           "windDirectionCompass": "SSW",
           "cloudBaseInFt": null,
           "cloudBaseTemp": null,
-          "windSpeedMph": 9.1,
-          "windGustMph": 16.4,
-          "windSpeedKph": 14.7,
-          "windGustKph": 26.4,
+          "windSpeedMph": 5.1,
+          "windGustMph": 9.9,
+          "windSpeedKph": 8.2,
+          "windGustKph": 15.9,
           "sites": [
             "Mount Caburn"
           ],
@@ -4213,46 +3718,46 @@
             "GDE"
           ],
           "fullDay": "Friday",
-          "windCategorisation": 10,
-          "gustCategorisation": 17,
+          "windCategorisation": 6,
+          "gustCategorisation": 10,
           "weatherClassification": {
             "class": "clear",
             "img": "/02_clear.svg"
           },
-          "temperature": 21.06,
-          "flyingConditions": "marginal"
+          "temperature": 16.87,
+          "flyingConditions": "flyable"
         },
         {
-          "time": "2025-06-13T21:00Z",
-          "maxScreenAirTemp": 20.56,
-          "minScreenAirTemp": 17.97,
-          "max10mWindGust": 9.39,
-          "significantWeatherCode": 0,
+          "time": "2025-06-13T06:00Z",
+          "maxScreenAirTemp": 16.79,
+          "minScreenAirTemp": 14.41,
+          "max10mWindGust": 4.8,
+          "significantWeatherCode": 1,
           "totalPrecipAmount": 0,
           "totalSnowAmount": 0,
-          "windSpeed10m": 4.73,
-          "windDirectionFrom10m": 208,
-          "windGustSpeed10m": 8.07,
-          "visibility": 20888,
-          "mslp": 101760,
-          "screenRelativeHumidity": 85.64,
-          "feelsLikeTemp": 16.75,
-          "uvIndex": 0,
-          "probOfPrecipitation": 10,
+          "windSpeed10m": 2.55,
+          "windDirectionFrom10m": 152,
+          "windGustSpeed10m": 4.56,
+          "visibility": 22004,
+          "mslp": 101862,
+          "screenRelativeHumidity": 89.95,
+          "feelsLikeTemp": 16.61,
+          "uvIndex": 1,
+          "probOfPrecipitation": 2,
           "probOfSnow": 0,
           "probOfHeavySnow": 0,
-          "probOfRain": 10,
-          "probOfHeavyRain": 7,
-          "probOfHail": 1,
-          "probOfSferics": 4,
+          "probOfRain": 2,
+          "probOfHeavyRain": 0,
+          "probOfHail": 0,
+          "probOfSferics": 0,
           "siteLabel": "NewhavenBeachyHead",
-          "windDirectionCompass": "SSW",
+          "windDirectionCompass": "SSE",
           "cloudBaseInFt": null,
           "cloudBaseTemp": null,
-          "windSpeedMph": 10.6,
-          "windGustMph": 18.1,
-          "windSpeedKph": 17,
-          "windGustKph": 29.1,
+          "windSpeedMph": 5.7,
+          "windGustMph": 10.2,
+          "windSpeedKph": 9.2,
+          "windGustKph": 16.4,
           "sites": [
             "Newhaven"
           ],
@@ -4285,14 +3790,545 @@
             "SEA"
           ],
           "fullDay": "Friday",
-          "windCategorisation": 11,
-          "gustCategorisation": 19,
+          "windCategorisation": 6,
+          "gustCategorisation": 11,
           "weatherClassification": {
             "class": "clear",
             "img": "/02_clear.svg"
           },
-          "temperature": 20.56,
+          "temperature": 16.79,
+          "flyingConditions": "flyable"
+        }
+      ]
+    },
+    {
+      "time": "2025-06-13T09:00Z",
+      "forecastCollection": [
+        {
+          "time": "2025-06-13T09:00Z",
+          "maxScreenAirTemp": 20.83,
+          "minScreenAirTemp": 16.76,
+          "max10mWindGust": 7.64,
+          "significantWeatherCode": 1,
+          "totalPrecipAmount": 0,
+          "totalSnowAmount": 0,
+          "windSpeed10m": 3.39,
+          "windDirectionFrom10m": 159,
+          "windGustSpeed10m": 7.05,
+          "visibility": 30418,
+          "mslp": 101924,
+          "screenRelativeHumidity": 74.96,
+          "feelsLikeTemp": 20.46,
+          "uvIndex": 5,
+          "probOfPrecipitation": 2,
+          "probOfSnow": 0,
+          "probOfHeavySnow": 0,
+          "probOfRain": 2,
+          "probOfHeavyRain": 1,
+          "probOfHail": 0,
+          "probOfSferics": 1,
+          "siteLabel": "NewhavenBeachyHead",
+          "windDirectionCompass": "SSE",
+          "cloudBaseInFt": null,
+          "cloudBaseTemp": null,
+          "windSpeedMph": 7.6,
+          "windGustMph": 15.8,
+          "windSpeedKph": 12.2,
+          "windGustKph": 25.4,
+          "sites": [
+            "Newhaven"
+          ],
+          "correlatedSiteTurnPoints": [
+            {
+              "label": "Newhaven",
+              "lat": "50.782348",
+              "long": "0.049073696",
+              "directions": [
+                "SSW",
+                "S",
+                "SSE"
+              ],
+              "turnPoint": "SEA",
+              "pureTrack": {
+                "topRight": {
+                  "lat": 50.813231,
+                  "long": 0.101453
+                },
+                "bottomLeft": {
+                  "lat": 50.773951,
+                  "long": -0.127543
+                }
+              },
+              "skewtUrl": "https://app19.mrsap.org/skewt/pull.php?region=UK12%2B5&lat=50.782348&lon=0.049073696&grid=d2&time=0900&plot=skewt&location=SEA",
+              "blipspotUrl": "https://app.stratus.org.uk/blip/graph/blip_main.php?day=Friday&tp=SEA"
+            }
+          ],
+          "turnPoints": [
+            "SEA"
+          ],
+          "fullDay": "Friday",
+          "windCategorisation": 8,
+          "gustCategorisation": 16,
+          "weatherClassification": {
+            "class": "clear",
+            "img": "/02_clear.svg"
+          },
+          "temperature": 20.83,
+          "flyingConditions": "flyable"
+        }
+      ]
+    },
+    {
+      "time": "2025-06-13T12:00Z",
+      "forecastCollection": [
+        {
+          "time": "2025-06-13T12:00Z",
+          "maxScreenAirTemp": 23.1,
+          "minScreenAirTemp": 20.1,
+          "max10mWindGust": 8.36,
+          "significantWeatherCode": 3,
+          "totalPrecipAmount": 0,
+          "totalSnowAmount": 0,
+          "windSpeed10m": 3.7,
+          "windDirectionFrom10m": 160,
+          "windGustSpeed10m": 7.86,
+          "visibility": 30432,
+          "mslp": 101895,
+          "screenRelativeHumidity": 67.02,
+          "feelsLikeTemp": 22.67,
+          "uvIndex": 7,
+          "probOfPrecipitation": 6,
+          "probOfSnow": 0,
+          "probOfHeavySnow": 0,
+          "probOfRain": 6,
+          "probOfHeavyRain": 4,
+          "probOfHail": 1,
+          "probOfSferics": 1,
+          "siteLabel": "NewhavenBeachyHead",
+          "windDirectionCompass": "SSE",
+          "cloudBaseInFt": null,
+          "cloudBaseTemp": null,
+          "windSpeedMph": 8.3,
+          "windGustMph": 17.6,
+          "windSpeedKph": 13.3,
+          "windGustKph": 28.3,
+          "sites": [
+            "Newhaven"
+          ],
+          "correlatedSiteTurnPoints": [
+            {
+              "label": "Newhaven",
+              "lat": "50.782348",
+              "long": "0.049073696",
+              "directions": [
+                "SSW",
+                "S",
+                "SSE"
+              ],
+              "turnPoint": "SEA",
+              "pureTrack": {
+                "topRight": {
+                  "lat": 50.813231,
+                  "long": 0.101453
+                },
+                "bottomLeft": {
+                  "lat": 50.773951,
+                  "long": -0.127543
+                }
+              },
+              "skewtUrl": "https://app19.mrsap.org/skewt/pull.php?region=UK12%2B5&lat=50.782348&lon=0.049073696&grid=d2&time=1200&plot=skewt&location=SEA",
+              "blipspotUrl": "https://app.stratus.org.uk/blip/graph/blip_main.php?day=Friday&tp=SEA"
+            }
+          ],
+          "turnPoints": [
+            "SEA"
+          ],
+          "fullDay": "Friday",
+          "windCategorisation": 9,
+          "gustCategorisation": 18,
+          "weatherClassification": {
+            "class": "partly_cloudy",
+            "img": "/03_partly_cloudy.svg"
+          },
+          "temperature": 23.1,
           "flyingConditions": "marginal"
+        }
+      ]
+    },
+    {
+      "time": "2025-06-13T15:00Z",
+      "forecastCollection": [
+        {
+          "time": "2025-06-13T15:00Z",
+          "maxScreenAirTemp": 23.64,
+          "minScreenAirTemp": 23.07,
+          "max10mWindGust": 9.98,
+          "significantWeatherCode": 1,
+          "totalPrecipAmount": 0,
+          "totalSnowAmount": 0,
+          "windSpeed10m": 3.77,
+          "windDirectionFrom10m": 152,
+          "windGustSpeed10m": 7.62,
+          "visibility": 30690,
+          "mslp": 101797,
+          "screenRelativeHumidity": 66.11,
+          "feelsLikeTemp": 23.12,
+          "uvIndex": 4,
+          "probOfPrecipitation": 9,
+          "probOfSnow": 0,
+          "probOfHeavySnow": 0,
+          "probOfRain": 9,
+          "probOfHeavyRain": 7,
+          "probOfHail": 1,
+          "probOfSferics": 2,
+          "siteLabel": "NewhavenBeachyHead",
+          "windDirectionCompass": "SSE",
+          "cloudBaseInFt": null,
+          "cloudBaseTemp": null,
+          "windSpeedMph": 8.4,
+          "windGustMph": 17,
+          "windSpeedKph": 13.6,
+          "windGustKph": 27.4,
+          "sites": [
+            "Newhaven"
+          ],
+          "correlatedSiteTurnPoints": [
+            {
+              "label": "Newhaven",
+              "lat": "50.782348",
+              "long": "0.049073696",
+              "directions": [
+                "SSW",
+                "S",
+                "SSE"
+              ],
+              "turnPoint": "SEA",
+              "pureTrack": {
+                "topRight": {
+                  "lat": 50.813231,
+                  "long": 0.101453
+                },
+                "bottomLeft": {
+                  "lat": 50.773951,
+                  "long": -0.127543
+                }
+              },
+              "skewtUrl": "https://app19.mrsap.org/skewt/pull.php?region=UK12%2B5&lat=50.782348&lon=0.049073696&grid=d2&time=1500&plot=skewt&location=SEA",
+              "blipspotUrl": "https://app.stratus.org.uk/blip/graph/blip_main.php?day=Friday&tp=SEA"
+            }
+          ],
+          "turnPoints": [
+            "SEA"
+          ],
+          "fullDay": "Friday",
+          "windCategorisation": 9,
+          "gustCategorisation": 17,
+          "weatherClassification": {
+            "class": "clear",
+            "img": "/02_clear.svg"
+          },
+          "temperature": 23.64,
+          "flyingConditions": "marginal"
+        }
+      ]
+    },
+    {
+      "time": "2025-06-13T18:00Z",
+      "forecastCollection": [
+        {
+          "time": "2025-06-13T18:00Z",
+          "maxScreenAirTemp": 23.78,
+          "minScreenAirTemp": 21.77,
+          "max10mWindGust": 9.26,
+          "significantWeatherCode": 1,
+          "totalPrecipAmount": 0,
+          "totalSnowAmount": 0,
+          "windSpeed10m": 4,
+          "windDirectionFrom10m": 193,
+          "windGustSpeed10m": 7.29,
+          "visibility": 24237,
+          "mslp": 101738,
+          "screenRelativeHumidity": 75.06,
+          "feelsLikeTemp": 21.47,
+          "uvIndex": 1,
+          "probOfPrecipitation": 11,
+          "probOfSnow": 0,
+          "probOfHeavySnow": 0,
+          "probOfRain": 11,
+          "probOfHeavyRain": 9,
+          "probOfHail": 2,
+          "probOfSferics": 2,
+          "siteLabel": "CaburnBoPeepFirleHighandOver",
+          "windDirectionCompass": "SSW",
+          "cloudBaseInFt": null,
+          "cloudBaseTemp": null,
+          "windSpeedMph": 8.9,
+          "windGustMph": 16.3,
+          "windSpeedKph": 14.4,
+          "windGustKph": 26.2,
+          "sites": [
+            "Mount Caburn"
+          ],
+          "correlatedSiteTurnPoints": [
+            {
+              "label": "Mount Caburn",
+              "lat": "50.861577",
+              "long": "0.050928801",
+              "directions": [
+                "WSW",
+                "SW",
+                "SSW",
+                "S"
+              ],
+              "turnPoint": "GDE",
+              "pureTrack": {
+                "topRight": {
+                  "lat": 50.868367,
+                  "long": 0.063661
+                },
+                "bottomLeft": {
+                  "lat": 50.848305,
+                  "long": 0.010185
+                }
+              },
+              "skewtUrl": "https://app19.mrsap.org/skewt/pull.php?region=UK12%2B5&lat=50.861577&lon=0.050928801&grid=d2&time=1800&plot=skewt&location=GDE",
+              "blipspotUrl": "https://app.stratus.org.uk/blip/graph/blip_main.php?day=Friday&tp=GDE"
+            }
+          ],
+          "turnPoints": [
+            "GDE"
+          ],
+          "fullDay": "Friday",
+          "windCategorisation": 9,
+          "gustCategorisation": 17,
+          "weatherClassification": {
+            "class": "clear",
+            "img": "/02_clear.svg"
+          },
+          "temperature": 23.78,
+          "flyingConditions": "marginal"
+        },
+        {
+          "time": "2025-06-13T18:00Z",
+          "maxScreenAirTemp": 23.49,
+          "minScreenAirTemp": 21.71,
+          "max10mWindGust": 9.41,
+          "significantWeatherCode": 1,
+          "totalPrecipAmount": 0,
+          "totalSnowAmount": 0,
+          "windSpeed10m": 4.03,
+          "windDirectionFrom10m": 167,
+          "windGustSpeed10m": 7.26,
+          "visibility": 27690,
+          "mslp": 101720,
+          "screenRelativeHumidity": 73.56,
+          "feelsLikeTemp": 21.37,
+          "uvIndex": 1,
+          "probOfPrecipitation": 11,
+          "probOfSnow": 0,
+          "probOfHeavySnow": 0,
+          "probOfRain": 11,
+          "probOfHeavyRain": 9,
+          "probOfHail": 2,
+          "probOfSferics": 2,
+          "siteLabel": "NewhavenBeachyHead",
+          "windDirectionCompass": "SSE",
+          "cloudBaseInFt": null,
+          "cloudBaseTemp": null,
+          "windSpeedMph": 9,
+          "windGustMph": 16.2,
+          "windSpeedKph": 14.5,
+          "windGustKph": 26.1,
+          "sites": [
+            "Newhaven"
+          ],
+          "correlatedSiteTurnPoints": [
+            {
+              "label": "Newhaven",
+              "lat": "50.782348",
+              "long": "0.049073696",
+              "directions": [
+                "SSW",
+                "S",
+                "SSE"
+              ],
+              "turnPoint": "SEA",
+              "pureTrack": {
+                "topRight": {
+                  "lat": 50.813231,
+                  "long": 0.101453
+                },
+                "bottomLeft": {
+                  "lat": 50.773951,
+                  "long": -0.127543
+                }
+              },
+              "skewtUrl": "https://app19.mrsap.org/skewt/pull.php?region=UK12%2B5&lat=50.782348&lon=0.049073696&grid=d2&time=1800&plot=skewt&location=SEA",
+              "blipspotUrl": "https://app.stratus.org.uk/blip/graph/blip_main.php?day=Friday&tp=SEA"
+            }
+          ],
+          "turnPoints": [
+            "SEA"
+          ],
+          "fullDay": "Friday",
+          "windCategorisation": 9,
+          "gustCategorisation": 17,
+          "weatherClassification": {
+            "class": "clear",
+            "img": "/02_clear.svg"
+          },
+          "temperature": 23.49,
+          "flyingConditions": "marginal"
+        }
+      ]
+    },
+    {
+      "time": "2025-06-13T21:00Z",
+      "forecastCollection": [
+        {
+          "time": "2025-06-13T21:00Z",
+          "maxScreenAirTemp": 21.91,
+          "minScreenAirTemp": 18.54,
+          "max10mWindGust": 9.04,
+          "significantWeatherCode": 0,
+          "totalPrecipAmount": 0,
+          "totalSnowAmount": 0,
+          "windSpeed10m": 3.95,
+          "windDirectionFrom10m": 173,
+          "windGustSpeed10m": 6.79,
+          "visibility": 21747,
+          "mslp": 101748,
+          "screenRelativeHumidity": 85.55,
+          "feelsLikeTemp": 17.85,
+          "uvIndex": 0,
+          "probOfPrecipitation": 10,
+          "probOfSnow": 0,
+          "probOfHeavySnow": 0,
+          "probOfRain": 10,
+          "probOfHeavyRain": 8,
+          "probOfHail": 2,
+          "probOfSferics": 4,
+          "siteLabel": "CaburnBoPeepFirleHighandOver",
+          "windDirectionCompass": "S",
+          "cloudBaseInFt": null,
+          "cloudBaseTemp": null,
+          "windSpeedMph": 8.8,
+          "windGustMph": 15.2,
+          "windSpeedKph": 14.2,
+          "windGustKph": 24.4,
+          "sites": [
+            "Mount Caburn"
+          ],
+          "correlatedSiteTurnPoints": [
+            {
+              "label": "Mount Caburn",
+              "lat": "50.861577",
+              "long": "0.050928801",
+              "directions": [
+                "WSW",
+                "SW",
+                "SSW",
+                "S"
+              ],
+              "turnPoint": "GDE",
+              "pureTrack": {
+                "topRight": {
+                  "lat": 50.868367,
+                  "long": 0.063661
+                },
+                "bottomLeft": {
+                  "lat": 50.848305,
+                  "long": 0.010185
+                }
+              },
+              "skewtUrl": "",
+              "blipspotUrl": "https://app.stratus.org.uk/blip/graph/blip_main.php?day=Friday&tp=GDE"
+            }
+          ],
+          "turnPoints": [
+            "GDE"
+          ],
+          "fullDay": "Friday",
+          "windCategorisation": 9,
+          "gustCategorisation": 16,
+          "weatherClassification": {
+            "class": "clear",
+            "img": "/02_clear.svg"
+          },
+          "temperature": 21.91,
+          "flyingConditions": "flyable"
+        },
+        {
+          "time": "2025-06-13T21:00Z",
+          "maxScreenAirTemp": 21.89,
+          "minScreenAirTemp": 18.74,
+          "max10mWindGust": 9.39,
+          "significantWeatherCode": 0,
+          "totalPrecipAmount": 0,
+          "totalSnowAmount": 0,
+          "windSpeed10m": 4.08,
+          "windDirectionFrom10m": 174,
+          "windGustSpeed10m": 6.96,
+          "visibility": 23732,
+          "mslp": 101745,
+          "screenRelativeHumidity": 84.97,
+          "feelsLikeTemp": 18.01,
+          "uvIndex": 0,
+          "probOfPrecipitation": 11,
+          "probOfSnow": 0,
+          "probOfHeavySnow": 0,
+          "probOfRain": 11,
+          "probOfHeavyRain": 7,
+          "probOfHail": 1,
+          "probOfSferics": 3,
+          "siteLabel": "NewhavenBeachyHead",
+          "windDirectionCompass": "S",
+          "cloudBaseInFt": null,
+          "cloudBaseTemp": null,
+          "windSpeedMph": 9.1,
+          "windGustMph": 15.6,
+          "windSpeedKph": 14.7,
+          "windGustKph": 25.1,
+          "sites": [
+            "Newhaven"
+          ],
+          "correlatedSiteTurnPoints": [
+            {
+              "label": "Newhaven",
+              "lat": "50.782348",
+              "long": "0.049073696",
+              "directions": [
+                "SSW",
+                "S",
+                "SSE"
+              ],
+              "turnPoint": "SEA",
+              "pureTrack": {
+                "topRight": {
+                  "lat": 50.813231,
+                  "long": 0.101453
+                },
+                "bottomLeft": {
+                  "lat": 50.773951,
+                  "long": -0.127543
+                }
+              },
+              "skewtUrl": "",
+              "blipspotUrl": "https://app.stratus.org.uk/blip/graph/blip_main.php?day=Friday&tp=SEA"
+            }
+          ],
+          "turnPoints": [
+            "SEA"
+          ],
+          "fullDay": "Friday",
+          "windCategorisation": 10,
+          "gustCategorisation": 16,
+          "weatherClassification": {
+            "class": "clear",
+            "img": "/02_clear.svg"
+          },
+          "temperature": 21.89,
+          "flyingConditions": "flyable"
         }
       ]
     }
@@ -4303,35 +4339,35 @@
       "forecastCollection": [
         {
           "time": "2025-06-14T06:00Z",
-          "maxScreenAirTemp": 16.57,
-          "minScreenAirTemp": 15.92,
+          "maxScreenAirTemp": 17.35,
+          "minScreenAirTemp": 17.01,
           "max10mWindGust": 8.56,
           "significantWeatherCode": 1,
           "totalPrecipAmount": 0,
           "totalSnowAmount": 0,
-          "windSpeed10m": 4.41,
-          "windDirectionFrom10m": 254,
-          "windGustSpeed10m": 8.18,
-          "visibility": 18765,
-          "mslp": 101969,
-          "screenRelativeHumidity": 88.95,
-          "feelsLikeTemp": 15.44,
-          "uvIndex": 1,
-          "probOfPrecipitation": 6,
+          "windSpeed10m": 4.18,
+          "windDirectionFrom10m": 241,
+          "windGustSpeed10m": 7.36,
+          "visibility": 21047,
+          "mslp": 101841,
+          "screenRelativeHumidity": 89.54,
+          "feelsLikeTemp": 16.5,
+          "uvIndex": 2,
+          "probOfPrecipitation": 7,
           "probOfSnow": 0,
           "probOfHeavySnow": 0,
-          "probOfRain": 6,
-          "probOfHeavyRain": 4,
-          "probOfHail": 0,
+          "probOfRain": 7,
+          "probOfHeavyRain": 5,
+          "probOfHail": 1,
           "probOfSferics": 1,
           "siteLabel": "CaburnBoPeepFirleHighandOver",
           "windDirectionCompass": "WSW",
           "cloudBaseInFt": null,
           "cloudBaseTemp": null,
-          "windSpeedMph": 9.9,
-          "windGustMph": 18.3,
-          "windSpeedKph": 15.9,
-          "windGustKph": 29.4,
+          "windSpeedMph": 9.4,
+          "windGustMph": 16.5,
+          "windSpeedKph": 15,
+          "windGustKph": 26.5,
           "sites": [
             "Mount Caburn"
           ],
@@ -4366,12 +4402,12 @@
           ],
           "fullDay": "Saturday",
           "windCategorisation": 10,
-          "gustCategorisation": 19,
+          "gustCategorisation": 17,
           "weatherClassification": {
             "class": "clear",
             "img": "/02_clear.svg"
           },
-          "temperature": 16.57,
+          "temperature": 17.35,
           "flyingConditions": "marginal"
         }
       ]
@@ -4381,35 +4417,35 @@
       "forecastCollection": [
         {
           "time": "2025-06-14T09:00Z",
-          "maxScreenAirTemp": 18.73,
-          "minScreenAirTemp": 16.56,
+          "maxScreenAirTemp": 19.46,
+          "minScreenAirTemp": 17.34,
           "max10mWindGust": 10.86,
-          "significantWeatherCode": 3,
+          "significantWeatherCode": 1,
           "totalPrecipAmount": 0,
           "totalSnowAmount": 0,
-          "windSpeed10m": 5.33,
-          "windDirectionFrom10m": 244,
-          "windGustSpeed10m": 10.58,
-          "visibility": 23752,
-          "mslp": 102076,
-          "screenRelativeHumidity": 77.5,
-          "feelsLikeTemp": 17.04,
+          "windSpeed10m": 4.94,
+          "windDirectionFrom10m": 249,
+          "windGustSpeed10m": 9.26,
+          "visibility": 29564,
+          "mslp": 101935,
+          "screenRelativeHumidity": 78.67,
+          "feelsLikeTemp": 18.13,
           "uvIndex": 4,
-          "probOfPrecipitation": 7,
+          "probOfPrecipitation": 8,
           "probOfSnow": 0,
           "probOfHeavySnow": 0,
-          "probOfRain": 7,
-          "probOfHeavyRain": 5,
+          "probOfRain": 8,
+          "probOfHeavyRain": 6,
           "probOfHail": 1,
           "probOfSferics": 1,
           "siteLabel": "CaburnBoPeepFirleHighandOver",
           "windDirectionCompass": "WSW",
           "cloudBaseInFt": null,
           "cloudBaseTemp": null,
-          "windSpeedMph": 11.9,
-          "windGustMph": 23.7,
-          "windSpeedKph": 19.2,
-          "windGustKph": 38.1,
+          "windSpeedMph": 11.1,
+          "windGustMph": 20.7,
+          "windSpeedKph": 17.8,
+          "windGustKph": 33.3,
           "sites": [
             "Mount Caburn"
           ],
@@ -4444,12 +4480,12 @@
           ],
           "fullDay": "Saturday",
           "windCategorisation": 12,
-          "gustCategorisation": 24,
+          "gustCategorisation": 21,
           "weatherClassification": {
-            "class": "partly_cloudy",
-            "img": "/03_partly_cloudy.svg"
+            "class": "clear",
+            "img": "/02_clear.svg"
           },
-          "temperature": 18.73,
+          "temperature": 19.46,
           "flyingConditions": "notFlyable"
         }
       ]
@@ -4459,48 +4495,147 @@
       "forecastCollection": [
         {
           "time": "2025-06-14T12:00Z",
-          "maxScreenAirTemp": 18.5,
-          "minScreenAirTemp": 16.59,
-          "max10mWindGust": 13.31,
+          "maxScreenAirTemp": 21.42,
+          "minScreenAirTemp": 19.42,
+          "max10mWindGust": 12.55,
+          "significantWeatherCode": 1,
+          "totalPrecipAmount": 0,
+          "totalSnowAmount": 0,
+          "windSpeed10m": 5.56,
+          "windDirectionFrom10m": 184,
+          "windGustSpeed10m": 10.77,
+          "visibility": 31414,
+          "mslp": 102007,
+          "screenRelativeHumidity": 68.02,
+          "feelsLikeTemp": 19.62,
+          "uvIndex": 6,
+          "probOfPrecipitation": 5,
+          "probOfSnow": 0,
+          "probOfHeavySnow": 0,
+          "probOfRain": 5,
+          "probOfHeavyRain": 3,
+          "probOfHail": 0,
+          "probOfSferics": 1,
+          "siteLabel": "CaburnBoPeepFirleHighandOver",
+          "windDirectionCompass": "S",
+          "cloudBaseInFt": null,
+          "cloudBaseTemp": null,
+          "windSpeedMph": 12.4,
+          "windGustMph": 24.1,
+          "windSpeedKph": 20,
+          "windGustKph": 38.8,
+          "sites": [
+            "Mount Caburn"
+          ],
+          "correlatedSiteTurnPoints": [
+            {
+              "label": "Mount Caburn",
+              "lat": "50.861577",
+              "long": "0.050928801",
+              "directions": [
+                "WSW",
+                "SW",
+                "SSW",
+                "S"
+              ],
+              "turnPoint": "GDE",
+              "pureTrack": {
+                "topRight": {
+                  "lat": 50.868367,
+                  "long": 0.063661
+                },
+                "bottomLeft": {
+                  "lat": 50.848305,
+                  "long": 0.010185
+                }
+              },
+              "skewtUrl": "https://app19.mrsap.org/skewt/pull.php?region=UK12%2B6&lat=50.861577&lon=0.050928801&grid=d2&time=1200&plot=skewt&location=GDE",
+              "blipspotUrl": "https://app.stratus.org.uk/blip/graph/blip_main.php?day=Saturday&tp=GDE"
+            }
+          ],
+          "turnPoints": [
+            "GDE"
+          ],
+          "fullDay": "Saturday",
+          "windCategorisation": 13,
+          "gustCategorisation": 25,
+          "weatherClassification": {
+            "class": "clear",
+            "img": "/02_clear.svg"
+          },
+          "temperature": 21.42,
+          "flyingConditions": "notFlyable"
+        },
+        {
+          "time": "2025-06-14T12:00Z",
+          "maxScreenAirTemp": 20.93,
+          "minScreenAirTemp": 19.04,
+          "max10mWindGust": 12.57,
           "significantWeatherCode": 3,
           "totalPrecipAmount": 0,
           "totalSnowAmount": 0,
-          "windSpeed10m": 6.8,
-          "windDirectionFrom10m": 252,
-          "windGustSpeed10m": 13.08,
-          "visibility": 22805,
-          "mslp": 102141,
-          "screenRelativeHumidity": 66.98,
-          "feelsLikeTemp": 15.71,
+          "windSpeed10m": 5.79,
+          "windDirectionFrom10m": 173,
+          "windGustSpeed10m": 11.08,
+          "visibility": 28747,
+          "mslp": 102004,
+          "screenRelativeHumidity": 67.31,
+          "feelsLikeTemp": 18.89,
           "uvIndex": 6,
           "probOfPrecipitation": 6,
           "probOfSnow": 0,
           "probOfHeavySnow": 0,
           "probOfRain": 6,
-          "probOfHeavyRain": 4,
-          "probOfHail": 1,
+          "probOfHeavyRain": 3,
+          "probOfHail": 0,
           "probOfSferics": 1,
-          "siteLabel": "DDKDitchling",
-          "windDirectionCompass": "WSW",
+          "siteLabel": "NewhavenBeachyHead",
+          "windDirectionCompass": "S",
           "cloudBaseInFt": null,
           "cloudBaseTemp": null,
-          "windSpeedMph": 15.2,
-          "windGustMph": 29.3,
-          "windSpeedKph": 24.5,
-          "windGustKph": 47.1,
+          "windSpeedMph": 13,
+          "windGustMph": 24.8,
+          "windSpeedKph": 20.8,
+          "windGustKph": 39.9,
           "sites": [
-            "No flyable sites"
+            "Newhaven"
           ],
-          "correlatedSiteTurnPoints": [],
-          "turnPoints": [],
+          "correlatedSiteTurnPoints": [
+            {
+              "label": "Newhaven",
+              "lat": "50.782348",
+              "long": "0.049073696",
+              "directions": [
+                "SSW",
+                "S",
+                "SSE"
+              ],
+              "turnPoint": "SEA",
+              "pureTrack": {
+                "topRight": {
+                  "lat": 50.813231,
+                  "long": 0.101453
+                },
+                "bottomLeft": {
+                  "lat": 50.773951,
+                  "long": -0.127543
+                }
+              },
+              "skewtUrl": "https://app19.mrsap.org/skewt/pull.php?region=UK12%2B6&lat=50.782348&lon=0.049073696&grid=d2&time=1200&plot=skewt&location=SEA",
+              "blipspotUrl": "https://app.stratus.org.uk/blip/graph/blip_main.php?day=Saturday&tp=SEA"
+            }
+          ],
+          "turnPoints": [
+            "SEA"
+          ],
           "fullDay": "Saturday",
-          "windCategorisation": 16,
-          "gustCategorisation": 30,
+          "windCategorisation": 13,
+          "gustCategorisation": 25,
           "weatherClassification": {
             "class": "partly_cloudy",
             "img": "/03_partly_cloudy.svg"
           },
-          "temperature": 18.5,
+          "temperature": 20.93,
           "flyingConditions": "notFlyable"
         }
       ]
@@ -4510,19 +4645,19 @@
       "forecastCollection": [
         {
           "time": "2025-06-14T15:00Z",
-          "maxScreenAirTemp": 20.63,
-          "minScreenAirTemp": 20.36,
+          "maxScreenAirTemp": 21.37,
+          "minScreenAirTemp": 20.45,
           "max10mWindGust": 12.64,
-          "significantWeatherCode": 3,
+          "significantWeatherCode": 1,
           "totalPrecipAmount": 0,
           "totalSnowAmount": 0,
-          "windSpeed10m": 5.58,
-          "windDirectionFrom10m": 346,
-          "windGustSpeed10m": 11.24,
-          "visibility": 26733,
-          "mslp": 102164,
-          "screenRelativeHumidity": 65.77,
-          "feelsLikeTemp": 18.41,
+          "windSpeed10m": 5.36,
+          "windDirectionFrom10m": 354,
+          "windGustSpeed10m": 10.01,
+          "visibility": 31755,
+          "mslp": 102035,
+          "screenRelativeHumidity": 69.08,
+          "feelsLikeTemp": 18.82,
           "uvIndex": 4,
           "probOfPrecipitation": 5,
           "probOfSnow": 0,
@@ -4532,13 +4667,13 @@
           "probOfHail": 0,
           "probOfSferics": 1,
           "siteLabel": "CaburnBoPeepFirleHighandOver",
-          "windDirectionCompass": "NNW",
+          "windDirectionCompass": "N",
           "cloudBaseInFt": null,
           "cloudBaseTemp": null,
-          "windSpeedMph": 12.5,
-          "windGustMph": 25.1,
-          "windSpeedKph": 20.1,
-          "windGustKph": 40.5,
+          "windSpeedMph": 12,
+          "windGustMph": 22.4,
+          "windSpeedKph": 19.3,
+          "windGustKph": 36,
           "sites": [
             "Firle"
           ],
@@ -4572,13 +4707,13 @@
             "FIB"
           ],
           "fullDay": "Saturday",
-          "windCategorisation": 13,
-          "gustCategorisation": 26,
+          "windCategorisation": 12,
+          "gustCategorisation": 23,
           "weatherClassification": {
-            "class": "partly_cloudy",
-            "img": "/03_partly_cloudy.svg"
+            "class": "clear",
+            "img": "/02_clear.svg"
           },
-          "temperature": 20.63,
+          "temperature": 21.37,
           "flyingConditions": "notFlyable"
         }
       ]
@@ -4588,49 +4723,100 @@
       "forecastCollection": [
         {
           "time": "2025-06-14T18:00Z",
-          "maxScreenAirTemp": 18.48,
-          "minScreenAirTemp": 17.45,
-          "max10mWindGust": 11.89,
+          "maxScreenAirTemp": 20.54,
+          "minScreenAirTemp": 19.18,
+          "max10mWindGust": 11.86,
           "significantWeatherCode": 1,
           "totalPrecipAmount": 0,
           "totalSnowAmount": 0,
-          "windSpeed10m": 6.03,
-          "windDirectionFrom10m": 143,
-          "windGustSpeed10m": 10.41,
-          "visibility": 27575,
-          "mslp": 102172,
-          "screenRelativeHumidity": 69.04,
-          "feelsLikeTemp": 15.09,
-          "uvIndex": 1,
-          "probOfPrecipitation": 4,
+          "windSpeed10m": 5.05,
+          "windDirectionFrom10m": 60,
+          "windGustSpeed10m": 8.79,
+          "visibility": 31990,
+          "mslp": 102062,
+          "screenRelativeHumidity": 72.41,
+          "feelsLikeTemp": 17.61,
+          "uvIndex": 2,
+          "probOfPrecipitation": 3,
           "probOfSnow": 0,
           "probOfHeavySnow": 0,
-          "probOfRain": 4,
-          "probOfHeavyRain": 2,
+          "probOfRain": 3,
+          "probOfHeavyRain": 1,
           "probOfHail": 0,
-          "probOfSferics": 1,
-          "siteLabel": "DDKDitchling",
-          "windDirectionCompass": "SE",
+          "probOfSferics": 0,
+          "siteLabel": "CaburnBoPeepFirleHighandOver",
+          "windDirectionCompass": "ENE",
           "cloudBaseInFt": null,
           "cloudBaseTemp": null,
-          "windSpeedMph": 13.5,
-          "windGustMph": 23.3,
-          "windSpeedKph": 21.7,
-          "windGustKph": 37.5,
+          "windSpeedMph": 11.3,
+          "windGustMph": 19.7,
+          "windSpeedKph": 18.2,
+          "windGustKph": 31.6,
           "sites": [
-            "No flyable sites"
+            "Bo Peep",
+            "High and Over"
           ],
-          "correlatedSiteTurnPoints": [],
-          "turnPoints": [],
+          "correlatedSiteTurnPoints": [
+            {
+              "label": "Bo Peep",
+              "lat": "50.820581",
+              "long": "0.12876213",
+              "directions": [
+                "NNE",
+                "NE",
+                "ENE"
+              ],
+              "turnPoint": "AFB",
+              "pureTrack": {
+                "topRight": {
+                  "lat": 50.847746,
+                  "long": 0.186209
+                },
+                "bottomLeft": {
+                  "lat": 50.811059,
+                  "long": 0.093837
+                }
+              },
+              "skewtUrl": "https://app19.mrsap.org/skewt/pull.php?region=UK12%2B6&lat=50.820581&lon=0.12876213&grid=d2&time=1800&plot=skewt&location=AFB",
+              "blipspotUrl": "https://app.stratus.org.uk/blip/graph/blip_main.php?day=Saturday&tp=AFB"
+            },
+            {
+              "label": "High and Over",
+              "lat": "50.788195",
+              "long": "0.14061213",
+              "directions": [
+                "E",
+                "ENE",
+                "ESE"
+              ],
+              "turnPoint": "AFB",
+              "pureTrack": {
+                "topRight": {
+                  "lat": 50.798838,
+                  "long": 0.18079
+                },
+                "bottomLeft": {
+                  "lat": 50.776618,
+                  "long": 0.124786
+                }
+              },
+              "skewtUrl": "https://app19.mrsap.org/skewt/pull.php?region=UK12%2B6&lat=50.788195&lon=0.14061213&grid=d2&time=1800&plot=skewt&location=AFB",
+              "blipspotUrl": "https://app.stratus.org.uk/blip/graph/blip_main.php?day=Saturday&tp=AFB"
+            }
+          ],
+          "turnPoints": [
+            "AFB",
+            "AFB"
+          ],
           "fullDay": "Saturday",
-          "windCategorisation": 14,
-          "gustCategorisation": 24,
+          "windCategorisation": 12,
+          "gustCategorisation": 20,
           "weatherClassification": {
             "class": "clear",
             "img": "/02_clear.svg"
           },
-          "temperature": 18.48,
-          "flyingConditions": "notFlyable"
+          "temperature": 20.54,
+          "flyingConditions": "marginal"
         }
       ]
     },
@@ -4639,19 +4825,19 @@
       "forecastCollection": [
         {
           "time": "2025-06-14T21:00Z",
-          "maxScreenAirTemp": 19.21,
-          "minScreenAirTemp": 15.92,
-          "max10mWindGust": 9.55,
+          "maxScreenAirTemp": 17.66,
+          "minScreenAirTemp": 15.1,
+          "max10mWindGust": 10.34,
           "significantWeatherCode": 0,
           "totalPrecipAmount": 0,
           "totalSnowAmount": 0,
-          "windSpeed10m": 4.04,
-          "windDirectionFrom10m": 358,
-          "windGustSpeed10m": 7.02,
-          "visibility": 22391,
-          "mslp": 102275,
-          "screenRelativeHumidity": 82.69,
-          "feelsLikeTemp": 14.69,
+          "windSpeed10m": 4.86,
+          "windDirectionFrom10m": 258,
+          "windGustSpeed10m": 7.75,
+          "visibility": 26458,
+          "mslp": 102149,
+          "screenRelativeHumidity": 83.68,
+          "feelsLikeTemp": 13.4,
           "uvIndex": 0,
           "probOfPrecipitation": 3,
           "probOfSnow": 0,
@@ -4659,56 +4845,29 @@
           "probOfRain": 3,
           "probOfHeavyRain": 2,
           "probOfHail": 0,
-          "probOfSferics": 1,
-          "siteLabel": "CaburnBoPeepFirleHighandOver",
-          "windDirectionCompass": "N",
+          "probOfSferics": 0,
+          "siteLabel": "DDKDitchling",
+          "windDirectionCompass": "WSW",
           "cloudBaseInFt": null,
           "cloudBaseTemp": null,
-          "windSpeedMph": 9,
-          "windGustMph": 15.7,
-          "windSpeedKph": 14.5,
-          "windGustKph": 25.3,
+          "windSpeedMph": 10.9,
+          "windGustMph": 17.3,
+          "windSpeedKph": 17.5,
+          "windGustKph": 27.9,
           "sites": [
-            "Firle"
+            "No flyable sites"
           ],
-          "correlatedSiteTurnPoints": [
-            {
-              "label": "Firle",
-              "lat": "50.834125",
-              "long": "0.086120367",
-              "directions": [
-                "N",
-                "NNE",
-                "NNW",
-                "NW"
-              ],
-              "turnPoint": "FIB",
-              "pureTrack": {
-                "topRight": {
-                  "lat": 50.853915,
-                  "long": 0.114169
-                },
-                "bottomLeft": {
-                  "lat": 50.827048,
-                  "long": 0.048076
-                }
-              },
-              "skewtUrl": "",
-              "blipspotUrl": "https://app.stratus.org.uk/blip/graph/blip_main.php?day=Saturday&tp=FIB"
-            }
-          ],
-          "turnPoints": [
-            "FIB"
-          ],
+          "correlatedSiteTurnPoints": [],
+          "turnPoints": [],
           "fullDay": "Saturday",
-          "windCategorisation": 9,
-          "gustCategorisation": 16,
+          "windCategorisation": 11,
+          "gustCategorisation": 18,
           "weatherClassification": {
             "class": "clear",
             "img": "/02_clear.svg"
           },
-          "temperature": 19.21,
-          "flyingConditions": "flyable"
+          "temperature": 17.66,
+          "flyingConditions": "marginal"
         }
       ]
     }
@@ -4719,49 +4878,178 @@
       "forecastCollection": [
         {
           "time": "2025-06-15T06:00Z",
-          "maxScreenAirTemp": 13.24,
-          "minScreenAirTemp": 12.36,
+          "maxScreenAirTemp": 13.39,
+          "minScreenAirTemp": 12.91,
           "max10mWindGust": 9.68,
           "significantWeatherCode": 1,
           "totalPrecipAmount": 0,
           "totalSnowAmount": 0,
-          "windSpeed10m": 5.71,
-          "windDirectionFrom10m": 149,
-          "windGustSpeed10m": 8.95,
-          "visibility": 21391,
-          "mslp": 102398,
-          "screenRelativeHumidity": 86.87,
-          "feelsLikeTemp": 10.99,
-          "uvIndex": 1,
-          "probOfPrecipitation": 3,
+          "windSpeed10m": 4.12,
+          "windDirectionFrom10m": 221,
+          "windGustSpeed10m": 6.93,
+          "visibility": 25427,
+          "mslp": 102288,
+          "screenRelativeHumidity": 89.84,
+          "feelsLikeTemp": 11.95,
+          "uvIndex": 2,
+          "probOfPrecipitation": 2,
           "probOfSnow": 0,
           "probOfHeavySnow": 0,
-          "probOfRain": 3,
-          "probOfHeavyRain": 2,
+          "probOfRain": 2,
+          "probOfHeavyRain": 1,
           "probOfHail": 0,
           "probOfSferics": 0,
           "siteLabel": "DDKDitchling",
-          "windDirectionCompass": "SSE",
+          "windDirectionCompass": "SW",
           "cloudBaseInFt": null,
           "cloudBaseTemp": null,
-          "windSpeedMph": 12.8,
-          "windGustMph": 20,
-          "windSpeedKph": 20.6,
-          "windGustKph": 32.2,
+          "windSpeedMph": 9.2,
+          "windGustMph": 15.5,
+          "windSpeedKph": 14.8,
+          "windGustKph": 24.9,
           "sites": [
             "No flyable sites"
           ],
           "correlatedSiteTurnPoints": [],
           "turnPoints": [],
           "fullDay": "Sunday",
-          "windCategorisation": 13,
-          "gustCategorisation": 20,
+          "windCategorisation": 10,
+          "gustCategorisation": 16,
           "weatherClassification": {
             "class": "clear",
             "img": "/02_clear.svg"
           },
-          "temperature": 13.24,
+          "temperature": 13.39,
+          "flyingConditions": "flyable"
+        }
+      ]
+    },
+    {
+      "time": "2025-06-15T09:00Z",
+      "forecastCollection": [
+        {
+          "time": "2025-06-15T09:00Z",
+          "maxScreenAirTemp": 16.07,
+          "minScreenAirTemp": 13.39,
+          "max10mWindGust": 10.26,
+          "significantWeatherCode": 3,
+          "totalPrecipAmount": 0,
+          "totalSnowAmount": 0,
+          "windSpeed10m": 4.12,
+          "windDirectionFrom10m": 216,
+          "windGustSpeed10m": 7.92,
+          "visibility": 29396,
+          "mslp": 102328,
+          "screenRelativeHumidity": 76.27,
+          "feelsLikeTemp": 14.59,
+          "uvIndex": 4,
+          "probOfPrecipitation": 4,
+          "probOfSnow": 0,
+          "probOfHeavySnow": 0,
+          "probOfRain": 4,
+          "probOfHeavyRain": 2,
+          "probOfHail": 0,
+          "probOfSferics": 0,
+          "siteLabel": "DDKDitchling",
+          "windDirectionCompass": "SW",
+          "cloudBaseInFt": null,
+          "cloudBaseTemp": null,
+          "windSpeedMph": 9.2,
+          "windGustMph": 17.7,
+          "windSpeedKph": 14.8,
+          "windGustKph": 28.5,
+          "sites": [
+            "No flyable sites"
+          ],
+          "correlatedSiteTurnPoints": [],
+          "turnPoints": [],
+          "fullDay": "Sunday",
+          "windCategorisation": 10,
+          "gustCategorisation": 18,
+          "weatherClassification": {
+            "class": "partly_cloudy",
+            "img": "/03_partly_cloudy.svg"
+          },
+          "temperature": 16.07,
           "flyingConditions": "marginal"
+        }
+      ]
+    },
+    {
+      "time": "2025-06-15T12:00Z",
+      "forecastCollection": [
+        {
+          "time": "2025-06-15T12:00Z",
+          "maxScreenAirTemp": 18.46,
+          "minScreenAirTemp": 16.07,
+          "max10mWindGust": 11.08,
+          "significantWeatherCode": 3,
+          "totalPrecipAmount": 0,
+          "totalSnowAmount": 0,
+          "windSpeed10m": 4.57,
+          "windDirectionFrom10m": 303,
+          "windGustSpeed10m": 9.06,
+          "visibility": 30059,
+          "mslp": 102351,
+          "screenRelativeHumidity": 64.74,
+          "feelsLikeTemp": 16.6,
+          "uvIndex": 6,
+          "probOfPrecipitation": 4,
+          "probOfSnow": 0,
+          "probOfHeavySnow": 0,
+          "probOfRain": 4,
+          "probOfHeavyRain": 2,
+          "probOfHail": 0,
+          "probOfSferics": 0,
+          "siteLabel": "DDKDitchling",
+          "windDirectionCompass": "WNW",
+          "cloudBaseInFt": null,
+          "cloudBaseTemp": null,
+          "windSpeedMph": 10.2,
+          "windGustMph": 20.3,
+          "windSpeedKph": 16.5,
+          "windGustKph": 32.6,
+          "sites": [
+            "Devils Dyke"
+          ],
+          "correlatedSiteTurnPoints": [
+            {
+              "label": "Devils Dyke",
+              "lat": "50.885079",
+              "long": "-0.21307468",
+              "directions": [
+                "WNW",
+                "NW",
+                "NNW",
+                "N"
+              ],
+              "turnPoint": "DDK",
+              "pureTrack": {
+                "topRight": {
+                  "lat": 50.909966,
+                  "long": -0.193342
+                },
+                "bottomLeft": {
+                  "lat": 50.87655,
+                  "long": -0.271435
+                }
+              },
+              "skewtUrl": "",
+              "blipspotUrl": "https://app.stratus.org.uk/blip/graph/blip_main.php?day=Sunday&tp=DDK"
+            }
+          ],
+          "turnPoints": [
+            "DDK"
+          ],
+          "fullDay": "Sunday",
+          "windCategorisation": 11,
+          "gustCategorisation": 21,
+          "weatherClassification": {
+            "class": "partly_cloudy",
+            "img": "/03_partly_cloudy.svg"
+          },
+          "temperature": 18.46,
+          "flyingConditions": "notFlyable"
         }
       ]
     }
