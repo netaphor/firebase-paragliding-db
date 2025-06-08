@@ -26,7 +26,7 @@ try {
     const manifestPath = path.join(__dirname, 'rev-manifest.json');
     if (fs.existsSync(manifestPath)) {
         revManifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
-        console.log('rev-manifest.json loaded', revManifest);
+        //console.log('rev-manifest.json loaded', revManifest);
     } else {
         console.warn('rev-manifest.json not found');
     }

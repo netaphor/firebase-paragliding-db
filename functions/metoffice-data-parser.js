@@ -14,6 +14,8 @@ const functions = require('firebase-functions'); // Or require('firebase-functio
 // The Firebase Admin SDK to access Firebase services
 const admin = require('firebase-admin');
 const { time } = require('console');
+const fs = require('fs');
+const path = require('path');
 
 // Get a reference to the Firestore database
 const db = admin.firestore();
@@ -36,7 +38,7 @@ async function fetchMetofficeData(lat, long, apiUrl) {
 }
 
 // Function to get which sites are flyable based on wind direction
-function getLocationsByDirection(direction) {
+function getLocationsByDirection(direction, siteLabel) {
     let siteData = {
         sites: [],
         turnPoints: [],
@@ -44,13 +46,14 @@ function getLocationsByDirection(direction) {
     };
     
     for (const region in sitesMap) {
-        for (const location in sitesMap[region]) {
-            if (sitesMap[region][location].directions.includes(direction)) {
-                let correlatedSiteTurnPoints = sitesMap[region][location];
+        //console.log("Checking ", sitesMap[region][siteLabel]);
+        for (const siteGroupKey in sitesMap[region][siteLabel].sites) {
+            let siteGroup = sitesMap[region][siteLabel].sites[siteGroupKey];
+            if (siteGroup.directions.includes(direction)) {
+                let correlatedSiteTurnPoints = siteGroup;
                 siteData.correlatedSiteTurnPoints.push(correlatedSiteTurnPoints);
-                siteData.sites.push(sitesMap[region][location].label);
-                siteData.turnPoints.push(sitesMap[region][location].turnPoint);
-                //console.log(correlatedSiteTurnPoints);
+                siteData.sites.push(siteGroup.label);
+                siteData.turnPoints.push(siteGroup.turnPoint);
             }
         }
     }
@@ -136,17 +139,16 @@ function filterOutSpecificTimes(timeSeries) {
 
 // We merge the three-hourly and hourly data which contains the same timestamps for some of the entries
 // and we need to deduplicate them
-function deduplicateTimeSeriesByTime(groupedArrays) {
-    return groupedArrays.map(array => {
-        const timeMap = new Map();
-        array.forEach(entry => {
-            const time = entry.time;
-            if (!timeMap.has(time) || (entry.screenTemperature && !timeMap.get(time).screenTemperature)) {
-                timeMap.set(time, entry);
-            }
-        });
-        return Array.from(timeMap.values());
+function deduplicateTimeSeriesByTime(timeSeries) {
+    const timeMap = new Map();
+    timeSeries.forEach(entry => {
+        const time = entry.time;
+        // Prefer entry with screenTemperature if duplicate times
+        if (!timeMap.has(time) || (entry.screenTemperature && !timeMap.get(time).screenTemperature)) {
+            timeMap.set(time, entry);
+        }
     });
+    return Array.from(timeMap.values());
 }
 
 // Function to classify precipitation amount
@@ -288,7 +290,7 @@ function addBlipspotUrlsToSites(sites, date) {
  * @param {Array<Object>} timeSeries - Array of weather data entries to be updated and enriched.
  * @returns {Array<Object>} The processed and enriched time series array.
  */
-function updateTimeSeries(timeSeries) {
+function updateTimeSeries(timeSeries, siteLabel) {
     // Filter out entries with time at midnight, 3am, or 9pm
     timeSeries = filterOutSpecificTimes(timeSeries);
     timeSeries.map(entry => {
@@ -299,7 +301,7 @@ function updateTimeSeries(timeSeries) {
         entry.windGustMph = convertMsToMph(entry.windGustSpeed10m);
         entry.windSpeedKph = convertMsToKph(entry.windSpeed10m);
         entry.windGustKph = convertMsToKph(entry.windGustSpeed10m);
-        const siteData = getLocationsByDirection(entry.windDirectionCompass);
+        const siteData = getLocationsByDirection(entry.windDirectionCompass, siteLabel);
         entry.sites = siteData.sites;
         entry.correlatedSiteTurnPoints = siteData.correlatedSiteTurnPoints;
         entry.correlatedSiteTurnPoints = addSkewtUrlsToSites(entry.correlatedSiteTurnPoints, entry.time);
@@ -315,10 +317,8 @@ function updateTimeSeries(timeSeries) {
         });
         entry.temperature = entry.maxScreenAirTemp || entry.screenTemperature; // Use max temperature if available, otherwise use screen temperature
         entry.flyingConditions = getFlyingConditions(entry.windSpeedMph, entry.windGustMph, entry.weatherClassification.class);
-        //console.log("weather", entry.correlatedSiteTurnPoints);
         return entry;
     });
-    timeSeries = groupTimeSeriesByDay(timeSeries);
     timeSeries = deduplicateTimeSeriesByTime(timeSeries);
     return timeSeries;
 }
@@ -341,7 +341,6 @@ function groupTimeSeriesByDay(timeSeries) {
     const groupedArrays = Array.from(dayGroups.values()).map(group => 
         group.sort((a, b) => new Date(a.time) - new Date(b.time))
     );
-
     return groupedArrays;
 }
 
@@ -352,15 +351,31 @@ function getDayOfWeek(timestamp) {
     return days[date.getDay()];
 }
 
-// Function to write forecast data to Firestore
+/**
+ * Writes the forecast data to Firestore, supporting the new data structure:
+ * [
+ *   [
+ *     { time: "...", entries: [ ... ] },
+ *     ...
+ *   ],
+ *   ...
+ * ]
+ * Each outer array is a day, each inner array is an array of { time, entries } objects.
+ */
 async function writeForecastDataToFirestore(data) {
+    console.log("Writing forecast data to Firestore...", data);
     try {
+        if (!Array.isArray(data)) {
+            console.error("Error: forecast data is null or not an array.");
+            return;
+        }
         const forecastCollection = db.collection('forecastData');
         const batch = db.batch();
 
-        data.forEach((dayData, index) => {
-            const docRef = forecastCollection.doc(`day_${index + 1}`);
-            batch.set(docRef, { timeSeries: dayData });
+        data.forEach((dayArray, dayIndex) => {
+            // Each dayArray is an array of { time, entries }
+            const docRef = forecastCollection.doc(`day_${dayIndex + 1}`);
+            batch.set(docRef, { timeSeries: dayArray });
         });
 
         await batch.commit();
@@ -370,27 +385,75 @@ async function writeForecastDataToFirestore(data) {
     }
 }
 
+/**
+ * Flattens all time series from all sites into a single array,
+ * grouping items by their 'time' property.
+ * Returns an array where each item is an object:
+ * { time: <timestamp>, entries: [ ...siteEntriesAtThatTime ] }
+ * @param {Object} allTimeSeriesBySite - Object with site labels as keys and arrays of entries as values.
+ * @returns {Array} - Array of grouped entries by time.
+ */
+function groupAllSitesByTime(allTimeSeriesBySite) {
+    const timeMap = new Map();
+
+    Object.values(allTimeSeriesBySite).forEach(siteEntries => {
+        siteEntries.forEach(entry => {
+            const time = entry.time;
+            if (!timeMap.has(time)) {
+                timeMap.set(time, []);
+            }
+            timeMap.get(time).push(entry);
+        });
+    });
+
+    // Convert to array of { time, entries }
+    return Array.from(timeMap.entries())
+        .map(([time, entries]) => ({ time, entries }))
+        .sort((a, b) => new Date(a.time) - new Date(b.time));
+}
+
 // Function to update forecast data periodically
 async function updateForecast() {
     try {
-        // Fetch three-hourly data
-        const threehourlyData = await fetchMetofficeData(sitesMap.southern.caburn.lat, sitesMap.southern.caburn.long, metofficeThreehourlyApiUrl);
-        console.log("Three-hourly data fetched successfully");
-        const threehourlyTimeSeries = threehourlyData.features[0].properties.timeSeries;
-        
-        // Fetch hourly data
-        const hourlyData = await fetchMetofficeData(sitesMap.southern.caburn.lat, sitesMap.southern.caburn.long, metofficeHourlyApiUrl);
-        console.log("Hourly data fetched successfully");
-        const hourlyTimeSeries = hourlyData.features[0].properties.timeSeries;
-        
-        // Merge the data
-        updatedForecastData = [...threehourlyTimeSeries, ...hourlyTimeSeries];
+        const southernSites = Object.values(sitesMap.southern);
+        let allTimeSeriesBySite = {};
 
-        // Process and update dataset
-        updatedForecastData = updateTimeSeries(updatedForecastData);
+        for (const site of southernSites) {
+            // Fetch three-hourly data for this site
+            const threehourlyData = await fetchMetofficeData(site.lat, site.long, metofficeThreehourlyApiUrl);
+            console.log(`Three-hourly data fetched for ${site.label}`);
+            const threehourlyTimeSeries = threehourlyData.features[0].properties.timeSeries;
+
+            // Fetch hourly data for this site
+            const hourlyData = await fetchMetofficeData(site.lat, site.long, metofficeHourlyApiUrl);
+            console.log(`Hourly data fetched for ${site.label}`);
+            const hourlyTimeSeries = hourlyData.features[0].properties.timeSeries;
+
+            // Merge the data for this site
+            let siteTimeSeries = [...threehourlyTimeSeries, ...hourlyTimeSeries];
+
+            // Add site label to each entry for reference
+            siteTimeSeries = siteTimeSeries.map(entry => ({
+            ...entry,
+            siteLabel: site.label || ""
+            }));
+
+            // Group by site label
+            //allTimeSeriesBySite[site.label] = siteTimeSeries;
+            console.log(`Processing data for site: ${site.label}`);
+            allTimeSeriesBySite[site.label] = updateTimeSeries(siteTimeSeries, site.label);
+        }
         
+        // Flatten all time series into a single array grouped by time
+        let allTimeSeries = groupAllSitesByTime(allTimeSeriesBySite);
+        allTimeSeries = groupTimeSeriesByDay(allTimeSeries);
+        //console.log("Forecast data processed and updated.", allTimeSeriesBySite);
+        const outputPath = path.join(__dirname, 'allTimeSeriesByDay.json');
+        fs.writeFileSync(outputPath, JSON.stringify(allTimeSeries, null, 2), 'utf8');
+        console.log(`allTimeSeriesBySite written to ${outputPath}`);        
+
         // Write the updated data to Firestore
-        await writeForecastDataToFirestore(updatedForecastData);        
+        await writeForecastDataToFirestore(allTimeSeries);
     } catch (error) {
         console.error("Error fetching or processing data:", error);
     }
