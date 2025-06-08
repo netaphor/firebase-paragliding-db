@@ -490,7 +490,7 @@ function removeEmptyCorrelatedSiteTurnPointsDuplicates(allTimeSeries) {
 }
 
 exports.dataManager = onSchedule(
-    { schedule: '*/15 6-21 * * *', region: 'europe-west1' }, // Every 15 minutes between 06:00 and 21:59
+    { schedule: '0 6-21 * * *', region: 'europe-west1' }, // Once an hour between 06:00 and 21:00
     async (event) => {
         console.log("Scheduled function triggered");
         try {
