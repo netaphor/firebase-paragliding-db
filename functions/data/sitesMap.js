@@ -1,15 +1,15 @@
 // Static data for the UK flying sites, currently only southern sites
 exports.sitesMap = {
     southern: {
-        DDKDitchling: {
-            label:"DDKDitchling",
-            lat: 50.896885,
-            long: -0.151538,
+        DDK: {
+            label:"DDK",
+            lat: 50.885079,
+            long: -0.21307468,
             sites:{
                 devilsDyke: {
                     label: "Devils Dyke",
-                    lat: "50.885079",
-                    long: "-0.21307468",
+                    lat: 50.885079,
+                    long: -0.21307468,
                     directions:["WNW","NW","NNW","N"],
                     turnPoint: "DDK",
                     pureTrack: {
@@ -22,11 +22,18 @@ exports.sitesMap = {
                             long: -0.271435
                         }   
                     }
-                },
+                }
+            } 
+        },
+        Ditchling: {
+            label:"Ditchling",
+            lat: 50.86157750,
+            long: -0.11699785,
+            sites:{
                 ditchling: {
                     label: "Ditchling",
-                    lat: "50.86157750.903079",
-                    long: "-0.11699785",
+                    lat: 50.86157750,
+                    long: -0.11699785,
                     directions:["N","NNE","NNW"],
                     turnPoint: "DIT", 
                     pureTrack: {
@@ -42,66 +49,15 @@ exports.sitesMap = {
                 }
             } 
         },
-        CaburnBoPeepFirleHighandOver: {
-            label:"CaburnBoPeepFirleHighandOver",
-            lat: 50.854237,
-            long: 0.104643,
+        HighandOver: {
+            label:"HighandOver",
+            lat: 50.788195,
+            long: 0.14061213,
             sites:{
-                caburn:{
-                    label: "Mount Caburn",
-                    lat: "50.861577",
-                    long: "0.050928801",
-                    directions:["WSW", "SW", "SSW", "S"],
-                    turnPoint: "GDE", 
-                    pureTrack: {
-                        topRight: {
-                            lat: 50.868367, 
-                            long: 0.063661
-                        },
-                        bottomLeft: {
-                            lat: 50.848305,
-                            long: 0.010185
-                        }   
-                    }
-                },
-                boPeep: {
-                    label: "Bo Peep",
-                    lat: "50.820581",
-                    long: "0.12876213",
-                    directions:["NNE","NE","ENE"],
-                    turnPoint: "AFB", 
-                    pureTrack: {
-                        topRight: {
-                            lat: 50.847746,
-                            long: 0.186209
-                        },
-                        bottomLeft: {
-                            lat: 50.811059,
-                            long: 0.093837
-                        }   
-                    }
-                },
-                firle: {
-                    label: "Firle",
-                    lat: "50.834125",
-                    long: "0.086120367",
-                    directions:["N","NNE","NNW", "NW"],
-                    turnPoint: "FIB", 
-                    pureTrack: {
-                        topRight: {
-                            lat: 50.853915,  
-                            long: 0.114169,
-                        },
-                        bottomLeft: {
-                            lat: 50.827048, 
-                            long: 0.048076
-                        }   
-                    }
-                },
                 highAndOver: {
                     label: "High and Over",
-                    lat: "50.788195",
-                    long: "0.14061213",
+                    lat: 50.788195,
+                    long: 0.14061213,
                     directions:["E","ENE","ESE"],
                     turnPoint: "AFB", 
                     pureTrack: {
@@ -117,15 +73,87 @@ exports.sitesMap = {
                 }
             }
         },
-        NewhavenBeachyHead: {
-            label:"NewhavenBeachyHead",
-            lat: 50.759081,
-            long: 0.131978,
+        Firle: {
+            label:"Firle",
+            lat: 50.834125,
+            long: 0.086120367,
+            sites:{
+                firle: {
+                    label: "Firle",
+                    lat: 50.834125,
+                    long: 0.086120367,
+                    directions:["N","NNE","NNW", "NW"],
+                    turnPoint: "FIB", 
+                    pureTrack: {
+                        topRight: {
+                            lat: 50.853915,  
+                            long: 0.114169,
+                        },
+                        bottomLeft: {
+                            lat: 50.827048, 
+                            long: 0.048076
+                        }   
+                    }
+                }
+            }
+        },
+        BoPeep: {
+            label:"BoPeep",
+            lat: 50.820581,
+            long: 0.12876213,
+            sites:{
+                boPeep: {
+                    label: "Bo Peep",
+                    lat: 50.820581,
+                    long: 0.12876213,
+                    directions:["NNE","NE","ENE"],
+                    turnPoint: "AFB", 
+                    pureTrack: {
+                        topRight: {
+                            lat: 50.847746,
+                            long: 0.186209
+                        },
+                        bottomLeft: {
+                            lat: 50.811059,
+                            long: 0.093837
+                        }   
+                    }
+                }
+            }
+        },
+        Caburn: {
+            label:"Caburn",
+            lat: 50.861577,
+            long: 0.050928801,
+            sites:{
+                caburn:{
+                    label: "Mount Caburn",
+                    lat: 50.861577,
+                    long: 0.050928801,
+                    directions:["WSW", "SW", "SSW", "S"],
+                    turnPoint: "GDE", 
+                    pureTrack: {
+                        topRight: {
+                            lat: 50.868367, 
+                            long: 0.063661
+                        },
+                        bottomLeft: {
+                            lat: 50.848305,
+                            long: 0.010185
+                        }   
+                    }
+                }
+            }
+        },
+        Newhaven: {
+            label:"Newhaven",
+            lat: 50.782348,
+            long: 0.049073696,
             sites:{
                 newhaven: {
                     label: "Newhaven",
-                    lat: "50.782348",
-                    long: "0.049073696",
+                    lat: 50.782348,
+                    long: 0.049073696,
                     directions:["SSW","S","SSE"],
                     turnPoint: "SEA", 
                     pureTrack: {
@@ -138,11 +166,18 @@ exports.sitesMap = {
                             long: -0.127543
                         }   
                     }
-                },
+                }
+            }
+        },
+        BeachyHead: {
+            label:"BeachyHead",
+            lat: 50.740020,
+            long: 0.25347054,
+            sites:{
                 beachyHead: {
                     label: "Beachy Head",
-                    lat: "50.740020",
-                    long: "0.25347054",
+                    lat: 50.740020,
+                    long: 0.25347054,
                     directions:["SE"],
                     turnPoint: "SEA", 
                     pureTrack: {
