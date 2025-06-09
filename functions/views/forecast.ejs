@@ -79,10 +79,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <% } %>
         <!-- For each day of the week in the data -->
         <% forecastData.forEach(function(dayData, index) { %>
-            <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mb-3 <%= dayData[0].fullDay %>">
+            <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mb-3 <%= new Date(dayData[0].time).toLocaleDateString('en-GB', { weekday: 'long' }) %>">
                 <div class="forecastCard">
                     <div class="forecastCardHeader">
-                        <%= dayData[0].fullDay %> 
+                        <%= new Date(dayData[0].time).toLocaleDateString('en-GB', { weekday: 'long' }) %>
                         <%= new Date(dayData[0].time).toLocaleDateString('en-GB', { day: 'numeric', month: 'long' }).replace(/(\d+)/, (match) => {
                             const day = parseInt(match);
                             const suffix = day % 10 === 1 && day !== 11 ? 'st' : 
