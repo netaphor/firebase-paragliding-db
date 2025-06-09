@@ -423,6 +423,9 @@ async function updateForecast() {
             console.log(`Three-hourly data fetched for ${site.label}`);
             const threehourlyTimeSeries = threehourlyData.features[0].properties.timeSeries;
 
+            // Introduce a 100ms delay between requests
+            await new Promise(resolve => setTimeout(resolve, 100));
+
             // Fetch hourly data for this site
             const hourlyData = await fetchMetofficeData(site.lat, site.long, metofficeHourlyApiUrl);
             console.log(`Hourly data fetched for ${site.label}`);
@@ -441,6 +444,9 @@ async function updateForecast() {
             //allTimeSeriesBySite[site.label] = siteTimeSeries;
             console.log(`Processing data for site: ${site.label}`);
             allTimeSeriesBySite[site.label] = updateTimeSeries(siteTimeSeries, site.label);
+
+            // Optional: delay before next site (if you want to delay between sites as well)
+            await new Promise(resolve => setTimeout(resolve, 100));
         }
         
         // Flatten all time series into a single array grouped by time
