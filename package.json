@@ -4,17 +4,19 @@
   "description": "",
   "main": "functions/index.js",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development gulp",
+    "dev": "concurrently \"cross-env NODE_ENV=development gulp\" \"firebase emulators:start\"",
     "build": "cross-env NODE_ENV=production gulp build",
-    "deploy": "firebase deploy --only hosting,functions",
+    "deploy": "firebase deploy",
     "deploy:hosting": "firebase deploy --only hosting",
-    "deploy:functions": "firebase deploy --only functions"
+    "deploy:functions": "firebase deploy --only functions",
+    "emulators": "firebase emulators:start"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "autoprefixer": "^10.4.21",
+    "concurrently": "^9.1.2",
     "cross-env": "^7.0.3",
     "cssnano": "^7.0.7",
     "del": "^8.0.0",
