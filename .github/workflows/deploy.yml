@@ -40,23 +40,28 @@ jobs:
         with:
           credentials_json: '${{ secrets.GCP_SA_KEY }}'
 
-      - name: Set GOOGLE_APPLICATION_CREDENTIALS
-        run: echo "GOOGLE_APPLICATION_CREDENTIALS=${{ env.GOOGLE_GHA_CREDS_PATH }}" >> $GITHUB_ENV
+      - name: Get secrets from Secret Manager
+        uses: google-github-actions/get-secretmanager-secrets@v1
+        with:
+          secrets: |
+            METOFFICE_API_URL
+            PURETRACK_API_KEY
+            PURETRACK_BEARER_TOKEN
+            TELEGRAM_API_KEY
+            UK_TIDAL_API
 
       - name: Set Firebase function secrets
         if: github.event_name == 'push'
-        env:
-          GOOGLE_APPLICATION_CREDENTIALS: ${{ env.GOOGLE_GHA_CREDS_PATH }}
         run: |
           npm install -g firebase-tools
-          echo "${{ secrets.METOFFICE_API_URL }}" | firebase functions:secrets:set METOFFICE_API_URL --project fb-paragliding-db
-          echo "${{ secrets.PURETRACK_API_KEY }}" | firebase functions:secrets:set PURETRACK_API_KEY --project fb-paragliding-db
-          echo "${{ secrets.PURETRACK_BEARER_TOKEN }}" | firebase functions:secrets:set PURETRACK_BEARER_TOKEN --project fb-paragliding-db
-          echo "${{ secrets.TELEGRAM_API_KEY }}" | firebase functions:secrets:set TELEGRAM_API_KEY --project fb-paragliding-db
-          echo "${{ secrets.UK_TIDAL_API }}" | firebase functions:secrets:set UK_TIDAL_API --project fb-paragliding-db
+          firebase functions:secrets:set METOFFICE_API_URL "$METOFFICE_API_URL" --project fb-paragliding-db
+          firebase functions:secrets:set PURETRACK_API_KEY "$PURETRACK_API_KEY" --project fb-paragliding-db
+          firebase functions:secrets:set PURETRACK_BEARER_TOKEN "$PURETRACK_BEARER_TOKEN" --project fb-paragliding-db
+          firebase functions:secrets:set TELEGRAM_API_KEY "$TELEGRAM_API_KEY" --project fb-paragliding-db
+          firebase functions:secrets:set UK_TIDAL_API "$UK_TIDAL_API" --project fb-paragliding-db
 
       - name: Deploy to Firebase Hosting and Functions
         if: github.event_name == 'push'
         run: |
           npm install -g firebase-tools
-          firebase deploy --only hosting,functions --project fb-paragliding-db
+          firebase deploy --only hosting,functions --project fb-paragliding-db --token "${{ secrets.FIREBASE_TOKEN }}"
