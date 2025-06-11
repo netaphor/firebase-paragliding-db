@@ -24,6 +24,11 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Install Cloud Function dependencies
+        run: |
+          cd functions
+          npm ci
+
       - name: Install Gulp CLI globally
         run: npm install --global gulp-cli
 
