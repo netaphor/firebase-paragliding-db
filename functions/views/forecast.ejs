@@ -132,7 +132,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                         <% } %>
                                         
                                         <% if (forecast.sites.join(', ') !== 'No flyable sites') { %>
-                                            <div class="circle <%= forecast.flyingConditions %>"></div>
+                                            <img src="/img/<%= forecast.flyingConditions %>" alt="<%= forecast.flyingConditions %> Icon" class="<%= forecast.flyingConditions %>" style="width: 30px; height: 30px;" />                                            
                                         <% } %>
                                     </div>
                                     
