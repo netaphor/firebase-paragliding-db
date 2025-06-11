@@ -44,11 +44,11 @@ jobs:
         uses: google-github-actions/get-secretmanager-secrets@v1
         with:
           secrets: |
-            METOFFICE_API_URL
-            PURETRACK_API_KEY
-            PURETRACK_BEARER_TOKEN
-            TELEGRAM_API_KEY
-            UK_TIDAL_API
+            METOFFICE_API_URL: METOFFICE_API_URL
+            PURETRACK_API_KEY: PURETRACK_API_KEY
+            PURETRACK_BEARER_TOKEN: PURETRACK_BEARER_TOKEN
+            TELEGRAM_API_KEY: TELEGRAM_API_KEY
+            UK_TIDAL_API: UK_TIDAL_API
 
       - name: Set Firebase function secrets
         if: github.event_name == 'push'
