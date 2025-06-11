@@ -43,7 +43,7 @@ jobs:
       - name: Get secrets from Secret Manager
         uses: google-github-actions/get-secretmanager-secrets@v1
         with:
-          secrets:
+          secrets: |
             METOFFICE_API_URL: projects/fb-paragliding-db/secrets/METOFFICE_API_URL/versions/latest
             PURETRACK_API_KEY: projects/fb-paragliding-db/secrets/PURETRACK_API_KEY/versions/latest
             PURETRACK_BEARER_TOKEN: projects/fb-paragliding-db/secrets/PURETRACK_BEARER_TOKEN/versions/latest
