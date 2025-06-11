@@ -47,13 +47,16 @@ body {
 }
 
 .notFlyable {
-    background-color: #ff0000aa;
+    background-color: #ff00006f;
+    border-radius: 7px;
 }
 .flyable {
-    background-color: #008a0094;
+    background-color: #008a0069;
+    border-radius: 7px;
 }
 .marginal {
-    background-color: #ff880094;
+    background-color: #ff880054;
+    border-radius: 7px;
 }
 
 .hidden {

@@ -51,7 +51,7 @@ async function retrieveForecastDataFromFirestore() {
             documentsArray.push(data.timeSeries);
         });
 
-        console.log("Combined data length -------------------------------- " + documentsArray.length);
+        console.log("Combined data length ------------------------------- " + documentsArray.length);
         return documentsArray;
 
     } catch (error) {
