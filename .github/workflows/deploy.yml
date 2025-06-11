@@ -50,6 +50,12 @@ jobs:
             TELEGRAM_API_KEY: projects/fb-paragliding-db/secrets/TELEGRAM_API_KEY/versions/latest
             UK_TIDAL_API: projects/fb-paragliding-db/secrets/UK_TIDAL_API/versions/latest
 
+      - name: 🤫 Debug retrieved secrets
+        run: |
+          echo "METOFFICE_API_URL is: ${{ steps.sm-secrets.outputs.METOFFICE_API_URL }}"
+          echo "PURETRACK_API_KEY is: ${{ steps.sm-secrets.outputs.PURETRACK_API_KEY }}"
+          # Add an echo for each secret to check its value
+
       - name: Set Firebase function secrets
         if: github.event_name == 'push'
         run: |
