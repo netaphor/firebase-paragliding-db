@@ -49,21 +49,11 @@ jobs:
           GOOGLE_APPLICATION_CREDENTIALS: ${{ env.GOOGLE_GHA_CREDS_PATH }}
         run: |
           npm install -g firebase-tools
-          firebase functions:secrets:set METOFFICE_API_URL \
-            --project fb-paragliding-db \
-            --value "${{ secrets.METOFFICE_API_URL }}"
-          firebase functions:secrets:set PURETRACK_API_KEY \
-            --project fb-paragliding-db \
-            --value "${{ secrets.PURETRACK_API_KEY }}"
-          firebase functions:secrets:set PURETRACK_BEARER_TOKEN \
-            --project fb-paragliding-db \
-            --value "${{ secrets.PURETRACK_BEARER_TOKEN }}"
-          firebase functions:secrets:set TELEGRAM_API_KEY \
-            --project fb-paragliding-db \
-            --value "${{ secrets.TELEGRAM_API_KEY }}"
-          firebase functions:secrets:set UK_TIDAL_API \
-            --project fb-paragliding-db \
-            --value "${{ secrets.UK_TIDAL_API }}"
+          echo "${{ secrets.METOFFICE_API_URL }}" | firebase functions:secrets:set METOFFICE_API_URL --project fb-paragliding-db
+          echo "${{ secrets.PURETRACK_API_KEY }}" | firebase functions:secrets:set PURETRACK_API_KEY --project fb-paragliding-db
+          echo "${{ secrets.PURETRACK_BEARER_TOKEN }}" | firebase functions:secrets:set PURETRACK_BEARER_TOKEN --project fb-paragliding-db
+          echo "${{ secrets.TELEGRAM_API_KEY }}" | firebase functions:secrets:set TELEGRAM_API_KEY --project fb-paragliding-db
+          echo "${{ secrets.UK_TIDAL_API }}" | firebase functions:secrets:set UK_TIDAL_API --project fb-paragliding-db
 
       - name: Deploy to Firebase Hosting and Functions
         if: github.event_name == 'push'
