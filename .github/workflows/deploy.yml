@@ -43,12 +43,12 @@ jobs:
       - name: Get secrets from Secret Manager
         uses: google-github-actions/get-secretmanager-secrets@v1
         with:
-          secrets: |
-            METOFFICE_API_URL: METOFFICE_API_URL
-            PURETRACK_API_KEY: PURETRACK_API_KEY
-            PURETRACK_BEARER_TOKEN: PURETRACK_BEARER_TOKEN
-            TELEGRAM_API_KEY: TELEGRAM_API_KEY
-            UK_TIDAL_API: UK_TIDAL_API
+          secrets:
+            METOFFICE_API_URL: projects/fb-paragliding-db/secrets/METOFFICE_API_URL/versions/latest
+            PURETRACK_API_KEY: projects/fb-paragliding-db/secrets/PURETRACK_API_KEY/versions/latest
+            PURETRACK_BEARER_TOKEN: projects/fb-paragliding-db/secrets/PURETRACK_BEARER_TOKEN/versions/latest
+            TELEGRAM_API_KEY: projects/fb-paragliding-db/secrets/TELEGRAM_API_KEY/versions/latest
+            UK_TIDAL_API: projects/fb-paragliding-db/secrets/UK_TIDAL_API/versions/latest
 
       - name: Set Firebase function secrets
         if: github.event_name == 'push'
