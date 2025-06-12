@@ -420,7 +420,7 @@ async function updateForecast() {
         for (const site of southernSites) {
             // Fetch three-hourly data for this site
             const threehourlyData = await fetchMetofficeData(site.lat, site.long, metofficeThreehourlyApiUrl);
-            console.log(`Three-hourly data fetched for ${site.label}`);
+            //console.log(`Three-hourly data fetched for ${site.label}`);
             const threehourlyTimeSeries = threehourlyData.features[0].properties.timeSeries;
 
             // Introduce a 100ms delay between requests
@@ -428,7 +428,7 @@ async function updateForecast() {
 
             // Fetch hourly data for this site
             const hourlyData = await fetchMetofficeData(site.lat, site.long, metofficeHourlyApiUrl);
-            console.log(`Hourly data fetched for ${site.label}`);
+            //console.log(`Hourly data fetched for ${site.label}`);
             const hourlyTimeSeries = hourlyData.features[0].properties.timeSeries;
 
             // Merge the data for this site
@@ -451,18 +451,86 @@ async function updateForecast() {
         
         // Flatten all time series into a single array grouped by time
         let allTimeSeries = groupAllSitesByTime(allTimeSeriesBySite);
+        allTimeSeries = await enrichWithTidalData(allTimeSeries);
         allTimeSeries = groupTimeSeriesByDay(allTimeSeries);
         allTimeSeries = removeEmptyCorrelatedSiteTurnPointsDuplicates(allTimeSeries);
-        //console.log("Forecast data processed and updated.", allTimeSeriesBySite);
-        const outputPath = path.join(__dirname, 'allTimeSeriesByDay.json');
-        fs.writeFileSync(outputPath, JSON.stringify(allTimeSeries, null, 2), 'utf8');
-        console.log(`allTimeSeriesBySite written to ${outputPath}`);        
+
+        // Write allTimeSeries to disk for debugging
+        const outputPath = path.join(__dirname, 'allTimeSeries.json');
+        try {
+            // Ensure debug directory exists
+            const debugDir = path.dirname(outputPath);
+            if (!fs.existsSync(debugDir)) {
+                fs.mkdirSync(debugDir, { recursive: true });
+            }
+            
+            fs.writeFileSync(outputPath, JSON.stringify(allTimeSeries, null, 2));
+            console.log(`allTimeSeries written to ${outputPath}`);
+        } catch (writeError) {
+            console.error('Error writing allTimeSeries to disk:', writeError);
+        }
 
         // Write the updated data to Firestore
         await writeForecastDataToFirestore(allTimeSeries);
     } catch (error) {
         console.error("Error fetching or processing data:", error);
     }
+}
+
+/**
+ * Enriches allTimeSeries data with tidal data from Firestore for correlatedSiteTurnPoints with label "Newhaven".
+ * @param {Array} allTimeSeries - The grouped forecast data (array of days, each day is array of { time, forecastCollection }).
+ * @returns {Promise<Array>} - The enriched allTimeSeries array.
+ */
+async function enrichWithTidalData(allTimeSeries) {
+    // Fetch all tidal data from Firestore
+    const tideData = [];
+    const tidesCollection = await db.collection('tides').doc('0083').collection('hourly').get();
+    //const timestampDoc = await db.collection('flying-tracks-timestamps').doc('latest').get();
+    //console.log(tidesCollection);
+    // for (const stationDoc of tidesCollection.docs) {
+    //     const hourlySnapshot = await db.collection('tides').doc(stationDoc.id).collection('hourly').get();
+        tidesCollection.forEach(doc => {
+            tideData.push(doc.data());
+        });
+    //}
+    console.log(`Fetched ${tideData.length} tide entries from Firestore.`);
+
+    // Build a map of roundedTime to tide entry for quick lookup
+    const tideMap = new Map();
+    tideData.forEach(tide => {
+        if (tide.roundedTime) {
+            tideMap.set(tide.roundedTime, tide);
+        }
+    });
+
+    // Helper to find tide data for a given time
+    function getTideForTime(time) {
+        // Round time to the nearest hour in ISO string (matching roundedTime format)
+        const date = new Date(time);
+        date.setUTCMinutes(0, 0, 0);
+        const roundedTime = date.toISOString();
+        return tideMap.get(roundedTime) || null;
+    }
+
+    // Iterate and enrich
+    return allTimeSeries.map(timeSlot => {
+        if (!Array.isArray(timeSlot.forecastCollection)) return timeSlot;
+        const tide = getTideForTime(timeSlot.time);
+        if (!tide) return timeSlot;
+        const enrichedEntries = timeSlot.forecastCollection.map(entry => {
+            if (!Array.isArray(entry.correlatedSiteTurnPoints)) return entry;
+            const enrichedTurnPoints = entry.correlatedSiteTurnPoints.map(siteObj => {
+                if (siteObj.label === "Newhaven") {
+                    console.log(`Enriching site ${siteObj.label} with tide data for time ${timeSlot.time}`);
+                    return { ...siteObj, tide };
+                }
+                return siteObj;
+            });
+            return { ...entry, correlatedSiteTurnPoints: enrichedTurnPoints };
+        });
+        return { ...timeSlot, forecastCollection: enrichedEntries };
+    });
 }
 
 /**
@@ -496,7 +564,7 @@ function removeEmptyCorrelatedSiteTurnPointsDuplicates(allTimeSeries) {
 }
 
 exports.dataManager = onSchedule(
-    { schedule: '0 6-21 * * *', region: 'europe-west1' }, // Once an hour between 06:00 and 21:00
+    { schedule: '0,30 6-20 * * *', region: 'europe-west1' }, // Every 30 minutes between 06:00 and 20:30
     async (event) => {
         console.log("Scheduled function triggered");
         try {
@@ -508,4 +576,4 @@ exports.dataManager = onSchedule(
     }
 );
 
-console.log("Scheduled function set to run every 15 minutes");
+console.log("Data manager function initialized. It will run every 30 minutes between 06:00 and 20:00 UTC.");
