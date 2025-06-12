@@ -564,7 +564,7 @@ function removeEmptyCorrelatedSiteTurnPointsDuplicates(allTimeSeries) {
 }
 
 exports.dataManager = onSchedule(
-    { schedule: '0 6-21 * * *', region: 'europe-west1' }, // Once an hour between 06:00 and 21:00
+    { schedule: '0,30 6-20 * * *', region: 'europe-west1' }, // Every 30 minutes between 06:00 and 20:30
     async (event) => {
         console.log("Scheduled function triggered");
         try {
@@ -576,4 +576,4 @@ exports.dataManager = onSchedule(
     }
 );
 
-console.log("Data manager function initialized. It will run every hour between 06:00 and 21:00 UTC.");
+console.log("Data manager function initialized. It will run every 30 minutes between 06:00 and 20:00 UTC.");
