@@ -453,10 +453,6 @@ async function updateForecast() {
         let allTimeSeries = groupAllSitesByTime(allTimeSeriesBySite);
         allTimeSeries = groupTimeSeriesByDay(allTimeSeries);
         allTimeSeries = removeEmptyCorrelatedSiteTurnPointsDuplicates(allTimeSeries);
-        //console.log("Forecast data processed and updated.", allTimeSeriesBySite);
-        const outputPath = path.join(__dirname, 'allTimeSeriesByDay.json');
-        fs.writeFileSync(outputPath, JSON.stringify(allTimeSeries, null, 2), 'utf8');
-        console.log(`allTimeSeriesBySite written to ${outputPath}`);        
 
         // Write the updated data to Firestore
         await writeForecastDataToFirestore(allTimeSeries);
