@@ -130,6 +130,7 @@ body {
     font-weight: bold;
 }
 
+.tideInfo,
 .graphLoaders {
     font-size: 0.8em;
 }

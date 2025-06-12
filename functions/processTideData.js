@@ -80,6 +80,30 @@ function interpolateTideHeights(tidalEvents) {
                 trend = 'steady';
             }
 
+            // Calculate time until next tide turn
+            let turnTime = '';
+            if (trend !== 'steady') {
+                // Find the next high or low tide event
+                let nextTurnEvent = null;
+                for (const event of tidalEvents) {
+                    const eventTime = new Date(event.DateTime).getTime();
+                    if (eventTime > currentTime) {
+                        // Check if this is the type of turn we're looking for
+                        if ((trend === 'rising' && event.EventType === 'HighWater') ||
+                            (trend === 'falling' && event.EventType === 'LowWater')) {
+                            nextTurnEvent = event;
+                            break;
+                        }
+                    }
+                }
+                
+                if (nextTurnEvent) {
+                    const turnEventTime = new Date(nextTurnEvent.DateTime).getTime();
+                    const hoursUntilTurn = Math.round((turnEventTime - currentTime) / (1000 * 60 * 60));
+                    turnTime = `${hoursUntilTurn}h`;
+                }
+            }
+
             // Add roundedTime property
             const roundedTime = roundToNearestHour(new Date(currentTime)).toISOString();
             
@@ -88,7 +112,8 @@ function interpolateTideHeights(tidalEvents) {
                 roundedTime: roundedTime,
                 height: interpolatedHeight.toFixed(2),
                 tideIndicator: tideType,
-                trend: trend
+                trend: trend,
+                turnTime: turnTime
             });
         }
     }
@@ -97,7 +122,7 @@ function interpolateTideHeights(tidalEvents) {
 }
 
 // Main function to fetch tidal data and output results
-async function fetchAndDisplayTides(stationId) {
+async function fetchAndProcessTidalData(stationId) {
     try {
         // Example API call - replace with actual station ID and date range
         //const stationId = '0001'; // Replace with actual station ID
@@ -144,7 +169,7 @@ exports.fetchAndProcessTidalData = onSchedule(
     async (event) => {
         console.log("Scheduled function triggered");
         try {
-            await fetchAndDisplayTides("0083");
+            await fetchAndProcessTidalData("0083");
             console.log("Tidal data fetched and processed successfully");
         } catch (error) {
             console.error("Error fetching tidal data", error);

@@ -452,12 +452,23 @@ async function updateForecast() {
         // Flatten all time series into a single array grouped by time
         let allTimeSeries = groupAllSitesByTime(allTimeSeriesBySite);
         allTimeSeries = await enrichWithTidalData(allTimeSeries);
-        // Write allTimeSeries to disk for debugging/backup
-        const outputPath = path.join(__dirname, 'allTimeSeries.json');
-        fs.writeFileSync(outputPath, JSON.stringify(allTimeSeries, null, 2), 'utf8');
-        console.log(`allTimeSeries written to ${outputPath}`);
         allTimeSeries = groupTimeSeriesByDay(allTimeSeries);
         allTimeSeries = removeEmptyCorrelatedSiteTurnPointsDuplicates(allTimeSeries);
+
+        // Write allTimeSeries to disk for debugging
+        const outputPath = path.join(__dirname, 'allTimeSeries.json');
+        try {
+            // Ensure debug directory exists
+            const debugDir = path.dirname(outputPath);
+            if (!fs.existsSync(debugDir)) {
+                fs.mkdirSync(debugDir, { recursive: true });
+            }
+            
+            fs.writeFileSync(outputPath, JSON.stringify(allTimeSeries, null, 2));
+            console.log(`allTimeSeries written to ${outputPath}`);
+        } catch (writeError) {
+            console.error('Error writing allTimeSeries to disk:', writeError);
+        }
 
         // Write the updated data to Firestore
         await writeForecastDataToFirestore(allTimeSeries);
@@ -518,7 +529,7 @@ async function enrichWithTidalData(allTimeSeries) {
             });
             return { ...entry, correlatedSiteTurnPoints: enrichedTurnPoints };
         });
-        return { ...timeSlot, entries: enrichedEntries };
+        return { ...timeSlot, forecastCollection: enrichedEntries };
     });
 }
 
