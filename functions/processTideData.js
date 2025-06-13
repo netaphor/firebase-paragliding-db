@@ -3,6 +3,7 @@ const { getFirestore } = require('firebase-admin/firestore');
 const { onSchedule } = require('firebase-functions/v2/scheduler');
 require("firebase-functions/logger/compat");
 const admin = require('firebase-admin');
+const { defineSecret } = require('firebase-functions/params');
 require('dotenv').config();
 
 // Sinusoidal interpolation function
@@ -128,7 +129,8 @@ async function fetchAndProcessTidalData(stationId) {
         const startDate = new Date().toISOString().split('T')[0];
         const endDate = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0];
         
-        const apiKey = process.env.UK_TIDAL_API;
+        const UK_TIDAL_API = defineSecret('UK_TIDAL_API');
+        const apiKey = UK_TIDAL_API.value();
         if (!apiKey) {
             throw new Error(`The tidal API key is not set. Please set the UK_TIDAL_API environment variable. ${process.env.UK_TIDAL_API}, another key that works is ${process.env.METOFFICE_API_URL}`);
         }
