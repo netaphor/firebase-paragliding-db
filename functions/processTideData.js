@@ -129,13 +129,16 @@ async function fetchAndProcessTidalData(stationId) {
         const endDate = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0];
         
         const apiKey = process.env.UK_TIDAL_API;
+        if (!apiKey) {
+            throw new Error('API key for UK Tidal API is not set in environment variables');
+        }
         const response = await axios.get(`https://admiraltyapi.azure-api.net/uktidalapi/api/V1/Stations/${stationId}/TidalEvents`, {
             params: {
-            startDateTime: startDate,
-            endDateTime: endDate
+                startDateTime: startDate,
+                endDateTime: endDate
             },
             headers: {
-            'Ocp-Apim-Subscription-Key': apiKey
+                'Ocp-Apim-Subscription-Key': apiKey
             }
         });
         
