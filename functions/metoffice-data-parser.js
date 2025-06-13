@@ -5,8 +5,7 @@ const metofficeThreehourlyApiUrl = "https://data.hub.api.metoffice.gov.uk/sitesp
 const metofficeHourlyApiUrl = "https://data.hub.api.metoffice.gov.uk/sitespecific/v0/point/hourly?includeLocationName=true&latitude=";
 const metofficeApiKey = process.env.METOFFICE_API_URL;
 const {onSchedule} = require('firebase-functions/v2/scheduler');
-const logger = require('firebase-functions/logger');
-require("firebase-functions/logger/compat");
+const {logger} = require('firebase-functions');
 let updatedForecastData = null;
 
 // The Cloud Functions for Firebase SDK to create Cloud Functions and set up triggers.
@@ -14,7 +13,6 @@ const functions = require('firebase-functions'); // Or require('firebase-functio
 
 // The Firebase Admin SDK to access Firebase services
 const admin = require('firebase-admin');
-const { time } = require('console');
 const fs = require('fs');
 const path = require('path');
 
@@ -33,7 +31,7 @@ async function fetchMetofficeData(lat, long, apiUrl) {
         });
         return response.data;
     } catch (error) {
-        console.error('Error fetching data from Met Office API:', error.message);
+        logger.error('Error fetching data from Met Office API:', error.message);
         throw error;
     }
 }
@@ -47,7 +45,7 @@ function getLocationsByDirection(direction, siteLabel) {
     };
     
     for (const region in sitesMap) {
-        //console.log("Checking ", sitesMap[region][siteLabel]);
+        //logger.info("Checking ", sitesMap[region][siteLabel]);
         for (const siteGroupKey in sitesMap[region][siteLabel].sites) {
             let siteGroup = sitesMap[region][siteLabel].sites[siteGroupKey];
             if (siteGroup.directions.includes(direction)) {
@@ -113,7 +111,7 @@ function convertMsToKph(speedMs) {
 // Function to determine flying conditions based on wind speed and gust speed
 function getFlyingConditions(windSpeed, gustSpeed, weatherClassification) {
     if (windSpeed < 12 && gustSpeed < 16 && (weatherClassification === "clear" || weatherClassification === "partly_cloudy" || weatherClassification === "cloudy" || weatherClassification === "overcast")) {
-        //console.log("Conditions are flyable");
+        //logger.info("Conditions are flyable");
         return "flyable";
     } else if (windSpeed > 16 
         || gustSpeed > 20 
@@ -124,7 +122,7 @@ function getFlyingConditions(windSpeed, gustSpeed, weatherClassification) {
     ) {
         return "notFlyable";
     }
-    //console.log("Conditions are marginal");
+    //logger.info("Conditions are marginal");
     return "marginal";
 }
 
@@ -366,7 +364,7 @@ function getDayOfWeek(timestamp) {
 async function writeForecastDataToFirestore(data) {
     try {
         if (!Array.isArray(data)) {
-            console.error("Error: forecast data is null or not an array.");
+            logger.error("Error: forecast data is null or not an array.");
             return;
         }
         const forecastCollection = db.collection('forecastData');
@@ -379,9 +377,9 @@ async function writeForecastDataToFirestore(data) {
         });
 
         await batch.commit();
-        console.log("Forecast data successfully written to Firestore.");
+        logger.info("Forecast data successfully written to Firestore.");
     } catch (error) {
-        console.error("Error writing forecast data to Firestore:", error);
+        logger.error("Error writing forecast data to Firestore:", error);
     }
 }
 
@@ -421,7 +419,7 @@ async function updateForecast() {
         for (const site of southernSites) {
             // Fetch three-hourly data for this site
             const threehourlyData = await fetchMetofficeData(site.lat, site.long, metofficeThreehourlyApiUrl);
-            //console.log(`Three-hourly data fetched for ${site.label}`);
+            //logger.info(`Three-hourly data fetched for ${site.label}`);
             const threehourlyTimeSeries = threehourlyData.features[0].properties.timeSeries;
 
             // Introduce a 100ms delay between requests
@@ -429,7 +427,7 @@ async function updateForecast() {
 
             // Fetch hourly data for this site
             const hourlyData = await fetchMetofficeData(site.lat, site.long, metofficeHourlyApiUrl);
-            //console.log(`Hourly data fetched for ${site.label}`);
+            //logger.info(`Hourly data fetched for ${site.label}`);
             const hourlyTimeSeries = hourlyData.features[0].properties.timeSeries;
 
             // Merge the data for this site
@@ -443,7 +441,7 @@ async function updateForecast() {
 
             // Group by site label
             //allTimeSeriesBySite[site.label] = siteTimeSeries;
-            console.log(`Processing data for site: ${site.label}`);
+            logger.info(`Processing data for site: ${site.label}`);
             allTimeSeriesBySite[site.label] = updateTimeSeries(siteTimeSeries, site.label);
 
             // Optional: delay before next site (if you want to delay between sites as well)
@@ -466,15 +464,15 @@ async function updateForecast() {
             }
             
             fs.writeFileSync(outputPath, JSON.stringify(allTimeSeries, null, 2));
-            console.log(`allTimeSeries written to ${outputPath}`);
+            logger.info(`allTimeSeries written to ${outputPath}`);
         } catch (writeError) {
-            console.error('Error writing allTimeSeries to disk:', writeError);
+            logger.error('Error writing allTimeSeries to disk:', writeError);
         }
 
         // Write the updated data to Firestore
         await writeForecastDataToFirestore(allTimeSeries);
     } catch (error) {
-        console.error("Error fetching or processing data:", error);
+        logger.error("Error fetching or processing data:", error);
     }
 }
 
@@ -488,14 +486,14 @@ async function enrichWithTidalData(allTimeSeries) {
     const tideData = [];
     const tidesCollection = await db.collection('tides').doc('0083').collection('hourly').get();
     //const timestampDoc = await db.collection('flying-tracks-timestamps').doc('latest').get();
-    //console.log(tidesCollection);
+    //logger.info(tidesCollection);
     // for (const stationDoc of tidesCollection.docs) {
     //     const hourlySnapshot = await db.collection('tides').doc(stationDoc.id).collection('hourly').get();
         tidesCollection.forEach(doc => {
             tideData.push(doc.data());
         });
     //}
-    console.log(`Fetched ${tideData.length} tide entries from Firestore.`);
+    logger.info(`Fetched ${tideData.length} tide entries from Firestore.`);
 
     // Build a map of roundedTime to tide entry for quick lookup
     const tideMap = new Map();
@@ -523,7 +521,7 @@ async function enrichWithTidalData(allTimeSeries) {
             if (!Array.isArray(entry.correlatedSiteTurnPoints)) return entry;
             const enrichedTurnPoints = entry.correlatedSiteTurnPoints.map(siteObj => {
                 if (siteObj.label === "Newhaven") {
-                    console.log(`Enriching site ${siteObj.label} with tide data for time ${timeSlot.time}`);
+                    logger.info(`Enriching site ${siteObj.label} with tide data for time ${timeSlot.time}`);
                     return { ...siteObj, tide };
                 }
                 return siteObj;
@@ -567,14 +565,14 @@ function removeEmptyCorrelatedSiteTurnPointsDuplicates(allTimeSeries) {
 exports.dataManager = onSchedule(
     { schedule: '0,30 6-20 * * *', region: 'europe-west1' }, // Every 30 minutes between 06:00 and 20:30
     async (event) => {
-        console.log("Scheduled function triggered");
+        logger.info("Scheduled function triggered");
         try {
             await updateForecast();
-            console.log("Forecast data updated successfully");
+            logger.info("Forecast data updated successfully");
         } catch (error) {
-            console.error("Error updating forecast data:", error);
+            logger.error("Error updating forecast data:", error);
         }
     }
 );
 
-console.log("Data manager function initialized. It will run every 30 minutes between 06:00 and 20:00 UTC.");
+logger.info("Data manager function initialized. It will run every 30 minutes between 06:00 and 20:00 UTC.");
