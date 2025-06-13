@@ -124,8 +124,6 @@ function interpolateTideHeights(tidalEvents) {
 // Main function to fetch tidal data and output results
 async function fetchAndProcessTidalData(stationId) {
     try {
-        // Example API call - replace with actual station ID and date range
-        //const stationId = '0001'; // Replace with actual station ID
         const startDate = new Date().toISOString().split('T')[0];
         const endDate = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0];
         
@@ -142,8 +140,8 @@ async function fetchAndProcessTidalData(stationId) {
         
         const tidalEvents = response.data;
         const hourlyTides = interpolateTideHeights(tidalEvents);
-        await writeTidesToFirestore(hourlyTides, stationId); // Replace '0001' with actual station ID
-        //console.log(hourlyTides);
+        await writeTidesToFirestore(hourlyTides, stationId);
+        console.log(hourlyTides.length, "hourly tides written to Firestore for station", stationId);
         
     } catch (error) {
         console.error('Error fetching tidal data:', error.response?.data || error.message);
