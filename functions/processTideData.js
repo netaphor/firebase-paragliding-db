@@ -130,7 +130,7 @@ async function fetchAndProcessTidalData(stationId) {
         
         const apiKey = process.env.UK_TIDAL_API;
         if (!apiKey) {
-            throw new Error('API key for UK Tidal API is not set in environment variables');
+            throw new Error(process.env);
         }
         const response = await axios.get(`https://admiraltyapi.azure-api.net/uktidalapi/api/V1/Stations/${stationId}/TidalEvents`, {
             params: {
