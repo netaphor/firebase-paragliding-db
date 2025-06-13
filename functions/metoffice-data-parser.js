@@ -6,6 +6,7 @@ const metofficeHourlyApiUrl = "https://data.hub.api.metoffice.gov.uk/sitespecifi
 const metofficeApiKey = process.env.METOFFICE_API_URL;
 const {onSchedule} = require('firebase-functions/v2/scheduler');
 const logger = require('firebase-functions/logger');
+require("firebase-functions/logger/compat");
 let updatedForecastData = null;
 
 // The Cloud Functions for Firebase SDK to create Cloud Functions and set up triggers.

@@ -1,6 +1,7 @@
 const axios = require('axios');
 const { getFirestore } = require('firebase-admin/firestore');
 const { onSchedule } = require('firebase-functions/v2/scheduler');
+require("firebase-functions/logger/compat");
 const admin = require('firebase-admin');
 require('dotenv').config();
 

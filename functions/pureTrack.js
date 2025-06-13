@@ -1,4 +1,5 @@
 const {onSchedule} = require('firebase-functions/v2/scheduler');
+require("firebase-functions/logger/compat");
 require('dotenv').config({ path: './.env' });
 const axios = require('axios');
 const sitesMap = require('./data/sitesMap.js').sitesMap; // Import the sites map
@@ -192,10 +193,10 @@ exports.fetchPureTrackData = onSchedule({schedule: '*/2 7-21 * * *', region: 'eu
         console.log(`Fetching data for site: ${siteData.label || siteKey}`);
         
         const data = await getPureTrackData(
-          siteData.pureTrack.topRight.lat,
-          siteData.pureTrack.topRight.long,
-          siteData.pureTrack.bottomLeft.lat,
-          siteData.pureTrack.bottomLeft.long
+          siteData.sites[Object.keys(siteData.sites)[0]].pureTrack.topRight.lat,
+          siteData.sites[Object.keys(siteData.sites)[0]].pureTrack.topRight.long,
+          siteData.sites[Object.keys(siteData.sites)[0]].pureTrack.bottomLeft.lat,
+          siteData.sites[Object.keys(siteData.sites)[0]].pureTrack.bottomLeft.long
         );
         
         console.log(`Finished PureTrack data fetch for ${siteData.label || siteKey}...`, data);
