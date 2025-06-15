@@ -34,58 +34,41 @@ jobs:
         run: |
           cd functions
           npm ci
-          cd .. # Go back to the root directory for the next steps
+          cd ..
 
       - name: Authenticate to Google Cloud
         uses: google-github-actions/auth@v1
         with:
           credentials_json: '${{ secrets.GCP_SA_KEY }}'
 
-      - name: Get secrets from Secret Manager
-        id: sm-secrets # ID added to reference the step's outputs
-        uses: google-github-actions/get-secretmanager-secrets@v1
-        with:
-          secrets: |
-            METOFFICE_API_URL: projects/fb-paragliding-db/secrets/METOFFICE_API_URL/versions/latest
-            PURETRACK_API_KEY: projects/fb-paragliding-db/secrets/PURETRACK_API_KEY/versions/latest
-            PURETRACK_BEARER_TOKEN: projects/fb-paragliding-db/secrets/PURETRACK_BEARER_TOKEN/versions/latest
-            TELEGRAM_API_KEY: projects/fb-paragliding-db/secrets/TELEGRAM_API_KEY/versions/latest
-            UK_TIDAL_API: projects/fb-paragliding-db/secrets/UK_TIDAL_API/versions/latest
-            MY_SECRET: projects/fb-paragliding-db/secrets/MY_SECRET/versions/latest
-
-      - name: Set Firebase function secrets
-        if: github.event_name == 'push'
-        # This 'env' block maps the outputs from the step above to 
-        # environment variables that the 'run' commands can use.
+      - name: Set/Update All Firebase Secrets from GitHub
         env:
-          METOFFICE_API_URL: ${{ steps.sm-secrets.outputs.METOFFICE_API_URL }}
-          PURETRACK_API_KEY: ${{ steps.sm-secrets.outputs.PURETRACK_API_KEY }}
-          PURETRACK_BEARER_TOKEN: ${{ steps.sm-secrets.outputs.PURETRACK_BEARER_TOKEN }}
-          TELEGRAM_API_KEY: ${{ steps.sm-secrets.outputs.TELEGRAM_API_KEY }}
-          UK_TIDAL_API: ${{ steps.sm-secrets.outputs.UK_TIDAL_API }}
-          MY_SECRET: ${{ steps.sm-secrets.outputs.MY_SECRET }}
+          # This maps your GitHub secrets to environment variables.
+          # Ensure you have created secrets in your GitHub repo's settings with these exact names.
+          METOFFICE_API_URL: ${{ secrets.METOFFICE_API_URL }}
+          PURETRACK_API_KEY: ${{ secrets.PURETRACK_API_KEY }}
+          PURETRACK_BEARER_TOKEN: ${{ secrets.PURETRACK_BEARER_TOKEN }}
+          TELEGRAM_API_KEY: ${{ secrets.TELEGRAM_API_KEY }}
+          UK_TIDAL_API: ${{ secrets.UK_TIDAL_API }}
+          MY_SECRET: ${{ secrets.MY_SECRET }}
         run: |
-          echo "--- DEBUGGING: Checking for presence of environment variables ---"
-          env | grep METOFFICE_API_URL
-          env | grep PURETRACK_API_KEY
-          env | grep PURETRACK_BEARER_TOKEN
-          env | grep TELEGRAM_API_KEY
-          env | grep UK_TIDAL_API
-          env | grep MY_SECRET
-          echo "------------------------------------------------------------------"
-
-          # The variables are now in the environment, so the firebase command will find them.
-          # We also pipe the value in, which is a robust way to handle special characters.
           npm install -g firebase-tools
+          echo "Setting secrets in Google Secret Manager from GitHub Secrets..."
+
+          # Each command pipes the value from the corresponding environment variable
+          # into the Firebase CLI, creating a new version of the secret in Google Cloud.
           echo "$METOFFICE_API_URL" | firebase functions:secrets:set METOFFICE_API_URL --project fb-paragliding-db
           echo "$PURETRACK_API_KEY" | firebase functions:secrets:set PURETRACK_API_KEY --project fb-paragliding-db
           echo "$PURETRACK_BEARER_TOKEN" | firebase functions:secrets:set PURETRACK_BEARER_TOKEN --project fb-paragliding-db
           echo "$TELEGRAM_API_KEY" | firebase functions:secrets:set TELEGRAM_API_KEY --project fb-paragliding-db
           echo "$UK_TIDAL_API" | firebase functions:secrets:set UK_TIDAL_API --project fb-paragliding-db
           echo "$MY_SECRET" | firebase functions:secrets:set MY_SECRET --project fb-paragliding-db
+          
+          echo "All secrets have been set."
 
       - name: Deploy to Firebase Hosting and Functions
         if: github.event_name == 'push'
         run: |
-          npm install -g firebase-tools
+          # The deploy command will bind the functions to the 'latest' version of the secrets.
+          # Since the previous step just created new 'latest' versions, this works perfectly.
           firebase deploy --only hosting,functions --project fb-paragliding-db --token "${{ secrets.FIREBASE_TOKEN }}"
