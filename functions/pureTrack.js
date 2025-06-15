@@ -1,10 +1,7 @@
 const {onSchedule} = require('firebase-functions/v2/scheduler');
 require("firebase-functions/logger/compat");
-require('dotenv').config({ path: './.env' });
 const axios = require('axios');
 const sitesMap = require('./data/sitesMap.js').sitesMap; // Import the sites map
-const pureTrackApiKey = process.env.PURETRACK_API_KEY;
-const pureTrackBearerToken = process.env.PURETRACK_BEARER_TOKEN;
 let samplePureTrackData = require('./data/pureTrackData.json'); // Import sample data for testing
 const {initializeApp} = require('firebase-admin/app');
 const {getFirestore, FieldValue} = require('firebase-admin/firestore');
@@ -12,11 +9,17 @@ const useSampleData = false;
 const isEmulator = process.env.FUNCTIONS_EMULATOR === 'true';
 const pureTrackApiUrl = useSampleData && isEmulator ? "http://127.0.0.1:5000/data/pureTrackData.json" : "https://puretrack.io/api/traffic";
 
+const { defineSecret } = require('firebase-functions/params');
+const PURETRACK_API_KEY = defineSecret('PURETRACK_API_KEY');
+const PURETRACK_BEARER_TOKEN = defineSecret('PURETRACK_BEARER_TOKEN');
+
 // Initialize Firebase Admin SDK
 const db = getFirestore();
 
 async function getPureTrackData(lat1, long1, lat2, long2) {
   console.log('Fetching PureTrack data for coordinates:', lat1, long1, lat2, long2);
+  const pureTrackApiKey = PURETRACK_API_KEY.value();
+  const pureTrackBearerToken = PURETRACK_BEARER_TOKEN.value();
   try {
     const response = await axios.get(pureTrackApiUrl, {
       params: {
@@ -182,7 +185,11 @@ async function writeToFirestore(flyingData) {
   }
 }
 
-exports.fetchPureTrackData = onSchedule({schedule: '*/2 7-21 * * *', region: 'europe-west1'}, async (event) => {
+exports.fetchPureTrackData = onSchedule({
+      schedule: '*/2 7-21 * * *',
+      region: 'europe-west1',
+      secrets: [PURETRACK_API_KEY, PURETRACK_BEARER_TOKEN]
+  }, async (event) => {
   console.log("Scheduled function triggered");
   try {
     const sites = Object.entries(sitesMap.southern);
