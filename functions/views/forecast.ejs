@@ -160,8 +160,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                             <% } %>
                                             <% if (site.tide) { %>
                                                 <div class="tideInfo">
-                                                        Tide is <%= site.tide.trend %>, <%= site.tide.turnTime %> until
+                                                        Tide is <%= site.tide.trend %>, ~<%= site.tide.turnTime %> until
                                                         <%= site.tide.trend === 'rising' ? 'high tide' : 'low tide' %>
+                                                        at <%= new Date(site.tide.nextTurnDateTime).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' }) %>
                                                 </div>
                                             <% } %>
                                         <% }); %>

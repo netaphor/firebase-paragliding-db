@@ -84,6 +84,7 @@ function interpolateTideHeights(tidalEvents) {
 
             // Calculate time until next tide turn
             let turnTime = '';
+            let nextTurnDateTime = null;
             if (trend !== 'steady') {
                 // Find the next high or low tide event
                 let nextTurnEvent = null;
@@ -103,6 +104,7 @@ function interpolateTideHeights(tidalEvents) {
                     const turnEventTime = new Date(nextTurnEvent.DateTime).getTime();
                     const hoursUntilTurn = Math.round((turnEventTime - currentTime) / (1000 * 60 * 60));
                     turnTime = `${hoursUntilTurn}h`;
+                    nextTurnDateTime = new Date(nextTurnEvent.DateTime).toISOString();
                 }
             }
 
@@ -115,7 +117,8 @@ function interpolateTideHeights(tidalEvents) {
                 height: interpolatedHeight.toFixed(2),
                 tideIndicator: tideType,
                 trend: trend,
-                turnTime: turnTime
+                turnTime: turnTime,
+                nextTurnDateTime: nextTurnDateTime
             });
         }
     }
