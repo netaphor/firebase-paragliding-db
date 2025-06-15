@@ -1,12 +1,12 @@
 const axios = require('axios');
 const sitesMap = require('./data/sitesMap.js').sitesMap; // Import the sites map
-require('dotenv').config();
 const metofficeThreehourlyApiUrl = "https://data.hub.api.metoffice.gov.uk/sitespecific/v0/point/three-hourly?includeLocationName=true&latitude=";
 const metofficeHourlyApiUrl = "https://data.hub.api.metoffice.gov.uk/sitespecific/v0/point/hourly?includeLocationName=true&latitude=";
-const metofficeApiKey = process.env.METOFFICE_API_URL;
 const {onSchedule} = require('firebase-functions/v2/scheduler');
 const {logger} = require('firebase-functions');
-let updatedForecastData = null;
+
+const { defineSecret } = require('firebase-functions/params');
+const METOFFICE_API_URL = defineSecret('METOFFICE_API_URL');
 
 // The Cloud Functions for Firebase SDK to create Cloud Functions and set up triggers.
 const functions = require('firebase-functions'); // Or require('firebase-functions/v1') or v2 depending on your gen
@@ -22,6 +22,7 @@ const db = admin.firestore();
 // Fetch forecast data from the MET Office
 async function fetchMetofficeData(lat, long, apiUrl) {
     let url = apiUrl + lat + '&longitude=' + long;
+    const metofficeApiKey = METOFFICE_API_URL.value();
     try {
         const response = await axios.get(url, {
             headers: {
@@ -455,19 +456,19 @@ async function updateForecast() {
         allTimeSeries = removeEmptyCorrelatedSiteTurnPointsDuplicates(allTimeSeries);
 
         // Write allTimeSeries to disk for debugging
-        const outputPath = path.join(__dirname, 'allTimeSeries.json');
-        try {
-            // Ensure debug directory exists
-            const debugDir = path.dirname(outputPath);
-            if (!fs.existsSync(debugDir)) {
-                fs.mkdirSync(debugDir, { recursive: true });
-            }
+        // const outputPath = path.join(__dirname, 'allTimeSeries.json');
+        // try {
+        //     // Ensure debug directory exists
+        //     const debugDir = path.dirname(outputPath);
+        //     if (!fs.existsSync(debugDir)) {
+        //         fs.mkdirSync(debugDir, { recursive: true });
+        //     }
             
-            fs.writeFileSync(outputPath, JSON.stringify(allTimeSeries, null, 2));
-            logger.info(`allTimeSeries written to ${outputPath}`);
-        } catch (writeError) {
-            logger.error('Error writing allTimeSeries to disk:', writeError);
-        }
+        //     fs.writeFileSync(outputPath, JSON.stringify(allTimeSeries, null, 2));
+        //     logger.info(`allTimeSeries written to ${outputPath}`);
+        // } catch (writeError) {
+        //     logger.error('Error writing allTimeSeries to disk:', writeError);
+        // }
 
         // Write the updated data to Firestore
         await writeForecastDataToFirestore(allTimeSeries);
@@ -562,8 +563,11 @@ function removeEmptyCorrelatedSiteTurnPointsDuplicates(allTimeSeries) {
     });
 }
 
-exports.dataManager = onSchedule(
-    { schedule: '0,30 6-20 * * *', region: 'europe-west1' }, // Every 30 minutes between 06:00 and 20:30
+exports.dataManager = onSchedule({ 
+        schedule: '0,30 6-20 * * *', 
+        region: 'europe-west1',
+        secrets: [METOFFICE_API_URL]
+    }, // Every 30 minutes between 06:00 and 20:30
     async (event) => {
         logger.info("Scheduled function triggered");
         try {
