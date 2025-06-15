@@ -4,7 +4,8 @@ const { onSchedule } = require('firebase-functions/v2/scheduler');
 require("firebase-functions/logger/compat");
 const admin = require('firebase-admin');
 const { defineSecret } = require('firebase-functions/params');
-require('dotenv').config();
+
+const UK_TIDAL_API = defineSecret('UK_TIDAL_API');
 
 // Sinusoidal interpolation function
 function sinusoidalInterpolate(x0, y0, x1, y1, x) {
@@ -131,11 +132,10 @@ async function fetchAndProcessTidalData(stationId) {
     try {
         const startDate = new Date().toISOString().split('T')[0];
         const endDate = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0];
-        
-        const UK_TIDAL_API = defineSecret('UK_TIDAL_API');
+
         const apiKey = UK_TIDAL_API.value();
         if (!apiKey) {
-            throw new Error(`The tidal API key is not set. Please set the UK_TIDAL_API environment variable. ${process.env.UK_TIDAL_API}, another key that works is ${process.env.METOFFICE_API_URL}`);
+            throw new Error(`The tidal API key is not set`);
         }
         const response = await axios.get(`https://admiraltyapi.azure-api.net/uktidalapi/api/V1/Stations/${stationId}/TidalEvents`, {
             params: {
@@ -171,8 +171,11 @@ async function writeTidesToFirestore(hourlyTides, stationId) {
 }
 
 // Run the program
-exports.fetchAndProcessTidalData = onSchedule(
-    { schedule: '0 6-21 * * *', region: 'europe-west1' }, // Once an hour between 06:00 and 21:00
+exports.fetchAndProcessTidalData = onSchedule({ 
+        schedule: '0 6-21 * * *', 
+        region: 'europe-west1',
+        secrets: [UK_TIDAL_API] 
+    }, // Once an hour between 06:00 and 21:00
     async (event) => {
         console.log("Scheduled function triggered");
         try {
