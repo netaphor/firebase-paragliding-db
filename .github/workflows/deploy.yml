@@ -82,7 +82,7 @@ jobs:
           echo "$PURETRACK_BEARER_TOKEN" | firebase functions:secrets:set PURETRACK_BEARER_TOKEN --project fb-paragliding-db
           echo "$TELEGRAM_API_KEY" | firebase functions:secrets:set TELEGRAM_API_KEY --project fb-paragliding-db
           echo "$UK_TIDAL_API" | firebase functions:secrets:set UK_TIDAL_API --project fb-paragliding-db
-          echo "$MY_SECRET" | firebase functions:secrets:set UK_TIDAL_API --project fb-paragliding-db
+          echo "$MY_SECRET" | firebase functions:secrets:set MY_SECRET --project fb-paragliding-db
 
       - name: Deploy to Firebase Hosting and Functions
         if: github.event_name == 'push'
