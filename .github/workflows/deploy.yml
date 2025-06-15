@@ -51,6 +51,7 @@ jobs:
             PURETRACK_BEARER_TOKEN: projects/fb-paragliding-db/secrets/PURETRACK_BEARER_TOKEN/versions/latest
             TELEGRAM_API_KEY: projects/fb-paragliding-db/secrets/TELEGRAM_API_KEY/versions/latest
             UK_TIDAL_API: projects/fb-paragliding-db/secrets/UK_TIDAL_API/versions/latest
+            MY_SECRET: projects/fb-paragliding-db/secrets/MY_SECRET/versions/latest
 
       - name: Set Firebase function secrets
         if: github.event_name == 'push'
@@ -62,6 +63,7 @@ jobs:
           PURETRACK_BEARER_TOKEN: ${{ steps.sm-secrets.outputs.PURETRACK_BEARER_TOKEN }}
           TELEGRAM_API_KEY: ${{ steps.sm-secrets.outputs.TELEGRAM_API_KEY }}
           UK_TIDAL_API: ${{ steps.sm-secrets.outputs.UK_TIDAL_API }}
+          MY_SECRET: ${{ steps.sm-secrets.outputs.MY_SECRET }}
         run: |
           echo "--- DEBUGGING: Checking for presence of environment variables ---"
           env | grep METOFFICE_API_URL
@@ -69,6 +71,7 @@ jobs:
           env | grep PURETRACK_BEARER_TOKEN
           env | grep TELEGRAM_API_KEY
           env | grep UK_TIDAL_API
+          env | grep MY_SECRET
           echo "------------------------------------------------------------------"
 
           # The variables are now in the environment, so the firebase command will find them.
@@ -79,6 +82,7 @@ jobs:
           echo "$PURETRACK_BEARER_TOKEN" | firebase functions:secrets:set PURETRACK_BEARER_TOKEN --project fb-paragliding-db
           echo "$TELEGRAM_API_KEY" | firebase functions:secrets:set TELEGRAM_API_KEY --project fb-paragliding-db
           echo "$UK_TIDAL_API" | firebase functions:secrets:set UK_TIDAL_API --project fb-paragliding-db
+          echo "$MY_SECRET" | firebase functions:secrets:set UK_TIDAL_API --project fb-paragliding-db
 
       - name: Deploy to Firebase Hosting and Functions
         if: github.event_name == 'push'
