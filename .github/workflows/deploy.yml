@@ -51,19 +51,17 @@ jobs:
           PURETRACK_BEARER_TOKEN: ${{ secrets.PURETRACK_BEARER_TOKEN }}
           TELEGRAM_API_KEY: ${{ secrets.TELEGRAM_API_KEY }}
           UK_TIDAL_API: ${{ secrets.UK_TIDAL_API }}
-          MY_SECRET: ${{ secrets.MY_SECRET }}
         run: |
           npm install -g firebase-tools
           echo "Setting secrets in Google Secret Manager from GitHub Secrets..."
 
           # Each command pipes the value from the corresponding environment variable
           # into the Firebase CLI, creating a new version of the secret in Google Cloud.
-          echo "$METOFFICE_API_URL" | firebase functions:secrets:set METOFFICE_API_URL --project fb-paragliding-db
-          echo "$PURETRACK_API_KEY" | firebase functions:secrets:set PURETRACK_API_KEY --project fb-paragliding-db
-          echo "$PURETRACK_BEARER_TOKEN" | firebase functions:secrets:set PURETRACK_BEARER_TOKEN --project fb-paragliding-db
-          echo "$TELEGRAM_API_KEY" | firebase functions:secrets:set TELEGRAM_API_KEY --project fb-paragliding-db
-          echo "$UK_TIDAL_API" | firebase functions:secrets:set UK_TIDAL_API --project fb-paragliding-db
-          echo "$MY_SECRET" | firebase functions:secrets:set MY_SECRET --project fb-paragliding-db
+          echo -n "$METOFFICE_API_URL" | firebase functions:secrets:set METOFFICE_API_URL --project fb-paragliding-db
+          echo -n "$PURETRACK_API_KEY" | firebase functions:secrets:set PURETRACK_API_KEY --project fb-paragliding-db
+          echo -n "$PURETRACK_BEARER_TOKEN" | firebase functions:secrets:set PURETRACK_BEARER_TOKEN --project fb-paragliding-db
+          echo -n "$TELEGRAM_API_KEY" | firebase functions:secrets:set TELEGRAM_API_KEY --project fb-paragliding-db
+          echo -n "$UK_TIDAL_API" | firebase functions:secrets:set UK_TIDAL_API --project fb-paragliding-db
           
           echo "All secrets have been set."
 
